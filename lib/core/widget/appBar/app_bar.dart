@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tadamon_app/core/widget/appBar/action_drawer_icons.dart';
+import 'package:tadamon_app/core/widget/appBar/app_bar_title.dart';
 import 'package:tadamon_app/core/widget/appBar/custom_app_bar_clipper.dart';
 
 class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const SenseiAppBar({
-    super.key,
-    required this.title,
-  });
-
   final String title;
+
+  const SenseiAppBar(this.title, {super.key});
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight + 20.h);
@@ -26,9 +25,12 @@ class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         child: AppBar(
           backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
           elevation: 0,
-          actions: const [],
-          title: Text(title),
+          actions: const [
+            ActionDrawerIcon(),
+          ],
+          title: AppBarTitle(title: title),
         ),
       ),
     );

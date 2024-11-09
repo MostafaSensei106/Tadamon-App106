@@ -2,5 +2,18 @@
   "@@locale": "en",
   "Home": "Home",
   "Search": "Search",
-  "Logs": "Logs"
+  "Logs": "Logs",
+
+  "SystemTheme": "System Theme",
+  "FollowSystemTheme": "Follow System Theme",
+  "DarkTheme": "Dark Mode",
+  "LightTheme": "Light Mode",
+  "SwitchToDarkTheme": "Switch to Dark Mode",
+  "SwitchToLightTheme": "Switch to Light Mode",
+
+  "Developer": "Developer",
+  "MostafaMahmoud": "Mostafa Mahmoud",
+
+  "About": "About",
+  "AboutTadamon": "About Tadamon"
 }

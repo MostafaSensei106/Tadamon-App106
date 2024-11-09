@@ -3,5 +3,18 @@
   "someKey": "نص",
   "Home": "الرئيسية",
   "Search": "بحث",
-  "Logs": "السجلات"
+  "Logs": "السجلات",
+
+  "SystemTheme": "لون سمة النظام",
+  "FollowSystemTheme": "تتبع لون سمة النظام",
+  "DarkTheme": "النمط الداكن",
+  "LightTheme": "النمط الفاتح",
+  "SwitchToDarkTheme": "تبديل إلى النمط الداكن",
+  "SwitchToLightTheme": "تبديل إلى النمط الفاتح",
+
+  "Developer": "المطور",
+  "MostafaMahmoud": "Mostafa Mahmoud",
+
+  "About": "معلومات التطبيق",
+  "AboutTadamon": "حول تضامن"
 }

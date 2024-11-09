@@ -79,6 +79,106 @@ class S {
       args: [],
     );
   }
+
+  /// `System Theme`
+  String get SystemTheme {
+    return Intl.message(
+      'System Theme',
+      name: 'SystemTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow System Theme`
+  String get FollowSystemTheme {
+    return Intl.message(
+      'Follow System Theme',
+      name: 'FollowSystemTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Mode`
+  String get DarkTheme {
+    return Intl.message(
+      'Dark Mode',
+      name: 'DarkTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light Mode`
+  String get LightTheme {
+    return Intl.message(
+      'Light Mode',
+      name: 'LightTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Switch to Dark Mode`
+  String get SwitchToDarkTheme {
+    return Intl.message(
+      'Switch to Dark Mode',
+      name: 'SwitchToDarkTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Switch to Light Mode`
+  String get SwitchToLightTheme {
+    return Intl.message(
+      'Switch to Light Mode',
+      name: 'SwitchToLightTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Developer`
+  String get Developer {
+    return Intl.message(
+      'Developer',
+      name: 'Developer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mostafa Mahmoud`
+  String get MostafaMahmoud {
+    return Intl.message(
+      'Mostafa Mahmoud',
+      name: 'MostafaMahmoud',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get About {
+    return Intl.message(
+      'About',
+      name: 'About',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Tadamon`
+  String get AboutTadamon {
+    return Intl.message(
+      'About Tadamon',
+      name: 'AboutTadamon',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

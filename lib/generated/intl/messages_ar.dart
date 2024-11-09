@@ -22,8 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "About": MessageLookupByLibrary.simpleMessage("معلومات التطبيق"),
+        "AboutTadamon": MessageLookupByLibrary.simpleMessage("حول تضامن"),
+        "DarkTheme": MessageLookupByLibrary.simpleMessage("النمط الداكن"),
+        "Developer": MessageLookupByLibrary.simpleMessage("المطور"),
+        "FollowSystemTheme":
+            MessageLookupByLibrary.simpleMessage("تتبع لون سمة النظام"),
         "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "LightTheme": MessageLookupByLibrary.simpleMessage("النمط الفاتح"),
         "Logs": MessageLookupByLibrary.simpleMessage("السجلات"),
-        "Search": MessageLookupByLibrary.simpleMessage("بحث")
+        "MostafaMahmoud":
+            MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
+        "Search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "SwitchToDarkTheme":
+            MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الداكن"),
+        "SwitchToLightTheme":
+            MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الفاتح"),
+        "SystemTheme": MessageLookupByLibrary.simpleMessage("لون سمة النظام")
       };
 }

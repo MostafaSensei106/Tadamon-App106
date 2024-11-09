@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadamon_app/core/widget/appBar/app_bar.dart';
-import 'package:tadamon_app/core/widget/appBar/app_bar_title.dart';
+import 'package:tadamon_app/core/widget/drawer/drawer.dart';
 import 'package:tadamon_app/core/widget/google_nav_bar/google_nav_bar.dart';
 import 'package:tadamon_app/features/main_page/logic/main_page_cubit.dart';
 import 'package:tadamon_app/features/main_page/logic/main_page_state.dart';
 import 'package:tadamon_app/features/main_page/ui/widget/main_page_container.dart';
+import 'package:tadamon_app/generated/l10n.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -48,15 +49,14 @@ class _MainPageState extends State<MainPage>
     );
   }
 
-  //App Bar Title Will Change Depending on Page
-  String getTitle() {
-    switch (_pageCubit.state.currentPage) {
-      case AppPage.home:
-        return 'Home';
-      case AppPage.search:
-        return 'Search';
-      case AppPage.logs:
-        return 'Logs';
+  String _getAppBarTitle(AppPage page) {
+    switch (_pageCubit.state.currentPage.index) {
+      case 0:
+        return S.of(context).Home;
+      case 1:
+        return S.of(context).Search;
+      case 2:
+        return S.of(context).Logs;
       default:
         return 'Unknown Page';
     }
@@ -73,9 +73,9 @@ class _MainPageState extends State<MainPage>
             key: const ValueKey<String>('main_page_scaffold'),
             backgroundColor: Theme.of(context).colorScheme.surface,
             appBar: SenseiAppBar(
-              title: AppBarTitle(title: getTitle()),
+              _getAppBarTitle(state.currentPage),
             ),
-            drawer: Drawer(),
+            drawer: SenseiDrawer(),
             body: Stack(
               children: [
                 MainPageContainer(

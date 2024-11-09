@@ -9,26 +9,33 @@ class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  _MainPageState createState() => _MainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage>
+    with AutomaticKeepAliveClientMixin {
   late final PageController _pageController;
+  late final PageCubit _pageCubit;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController();
+    _pageCubit = PageCubit();
   }
 
   @override
   void dispose() {
     _pageController.dispose();
+    _pageCubit.close();
     super.dispose();
   }
 
   void _onPageChanged(int index) {
-    context.read<PageCubit>().changePage(AppPage.values[index]);
+    _pageCubit.changePage(AppPage.values[index]);
   }
 
   void onItemTapped(int index) {
@@ -41,46 +48,38 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PageCubit(),
-      child: BlocBuilder<PageCubit, MainPageState>(builder: (context, state) {
-        return Scaffold(
-          key: const ValueKey<String>('main_page_scaffold'),
-          backgroundColor: Theme.of(context).colorScheme.surface,
-          appBar: AppBar(
-            title: Text('تضامن'),
-          ),
-          drawer: Drawer(),
-          body: Stack(
-            children: [
-              MainPageContainer(
-                pageController: _pageController,
-                onPageChanged: _onPageChanged,
-              ),
-              Positioned(
-                bottom: 0,
-                left: 60,
-                right: 60,
-                child: GoogleNavBar(
-                  onItemTapped: onItemTapped,
-                  currentIndex: state.currentPage.index,
+    super.build(context);
+    return BlocProvider.value(
+      value: _pageCubit,
+      child: BlocBuilder<PageCubit, MainPageState>(
+        builder: (context, state) {
+          return Scaffold(
+            key: const ValueKey<String>('main_page_scaffold'),
+            backgroundColor: Theme.of(context).colorScheme.surface,
+            appBar: AppBar(
+              title: Text('تضامن'),
+            ),
+            drawer: Drawer(),
+            body: Stack(
+              children: [
+                MainPageContainer(
+                  pageController: _pageController,
+                  onPageChanged: _onPageChanged,
                 ),
-              )
-            ],
-          ),
-        );
-      }),
+                Positioned(
+                  bottom: 0,
+                  left: 60,
+                  right: 60,
+                  child: GoogleNavBar(
+                    onItemTapped: onItemTapped,
+                    currentIndex: state.currentPage.index,
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
-
-  // String _getAppBarTitle(AppPage page) {
-  //   switch (page) {
-  //     case AppPage.home:
-  //       return 'Home';
-  //     case AppPage.search:
-  //       return 'search';
-  //     case AppPage.Logs:
-  //       return 'Logs';
-  //   }
-  // }
 }

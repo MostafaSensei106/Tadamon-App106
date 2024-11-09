@@ -51,30 +51,30 @@ class S {
   }
 
   /// `Home`
-  String get home {
+  String get Home {
     return Intl.message(
       'Home',
-      name: 'home',
+      name: 'Home',
       desc: '',
       args: [],
     );
   }
 
   /// `Search`
-  String get search {
+  String get Search {
     return Intl.message(
       'Search',
-      name: 'search',
+      name: 'Search',
       desc: '',
       args: [],
     );
   }
 
   /// `Logs`
-  String get logs {
+  String get Logs {
     return Intl.message(
       'Logs',
-      name: 'logs',
+      name: 'Logs',
       desc: '',
       args: [],
     );

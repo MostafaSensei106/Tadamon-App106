@@ -1,5 +1,6 @@
 {
-  "home": "Home",
-  "search": "Search",
-  "logs": "Logs"
+  "@@locale": "en",
+  "Home": "Home",
+  "Search": "Search",
+  "Logs": "Logs"
 }

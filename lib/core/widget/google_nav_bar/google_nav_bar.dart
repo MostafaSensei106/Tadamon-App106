@@ -54,23 +54,21 @@ class GoogleNavBar extends StatelessWidget {
                     icon: currentIndex == 0 ? Icons.home_outlined : Icons.home,
                     iconSize: SenseiConst.iconSize,
                     iconColor: theme.colorScheme.onPrimaryContainer,
-                    text: S.of(context).home,
+                    text: S.of(context).Home,
                   ),
                   GButton(
-                    icon: currentIndex == 1
-                        ? Icons.video_camera_back_rounded
-                        : Icons.video_camera_back_outlined,
+                    icon: currentIndex == 1 ? Icons.search : Icons.saved_search,
                     iconSize: SenseiConst.iconSize,
                     iconColor: theme.colorScheme.onPrimaryContainer,
-                    text: 'Video',
+                    text: S.of(context).Search,
                   ),
                   GButton(
                     icon: currentIndex == 2
-                        ? Icons.bookmark
-                        : Icons.bookmark_outline,
+                        ? Icons.dataset_outlined
+                        : Icons.dataset,
                     iconSize: SenseiConst.iconSize,
                     iconColor: theme.colorScheme.onPrimaryContainer,
-                    text: 'Saved',
+                    text: S.of(context).Logs,
                   )
                 ],
                 selectedIndex: currentIndex,

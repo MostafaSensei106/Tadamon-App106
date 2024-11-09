@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tadamon_app/core/widget/appBar/app_bar.dart';
+import 'package:tadamon_app/core/widget/appBar/app_bar_title.dart';
 import 'package:tadamon_app/core/widget/google_nav_bar/google_nav_bar.dart';
 import 'package:tadamon_app/features/main_page/logic/main_page_cubit.dart';
 import 'package:tadamon_app/features/main_page/logic/main_page_state.dart';
@@ -46,6 +48,20 @@ class _MainPageState extends State<MainPage>
     );
   }
 
+  //App Bar Title Will Change Depending on Page
+  String getTitle() {
+    switch (_pageCubit.state.currentPage) {
+      case AppPage.home:
+        return 'Home';
+      case AppPage.search:
+        return 'Search';
+      case AppPage.logs:
+        return 'Logs';
+      default:
+        return 'Unknown Page';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -56,8 +72,8 @@ class _MainPageState extends State<MainPage>
           return Scaffold(
             key: const ValueKey<String>('main_page_scaffold'),
             backgroundColor: Theme.of(context).colorScheme.surface,
-            appBar: AppBar(
-              title: Text('تضامن'),
+            appBar: SenseiAppBar(
+              title: AppBarTitle(title: getTitle()),
             ),
             drawer: Drawer(),
             body: Stack(

@@ -1,4 +1,4 @@
-enum AppPage { image, video, saved }
+enum AppPage { image, video, saved, home, search, logs }
 
 class MainPageState {
   final AppPage currentPage;

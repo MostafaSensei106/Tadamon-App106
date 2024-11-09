@@ -2,19 +2,10 @@
 class Assets {
   Assets._();
 
-  static const String constSenseiConst =
-      'lib/core/config/const/sensei_const.dart';
-  static const String coreRoutingAppRouter =
-      'lib/core/routing/app_router.dart~';
-  static const String errorNoRoutes = 'lib/core/error/no_routes.dart';
-  static const String extensionsExtensions =
-      'lib/core/helpers/extensions/extensions.dart';
-  static const String generatedAssets = 'lib/generated/assets.dart';
-  static const String helpersFontWeightHelper =
-      'lib/core/helpers/font_weight_helper.dart';
-  static const String libGeneratedAssets = 'lib/generated/assets.dart~';
-  static const String libMain = 'lib/main.dart';
-  static const String libTadamon = 'lib/tadamon.dart';
-  static const String routingAppRouter = 'lib/core/routing/app_router.dart';
-  static const String routingRoutes = 'lib/core/routing/routes.dart';
+  static const String arTajawalRegular = 'assets/fonts/ar/Tajawal-Regular.ttf';
+  static const String imagesMHlogo = 'assets/images/MHlogo.png';
+  static const String imagesMhp = 'assets/images/mhp.jpeg';
+  static const String imagesTadamonLogo = 'assets/images/Tadamon_Logo.png';
+  static const String imagesWaterMelonCover =
+      'assets/images/WaterMelonCover.jpg';
 }

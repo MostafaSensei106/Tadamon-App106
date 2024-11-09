@@ -6,10 +6,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Text('Home'),
-        ),
+      child: ListView.builder(
+        itemCount: 15,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: FlutterLogo(
+              size: 50,
+            ),
+            title: Text('Item $index'),
+            subtitle: Text('Item $index'),
+            trailing: Icon(Icons.arrow_forward_ios_sharp),
+          );
+        },
       ),
     );
   }

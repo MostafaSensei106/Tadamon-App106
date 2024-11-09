@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tadamon_app/core/error/no_routes.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -6,15 +7,15 @@ class AppRouter {
     switch (settings.name) {
       case 'Routes.onBoardingScreen':
         return MaterialPageRoute(
-          builder: (context) => OnBoardingScreen(),
+          builder: (context) => Container(),
         );
       case 'Routes.loginScreen':
         return MaterialPageRoute(
-          builder: (context) => LoginScreen(),
+          builder: (context) => Container(),
         );
       default:
         return MaterialPageRoute(
-          builder: (context) => NoRoutes(),
+          builder: (context) => const NoRoutes(),
         );
     }
   }

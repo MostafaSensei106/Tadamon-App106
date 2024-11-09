@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon_app/core/config/theme/colors/dark_theme.dart';
 import 'package:tadamon_app/core/config/theme/colors/light_theme.dart';
 import 'package:tadamon_app/core/routing/app_router.dart';
+import 'package:tadamon_app/generated/l10n.dart';
 
 class TadamonApp extends StatelessWidget {
   final AppRouter appRouter = AppRouter();
@@ -20,10 +21,11 @@ class TadamonApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: ThemeMode.system,
-        initialRoute: 'Routes.onBoardingScreen',
+        initialRoute: 'Routes.mainPage',
         onGenerateRoute: appRouter.generateRoute,
         locale: const Locale('ar'),
         localizationsDelegates: [
+          S.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate

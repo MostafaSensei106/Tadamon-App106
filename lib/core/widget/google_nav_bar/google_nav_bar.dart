@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:tadamon_app/core/config/const/sensei_const.dart';
+import 'package:tadamon_app/generated/l10n.dart';
 
 class GoogleNavBar extends StatelessWidget {
   final int currentIndex;
@@ -50,11 +51,10 @@ class GoogleNavBar extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 13.w),
                 tabs: [
                   GButton(
-                    icon:
-                        currentIndex == 0 ? Icons.image : Icons.image_outlined,
+                    icon: currentIndex == 0 ? Icons.home_outlined : Icons.home,
                     iconSize: SenseiConst.iconSize,
                     iconColor: theme.colorScheme.onPrimaryContainer,
-                    text: 'Image',
+                    text: S.of(context).home,
                   ),
                   GButton(
                     icon: currentIndex == 1

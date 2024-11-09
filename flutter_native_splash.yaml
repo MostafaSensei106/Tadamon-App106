@@ -1,0 +1,9 @@
+flutter_native_splash:
+  #Android Below api 31
+  color: "#ffffff"
+  branding_bottom_padding: 24
+  color_dark: "#121212"
+
+  android_12:
+    icon_background_color: "#ffffff"
+    icon_background_color_dark: "#121212"

@@ -63,7 +63,7 @@ class _MainPageState extends State<MainPage> {
                 right: 60,
                 child: GoogleNavBar(
                   onItemTapped: onItemTapped,
-                  currentIndex: state.page.index,
+                  currentIndex: state.currentPage.index,
                 ),
               )
             ],
@@ -73,14 +73,14 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  String _getAppBarTitle(AppPage page) {
-    switch (page) {
-      case AppPage.home:
-        return 'Home';
-      case AppPage.search:
-        return 'search';
-      case ApppPage.Logs:
-        return 'Logs';
-    }
-  }
+  // String _getAppBarTitle(AppPage page) {
+  //   switch (page) {
+  //     case AppPage.home:
+  //       return 'Home';
+  //     case AppPage.search:
+  //       return 'search';
+  //     case AppPage.Logs:
+  //       return 'Logs';
+  //   }
+  // }
 }

@@ -20,6 +20,8 @@ class HomeToolsComponent extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              width: 50.w,
+              height: 40.w,
               padding: EdgeInsets.all(SenseiConst.padding.w),
               decoration: BoxDecoration(
                 borderRadius:

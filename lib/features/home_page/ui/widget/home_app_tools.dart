@@ -26,7 +26,7 @@ class HomeAppTools extends StatelessWidget {
           ),
           HomeToolsComponent(
             icon: Icons.image_search_rounded,
-            title: "فحص الصور",
+            title: "تحليل الصور",
             onTapped: () {},
           ),
           HomeToolsComponent(

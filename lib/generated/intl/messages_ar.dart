@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "ImageAnalysis": MessageLookupByLibrary.simpleMessage("تحليل الصورة"),
         "LightTheme": MessageLookupByLibrary.simpleMessage("النمط الفاتح"),
-        "Logs": MessageLookupByLibrary.simpleMessage("السجلات"),
+        "Logs": MessageLookupByLibrary.simpleMessage("السجل"),
         "MostafaMahmoud":
             MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
         "PalatineMap": MessageLookupByLibrary.simpleMessage("خريطة فلسطين"),

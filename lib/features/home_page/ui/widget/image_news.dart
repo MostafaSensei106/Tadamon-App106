@@ -98,7 +98,7 @@ class _ImageNewsState extends State<ImageNews> {
           dotWidth: _indicatorDotSize,
           dotHeight: _indicatorDotSize,
           dotColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
-          activeDotColor: Theme.of(context).colorScheme.primary,
+          activeDotColor: Theme.of(context).colorScheme.primaryContainer,
           expansionFactor: 2,
         ),
         onDotClicked: (index) {

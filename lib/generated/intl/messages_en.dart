@@ -28,13 +28,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "AppName": MessageLookupByLibrary.simpleMessage("Tadamon"),
         "DarkTheme": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "Developer": MessageLookupByLibrary.simpleMessage("Developer"),
+        "Donate": MessageLookupByLibrary.simpleMessage("Donate"),
         "FollowSystemTheme":
             MessageLookupByLibrary.simpleMessage("Follow System Theme"),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),
+        "ImageAnalysis": MessageLookupByLibrary.simpleMessage("Image Analysis"),
         "LightTheme": MessageLookupByLibrary.simpleMessage("Light Mode"),
         "Logs": MessageLookupByLibrary.simpleMessage("Logs"),
         "MostafaMahmoud":
             MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
+        "PalatineMap": MessageLookupByLibrary.simpleMessage("Palatine Map"),
+        "ScanBarcode": MessageLookupByLibrary.simpleMessage("Scan Barcode"),
         "Search": MessageLookupByLibrary.simpleMessage("Search"),
         "SwitchToDarkTheme":
             MessageLookupByLibrary.simpleMessage("Switch to Dark Mode"),

@@ -9,6 +9,11 @@
   "Search": "Search",
   "Logs": "Logs",
 
+  "ScanBarcode": "Scan Barcode",
+  "ImageAnalysis": "Image Analysis",
+  "PalatineMap": "Palatine Map",
+  "Donate": "Donate",
+
   "SystemTheme": "System Theme",
   "FollowSystemTheme": "Follow System Theme",
   "DarkTheme": "Dark Mode",

@@ -100,6 +100,46 @@ class S {
     );
   }
 
+  /// `Scan Barcode`
+  String get ScanBarcode {
+    return Intl.message(
+      'Scan Barcode',
+      name: 'ScanBarcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image Analysis`
+  String get ImageAnalysis {
+    return Intl.message(
+      'Image Analysis',
+      name: 'ImageAnalysis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Palatine Map`
+  String get PalatineMap {
+    return Intl.message(
+      'Palatine Map',
+      name: 'PalatineMap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Donate`
+  String get Donate {
+    return Intl.message(
+      'Donate',
+      name: 'Donate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `System Theme`
   String get SystemTheme {
     return Intl.message(

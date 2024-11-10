@@ -48,34 +48,34 @@ class _HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
       child: SizeTransition(
         sizeFactor: _animation,
         axisAlignment: -1.0,
-        child: Container(
-          padding: const EdgeInsets.all(SenseiConst.padding),
-          decoration: BoxDecoration(
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
             borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-            color: Theme.of(context).colorScheme.tertiaryContainer,
-          ),
-          child: ListTile(
-            subtitleTextStyle: TextStyle(
-              color: Theme.of(context).colorScheme.onTertiaryContainer,
-            ),
-            leading: Icon(
-              Icons.lightbulb_outline_rounded,
-              size: SenseiConst.iconSize,
-              color: Theme.of(context).colorScheme.onTertiaryContainer,
-            ),
-            title: Text(
-              S.of(context).AppName,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onTertiaryContainer,
+            onDoubleTap: _onClosePressed,
+            child: Container(
+              padding: const EdgeInsets.all(SenseiConst.padding),
+              decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(SenseiConst.outBorderRadius),
+                color: Theme.of(context).colorScheme.secondaryContainer,
               ),
-            ),
-            subtitle: Text(S.of(context).AppDescription),
-            trailing: IconButton(
-              onPressed: _onClosePressed,
-              icon: Icon(
-                Icons.close,
-                size: SenseiConst.iconSize,
-                color: Theme.of(context).colorScheme.onTertiaryContainer,
+              child: ListTile(
+                subtitleTextStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.onSecondaryContainer,
+                ),
+                leading: Icon(
+                  Icons.lightbulb_outline_rounded,
+                  size: SenseiConst.iconSize,
+                  color: Theme.of(context).colorScheme.onSecondaryContainer,
+                ),
+                title: Text(
+                  S.of(context).AppName,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
+                  ),
+                ),
+                subtitle: Text(S.of(context).AppDescription),
               ),
             ),
           ),

@@ -17,28 +17,36 @@ class HomeToolsComponent extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
         onTap: onTapped,
-        child: Column(
-          children: [
-            Container(
-              width: 50.w,
-              height: 40.w,
-              padding: EdgeInsets.all(SenseiConst.padding.w),
-              decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(SenseiConst.outBorderRadius.r),
-                color: Theme.of(context)
-                    .colorScheme
-                    .surfaceContainerHighest
-                    .withOpacity(0.3),
+        child: SizedBox(
+          width: 0.23.sw,
+          height: 0.20.sw,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.all(SenseiConst.padding.w),
+                decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(SenseiConst.outBorderRadius.r),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .surfaceContainerHighest
+                      .withOpacity(0.3),
+                ),
+                child: Icon(
+                  icon,
+                  size: SenseiConst.iconSize.sp,
+                ),
               ),
-              child: Icon(
-                icon,
-                size: SenseiConst.iconSize.sp,
+              SizedBox(height: 5.h),
+              Text(
+                textAlign: TextAlign.center,
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-            SizedBox(height: 5.h),
-            Text(title),
-          ],
+            ],
+          ),
         ),
       ),
     );

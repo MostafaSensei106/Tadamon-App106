@@ -25,17 +25,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "About": MessageLookupByLibrary.simpleMessage("معلومات التطبيق"),
         "AboutTadamon": MessageLookupByLibrary.simpleMessage("حول تضامن"),
         "AppDescription": MessageLookupByLibrary.simpleMessage(
-            "دعم القضية الفلسطينية واجب و مقاطعة الشركات الداعمة ل الاحتلال صوت للحرية"),
+            "دعم القضية الفلسطينية واجب إنساني، ومقاطعة الشركات الداعمة للاحتلال صوت للحرية."),
         "AppName": MessageLookupByLibrary.simpleMessage("تضامن"),
         "DarkTheme": MessageLookupByLibrary.simpleMessage("النمط الداكن"),
         "Developer": MessageLookupByLibrary.simpleMessage("المطور"),
+        "Donate": MessageLookupByLibrary.simpleMessage("تبرع لأجل غزة"),
         "FollowSystemTheme":
             MessageLookupByLibrary.simpleMessage("تتبع لون سمة النظام"),
         "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "ImageAnalysis": MessageLookupByLibrary.simpleMessage("تحليل الصورة"),
         "LightTheme": MessageLookupByLibrary.simpleMessage("النمط الفاتح"),
         "Logs": MessageLookupByLibrary.simpleMessage("السجلات"),
         "MostafaMahmoud":
             MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
+        "PalatineMap": MessageLookupByLibrary.simpleMessage("خريطة فلسطين"),
+        "ScanBarcode": MessageLookupByLibrary.simpleMessage("باركود"),
         "Search": MessageLookupByLibrary.simpleMessage("بحث"),
         "SwitchToDarkTheme":
             MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الداكن"),

@@ -50,6 +50,26 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Tadamon`
+  String get AppName {
+    return Intl.message(
+      'Tadamon',
+      name: 'AppName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tadamon App`
+  String get AppDescription {
+    return Intl.message(
+      'Tadamon App',
+      name: 'AppDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Home`
   String get Home {
     return Intl.message(

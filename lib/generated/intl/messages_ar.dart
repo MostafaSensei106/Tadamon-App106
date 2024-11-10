@@ -24,6 +24,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "About": MessageLookupByLibrary.simpleMessage("معلومات التطبيق"),
         "AboutTadamon": MessageLookupByLibrary.simpleMessage("حول تضامن"),
+        "AppDescription": MessageLookupByLibrary.simpleMessage(
+            "دعم القضية الفلسطينية واجب و مقاطعة الشركات الداعمة ل الاحتلال صوت للحرية"),
+        "AppName": MessageLookupByLibrary.simpleMessage("تضامن"),
         "DarkTheme": MessageLookupByLibrary.simpleMessage("النمط الداكن"),
         "Developer": MessageLookupByLibrary.simpleMessage("المطور"),
         "FollowSystemTheme":

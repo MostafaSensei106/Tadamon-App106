@@ -32,10 +32,19 @@
   "EnableOnlineMassage": "تشغيل تطبيق بدون إتصال بالانترنت ",
 
 
+
+
+
   "Developer": "المطور",
   "MostafaMahmoud": "Mostafa Mahmoud",
 
 
   "About": "معلومات التطبيق",
-  "AboutTadamon": "حول تضامن"
+  "AboutTadamon": "حول تضامن",
+  "ContactDev": "رسالة من المطور",
+  "DevMassage": "لا يوجد رسالة من المطور",
+  "DevThx": "شكر لك على استخدام التطبيق. O.O",
+  "DevDonate": "دعم المطور",
+  "ContactDevMassage": "تابعني علي مواقع التواصل الاجتماعي",
+  "close": "اغلاق"
 }

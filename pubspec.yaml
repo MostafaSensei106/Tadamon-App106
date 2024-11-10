@@ -58,6 +58,7 @@ flutter:
     - family: ArabicFont
       fonts:
         - asset: assets/fonts/ar/Tajawal-Regular.ttf
+
 flutter_intl:
   enabled: true
 

@@ -35,5 +35,12 @@
 
 
   "About": "About",
-  "AboutTadamon": "About Tadamon"
+  "AboutTadamon": "About Tadamon",
+
+  "ContactDev": "Contact Dev",
+  "DevMassage":"Hi, I'm Mostafa Mahmoud, I'm a Flutter developer.",
+  "DevThx": "Thanks",
+  "DevDonate": "Donate",
+  "ContactDevMassage": "Contact Dev Massage",
+  "close": "Close"
 }

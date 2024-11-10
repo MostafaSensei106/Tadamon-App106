@@ -31,7 +31,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("App OffLine Massage"),
         "AppOnLineMassage":
             MessageLookupByLibrary.simpleMessage("App OnLine Massage"),
+        "ContactDev": MessageLookupByLibrary.simpleMessage("Contact Dev"),
+        "ContactDevMassage":
+            MessageLookupByLibrary.simpleMessage("Contact Dev Massage"),
         "DarkTheme": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "DevDonate": MessageLookupByLibrary.simpleMessage("Donate"),
+        "DevMassage": MessageLookupByLibrary.simpleMessage(
+            "Hi, I\'m Mostafa Mahmoud, I\'m a Flutter developer."),
+        "DevThx": MessageLookupByLibrary.simpleMessage("Thanks"),
         "Developer": MessageLookupByLibrary.simpleMessage("Developer"),
         "Donate": MessageLookupByLibrary.simpleMessage("Donate"),
         "EnableOnline": MessageLookupByLibrary.simpleMessage("EnableOnline"),
@@ -52,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Switch to Dark Mode"),
         "SwitchToLightTheme":
             MessageLookupByLibrary.simpleMessage("Switch to Light Mode"),
-        "SystemTheme": MessageLookupByLibrary.simpleMessage("System Theme")
+        "SystemTheme": MessageLookupByLibrary.simpleMessage("System Theme"),
+        "close": MessageLookupByLibrary.simpleMessage("Close")
       };
 }

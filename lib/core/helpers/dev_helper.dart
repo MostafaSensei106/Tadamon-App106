@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tadamon_app/core/config/const/sensei_const.dart';
+import 'package:tadamon_app/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactSenseiDev extends StatelessWidget {
@@ -62,10 +64,10 @@ class ContactSenseiDev extends StatelessWidget {
             ),
           ),
           Text(
-            "Ssssssssssssssss",
+            S.of(context).ContactDev,
             style: theme.textTheme.titleMedium?.copyWith(fontFamily: 'Tajawal'),
           ),
-          const SizedBox(height: 6),
+          SizedBox(height: 6.h),
         ],
       ),
     );
@@ -86,9 +88,9 @@ class ContactSenseiDev extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 8.0),
-                _buildMessageContainer(context, "5566"),
+                _buildMessageContainer(context, S.of(context).DevMassage),
                 const SizedBox(height: 4.0),
-                _buildProfileRow(context, "251"),
+                _buildProfileRow(context, S.of(context).DevThx),
                 const SizedBox(height: 4.0),
                 _buildSupportButton(context),
                 const SizedBox(height: 4.0),
@@ -145,7 +147,7 @@ class ContactSenseiDev extends StatelessWidget {
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: theme.colorScheme.secondaryContainer,
+            backgroundColor: theme.colorScheme.primaryContainer,
             elevation: 1,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14),
@@ -158,13 +160,13 @@ class ContactSenseiDev extends StatelessWidget {
             children: [
               Icon(
                 Icons.volunteer_activism_outlined,
-                size: 25,
-                color: theme.colorScheme.onSecondaryContainer,
+                size: SenseiConst.iconSize.sp,
+                color: theme.colorScheme.onPrimaryContainer,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Text(
-                  "S.of(context).SupportMeBtn",
+                  S.of(context).DevDonate,
                   style: TextStyle(
                     fontFamily: 'Tajawal',
                     color: theme.colorScheme.onPrimaryContainer,
@@ -195,14 +197,14 @@ class ContactSenseiDev extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(14.0),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "S.of(context).ContactDev",
+            S.of(context).ContactDevMassage,
             style: _getMessageStyle(context),
           ),
           _SocialMediaRow(socialLinks: _socialLinks),
@@ -212,19 +214,28 @@ class ContactSenseiDev extends StatelessWidget {
   }
 
   Widget _buildCloseButton(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomLeft,
-      child: TextButton(
-        child: Text("42"),
-        onPressed: () => Navigator.of(context).pop(),
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        TextButton(
+          style: ButtonStyle(
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            shape: WidgetStateProperty.all(RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.circular(SenseiConst.outBorderRadius.r),
+            )),
+          ),
+          child: Text(S.of(context).close),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ],
     );
   }
 
   TextStyle _getMessageStyle(BuildContext context) {
     return TextStyle(
       fontFamily: 'Tajawal',
-      color: Theme.of(context).colorScheme.onPrimaryContainer,
+      color: Theme.of(context).colorScheme.onSurface,
     );
   }
 }
@@ -239,7 +250,7 @@ class _MessageBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(14.0),
       ),
       child: Text(
@@ -247,7 +258,7 @@ class _MessageBox extends StatelessWidget {
         textAlign: TextAlign.justify,
         style: TextStyle(
           fontFamily: 'Tajawal',
-          color: Theme.of(context).colorScheme.onPrimaryContainer,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       ),
     );

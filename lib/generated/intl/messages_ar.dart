@@ -31,7 +31,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "AppOffLineMassage": MessageLookupByLibrary.simpleMessage(
             "لا يعمل، قم بتحميل قائمة المنتجات"),
         "AppOnLineMassage": MessageLookupByLibrary.simpleMessage("يعمل بنجاح"),
+        "ContactDev": MessageLookupByLibrary.simpleMessage("رسالة من المطور"),
+        "ContactDevMassage": MessageLookupByLibrary.simpleMessage(
+            "تابعني علي مواقع التواصل الاجتماعي"),
         "DarkTheme": MessageLookupByLibrary.simpleMessage("النمط الداكن"),
+        "DevDonate": MessageLookupByLibrary.simpleMessage("دعم المطور"),
+        "DevMassage":
+            MessageLookupByLibrary.simpleMessage("لا يوجد رسالة من المطور"),
+        "DevThx": MessageLookupByLibrary.simpleMessage(
+            "شكر لك على استخدام التطبيق. O.O"),
         "Developer": MessageLookupByLibrary.simpleMessage("المطور"),
         "Donate": MessageLookupByLibrary.simpleMessage("تبرع لأجل غزة"),
         "EnableOnline":
@@ -53,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الداكن"),
         "SwitchToLightTheme":
             MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الفاتح"),
-        "SystemTheme": MessageLookupByLibrary.simpleMessage("لون سمة النظام")
+        "SystemTheme": MessageLookupByLibrary.simpleMessage("لون سمة النظام"),
+        "close": MessageLookupByLibrary.simpleMessage("اغلاق")
       };
 }

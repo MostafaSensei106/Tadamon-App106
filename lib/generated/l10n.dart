@@ -289,6 +289,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Contact Dev`
+  String get ContactDev {
+    return Intl.message(
+      'Contact Dev',
+      name: 'ContactDev',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi, I'm Mostafa Mahmoud, I'm a Flutter developer.`
+  String get DevMassage {
+    return Intl.message(
+      'Hi, I\'m Mostafa Mahmoud, I\'m a Flutter developer.',
+      name: 'DevMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thanks`
+  String get DevThx {
+    return Intl.message(
+      'Thanks',
+      name: 'DevThx',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Donate`
+  String get DevDonate {
+    return Intl.message(
+      'Donate',
+      name: 'DevDonate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Dev Massage`
+  String get ContactDevMassage {
+    return Intl.message(
+      'Contact Dev Massage',
+      name: 'ContactDevMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

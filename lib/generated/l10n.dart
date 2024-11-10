@@ -200,6 +200,56 @@ class S {
     );
   }
 
+  /// `App OffLine`
+  String get AppOffLine {
+    return Intl.message(
+      'App OffLine',
+      name: 'AppOffLine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App OffLine Massage`
+  String get AppOffLineMassage {
+    return Intl.message(
+      'App OffLine Massage',
+      name: 'AppOffLineMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App OnLine Massage`
+  String get AppOnLineMassage {
+    return Intl.message(
+      'App OnLine Massage',
+      name: 'AppOnLineMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EnableOnline`
+  String get EnableOnline {
+    return Intl.message(
+      'EnableOnline',
+      name: 'EnableOnline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EnableOnline Massage`
+  String get EnableOnlineMassage {
+    return Intl.message(
+      'EnableOnline Massage',
+      name: 'EnableOnlineMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Developer`
   String get Developer {
     return Intl.message(

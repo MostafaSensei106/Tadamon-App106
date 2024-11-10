@@ -12,7 +12,7 @@ class ImageNews extends StatefulWidget {
 }
 
 class _ImageNewsState extends State<ImageNews> {
-  static const Duration _autoSlideDuration = Duration(seconds: 2);
+  static const Duration _autoSlideDuration = Duration(seconds: 3);
   static const Duration _slideTransitionDuration = Duration(milliseconds: 400);
   static const double _indicatorDotSize = 8.0;
 
@@ -38,7 +38,6 @@ class _ImageNewsState extends State<ImageNews> {
     _pageController = PageController(initialPage: 0);
     _startAutoSlide();
 
-    // Listen to page changes for smooth indicator
     _pageController.addListener(() {
       final newPage = _pageController.page?.round() ?? 0;
       if (_currentPage != newPage) {

@@ -27,9 +27,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "AppDescription": MessageLookupByLibrary.simpleMessage(
             "دعم القضية الفلسطينية واجب إنساني، ومقاطعة الشركات الداعمة للاحتلال صوت للحرية."),
         "AppName": MessageLookupByLibrary.simpleMessage("تضامن"),
+        "AppOffLine": MessageLookupByLibrary.simpleMessage("تضامن بدون انترنت"),
+        "AppOffLineMassage": MessageLookupByLibrary.simpleMessage(
+            "لا يعمل، قم بتحميل قائمة المنتجات"),
+        "AppOnLineMassage": MessageLookupByLibrary.simpleMessage("يعمل بنجاح"),
         "DarkTheme": MessageLookupByLibrary.simpleMessage("النمط الداكن"),
         "Developer": MessageLookupByLibrary.simpleMessage("المطور"),
         "Donate": MessageLookupByLibrary.simpleMessage("تبرع لأجل غزة"),
+        "EnableOnline":
+            MessageLookupByLibrary.simpleMessage("تحميل قائمة المنتجات"),
+        "EnableOnlineMassage": MessageLookupByLibrary.simpleMessage(
+            "تشغيل تطبيق بدون إتصال بالانترنت "),
         "FollowSystemTheme":
             MessageLookupByLibrary.simpleMessage("تتبع لون سمة النظام"),
         "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),

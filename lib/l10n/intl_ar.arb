@@ -1,8 +1,10 @@
 {
   "@@locale": "ar",
 
+
   "AppName": "تضامن",
   "AppDescription": "دعم القضية الفلسطينية واجب إنساني، ومقاطعة الشركات الداعمة للاحتلال صوت للحرية.",
+
 
   "Home": "الرئيسية",
   "Search": "بحث",
@@ -14,6 +16,7 @@
   "PalatineMap": "خريطة فلسطين",
   "Donate": "تبرع لأجل غزة",
 
+
   "SystemTheme": "لون سمة النظام",
   "FollowSystemTheme": "تتبع لون سمة النظام",
   "DarkTheme": "النمط الداكن",
@@ -21,8 +24,17 @@
   "SwitchToDarkTheme": "تبديل إلى النمط الداكن",
   "SwitchToLightTheme": "تبديل إلى النمط الفاتح",
 
+  "AppOffLine": "تضامن بدون انترنت",
+  "AppOffLineMassage": "لا يعمل، قم بتحميل قائمة المنتجات",
+  "AppOnLineMassage": "يعمل بنجاح",
+
+  "EnableOnline": "تحميل قائمة المنتجات",
+  "EnableOnlineMassage": "تشغيل تطبيق بدون إتصال بالانترنت ",
+
+
   "Developer": "المطور",
   "MostafaMahmoud": "Mostafa Mahmoud",
+
 
   "About": "معلومات التطبيق",
   "AboutTadamon": "حول تضامن"

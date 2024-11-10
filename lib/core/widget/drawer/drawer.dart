@@ -33,6 +33,8 @@ class SenseiDrawer extends StatelessWidget {
                 children: [
                   _buildThemeSwitch(context),
                   _buildModeSwitch(context),
+                  _buildAppOffline(context),
+                  _buildEnableOnline(context),
                   _buildDeveloper(context),
                   _buildAbout(context),
                 ],
@@ -101,6 +103,41 @@ class SenseiDrawer extends StatelessWidget {
           },
           useMargin: false,
           useDivider: false,
+        );
+      },
+    );
+  }
+
+  Widget _buildAppOffline(BuildContext context) {
+    return DrawerComponent(
+      useMargin: true,
+      useDivider: true,
+      useGroupTop: true,
+      leadingIcon: Icons.offline_bolt_outlined,
+      title: S.of(context).AppOffLine,
+      subtitle: S.of(context).AppOffLineMassage,
+      trailingWidget: Icon(
+        Icons.error_outline_rounded,
+        color: Colors.red,
+      ),
+    );
+  }
+
+  Widget _buildEnableOnline(BuildContext context) {
+    return DrawerComponent(
+      useMargin: false,
+      useDivider: false,
+      useGroupBottom: true,
+      leadingIcon: Icons.dataset_outlined,
+      title: S.of(context).EnableOnline,
+      subtitle: S.of(context).EnableOnlineMassage,
+      onTapped: () {
+        //navigator.pop(context);
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("سوف تتوفر في أقرب وقت ممكن"),
+          ),
         );
       },
     );

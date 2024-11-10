@@ -26,9 +26,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "AboutTadamon": MessageLookupByLibrary.simpleMessage("About Tadamon"),
         "AppDescription": MessageLookupByLibrary.simpleMessage("Tadamon App"),
         "AppName": MessageLookupByLibrary.simpleMessage("Tadamon"),
+        "AppOffLine": MessageLookupByLibrary.simpleMessage("App OffLine"),
+        "AppOffLineMassage":
+            MessageLookupByLibrary.simpleMessage("App OffLine Massage"),
+        "AppOnLineMassage":
+            MessageLookupByLibrary.simpleMessage("App OnLine Massage"),
         "DarkTheme": MessageLookupByLibrary.simpleMessage("Dark Mode"),
         "Developer": MessageLookupByLibrary.simpleMessage("Developer"),
         "Donate": MessageLookupByLibrary.simpleMessage("Donate"),
+        "EnableOnline": MessageLookupByLibrary.simpleMessage("EnableOnline"),
+        "EnableOnlineMassage":
+            MessageLookupByLibrary.simpleMessage("EnableOnline Massage"),
         "FollowSystemTheme":
             MessageLookupByLibrary.simpleMessage("Follow System Theme"),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),

@@ -6,10 +6,8 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Text('Search Page'),
-        ),
+      child: Center(
+        child: Text('Search Page'),
       ),
     );
   }

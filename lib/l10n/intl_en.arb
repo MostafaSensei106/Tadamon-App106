@@ -1,1 +1,46 @@
-{}
+{
+  "@@locale": "en",
+
+  "AppName": "Tadamon",
+  "AppDescription": "Tadamon App",
+
+
+  "Home": "Home",
+  "Search": "Search",
+  "Logs": "Logs",
+
+
+  "ScanBarcode": "Scan Barcode",
+  "ImageAnalysis": "Image Analysis",
+  "PalatineMap": "Palatine Map",
+  "Donate": "Donate",
+
+
+  "SystemTheme": "System Theme",
+  "FollowSystemTheme": "Follow System Theme",
+  "DarkTheme": "Dark Mode",
+  "LightTheme": "Light Mode",
+  "SwitchToDarkTheme": "Switch to Dark Mode",
+  "SwitchToLightTheme": "Switch to Light Mode",
+
+  "AppOffLine": "App OffLine",
+  "AppOffLineMassage": "App OffLine Massage",
+  "AppOnLineMassage": "App OnLine Massage",
+  "EnableOnline": "EnableOnline",
+  "EnableOnlineMassage": "EnableOnline Massage",
+
+
+  "Developer": "Developer",
+  "MostafaMahmoud": "Mostafa Mahmoud",
+
+
+  "About": "About",
+  "AboutTadamon": "About Tadamon",
+
+  "ContactDev": "Contact Dev",
+  "DevMassage":"Hi, I'm Mostafa Mahmoud, I'm a Flutter developer.",
+  "DevThx": "Thanks",
+  "DevDonate": "Donate",
+  "ContactDevMassage": "Contact Dev Massage",
+  "close": "Close"
+}

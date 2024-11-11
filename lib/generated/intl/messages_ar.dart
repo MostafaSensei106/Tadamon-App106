@@ -21,5 +21,47 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "About": MessageLookupByLibrary.simpleMessage("معلومات التطبيق"),
+        "AboutTadamon": MessageLookupByLibrary.simpleMessage("حول تضامن"),
+        "AppDescription": MessageLookupByLibrary.simpleMessage(
+            "دعم القضية الفلسطينية واجب إنساني، ومقاطعة الشركات الداعمة للاحتلال صوت للحرية."),
+        "AppName": MessageLookupByLibrary.simpleMessage("تضامن"),
+        "AppOffLine": MessageLookupByLibrary.simpleMessage("تضامن بدون انترنت"),
+        "AppOffLineMassage": MessageLookupByLibrary.simpleMessage(
+            "لا يعمل، قم بتحميل قائمة المنتجات"),
+        "AppOnLineMassage": MessageLookupByLibrary.simpleMessage("يعمل بنجاح"),
+        "ContactDev": MessageLookupByLibrary.simpleMessage("رسالة من المطور"),
+        "ContactDevMassage": MessageLookupByLibrary.simpleMessage(
+            "تابعني علي مواقع التواصل الاجتماعي"),
+        "DarkTheme": MessageLookupByLibrary.simpleMessage("النمط الداكن"),
+        "DevDonate": MessageLookupByLibrary.simpleMessage("دعم المطور"),
+        "DevMassage":
+            MessageLookupByLibrary.simpleMessage("لا يوجد رسالة من المطور"),
+        "DevThx": MessageLookupByLibrary.simpleMessage(
+            "شكر لك على استخدام تطبيق تضامن U_U."),
+        "Developer": MessageLookupByLibrary.simpleMessage("المطور"),
+        "Donate": MessageLookupByLibrary.simpleMessage("تبرع لأجل غزة"),
+        "EnableOnline":
+            MessageLookupByLibrary.simpleMessage("تحميل قائمة المنتجات"),
+        "EnableOnlineMassage": MessageLookupByLibrary.simpleMessage(
+            "تشغيل تطبيق بدون إتصال بالانترنت "),
+        "FollowSystemTheme":
+            MessageLookupByLibrary.simpleMessage("تتبع لون سمة النظام"),
+        "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "ImageAnalysis": MessageLookupByLibrary.simpleMessage("تحليل الصورة"),
+        "LightTheme": MessageLookupByLibrary.simpleMessage("النمط الفاتح"),
+        "Logs": MessageLookupByLibrary.simpleMessage("السجل"),
+        "MostafaMahmoud":
+            MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
+        "PalatineMap": MessageLookupByLibrary.simpleMessage("خريطة فلسطين"),
+        "ScanBarcode": MessageLookupByLibrary.simpleMessage("باركود"),
+        "Search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "SwitchToDarkTheme":
+            MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الداكن"),
+        "SwitchToLightTheme":
+            MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الفاتح"),
+        "SystemTheme": MessageLookupByLibrary.simpleMessage("لون سمة النظام"),
+        "close": MessageLookupByLibrary.simpleMessage("اغلاق")
+      };
 }

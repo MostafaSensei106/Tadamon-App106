@@ -1,2 +1,4 @@
 //Routes in MyApp
-class Routes {}
+class Routes {
+  static const String mainPage = '/';
+}

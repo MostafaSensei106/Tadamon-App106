@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,15 +6,13 @@ import 'package:tadamon_app/core/config/theme/colors/logic/theme_cubit.dart';
 import 'package:tadamon_app/core/config/theme/colors/logic/theme_state.dart';
 import 'package:tadamon_app/core/helpers/about_helper.dart';
 import 'package:tadamon_app/core/helpers/dev_helper.dart';
-import 'package:tadamon_app/core/helpers/language_toggel_helper.dart';
 import 'package:tadamon_app/core/helpers/theme_toggle_helper.dart';
-import 'package:tadamon_app/core/logic/locals_cubit.dart';
-import 'package:tadamon_app/core/logic/locals_state.dart';
 import 'package:tadamon_app/core/widget/drawer/drawer_components.dart';
 import 'package:tadamon_app/core/widget/drawer/drawer_header.dart';
+import 'package:tadamon_app/generated/l10n.dart';
 
-class CatDrawer extends StatelessWidget {
-  const CatDrawer({super.key});
+class SenseiDrawer extends StatelessWidget {
+  const SenseiDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +28,13 @@ class CatDrawer extends StatelessWidget {
           children: [
             SizedBox(height: 0.25.sh, child: DrawerHeaderWidget()),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0.05.w),
+              padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
               child: Column(
                 children: [
                   _buildThemeSwitch(context),
                   _buildModeSwitch(context),
-                  _buildLanguage(context),
+                  _buildAppOffline(context),
+                  _buildEnableOnline(context),
                   _buildDeveloper(context),
                   _buildAbout(context),
                 ],
@@ -51,14 +48,15 @@ class CatDrawer extends StatelessWidget {
 
   Widget _buildThemeSwitch(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(
+      buildWhen: (previous, current) => previous.themeMode != current.themeMode,
       builder: (context, state) {
         return DrawerComponent(
           useMargin: false,
           useDivider: state.themeMode != ThemeMode.system,
           useGroupTop: state.themeMode != ThemeMode.system,
           leadingIcon: Icons.brightness_auto_outlined,
-          title: 'System Theme',
-          subtitle: 'Follow System Theme',
+          title: S.of(context).SystemTheme,
+          subtitle: S.of(context).FollowSystemTheme,
           trailingWidget: Switch(
             value: state.themeMode == ThemeMode.system,
             onChanged: (bool value) {
@@ -76,6 +74,9 @@ class CatDrawer extends StatelessWidget {
 
   Widget _buildModeSwitch(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(
+      buildWhen: (previous, current) =>
+          previous.isDark != current.isDark ||
+          previous.themeMode != current.themeMode,
       builder: (context, state) {
         if (state.themeMode == ThemeMode.system) {
           return const SizedBox.shrink();
@@ -85,9 +86,11 @@ class CatDrawer extends StatelessWidget {
           leadingIcon: state.isDark
               ? Icons.light_mode_outlined
               : Icons.dark_mode_outlined,
-          title: state.isDark ? 'Dark Mode' : 'Light Mode',
-          subtitle:
-              state.isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode',
+          title:
+              state.isDark ? S.of(context).DarkTheme : S.of(context).LightTheme,
+          subtitle: state.isDark
+              ? S.of(context).SwitchToLightTheme
+              : S.of(context).SwitchToDarkTheme,
           trailingWidget: Switch(
             key: ValueKey<bool>(state.isDark),
             value: state.isDark,
@@ -105,26 +108,35 @@ class CatDrawer extends StatelessWidget {
     );
   }
 
-  Widget _buildLanguage(BuildContext context) {
-    return BlocBuilder<LanguageCubit, LanguageState>(
-      builder: (context, state) {
-        Locale currentLocale =
-            state.locale ?? Locale(window.locale.languageCode);
-        return DrawerComponent(
-          useMargin: true,
-          useDivider: false,
-          useSingeGroup: true,
-          leadingIcon: Icons.language,
-          title: 'Language',
-          subtitle: getLanguageName(currentLocale),
-          trailingWidget: LanguageDropdown(
-            currentLocale: currentLocale,
-            onChanged: (Locale? newValue) {
-              if (newValue != null) {
-                BlocProvider.of<LanguageCubit>(context)
-                    .changeLanguage(newValue.languageCode);
-              }
-            },
+  Widget _buildAppOffline(BuildContext context) {
+    return DrawerComponent(
+      useMargin: true,
+      useDivider: true,
+      useGroupTop: true,
+      leadingIcon: Icons.offline_bolt_outlined,
+      title: S.of(context).AppOffLine,
+      subtitle: S.of(context).AppOffLineMassage,
+      trailingWidget: Icon(
+        Icons.error_outline_rounded,
+        color: Colors.red,
+      ),
+    );
+  }
+
+  Widget _buildEnableOnline(BuildContext context) {
+    return DrawerComponent(
+      useMargin: false,
+      useDivider: false,
+      useGroupBottom: true,
+      leadingIcon: Icons.dataset_outlined,
+      title: S.of(context).EnableOnline,
+      subtitle: S.of(context).EnableOnlineMassage,
+      onTapped: () {
+        //navigator.pop(context);
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("سوف تتوفر في أقرب وقت ممكن"),
           ),
         );
       },
@@ -137,8 +149,8 @@ class CatDrawer extends StatelessWidget {
       useDivider: true,
       useGroupTop: true,
       leadingIcon: Icons.logo_dev_outlined,
-      title: 'Developer',
-      subtitle: 'Mostafa Mahmoud',
+      title: S.of(context).Developer,
+      subtitle: S.of(context).MostafaMahmoud,
       trailingWidget: const ContactSenseiDev().buildAvatar(context),
       onTapped: () => const ContactSenseiDev().showDevDialog(context),
     );
@@ -150,8 +162,8 @@ class CatDrawer extends StatelessWidget {
       useDivider: false,
       useGroupBottom: true,
       leadingIcon: Icons.info_outline,
-      title: 'About',
-      subtitle: 'About Kiroku',
+      title: S.of(context).About,
+      subtitle: S.of(context).AboutTadamon,
       onTapped: () => appAbout(context),
     );
   }

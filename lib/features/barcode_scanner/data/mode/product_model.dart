@@ -14,4 +14,15 @@ class ProdectModel {
     required this.boycottResonLink,
     required this.trusted,
   });
+
+  factory ProdectModel.fromJson(Map<String, dynamic> json) {
+    return ProdectModel(
+      name: json['name'],
+      serialNumber: json['serialNumber'],
+      manufacturer: json['manufacturer'],
+      category: List<String>.from(json['category']),
+      boycottResonLink: json['boycottResonLink'],
+      trusted: json['trusted'],
+    );
+  }
 }

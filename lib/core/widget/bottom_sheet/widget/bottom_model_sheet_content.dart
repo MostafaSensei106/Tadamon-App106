@@ -11,8 +11,6 @@ class BottomModelSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(
-            horizontal: SenseiConst.padding.w, vertical: SenseiConst.padding.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
           color: Theme.of(context).colorScheme.surfaceContainer,

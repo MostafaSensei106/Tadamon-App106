@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon_app/core/config/const/sensei_const.dart';
-import 'package:tadamon_app/core/config/theme/colors/logic/theme_cubit.dart';
-import 'package:tadamon_app/core/config/theme/colors/logic/theme_state.dart';
-import 'package:tadamon_app/core/helpers/about_helper.dart';
-import 'package:tadamon_app/core/helpers/dev_helper.dart';
-import 'package:tadamon_app/core/helpers/theme_toggle_helper.dart';
-import 'package:tadamon_app/core/widget/drawer/drawer_components.dart';
-import 'package:tadamon_app/core/widget/drawer/drawer_header.dart';
-import 'package:tadamon_app/generated/l10n.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_cubit.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
+import 'package:tadamon/core/helpers/about_helper.dart';
+import 'package:tadamon/core/helpers/dev_helper.dart';
+import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
+import 'package:tadamon/core/widget/drawer/drawer_components.dart';
+import 'package:tadamon/core/widget/drawer/drawer_header.dart';
+import 'package:tadamon/generated/l10n.dart';
 
 class SenseiDrawer extends StatelessWidget {
   const SenseiDrawer({super.key});

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon_app/core/widget/appBar/app_bar.dart';
-import 'package:tadamon_app/core/widget/drawer/drawer.dart';
-import 'package:tadamon_app/core/widget/google_nav_bar/google_nav_bar.dart';
-import 'package:tadamon_app/features/main_page/logic/main_page_cubit.dart';
-import 'package:tadamon_app/features/main_page/logic/main_page_state.dart';
-import 'package:tadamon_app/features/main_page/ui/widget/main_page_container.dart';
-import 'package:tadamon_app/generated/l10n.dart';
+import 'package:tadamon/core/widget/appBar/app_bar.dart';
+import 'package:tadamon/core/widget/drawer/drawer.dart';
+import 'package:tadamon/core/widget/google_nav_bar/google_nav_bar.dart';
+import 'package:tadamon/features/main_page/logic/main_page_cubit.dart';
+import 'package:tadamon/features/main_page/logic/main_page_state.dart';
+import 'package:tadamon/features/main_page/ui/widget/main_page_container.dart';
+import 'package:tadamon/generated/l10n.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

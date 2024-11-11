@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon_app/core/config/const/sensei_const.dart';
-import 'package:tadamon_app/features/home_page/ui/widget/home_tool_components.dart';
-import 'package:tadamon_app/generated/l10n.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/features/home_page/ui/widget/home_tool_components.dart';
+import 'package:tadamon/generated/l10n.dart';
 
 //HomeAppRow Tools
 class HomeAppTools extends StatelessWidget {

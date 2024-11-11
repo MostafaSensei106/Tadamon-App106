@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon_app/core/error/no_routes.dart';
-import 'package:tadamon_app/features/main_page/ui/page/main_page.dart';
+import 'package:tadamon/core/error/no_routes.dart';
+import 'package:tadamon/features/main_page/ui/page/main_page.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:tadamon_app/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class ImageNews extends StatefulWidget {
   const ImageNews({super.key});

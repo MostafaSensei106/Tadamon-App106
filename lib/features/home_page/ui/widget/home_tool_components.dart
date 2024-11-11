@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon_app/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class HomeToolsComponent extends StatelessWidget {
   final IconData icon;
   final String title;
   final VoidCallback onTapped;
 
-  HomeToolsComponent(
-      {required this.icon, required this.title, required this.onTapped});
+  const HomeToolsComponent(
+      {super.key,
+      required this.icon,
+      required this.title,
+      required this.onTapped});
 
   @override
   Widget build(BuildContext context) {

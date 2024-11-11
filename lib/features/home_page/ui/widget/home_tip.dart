@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon_app/core/config/const/sensei_const.dart';
-import 'package:tadamon_app/generated/l10n.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/generated/l10n.dart';
 
 class HomeTip extends StatefulWidget {
   const HomeTip({super.key});

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon_app/core/config/const/sensei_const.dart';
+import 'package:tadamon_app/core/widget/divider.dart';
 
 class DrawerComponent extends StatelessWidget {
   final IconData leadingIcon;
@@ -91,14 +92,17 @@ class DrawerComponent extends StatelessWidget {
                             color: textColor,
                           ),
                 ),
-                subtitle: Text(subtitle),
+                subtitle: Text(
+                  subtitle,
+                  overflow: TextOverflow.ellipsis,
+                ),
                 subtitleTextStyle: subtitleStyle?.copyWith(color: textColor),
                 trailing: trailingWidget,
                 selected: selected,
               ),
             ),
           ),
-          if (useDivider ?? false) const Divider(),
+          if (useDivider ?? false) const SenseiDivider(),
         ],
       ),
     );

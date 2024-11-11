@@ -1,1 +1,50 @@
-{}
+{
+  "@@locale": "ar",
+
+
+  "AppName": "تضامن",
+  "AppDescription": "دعم القضية الفلسطينية واجب إنساني، ومقاطعة الشركات الداعمة للاحتلال صوت للحرية.",
+
+
+  "Home": "الرئيسية",
+  "Search": "بحث",
+  "Logs": "السجل",
+
+
+  "ScanBarcode": "باركود",
+  "ImageAnalysis": "تحليل الصورة",
+  "PalatineMap": "خريطة فلسطين",
+  "Donate": "تبرع لأجل غزة",
+
+
+  "SystemTheme": "لون سمة النظام",
+  "FollowSystemTheme": "تتبع لون سمة النظام",
+  "DarkTheme": "النمط الداكن",
+  "LightTheme": "النمط الفاتح",
+  "SwitchToDarkTheme": "تبديل إلى النمط الداكن",
+  "SwitchToLightTheme": "تبديل إلى النمط الفاتح",
+
+  "AppOffLine": "تضامن بدون انترنت",
+  "AppOffLineMassage": "لا يعمل، قم بتحميل قائمة المنتجات",
+  "AppOnLineMassage": "يعمل بنجاح",
+
+  "EnableOnline": "تحميل قائمة المنتجات",
+  "EnableOnlineMassage": "تشغيل تطبيق بدون إتصال بالانترنت ",
+
+
+
+
+
+  "Developer": "المطور",
+  "MostafaMahmoud": "Mostafa Mahmoud",
+
+
+  "About": "معلومات التطبيق",
+  "AboutTadamon": "حول تضامن",
+  "ContactDev": "رسالة من المطور",
+  "DevMassage": "لا يوجد رسالة من المطور",
+  "DevThx": "شكر لك على استخدام تطبيق تضامن U_U.",
+  "DevDonate": "دعم المطور",
+  "ContactDevMassage": "تابعني علي مواقع التواصل الاجتماعي",
+  "close": "اغلاق"
+}

@@ -21,5 +21,45 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "About": MessageLookupByLibrary.simpleMessage("About"),
+        "AboutTadamon": MessageLookupByLibrary.simpleMessage("About Tadamon"),
+        "AppDescription": MessageLookupByLibrary.simpleMessage("Tadamon App"),
+        "AppName": MessageLookupByLibrary.simpleMessage("Tadamon"),
+        "AppOffLine": MessageLookupByLibrary.simpleMessage("App OffLine"),
+        "AppOffLineMassage":
+            MessageLookupByLibrary.simpleMessage("App OffLine Massage"),
+        "AppOnLineMassage":
+            MessageLookupByLibrary.simpleMessage("App OnLine Massage"),
+        "ContactDev": MessageLookupByLibrary.simpleMessage("Contact Dev"),
+        "ContactDevMassage":
+            MessageLookupByLibrary.simpleMessage("Contact Dev Massage"),
+        "DarkTheme": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "DevDonate": MessageLookupByLibrary.simpleMessage("Donate"),
+        "DevMassage": MessageLookupByLibrary.simpleMessage(
+            "Hi, I\'m Mostafa Mahmoud, I\'m a Flutter developer."),
+        "DevThx": MessageLookupByLibrary.simpleMessage("Thanks"),
+        "Developer": MessageLookupByLibrary.simpleMessage("Developer"),
+        "Donate": MessageLookupByLibrary.simpleMessage("Donate"),
+        "EnableOnline": MessageLookupByLibrary.simpleMessage("EnableOnline"),
+        "EnableOnlineMassage":
+            MessageLookupByLibrary.simpleMessage("EnableOnline Massage"),
+        "FollowSystemTheme":
+            MessageLookupByLibrary.simpleMessage("Follow System Theme"),
+        "Home": MessageLookupByLibrary.simpleMessage("Home"),
+        "ImageAnalysis": MessageLookupByLibrary.simpleMessage("Image Analysis"),
+        "LightTheme": MessageLookupByLibrary.simpleMessage("Light Mode"),
+        "Logs": MessageLookupByLibrary.simpleMessage("Logs"),
+        "MostafaMahmoud":
+            MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
+        "PalatineMap": MessageLookupByLibrary.simpleMessage("Palatine Map"),
+        "ScanBarcode": MessageLookupByLibrary.simpleMessage("Scan Barcode"),
+        "Search": MessageLookupByLibrary.simpleMessage("Search"),
+        "SwitchToDarkTheme":
+            MessageLookupByLibrary.simpleMessage("Switch to Dark Mode"),
+        "SwitchToLightTheme":
+            MessageLookupByLibrary.simpleMessage("Switch to Light Mode"),
+        "SystemTheme": MessageLookupByLibrary.simpleMessage("System Theme"),
+        "close": MessageLookupByLibrary.simpleMessage("Close")
+      };
 }

@@ -1,4 +1,4 @@
-package com.mhsensei.tadamon_app
+package com.mhsensei.tadamon
 
 import io.flutter.embedding.android.FlutterActivity
 

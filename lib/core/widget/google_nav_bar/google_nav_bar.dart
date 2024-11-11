@@ -54,8 +54,7 @@ class GoogleNavBar extends StatelessWidget {
                     text: S.of(context).Home,
                   ),
                   GButton(
-                    icon:
-                        currentIndex == 1 ? Icons.manage_search : Icons.search,
+                    icon: Icons.search,
                     iconSize: SenseiConst.iconSize,
                     text: S.of(context).Search,
                   ),

@@ -39,7 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "DevMassage":
             MessageLookupByLibrary.simpleMessage("لا يوجد رسالة من المطور"),
         "DevThx": MessageLookupByLibrary.simpleMessage(
-            "شكر لك على استخدام التطبيق. O.O"),
+            "شكر لك على استخدام تطبيق تضامن U_U."),
         "Developer": MessageLookupByLibrary.simpleMessage("المطور"),
         "Donate": MessageLookupByLibrary.simpleMessage("تبرع لأجل غزة"),
         "EnableOnline":

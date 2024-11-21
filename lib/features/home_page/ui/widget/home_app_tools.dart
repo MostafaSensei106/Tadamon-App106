@@ -7,7 +7,6 @@ import 'package:tadamon/features/barcode_scanner/ui/widget/product_list_view.dar
 import 'package:tadamon/features/home_page/ui/widget/home_tool_components.dart';
 import 'package:tadamon/generated/l10n.dart';
 
-//HomeAppRow Tools
 class HomeAppTools extends StatelessWidget {
   const HomeAppTools({super.key});
 

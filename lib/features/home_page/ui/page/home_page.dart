@@ -11,18 +11,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.only(
-            left: SenseiConst.padding.w,
-            right: SenseiConst.padding.w,
-            bottom: SenseiConst.padding.h),
-        child: Column(
-          children: [
-            HomeTip(),
-            ImageNews(),
-            HomeAppTools(),
-            SizedBox(height: SenseiConst.margin.h),
-          ],
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(
+              left: SenseiConst.padding.w,
+              right: SenseiConst.padding.w,
+              bottom: SenseiConst.padding.h
+          ),
+          child: Column(
+            children: [
+              HomeTip(),
+              ImageNews(),
+              HomeAppTools(),
+              SizedBox(height: SenseiConst.margin.h),
+            ],
+          ),
         ),
       ),
     );

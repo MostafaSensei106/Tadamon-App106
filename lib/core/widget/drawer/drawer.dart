@@ -92,7 +92,6 @@ class SenseiDrawer extends StatelessWidget {
               ? S.of(context).SwitchToLightTheme
               : S.of(context).SwitchToDarkTheme,
           trailingWidget: Switch(
-            key: ValueKey<bool>(state.isDark),
             value: state.isDark,
             onChanged: (bool value) {
               context.read<ThemeCubit>().toggleTheme(value);

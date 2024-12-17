@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon_app/core/config/const/sensei_const.dart';
-import 'package:tadamon_app/features/home_page/ui/widget/home_tool_components.dart';
-import 'package:tadamon_app/generated/l10n.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
+import 'package:tadamon/features/barcode_scanner/logic/logic/logic.dart';
+import 'package:tadamon/features/barcode_scanner/ui/widget/product_list_view.dart';
+import 'package:tadamon/features/home_page/ui/widget/home_tool_components.dart';
+import 'package:tadamon/generated/l10n.dart';
 
-//HomeAppRow Tools
 class HomeAppTools extends StatelessWidget {
   const HomeAppTools({super.key});
 
@@ -26,7 +28,12 @@ class HomeAppTools extends StatelessWidget {
             HomeToolsComponent(
               icon: Icons.qr_code_rounded,
               title: S.of(context).ScanBarcode,
-              onTapped: () {},
+              onTapped: () async {
+                String resSerialNumber =
+                    await ScanerManger().scanBarcode(context);
+                ModelBottomSheet.show(context, S().SheetTitleProductInfo,
+                    child: ProductListView(resSerialNumber: resSerialNumber));
+              },
             ),
             HomeToolsComponent(
               icon: Icons.image_search_rounded,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tadamon_app/core/config/const/sensei_const.dart';
-import 'package:tadamon_app/generated/l10n.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactSenseiDev extends StatelessWidget {
@@ -35,7 +35,7 @@ class ContactSenseiDev extends StatelessWidget {
       isScrollControlled: true,
       context: context,
       builder: (context) => ClipRRect(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(14)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(14.r)),
         child: ColoredBox(
           color: Theme.of(context).colorScheme.surface,
           child: Wrap(

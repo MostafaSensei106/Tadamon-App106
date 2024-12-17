@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon_app/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
 
 void appAbout(BuildContext context) {
   Navigator.pop(context);

@@ -250,6 +250,16 @@ class S {
     );
   }
 
+  /// `Product Info`
+  String get SheetTitleProductInfo {
+    return Intl.message(
+      'Product Info',
+      name: 'SheetTitleProductInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Developer`
   String get Developer {
     return Intl.message(

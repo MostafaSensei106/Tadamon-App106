@@ -28,6 +28,10 @@
   "AppOffLineMassage": "لا يعمل، قم بتحميل قائمة المنتجات",
   "AppOnLineMassage": "يعمل بنجاح",
 
+
+  "SheetTitleProductInfo": "معلومات المنتج",
+
+
   "EnableOnline": "تحميل قائمة المنتجات",
   "EnableOnlineMassage": "تشغيل تطبيق بدون إتصال بالانترنت ",
 

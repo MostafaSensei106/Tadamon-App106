@@ -55,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "PalatineMap": MessageLookupByLibrary.simpleMessage("Palatine Map"),
         "ScanBarcode": MessageLookupByLibrary.simpleMessage("Scan Barcode"),
         "Search": MessageLookupByLibrary.simpleMessage("Search"),
+        "SheetTitleProductInfo":
+            MessageLookupByLibrary.simpleMessage("Product Info"),
         "SwitchToDarkTheme":
             MessageLookupByLibrary.simpleMessage("Switch to Dark Mode"),
         "SwitchToLightTheme":

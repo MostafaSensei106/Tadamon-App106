@@ -1,4 +1,4 @@
-name: tadamon_app
+name: tadamon
 description: "A new Flutter project."
 
 publish_to: 'none'
@@ -12,12 +12,6 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  firebase_core: ^3.7.0
-  cloud_firestore: ^5.4.5
-  firebase_crashlytics: ^4.1.4
-  firebase_storage: ^12.3.5
-  hive_flutter: ^1.1.0
-  path_provider: ^2.1.5
   google_nav_bar: ^5.0.7
   shared_preferences: ^2.3.3
   url_launcher: ^6.3.1
@@ -27,14 +21,17 @@ dependencies:
   flutter_bloc: ^8.1.6
   equatable: 2.0.5
   flutter_screenutil: ^5.9.3
-  provider: ^6.1.2
   http: ^1.2.2
   font_awesome_flutter: ^10.8.0
   flutter_localization: ^0.2.2
   intl: ^0.19.0
   cached_network_image: ^3.4.1
   smooth_page_indicator: ^1.2.0+3
-#  flutter_barcode_scanner: ^2.0.0
+  simple_barcode_scanner: ^0.2.3
+  firebase_core: ^3.8.1
+
+
+
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon_app/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class DrawerHeaderWidget extends StatelessWidget {
   const DrawerHeaderWidget({super.key});

@@ -57,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "PalatineMap": MessageLookupByLibrary.simpleMessage("خريطة فلسطين"),
         "ScanBarcode": MessageLookupByLibrary.simpleMessage("باركود"),
         "Search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "SheetTitleProductInfo":
+            MessageLookupByLibrary.simpleMessage("معلومات المنتج"),
         "SwitchToDarkTheme":
             MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الداكن"),
         "SwitchToLightTheme":

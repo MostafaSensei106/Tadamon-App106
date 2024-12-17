@@ -16,6 +16,7 @@ class TadamonApp extends StatelessWidget {
 
   TadamonApp(AppRouter appRouter, {super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

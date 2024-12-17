@@ -4,7 +4,7 @@ import 'package:tadamon/features/main_page/ui/page/main_page.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
-    final arguments = settings.arguments;
+    //final arguments = settings.arguments;
     switch (settings.name) {
       case 'Routes.mainPage':
         return MaterialPageRoute(

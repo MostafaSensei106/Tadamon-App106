@@ -28,6 +28,10 @@ dependencies:
   cached_network_image: ^3.4.1
   smooth_page_indicator: ^1.2.0+3
   simple_barcode_scanner: ^0.2.3
+  firebase_core: ^3.8.1
+
+
+
 
 dev_dependencies:
   flutter_test:

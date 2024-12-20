@@ -19,6 +19,8 @@ class HomeToolsComponent extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+        enableFeedback: true,
+
         onTap: onTapped,
         child: SizedBox(
           width: 0.23.sw,

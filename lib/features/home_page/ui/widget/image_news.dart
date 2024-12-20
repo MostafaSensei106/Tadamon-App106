@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
@@ -80,9 +81,27 @@ class _ImageNewsState extends State<ImageNews> {
             ),
           );
         },
-        errorBuilder: (_, __, ___) => const Center(
-          child: Icon(Icons.error_outline, size: 32),
-        ),
+        errorBuilder: (_, __, ___) => Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surfaceContainerHigh,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.image_not_supported_outlined,
+                color: Theme.of(context).colorScheme.error,
+                size: SenseiConst.iconSize.sp,
+              ),
+              Text(
+                'فشل تحميل الاخبار',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ),
+            ],
+          ),
+        )
       ),
     );
   }
@@ -132,7 +151,7 @@ class _ImageNewsState extends State<ImageNews> {
                   controller: _pageController,
                   pageSnapping: true,
                   scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
+                  physics: const ScrollPhysics(),
                   itemCount: _imageUrls.length,
                   itemBuilder: (context, index) =>
                       _buildImageSlide(_imageUrls[index]),

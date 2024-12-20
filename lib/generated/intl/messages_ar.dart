@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "شكر لك على استخدام تطبيق تضامن U_U."),
         "Developer": MessageLookupByLibrary.simpleMessage("المطور"),
         "Donate": MessageLookupByLibrary.simpleMessage("تبرع لأجل غزة"),
+        "EditText": MessageLookupByLibrary.simpleMessage("تحرير النص"),
         "EnableOnline":
             MessageLookupByLibrary.simpleMessage("تحميل قائمة المنتجات"),
         "EnableOnlineMassage": MessageLookupByLibrary.simpleMessage(

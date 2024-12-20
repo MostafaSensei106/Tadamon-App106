@@ -41,6 +41,12 @@ class HomeAppTools extends StatelessWidget {
               onTapped: () {},
             ),
             HomeToolsComponent(
+              icon: Icons.short_text_outlined,
+              title: S.of(context).EditText,
+              onTapped: () {},
+            ),
+
+            HomeToolsComponent(
               icon: Icons.map_outlined,
               title: S.of(context).PalatineMap,
               onTapped: () {},

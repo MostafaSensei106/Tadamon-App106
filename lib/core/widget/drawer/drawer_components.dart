@@ -78,6 +78,10 @@ class DrawerComponent extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               borderRadius: _getBorderRadius(),
+              enableFeedback: true,
+              customBorder: RoundedRectangleBorder(
+                borderRadius: _getBorderRadius(),
+              ),
               onTap: onTapped,
               child: ListTile(
                 leading: Icon(

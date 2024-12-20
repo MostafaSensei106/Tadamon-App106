@@ -30,6 +30,17 @@
   "EnableOnline": "EnableOnline",
   "EnableOnlineMassage": "EnableOnline Massage",
 
+  "HowToUse": "How To Use",
+  "HowToUseMassage": "How To Use Massage",
+
+  "ReportProduct": "Report Product",
+  "ReportProductMassage": "Report Product Massage",
+
+  "ReportBug": "Report Bug",
+  "ReportBugMassage": "Report Bug Massage",
+
+
+  "Test": "Test",
 
   "SheetTitleProductInfo": "Product Info",
 

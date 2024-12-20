@@ -260,6 +260,76 @@ class S {
     );
   }
 
+  /// `How To Use`
+  String get HowToUse {
+    return Intl.message(
+      'How To Use',
+      name: 'HowToUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How To Use Massage`
+  String get HowToUseMassage {
+    return Intl.message(
+      'How To Use Massage',
+      name: 'HowToUseMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report Product`
+  String get ReportProduct {
+    return Intl.message(
+      'Report Product',
+      name: 'ReportProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report Product Massage`
+  String get ReportProductMassage {
+    return Intl.message(
+      'Report Product Massage',
+      name: 'ReportProductMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report Bug`
+  String get ReportBug {
+    return Intl.message(
+      'Report Bug',
+      name: 'ReportBug',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report Bug Massage`
+  String get ReportBugMassage {
+    return Intl.message(
+      'Report Bug Massage',
+      name: 'ReportBugMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Test`
+  String get Test {
+    return Intl.message(
+      'Test',
+      name: 'Test',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Product Info`
   String get SheetTitleProductInfo {
     return Intl.message(

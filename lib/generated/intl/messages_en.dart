@@ -48,12 +48,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "FollowSystemTheme":
             MessageLookupByLibrary.simpleMessage("Follow System Theme"),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),
+        "HowToUse": MessageLookupByLibrary.simpleMessage("How To Use"),
+        "HowToUseMassage":
+            MessageLookupByLibrary.simpleMessage("How To Use Massage"),
         "ImageAnalysis": MessageLookupByLibrary.simpleMessage("Image Analysis"),
         "LightTheme": MessageLookupByLibrary.simpleMessage("Light Mode"),
         "Logs": MessageLookupByLibrary.simpleMessage("Logs"),
         "MostafaMahmoud":
             MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
         "PalatineMap": MessageLookupByLibrary.simpleMessage("Palatine Map"),
+        "ReportBug": MessageLookupByLibrary.simpleMessage("Report Bug"),
+        "ReportBugMassage":
+            MessageLookupByLibrary.simpleMessage("Report Bug Massage"),
+        "ReportProduct": MessageLookupByLibrary.simpleMessage("Report Product"),
+        "ReportProductMassage":
+            MessageLookupByLibrary.simpleMessage("Report Product Massage"),
         "ScanBarcode": MessageLookupByLibrary.simpleMessage("Scan Barcode"),
         "Search": MessageLookupByLibrary.simpleMessage("Search"),
         "SheetTitleProductInfo":
@@ -63,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "SwitchToLightTheme":
             MessageLookupByLibrary.simpleMessage("Switch to Light Mode"),
         "SystemTheme": MessageLookupByLibrary.simpleMessage("System Theme"),
+        "Test": MessageLookupByLibrary.simpleMessage("Test"),
         "close": MessageLookupByLibrary.simpleMessage("Close")
       };
 }

@@ -35,6 +35,9 @@ class SenseiDrawer extends StatelessWidget {
                   _buildModeSwitch(context),
                   _buildAppOffline(context),
                   _buildEnableOnline(context),
+                  _buildHowToUse(context),
+                  _buildReportProduct(context),
+                  _buildReportBug(context),
                   _buildDeveloper(context),
                   _buildAbout(context),
                 ],
@@ -131,7 +134,6 @@ class SenseiDrawer extends StatelessWidget {
       title: S.of(context).EnableOnline,
       subtitle: S.of(context).EnableOnlineMassage,
       onTapped: () {
-        //navigator.pop(context);
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -141,6 +143,67 @@ class SenseiDrawer extends StatelessWidget {
       },
     );
   }
+
+  Widget _buildHowToUse(BuildContext context) {
+    return DrawerComponent(
+    useMargin: true,
+    useDivider: true,
+    useGroupTop: true,
+    leadingIcon: Icons.question_answer_outlined,
+    title: S.of(context).HowToUse,
+    subtitle: S.of(context).HowToUseMassage,
+    onTapped: () {
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("سوف تتوفر في أقرب وقت ممكن"),
+          ));
+    }
+    );
+  }
+
+
+  Widget _buildReportProduct(BuildContext context) {
+    return DrawerComponent(
+      useMargin: false,
+      useDivider: true,
+      useGroupMiddle: true,
+      leadingIcon: Icons.production_quantity_limits_outlined,
+      title: S.of(context).ReportProduct,
+      subtitle: S.of(context).ReportProductMassage,
+      onTapped: () {
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("سوف تتوفر في أقرب وقت ممكن"),
+          ),
+        );
+      },
+    );
+  }
+
+
+  Widget _buildReportBug(BuildContext context) {
+    return DrawerComponent(
+      useMargin: false,
+      useDivider: false,
+      useGroupBottom: true,
+      leadingIcon: Icons.bug_report_outlined,
+      title: S.of(context).ReportBug,
+      subtitle: S.of(context).ReportBugMassage,
+      trailingWidget:Text(S.of(context).Test),
+      onTapped: () {
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("سوف تتوفر في أقرب وقت ممكن"),
+          ),
+        );
+      },
+    );
+  }
+
+  // Widget _buildShareApp(BuildContext context) {}
 
   Widget _buildDeveloper(BuildContext context) {
     return DrawerComponent(
@@ -166,4 +229,6 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () => appAbout(context),
     );
   }
+
+
 }

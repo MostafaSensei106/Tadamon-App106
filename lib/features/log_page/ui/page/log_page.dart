@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widget/search_bar/search_bar.dart';
+import 'package:tadamon/core/widget/search_bar/search_result_container.dart';
 
 class LogsPage extends StatelessWidget {
   const LogsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Text('Logs Page'),
-        ),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: SenseiConst.padding.w,
+      ),
+      child: Column(
+        children: [
+          SenseiSearchBar(),
+          SearchBarResultContainer()
+        ],
       ),
     );
   }

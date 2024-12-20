@@ -50,12 +50,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "FollowSystemTheme":
             MessageLookupByLibrary.simpleMessage("تتبع لون سمة النظام"),
         "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "HowToUse": MessageLookupByLibrary.simpleMessage("الاسئلة الشائعة"),
+        "HowToUseMassage":
+            MessageLookupByLibrary.simpleMessage("كيفية استخدام التطبيق"),
         "ImageAnalysis": MessageLookupByLibrary.simpleMessage("تحليل الصورة"),
         "LightTheme": MessageLookupByLibrary.simpleMessage("النمط الفاتح"),
         "Logs": MessageLookupByLibrary.simpleMessage("السجل"),
         "MostafaMahmoud":
             MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
         "PalatineMap": MessageLookupByLibrary.simpleMessage("خريطة فلسطين"),
+        "ReportBug": MessageLookupByLibrary.simpleMessage("ابلاغ عن مشكلة"),
+        "ReportBugMassage":
+            MessageLookupByLibrary.simpleMessage("وجهت مشكلة أبلاغ عنها"),
+        "ReportProduct":
+            MessageLookupByLibrary.simpleMessage("أبلاغ عن المنتج"),
+        "ReportProductMassage":
+            MessageLookupByLibrary.simpleMessage("ساعد في تحسين التطبيق"),
         "ScanBarcode": MessageLookupByLibrary.simpleMessage("باركود"),
         "Search": MessageLookupByLibrary.simpleMessage("بحث"),
         "SheetTitleProductInfo":
@@ -65,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "SwitchToLightTheme":
             MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الفاتح"),
         "SystemTheme": MessageLookupByLibrary.simpleMessage("لون سمة النظام"),
+        "Test": MessageLookupByLibrary.simpleMessage("تجريبي"),
         "close": MessageLookupByLibrary.simpleMessage("اغلاق")
       };
 }

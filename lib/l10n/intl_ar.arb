@@ -29,6 +29,18 @@
   "AppOffLineMassage": "لا يعمل، قم بتحميل قائمة المنتجات",
   "AppOnLineMassage": "يعمل بنجاح",
 
+  "HowToUse": "الاسئلة الشائعة",
+  "HowToUseMassage": "كيفية استخدام التطبيق",
+
+  "ReportProduct": "أبلاغ عن المنتج",
+  "ReportProductMassage": "ساعد في تحسين التطبيق",
+
+
+  "ReportBug": "ابلاغ عن مشكلة",
+  "ReportBugMassage": "وجهت مشكلة أبلاغ عنها",
+
+  "Test": "تجريبي",
+
 
   "SheetTitleProductInfo": "معلومات المنتج",
 
@@ -46,6 +58,8 @@
 
   "About": "معلومات التطبيق",
   "AboutTadamon": "حول تضامن",
+
+
   "ContactDev": "رسالة من المطور",
   "DevMassage": "لا يوجد رسالة من المطور",
   "DevThx": "شكر لك على استخدام تطبيق تضامن U_U.",

@@ -120,6 +120,16 @@ class S {
     );
   }
 
+  /// `Edit Text`
+  String get EditText {
+    return Intl.message(
+      'Edit Text',
+      name: 'EditText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Palatine Map`
   String get PalatineMap {
     return Intl.message(

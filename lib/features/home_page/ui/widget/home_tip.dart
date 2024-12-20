@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/generated/l10n.dart';
 
@@ -28,6 +29,7 @@ class _HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   }
 
   void _onClosePressed() {
+    HapticFeedback.vibrate();
     _controller.reverse().then((_) {
       setState(() {
         _controller.value = 0.0;

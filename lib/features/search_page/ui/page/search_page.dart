@@ -9,18 +9,16 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Padding(
-          padding: EdgeInsets.only(
-              left: SenseiConst.padding.w,
-              right: SenseiConst.padding.w,
-          ),
-        child: Column(
-          children: [
-            SenseiSearchBar(),
-            SearchBarResultContainer()
-          ],),
-      )
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: SenseiConst.padding.w,
+      ),
+      child: Column(
+        children: [
+          SenseiSearchBar(),
+          SearchBarResultContainer()
+        ],
+      ),
     );
   }
 }

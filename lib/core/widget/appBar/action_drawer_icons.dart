@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-
+import 'package:flutter/services.dart';
 class ActionDrawerIcon extends StatelessWidget {
   const ActionDrawerIcon({super.key});
+
+  void openDrawer(context) {
+    HapticFeedback.vibrate();
+    Scaffold.of(context).openDrawer();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,7 @@ class ActionDrawerIcon extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
-          onTap: () => Scaffold.of(context).openDrawer(),
+          onTap: () => openDrawer(context),
           child: _ActionDrawerContainer(
             child: _ActionDrawerIcon(),
           ),

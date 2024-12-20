@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "DevThx": MessageLookupByLibrary.simpleMessage("Thanks"),
         "Developer": MessageLookupByLibrary.simpleMessage("Developer"),
         "Donate": MessageLookupByLibrary.simpleMessage("Donate"),
+        "EditText": MessageLookupByLibrary.simpleMessage("Edit Text"),
         "EnableOnline": MessageLookupByLibrary.simpleMessage("EnableOnline"),
         "EnableOnlineMassage":
             MessageLookupByLibrary.simpleMessage("EnableOnline Massage"),

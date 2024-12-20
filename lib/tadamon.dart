@@ -23,6 +23,7 @@ class TadamonApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: BlocProvider(
+        lazy:true,
         create: (context) => ThemeCubit(
             themeSharedPreferences: ThemeSharedPreferences(), context: context)
           ..initializeTheme(),

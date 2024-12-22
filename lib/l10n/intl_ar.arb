@@ -1,7 +1,6 @@
 {
   "@@locale": "ar",
 
-
   "AppName": "تضامن",
   "AppDescription": "دعم القضية الفلسطينية واجب إنساني، ومقاطعة الشركات الداعمة للاحتلال صوت للحرية.",
 
@@ -29,6 +28,12 @@
   "AppOffLineMassage": "لا يعمل، قم بتحميل قائمة المنتجات",
   "AppOnLineMassage": "يعمل بنجاح",
 
+  "EnableOnline": "تحميل قائمة المنتجات",
+  "EnableOnlineMassage": "تشغيل التطبيق بدون إتصال بالانترنت ",
+
+  "clearLogs": "تنظيف السجلات",
+  "clearLogsMassage": "مسح سجل المنتجات الخاصة بالتطبيق",
+
   "HowToUse": "الاسئلة الشائعة",
   "HowToUseMassage": "كيفية استخدام التطبيق",
 
@@ -38,20 +43,10 @@
 
   "ReportBug": "ابلاغ عن مشكلة",
   "ReportBugMassage": "وجهت مشكلة أبلاغ عنها",
-
   "Test": "تجريبي",
 
 
   "SheetTitleProductInfo": "معلومات المنتج",
-
-
-  "EnableOnline": "تحميل قائمة المنتجات",
-  "EnableOnlineMassage": "تشغيل تطبيق بدون إتصال بالانترنت ",
-
-
-
-
-
   "Developer": "المطور",
   "MostafaMahmoud": "Mostafa Mahmoud",
 

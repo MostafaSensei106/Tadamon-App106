@@ -30,6 +30,9 @@
   "EnableOnline": "EnableOnline",
   "EnableOnlineMassage": "EnableOnline Massage",
 
+  "clearLogs": "Clear Logs",
+  "clearLogsMassage": "Clear Logs Massage",
+
   "HowToUse": "How To Use",
   "HowToUseMassage": "How To Use Massage",
 

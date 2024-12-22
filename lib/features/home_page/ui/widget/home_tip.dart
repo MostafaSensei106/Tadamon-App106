@@ -56,11 +56,12 @@ class _HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
             borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
             onDoubleTap: _onClosePressed,
             child: Container(
+              margin: EdgeInsets.only(bottom: SenseiConst.margin),
               padding: const EdgeInsets.all(SenseiConst.padding),
               decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.circular(SenseiConst.outBorderRadius),
-                color: Theme.of(context).colorScheme.secondaryContainer,
+                color: Theme.of(context).colorScheme.primaryContainer,
               ),
               child: ListTile(
                 subtitleTextStyle: TextStyle(

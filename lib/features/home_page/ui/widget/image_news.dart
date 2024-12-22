@@ -133,7 +133,6 @@ class _ImageNewsState extends State<ImageNews> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: SenseiConst.margin),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
         color: Theme.of(context).colorScheme.surfaceContainer,

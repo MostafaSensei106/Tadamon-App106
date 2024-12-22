@@ -6,6 +6,7 @@ class ScanerManger {
   Future<String> scanBarcode(BuildContext context) async {
     String? barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
       context,
+
       barcodeAppBar: const BarcodeAppBar(
         appBarTitle: 'Scan Barcode',
         centerTitle: true,
@@ -15,6 +16,8 @@ class ScanerManger {
       isShowFlashIcon: true,
       delayMillis: 0,
       cameraFace: CameraFace.back,
+      scanFormat: ScanFormat.ONLY_BARCODE,
+      scanType: ScanType.barcode,
       lineColor:
           '#${Colors.yellow.value.toRadixString(16).padLeft(8, '0').toUpperCase()}',
       cancelButtonText: S.of(context).close,

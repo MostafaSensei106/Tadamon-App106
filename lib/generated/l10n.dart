@@ -260,6 +260,26 @@ class S {
     );
   }
 
+  /// `Clear Logs`
+  String get clearLogs {
+    return Intl.message(
+      'Clear Logs',
+      name: 'clearLogs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear Logs Massage`
+  String get clearLogsMassage {
+    return Intl.message(
+      'Clear Logs Massage',
+      name: 'clearLogsMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `How To Use`
   String get HowToUse {
     return Intl.message(

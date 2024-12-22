@@ -73,6 +73,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Switch to Light Mode"),
         "SystemTheme": MessageLookupByLibrary.simpleMessage("System Theme"),
         "Test": MessageLookupByLibrary.simpleMessage("Test"),
+        "clearLogs": MessageLookupByLibrary.simpleMessage("Clear Logs"),
+        "clearLogsMassage":
+            MessageLookupByLibrary.simpleMessage("Clear Logs Massage"),
         "close": MessageLookupByLibrary.simpleMessage("Close")
       };
 }

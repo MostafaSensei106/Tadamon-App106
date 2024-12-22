@@ -35,6 +35,7 @@ class SenseiDrawer extends StatelessWidget {
                   _buildModeSwitch(context),
                   _buildAppOffline(context),
                   _buildEnableOnline(context),
+                  _buildClearLogs(context),
                   _buildHowToUse(context),
                   _buildReportProduct(context),
                   _buildReportBug(context),
@@ -133,6 +134,26 @@ class SenseiDrawer extends StatelessWidget {
       leadingIcon: Icons.dataset_outlined,
       title: S.of(context).EnableOnline,
       subtitle: S.of(context).EnableOnlineMassage,
+      onTapped: () {
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("سوف تتوفر في أقرب وقت ممكن"),
+          ),
+        );
+      },
+    );
+  }
+
+
+  Widget _buildClearLogs(BuildContext context) {
+    return DrawerComponent(
+      useMargin: true,
+      useDivider: false,
+      useSingeGroup: true,
+      leadingIcon: Icons.clear_all_rounded,
+      title: S.of(context).clearLogs,
+      subtitle: S.of(context).clearLogsMassage,
       onTapped: () {
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(

@@ -46,7 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "EnableOnline":
             MessageLookupByLibrary.simpleMessage("تحميل قائمة المنتجات"),
         "EnableOnlineMassage": MessageLookupByLibrary.simpleMessage(
-            "تشغيل تطبيق بدون إتصال بالانترنت "),
+            "تشغيل التطبيق بدون إتصال بالانترنت "),
         "FollowSystemTheme":
             MessageLookupByLibrary.simpleMessage("تتبع لون سمة النظام"),
         "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
@@ -76,6 +76,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الفاتح"),
         "SystemTheme": MessageLookupByLibrary.simpleMessage("لون سمة النظام"),
         "Test": MessageLookupByLibrary.simpleMessage("تجريبي"),
+        "clearLogs": MessageLookupByLibrary.simpleMessage("تنظيف السجلات"),
+        "clearLogsMassage": MessageLookupByLibrary.simpleMessage(
+            "مسح سجل المنتجات الخاصة بالتطبيق"),
         "close": MessageLookupByLibrary.simpleMessage("اغلاق")
       };
 }

@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class ThemeRepository {
+  static const _themeKey = 'theme';
+  static const _themeModeKey = 'themeMode';
+  static const _firstRunKey = 'firstRun';
+
+  final SharedPreferences _preferences;
+
+  ThemeRepository(this._preferences);
+
+  static Future<ThemeRepository> create() async {
+    final preferences = await SharedPreferences.getInstance();
+    return ThemeRepository(preferences);
+  }
+
+  Future<ThemePreferences> loadThemePreferences() async {
+    return ThemePreferences(
+      isDark: _preferences.getBool(_themeKey) ?? false,
+      themeMode: _getThemeMode(),
+      isFirstRun: _preferences.getBool(_firstRunKey) ?? true,
+    );
+  }
+
+  Future<void> saveThemePreferences({
+    required bool isDark,
+    required ThemeMode themeMode,
+  }) async {
+    await Future.wait([
+      _preferences.setBool(_themeKey, isDark),
+      _preferences.setInt(_themeModeKey, themeMode.index),
+    ]);
+  }
+
+  Future<void> setFirstRun(bool value) async {
+    await _preferences.setBool(_firstRunKey, value);
+  }
+
+  ThemeMode _getThemeMode() {
+    final modeIndex = _preferences.getInt(_themeModeKey);
+    return modeIndex != null ? ThemeMode.values[modeIndex] : ThemeMode.system;
+  }
+}

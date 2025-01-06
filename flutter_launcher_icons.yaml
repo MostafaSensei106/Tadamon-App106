@@ -2,8 +2,8 @@
 flutter_launcher_icons:
   image_path: "assets/icons/play_store_512.png"
 
-  android: "launcher_icon"
-  mage_path_android: "assets/icons/play_store_512.png"
+  android: true
+  image_path_android: "assets/icons/play_store_512.png"
   min_sdk_android: 21
   adaptive_icon_background: "assets/icons/ic_launcher_background.png"
   adaptive_icon_foreground: "assets/icons/ic_launcher_foreground.png"

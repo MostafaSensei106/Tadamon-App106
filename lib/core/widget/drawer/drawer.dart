@@ -7,7 +7,7 @@ import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
 import 'package:tadamon/core/helpers/about_helper.dart';
 import 'package:tadamon/core/helpers/dev_helper.dart';
 import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
-import 'package:tadamon/core/widget/drawer/drawer_components.dart';
+import 'package:tadamon/core/widget/drawer/drawer_component.dart';
 import 'package:tadamon/core/widget/drawer/drawer_header.dart';
 import 'package:tadamon/generated/l10n.dart';
 
@@ -29,19 +29,22 @@ class SenseiDrawer extends StatelessWidget {
             SizedBox(height: 0.25.sh, child: DrawerHeaderWidget()),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
-              child: Column(
-                children: [
-                  _buildThemeSwitch(context),
-                  _buildModeSwitch(context),
-                  _buildAppOffline(context),
-                  _buildEnableOnline(context),
-                  _buildClearLogs(context),
-                  _buildHowToUse(context),
-                  _buildReportProduct(context),
-                  _buildReportBug(context),
-                  _buildDeveloper(context),
-                  _buildAbout(context),
-                ],
+              child: AnimatedSize(
+                duration: const Duration(milliseconds: 300),
+                child: Column(
+                  children: [
+                    _buildThemeSwitch(context),
+                    _buildModeSwitch(context),
+                    _buildAppOffline(context),
+                    _buildEnableOnline(context),
+                    _buildClearLogs(context),
+                    _buildHowToUse(context),
+                    _buildReportProduct(context),
+                    _buildReportBug(context),
+                    _buildDeveloper(context),
+                    _buildAbout(context),
+                  ],
+                ),
               ),
             ),
           ],
@@ -75,41 +78,42 @@ class SenseiDrawer extends StatelessWidget {
       },
     );
   }
+Widget _buildModeSwitch(BuildContext context) {
+  return BlocBuilder<ThemeCubit, ThemeState>(
+    buildWhen: (previous, current) =>
+        previous.isDark != current.isDark ||
+        previous.themeMode != current.themeMode,
+    builder: (context, state) {
+      return  state.themeMode == ThemeMode.system
+            ? const SizedBox.shrink()
+            : DrawerComponent(
+                key: ValueKey(state.isDark), 
+                useGroupBottom: true,
+                leadingIcon: state.isDark
+                    ? Icons.light_mode_outlined
+                    : Icons.dark_mode_outlined,
+                title: state.isDark
+                    ? S.of(context).DarkTheme
+                    : S.of(context).LightTheme,
+                subtitle: state.isDark
+                    ? S.of(context).SwitchToLightTheme
+                    : S.of(context).SwitchToDarkTheme,
+                trailingWidget: Switch(
+                  value: state.isDark,
+                  onChanged: (bool value) {
+                    context.read<ThemeCubit>().toggleTheme(value);
+                  },
+                ),
+                onTapped: () {
+                  context.read<ThemeCubit>().toggleTheme(!state.isDark);
+                },
+                useMargin: false,
+                useDivider: false,
+              );
+    },
+  );
+}
 
-  Widget _buildModeSwitch(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeState>(
-      buildWhen: (previous, current) =>
-          previous.isDark != current.isDark ||
-          previous.themeMode != current.themeMode,
-      builder: (context, state) {
-        if (state.themeMode == ThemeMode.system) {
-          return const SizedBox.shrink();
-        }
-        return DrawerComponent(
-          useGroupBottom: true,
-          leadingIcon: state.isDark
-              ? Icons.light_mode_outlined
-              : Icons.dark_mode_outlined,
-          title:
-              state.isDark ? S.of(context).DarkTheme : S.of(context).LightTheme,
-          subtitle: state.isDark
-              ? S.of(context).SwitchToLightTheme
-              : S.of(context).SwitchToDarkTheme,
-          trailingWidget: Switch(
-            value: state.isDark,
-            onChanged: (bool value) {
-              context.read<ThemeCubit>().toggleTheme(value);
-            },
-          ),
-          onTapped: () {
-            context.read<ThemeCubit>().toggleTheme(!state.isDark);
-          },
-          useMargin: false,
-          useDivider: false,
-        );
-      },
-    );
-  }
 
   Widget _buildAppOffline(BuildContext context) {
     return DrawerComponent(
@@ -145,7 +149,6 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-
   Widget _buildClearLogs(BuildContext context) {
     return DrawerComponent(
       useMargin: true,
@@ -167,22 +170,19 @@ class SenseiDrawer extends StatelessWidget {
 
   Widget _buildHowToUse(BuildContext context) {
     return DrawerComponent(
-    useMargin: true,
-    useDivider: true,
-    useGroupTop: true,
-    leadingIcon: Icons.question_answer_outlined,
-    title: S.of(context).HowToUse,
-    subtitle: S.of(context).HowToUseMassage,
-    onTapped: () {
-      Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+        useMargin: true,
+        useDivider: true,
+        useGroupTop: true,
+        leadingIcon: Icons.question_answer_outlined,
+        title: S.of(context).HowToUse,
+        subtitle: S.of(context).HowToUseMassage,
+        onTapped: () {
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text("سوف تتوفر في أقرب وقت ممكن"),
           ));
-    }
-    );
+        });
   }
-
 
   Widget _buildReportProduct(BuildContext context) {
     return DrawerComponent(
@@ -203,7 +203,6 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-
   Widget _buildReportBug(BuildContext context) {
     return DrawerComponent(
       useMargin: false,
@@ -212,7 +211,7 @@ class SenseiDrawer extends StatelessWidget {
       leadingIcon: Icons.bug_report_outlined,
       title: S.of(context).ReportBug,
       subtitle: S.of(context).ReportBugMassage,
-      trailingWidget:Text(S.of(context).Test),
+      trailingWidget: Text(S.of(context).Test),
       onTapped: () {
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
@@ -250,6 +249,4 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () => appAbout(context),
     );
   }
-
-
 }

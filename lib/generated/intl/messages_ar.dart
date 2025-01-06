@@ -79,6 +79,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "clearLogs": MessageLookupByLibrary.simpleMessage("تنظيف السجلات"),
         "clearLogsMassage": MessageLookupByLibrary.simpleMessage(
             "مسح سجل المنتجات الخاصة بالتطبيق"),
-        "close": MessageLookupByLibrary.simpleMessage("اغلاق")
+        "close": MessageLookupByLibrary.simpleMessage("اغلاق"),
+        "scanedProducts":
+            MessageLookupByLibrary.simpleMessage("المنتجات المراجعة"),
+        "supportedProducts":
+            MessageLookupByLibrary.simpleMessage("المنتجات المدعومة")
       };
 }

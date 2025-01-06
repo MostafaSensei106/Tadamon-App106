@@ -150,6 +150,26 @@ class S {
     );
   }
 
+  /// `Scaned Products`
+  String get scanedProducts {
+    return Intl.message(
+      'Scaned Products',
+      name: 'scanedProducts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Supported Products`
+  String get supportedProducts {
+    return Intl.message(
+      'Supported Products',
+      name: 'supportedProducts',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `System Theme`
   String get SystemTheme {
     return Intl.message(

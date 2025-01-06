@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/features/counter_manager/widget/components/counter_items_components.dart';
+import 'package:tadamon/generated/l10n.dart';
 
 class ItemsCounter extends StatelessWidget {
   const ItemsCounter({super.key});
@@ -13,21 +14,24 @@ class ItemsCounter extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Expanded(child: CounterItemsComponent(
+          Expanded(
+              child: CounterItemsComponent(
             icon: Icons.qr_code_rounded,
-            title: 'Scan Barcode',
+            title: S.of(context).scanedProducts,
             getCounter: () async => 0,
             counterStream: Stream.empty(),
           )),
-          SizedBox(width:SenseiConst.margin.w),
+          SizedBox(width: SenseiConst.margin.w),
           Expanded(
-            child: CounterItemsComponent(icon: Icons.checklist_rounded, title: "Supported",
+            child: CounterItemsComponent(
+              icon: Icons.checklist_rounded,
+              title: S.of(context).supportedProducts,
               getCounter: () async => 0,
               counterStream: Stream.empty(),
             ),
           )
         ],
       ),
-    );  
+    );
   }
 }

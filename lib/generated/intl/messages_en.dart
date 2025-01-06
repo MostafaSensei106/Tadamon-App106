@@ -76,6 +76,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "clearLogs": MessageLookupByLibrary.simpleMessage("Clear Logs"),
         "clearLogsMassage":
             MessageLookupByLibrary.simpleMessage("Clear Logs Massage"),
-        "close": MessageLookupByLibrary.simpleMessage("Close")
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
+        "scanedProducts":
+            MessageLookupByLibrary.simpleMessage("Scaned Products"),
+        "supportedProducts":
+            MessageLookupByLibrary.simpleMessage("Supported Products")
       };
 }

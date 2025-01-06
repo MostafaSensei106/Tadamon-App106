@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_cubit.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
+import 'package:tadamon/core/controller/network_controller/network_controller.dart';
 import 'package:tadamon/core/helpers/about_helper.dart';
 import 'package:tadamon/core/helpers/dev_helper.dart';
 import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
@@ -140,11 +141,7 @@ Widget _buildModeSwitch(BuildContext context) {
       subtitle: S.of(context).EnableOnlineMassage,
       onTapped: () {
         Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("سوف تتوفر في أقرب وقت ممكن"),
-          ),
-        );
+        NetworkController().checkConnection();
       },
     );
   }

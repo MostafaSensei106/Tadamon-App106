@@ -1,35 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/divider.dart';
+import 'package:tadamon/core/widget/app_toast/app_toast.dart';
+import 'package:tadamon/core/widget/drawer/drawer_component.dart';
+import 'package:tadamon/features/barcode_scanner/data/mode/product_model.dart';
 
 class ProductListView extends StatelessWidget {
-  final String resSerialNumber;
+  final ProductModel product;
 
-  const ProductListView({super.key, required this.resSerialNumber});
+  const ProductListView({
+    super.key,
+    required this.product,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       children: [
-        ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) => ListTile(
-            leading: Icon(
-              Icons.list,
-              size: SenseiConst.iconSize,
-            ),
-            title: const Text('الرقم التسلسلي'),
-            subtitle: Text(resSerialNumber),
-            trailing: IconButton(
-                onPressed: () {
-                  Clipboard.setData(ClipboardData(text: resSerialNumber));
-                },
-                icon: const Icon(Icons.copy)),
+        DrawerComponent(
+          useDivider: true,
+          leadingIcon: Icons.qr_code_rounded,
+          title: "الرقم التسلسلي",
+          subtitle: product.serialNumber,
+          trailingWidget: IconButton(
+            icon: const Icon(Icons.copy),
+            onPressed: () {
+              Clipboard.setData(ClipboardData(text: product.productName ?? ''));
+              AppToast.showSuccessToast('تم نسخ النص الي الحافظة');
+            },
           ),
-          separatorBuilder: (context, index) => const SenseiDivider(),
-          itemCount: 1,
+        ),
+        DrawerComponent(
+          useDivider: true,
+          leadingIcon: Icons.label_outline_rounded,
+          title: "إسم المنتج",
+          subtitle: product.productName ?? "لا يوجد",
+        ),
+        DrawerComponent(
+          useDivider: true,
+          leadingIcon: Icons.business_rounded,
+          title: "الشركة المصنعة",
+          subtitle: product.productManufacturer ?? "لا يوجد",
+        ),
+        DrawerComponent(
+          useDivider: true,
+          leadingIcon: Icons.category_outlined,
+          title: "التصنيف",
+          subtitle: product.productCategory ?? "لا يوجد",
+        ),
+        DrawerComponent(
+          leadingIcon: Icons.handshake_outlined,
+          title: "الحالة",
+          subtitle: (product.isTrusted ?? false) ? "مفعل" : "غير مفعل",
         ),
       ],
     );

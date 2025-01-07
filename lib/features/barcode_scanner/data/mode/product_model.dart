@@ -1,28 +1,42 @@
-class ProdectModel {
-  final String name;
+class ProductModel {
+  final String? productName;
   final String serialNumber;
-  final String manufacturer;
-  final List<String> category;
-  final String boycottResonLink;
-  final bool trusted;
+  final String? productManufacturer;
+  final String? productCategory;
+  //final String? productBoycottResonLink;
+  final bool? isTrusted;
 
-  ProdectModel({
-    required this.name,
+  ProductModel({
+     this.productName,
     required this.serialNumber,
-    required this.manufacturer,
-    required this.category,
-    required this.boycottResonLink,
-    required this.trusted,
+     this.productManufacturer,
+     this.productCategory,
+     //this.productBoycottResonLink,
+     this.isTrusted,
   });
 
-  factory ProdectModel.fromJson(Map<String, dynamic> json) {
-    return ProdectModel(
-      name: json['name'],
-      serialNumber: json['serialNumber'],
-      manufacturer: json['manufacturer'],
-      category: List<String>.from(json['category']),
-      boycottResonLink: json['boycottResonLink'],
-      trusted: json['trusted'],
+  Map<String, dynamic> toMap() {
+    return {
+      'productName': productName,
+      'serialNumber': serialNumber,
+      'productManufacturer': productManufacturer,
+      'productCategory': productCategory,
+      //'productBoycottResonLink': productBoycottResonLink,
+      'isTrusted': isTrusted,
+    };
+  }
+  
+  factory ProductModel.fromMap(Map<String, dynamic> map) {
+    return ProductModel(
+      productName: map['Name'],
+      serialNumber: map['SerialNumber'],
+      productManufacturer: map['Manufacture'],
+      productCategory: map['Category'],
+      //productBoycottResonLink: map['productBoycottResonLink'],
+      isTrusted: map['Trusted'],
     );
   }
+
+ 
+
 }

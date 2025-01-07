@@ -33,7 +33,7 @@ class DrawerComponent extends StatelessWidget {
     this.iconSize = SenseiConst.iconSize,
     this.titleStyle,
     this.subtitleStyle,
-    required this.useMargin,
+    this.useMargin,
     this.iconColor,
     this.textColor,
     this.useDivider,

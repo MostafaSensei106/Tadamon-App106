@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
+import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class ScanerManger {
-  Future<String> scanBarcode(BuildContext context) async {
+  Future<dynamic> scanBarcode(BuildContext context) async {
     String? barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
       context,
-
       barcodeAppBar: const BarcodeAppBar(
         appBarTitle: 'Scan Barcode',
         centerTitle: true,
@@ -23,10 +23,11 @@ class ScanerManger {
       cancelButtonText: S.of(context).close,
     );
 
-    if (barcodeScanRes == null) {
-      return '';
+    if (barcodeScanRes == null ||
+        barcodeScanRes.isEmpty ||
+        barcodeScanRes == '-1') {
+      AppToast.showErrorToast('لم نتمكن من قراءة الباركود');
     }
-
     return barcodeScanRes;
   }
 }

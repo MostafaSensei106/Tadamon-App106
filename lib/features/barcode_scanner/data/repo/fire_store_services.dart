@@ -46,7 +46,7 @@ class FireStoreServices {
   }
 
   //search by serial number
-  Future<ProductModel> getProductBySerialNumber(String serialNumber) async {
+  Future<dynamic> getProductBySerialNumber(String serialNumber) async {
     try {
       final snapshot =
           await _firestore.collection(_collectionName).doc(serialNumber).get();
@@ -54,11 +54,11 @@ class FireStoreServices {
       if (data != null) {
         return ProductModel.fromMap(data);
       } else {
-        return ProductModel(serialNumber: serialNumber , onError: 'لم يتم العثور على المنتج');
+        return ProductModel(serialNumber: serialNumber, onError: 'Product not found');
       }
     } catch (e) {
       AppToast.showErrorToast(e.toString());
-      return ProductModel(serialNumber: serialNumber);
+      return ProductModel(serialNumber: serialNumber, onError: 'An error occurred');
     }
   }
 

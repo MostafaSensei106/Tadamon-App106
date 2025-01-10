@@ -25,6 +25,7 @@ class ProductModel {
       'productCategory': productCategory,
       //'productBoycottResonLink': productBoycottResonLink,
       'isTrusted': isTrusted,
+      'onError': onError,
     };
   }
   

@@ -5,6 +5,7 @@ class ProductModel {
   final String? productCategory;
   //final String? productBoycottResonLink;
   final bool? isTrusted;
+  final String? onError;
 
   ProductModel({
      this.productName,
@@ -13,6 +14,7 @@ class ProductModel {
      this.productCategory,
      //this.productBoycottResonLink,
      this.isTrusted,
+     this.onError,
   });
 
   Map<String, dynamic> toMap() {

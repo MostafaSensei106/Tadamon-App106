@@ -9,10 +9,10 @@ class ImageNews extends StatefulWidget {
   const ImageNews({super.key});
 
   @override
-  _ImageNewsState createState() => _ImageNewsState();
+  ImageNewsState createState() => ImageNewsState();
 }
 
-class _ImageNewsState extends State<ImageNews> {
+class ImageNewsState extends State<ImageNews> {
   static const Duration _autoSlideDuration = Duration(seconds: 3);
   static const Duration _slideTransitionDuration = Duration(milliseconds: 400);
   static const double _indicatorDotSize = 8.0;
@@ -115,7 +115,7 @@ class _ImageNewsState extends State<ImageNews> {
         effect: ExpandingDotsEffect(
           dotWidth: _indicatorDotSize,
           dotHeight: _indicatorDotSize,
-          dotColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+            dotColor: Theme.of(context).colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
           activeDotColor: Theme.of(context).colorScheme.primaryContainer,
           expansionFactor: 2,
         ),

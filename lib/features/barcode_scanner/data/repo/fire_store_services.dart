@@ -50,7 +50,12 @@ class FireStoreServices {
     try {
       final snapshot =
           await _firestore.collection(_collectionName).doc(serialNumber).get();
-      return ProductModel.fromMap(snapshot.data()!);
+      final data = snapshot.data();
+      if (data != null) {
+        return ProductModel.fromMap(data);
+      } else {
+        return ProductModel(serialNumber: serialNumber , onError: 'لم يتم العثور على المنتج');
+      }
     } catch (e) {
       AppToast.showErrorToast(e.toString());
       return ProductModel(serialNumber: serialNumber);

@@ -15,14 +15,13 @@ class HomeAppTools extends StatelessWidget {
     String resSerialNumber = await ScanerManger().scanBarcode(context);
     if (!context.mounted) return;
     if (!context.mounted) return;
-    final product = await FireStoreServices().getProductBySerialNumber(resSerialNumber);
+    final product =
+        await FireStoreServices().getProductBySerialNumber(resSerialNumber);
     if (!context.mounted) return;
     ModelBottomSheet.show(
       context,
       S.of(context).SheetTitleProductInfo,
-      child: ProductListView(
-      product: product,
-      ),
+      child: ProductListView(product: product),
     );
   }
 
@@ -56,7 +55,6 @@ class HomeAppTools extends StatelessWidget {
               title: S.of(context).EditText,
               onTapped: () {},
             ),
-
             HomeToolsComponent(
               icon: Icons.map_outlined,
               title: S.of(context).PalatineMap,

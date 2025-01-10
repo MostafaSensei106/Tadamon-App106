@@ -1,16 +1,10 @@
+# To generate app icons, run:
 # flutter pub run flutter_launcher_icons
-flutter_launcher_icons:
-  image_path: "assets/icons/play_store_512.png"
 
+flutter_icons:
   android: true
-  image_path_android: "assets/icons/play_store_512.png"
-  min_sdk_android: 21
+  ios: true
+  image_path: "assets/icons/play_store_512.png"
   adaptive_icon_background: "assets/icons/ic_launcher_background.png"
   adaptive_icon_foreground: "assets/icons/ic_launcher_foreground.png"
-
-  ios: true
-  image_path_ios: "assets/icons/play_store_512.png"
-  remove_alpha_channel_ios: true
-  # image_path_ios_dark_transparent: "assets/icon/icon_dark.png"
-  # image_path_ios_tinted_grayscale: "assets/icon/icon_tinted.png"
-  # desaturate_tinted_to_grayscale_ios: true
+  min_sdk_android: 21

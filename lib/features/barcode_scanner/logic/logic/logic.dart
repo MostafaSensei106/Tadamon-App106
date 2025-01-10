@@ -19,6 +19,7 @@ class ScanerManger {
       scanFormat: ScanFormat.ONLY_BARCODE,
       scanType: ScanType.barcode,
       lineColor:
+          // ignore: deprecated_member_use
           '#${Colors.yellow.value.toRadixString(16).padLeft(8, '0').toUpperCase()}',
       cancelButtonText: S.of(context).close,
     );

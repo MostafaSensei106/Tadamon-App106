@@ -33,10 +33,10 @@ class HomeToolsComponent extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(SenseiConst.outBorderRadius.r),
-                  color: Theme.of(context)
+                    color: Theme.of(context)
                       .colorScheme
                       .surfaceContainerHighest
-                      .withOpacity(0.3),
+                      .withAlpha((0.3 * 255).toInt()),
                 ),
                 child: Icon(
                   icon,

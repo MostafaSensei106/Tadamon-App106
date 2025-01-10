@@ -1,3 +1,6 @@
+
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_shared_preferences.dart';
@@ -53,10 +56,10 @@ class ThemeCubit extends Cubit<ThemeState> {
       final savedMode = await _themeSharedPreferences.getThemeMode();
 
       if (savedMode == ThemeMode.system) {
-        final isDark =
-            MediaQuery.of(_context).platformBrightness == Brightness.dark;
+        final platformBrightness = PlatformDispatcher.instance.platformBrightness;
+        final newIsDark = platformBrightness == Brightness.dark;
         final newState = state.copyWith(
-          isDark: isDark,
+          isDark: newIsDark,
           themeMode: ThemeMode.system,
         );
         await _persistTheme(newState);

@@ -29,7 +29,7 @@ class GoogleNavBar extends StatelessWidget {
           border: Border.all(
             width: 0.5,
             strokeAlign: BorderSide.strokeAlignOutside,
-            color: theme.colorScheme.outline.withOpacity(0.2),
+            color: theme.colorScheme.outline.withAlpha((0.2 * 255).toInt()),
           ),
         ),
         child: Padding(

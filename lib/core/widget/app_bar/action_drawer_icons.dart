@@ -42,7 +42,7 @@ class _ActionDrawerContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
         color:
-            Theme.of(context).colorScheme.surfaceContainerHigh.withOpacity(0.3),
+            Theme.of(context).colorScheme.surfaceContainerHigh.withAlpha((0.3 * 255).toInt()),
       ),
       child: child,
     );

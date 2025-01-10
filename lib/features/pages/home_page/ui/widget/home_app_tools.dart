@@ -11,18 +11,20 @@ import 'package:tadamon/generated/l10n.dart';
 class HomeAppTools extends StatelessWidget {
   const HomeAppTools({super.key});
 
-      Future<void> _scanBarcodeAndShowProductInfo(BuildContext context) async {
-        final localizations = S.of(context);
-        String resSerialNumber = await ScanerManger().scanBarcode(context);
-        if (!context.mounted) return;
-        ModelBottomSheet.show(
-          context,
-          localizations.SheetTitleProductInfo,
-          child: ProductListView(
-            product: await FireStoreServices().getProductBySerialNumber(resSerialNumber),
-          ),
-        );
-      }
+  Future<void> _scanBarcodeAndShowProductInfo(BuildContext context) async {
+    String resSerialNumber = await ScanerManger().scanBarcode(context);
+    if (!context.mounted) return;
+    if (!context.mounted) return;
+    final product = await FireStoreServices().getProductBySerialNumber(resSerialNumber);
+    if (!context.mounted) return;
+    ModelBottomSheet.show(
+      context,
+      S.of(context).SheetTitleProductInfo,
+      child: ProductListView(
+      product: product,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

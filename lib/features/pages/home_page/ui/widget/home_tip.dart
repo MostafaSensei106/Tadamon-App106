@@ -7,10 +7,10 @@ class HomeTip extends StatefulWidget {
   const HomeTip({super.key});
 
   @override
-  _HomeTipState createState() => _HomeTipState();
+  HomeTipState createState() => HomeTipState();
 }
 
-class _HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
+class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _animation;
 

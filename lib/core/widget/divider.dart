@@ -10,7 +10,7 @@ class SenseiDivider extends StatelessWidget {
       height: 0,
       indent: 0,
       endIndent: 0,
-      color: Theme.of(context).colorScheme.outline.withOpacity(0.8),
+      color: Theme.of(context).colorScheme.outline.withAlpha((0.8 * 255).toInt()),
     );
   }
 }

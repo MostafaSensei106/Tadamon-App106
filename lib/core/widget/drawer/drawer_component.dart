@@ -16,11 +16,6 @@ class DrawerComponent extends StatelessWidget {
   final bool? useGroupMiddle;
   final bool? useGroupBottom;
   final bool? useDivider;
-  final Color? iconColor;
-  final Color? textColor;
-  final double? iconSize;
-  final TextStyle? titleStyle;
-  final TextStyle? subtitleStyle;
 
   const DrawerComponent({
     super.key,
@@ -30,12 +25,7 @@ class DrawerComponent extends StatelessWidget {
     this.trailingWidget,
     this.onTapped,
     this.selected = false,
-    this.iconSize = SenseiConst.iconSize,
-    this.titleStyle,
-    this.subtitleStyle,
     this.useMargin,
-    this.iconColor,
-    this.textColor,
     this.useDivider,
     this.useGroupTop,
     this.useGroupMiddle,
@@ -84,23 +74,30 @@ class DrawerComponent extends StatelessWidget {
               ),
               onTap: onTapped,
               child: ListTile(
-                leading: Icon(
-                  leadingIcon,
-                  color: iconColor ?? Theme.of(context).iconTheme.color,
-                  size: SenseiConst.iconSize.sp,
+                horizontalTitleGap: 13.w,
+                contentPadding: EdgeInsets.symmetric(
+                    horizontal: SenseiConst.padding.w,
+                    vertical: 0
+                ),
+                leading: Container(
+                       padding: EdgeInsets.all(SenseiConst.padding.w),
+                decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                    color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                ),
+                  child: Icon(
+                    leadingIcon,
+                    size: SenseiConst.iconSize.sp,
+                  ),
                 ),
                 title: Text(
                   title,
-                  style: titleStyle?.copyWith(color: textColor) ??
-                      Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: textColor,
-                          ),
                 ),
                 subtitle: Text(
                   subtitle,
                   overflow: TextOverflow.ellipsis,
                 ),
-                subtitleTextStyle: subtitleStyle?.copyWith(color: textColor),
                 trailing: trailingWidget,
                 selected: selected,
               ),

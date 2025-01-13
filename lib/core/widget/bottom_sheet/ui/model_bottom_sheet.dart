@@ -6,8 +6,6 @@ import 'package:tadamon/core/widget/bottom_sheet/widget/sheet_header.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class ModelBottomSheet {
-  ModelBottomSheet._();
-
   static void show(BuildContext context, String title,
       {required Widget child}) {
     showModalBottomSheet<void>(
@@ -26,21 +24,28 @@ class ModelBottomSheet {
       borderRadius: BorderRadius.vertical(top: Radius.circular(14.r)),
       child: ColoredBox(
         color: Theme.of(context).colorScheme.surface,
-        child: Wrap(
-          children: [
-            BottomSheetHeader(titile: title),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
-              child: Column(
-                children: [
-                  BottomModelSheetContent(
-                    child: child,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: Wrap(
+              children: [
+                BottomSheetHeader(titile: title),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
+                  child: Column(
+                    children: [
+                      BottomModelSheetContent(
+                        child: child,
+                      ),
+                      _buildCloseButton(context),
+                    ],
                   ),
-                  _buildCloseButton(context),
-                ],
-              ),
-            )
-          ],
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -55,7 +60,7 @@ class ModelBottomSheet {
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             shape: WidgetStateProperty.all(RoundedRectangleBorder(
               borderRadius:
-                  BorderRadius.circular(SenseiConst.outBorderRadius.r),
+                  BorderRadius.circular(SenseiConst.inBorderRadius.r),
             )),
           ),
           child: Text(S.of(context).close),

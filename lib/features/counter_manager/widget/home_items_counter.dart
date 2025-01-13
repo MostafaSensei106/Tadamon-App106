@@ -8,6 +8,22 @@ class ItemsCounter extends StatelessWidget {
   const ItemsCounter({super.key});
 
   @override
+  /// Build a widget that displays a row of two [CounterItemsComponent]s.
+  ///
+  /// The first component displays the number of scanned products, and the second
+  /// component displays the number of supported products.
+  ///
+  /// The title of the first component is [S.scanedProducts] and the title of the
+  /// second component is [S.supportedProducts].
+  ///
+  /// The [getCounter] callback of both components is an empty function that returns
+  /// 0, and the [counterStream] of both components is an empty stream.
+  ///
+  /// The [mainAxisAlignment] of the row is [MainAxisAlignment.spaceAround], and
+  /// the [margin] of the row is [EdgeInsets.only(top: SenseiConst.margin.h)].
+  ///
+  /// The [children] of the row are the two [CounterItemsComponent]s, with a
+  /// [SizedBox] with a width of [SenseiConst.margin.w] in between them.
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: SenseiConst.margin.h),

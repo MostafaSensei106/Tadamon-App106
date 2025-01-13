@@ -2,6 +2,7 @@ import "dart:async";
 import "package:shared_preferences/shared_preferences.dart";
 
 class CounterManger {
+  
   static const String counterKey = 'scanCounter';
   static final StreamController<int> _counterController =
       StreamController<int>.broadcast(onListen: initializeCounter);

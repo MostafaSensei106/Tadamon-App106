@@ -8,8 +8,10 @@ import 'package:tadamon/core/controller/network_controller/network_controller.da
 import 'package:tadamon/core/helpers/about_helper.dart';
 import 'package:tadamon/core/helpers/dev_helper.dart';
 import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
+import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/core/widget/drawer/drawer_component.dart';
 import 'package:tadamon/core/widget/drawer/drawer_header.dart';
+import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class SenseiDrawer extends StatelessWidget {
@@ -191,11 +193,7 @@ Widget _buildModeSwitch(BuildContext context) {
       subtitle: S.of(context).ReportProductMassage,
       onTapped: () {
         Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("سوف تتوفر في أقرب وقت ممكن"),
-          ),
-        );
+        ModelBottomSheet.show(context, "Report", child:ReportProductSheetContent() );
       },
     );
   }

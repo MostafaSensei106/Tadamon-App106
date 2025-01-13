@@ -70,6 +70,7 @@ class _MainPageState extends State<MainPage>
       child: BlocBuilder<PageCubit, MainPageState>(
         builder: (context, state) {
           return Scaffold(
+            resizeToAvoidBottomInset: true,
             key: const ValueKey<String>('main_page_scaffold'),
             backgroundColor: Theme.of(context).colorScheme.surface,
             appBar: SenseiAppBar(

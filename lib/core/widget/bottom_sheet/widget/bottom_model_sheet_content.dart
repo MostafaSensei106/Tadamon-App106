@@ -3,18 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class BottomModelSheetContent extends StatelessWidget {
-  const BottomModelSheetContent({super.key, required this.child});
 
   final Widget child;
-
+  final bool useColor;
+  
+  const BottomModelSheetContent({super.key, required this.child, this.useColor = false});
+  
   @override
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
-          color: Theme.of(context).colorScheme.surfaceContainer,
+          color: useColor ? Theme.of(context).colorScheme.surfaceContainer : Colors.transparent,
         ),
-        child: child);
+        child: SingleChildScrollView(
+          child: child));
   }
 }

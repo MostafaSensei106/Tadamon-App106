@@ -193,7 +193,7 @@ Widget _buildModeSwitch(BuildContext context) {
       subtitle: S.of(context).ReportProductMassage,
       onTapped: () {
         Navigator.pop(context);
-        ModelBottomSheet.show(context, "Report", child:ReportProductSheetContent() );
+        ModelBottomSheet.show(context , 'بلغ عن منتج', child:ReportProductSheetContent() );
       },
     );
   }

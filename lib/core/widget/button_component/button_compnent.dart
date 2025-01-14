@@ -49,7 +49,6 @@ class ButtonCompnent extends StatelessWidget {
         icon: Icon(
           icon,
           size: SenseiConst.iconSize.sp,
-          color: Theme.of(context).colorScheme.onPrimaryContainer,
         ),
         label: Text(label),
         style: ElevatedButton.styleFrom(
@@ -58,6 +57,8 @@ class ButtonCompnent extends StatelessWidget {
       
           disabledBackgroundColor: Theme.of(context).colorScheme.error,
           disabledForegroundColor: Theme.of(context).colorScheme.onError, 
+
+          iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
       
           disabledIconColor: Theme.of(context).colorScheme.onError,
       

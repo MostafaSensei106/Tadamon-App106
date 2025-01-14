@@ -22,9 +22,6 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
 
   final productNameController = TextEditingController();
 
-   String serialNumberErrorText = '';
-  String productNameErrorText = '';
-
   String status = 'لا أعرف';
 
   bool isFormValid = false;
@@ -62,17 +59,6 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
   }
 
   void submitReport(BuildContext context) async {
-     setState(() {
-      serialNumberErrorText =
-          serialNumberController.text.isEmpty ? 'رقم التسلسلي مطلوب' : '';
-      productNameErrorText =
-          productNameController.text.isEmpty ? 'اسم المنتج مطلوب' : '';
-    });
-    if (!isFormValid) {
-      serialNumberErrorText = 'الرقم التسلسلي مطلوب';
-      productNameErrorText = 'اسم المنتج مطلوب';
-          return;
-    }
     final report = {
       'serialNumber': serialNumberController.text,
       'productName': productNameController.text,
@@ -96,7 +82,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
         icon: Icons.qr_code_rounded,
         isNumeric: true,
         hint: 'ادخل رقم التسلسلي',
-        errorText: serialNumberErrorText,
+        errorText: 'الرقم التسلسلي مطلوب',
         suffixIcon: IconButton(
           icon: const Icon(Icons.camera_alt_outlined),
           onPressed: () => _scanBarcode(context),
@@ -109,7 +95,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
         controller: productNameController,
         icon: Icons.label_outline_rounded,
         hint: 'ادخل اسم المنتج',
-        errorText: productNameErrorText,
+        errorText: 'اسم المنتج مطلوب',
       ),
       SizedBox(
         height: SenseiConst.margin.h,
@@ -125,8 +111,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
       ButtonCompnent(
           label: 'ارسال بالتقرير',
           icon: Icons.send,
-          onPressed: isFormValid ? () => submitReport(context) : null
-          ),
+          onPressed: isFormValid ? () => submitReport(context) : null),
     ]);
   }
 
@@ -135,6 +120,8 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
   /// This should be called when the widget is no longer needed.
   @override
   void dispose() {
+    serialNumberController.removeListener(() {});
+    productNameController.removeListener(() {});
     serialNumberController.dispose();
     productNameController.dispose();
     super.dispose();

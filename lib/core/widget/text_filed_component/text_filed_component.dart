@@ -27,7 +27,7 @@ class TextFiledComponent extends StatelessWidget {
   /// Returns an error message if the field should be numeric and the input is not a valid number.
   /// Returns null if the input passes validation.
   String? _validate(String? value) {
-    if (isRequired && (value == null || value.isEmpty)) {
+    if (isRequired && (value == null || value.isNotEmpty)) {
       return errorText;
     } else if (isNumeric &&
         value != null &&
@@ -39,7 +39,6 @@ class TextFiledComponent extends StatelessWidget {
   }
 
   @override
-
 
   /// Returns a [TextFormField] widget with the given properties.
   ///
@@ -70,7 +69,7 @@ class TextFiledComponent extends StatelessWidget {
           size: SenseiConst.iconSize.sp,
         ),
         hintText: hint,
-        errorText: isRequired ? errorText : null,
+        errorText: isRequired && (controller.text.isEmpty) ? errorText : null,
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainer,

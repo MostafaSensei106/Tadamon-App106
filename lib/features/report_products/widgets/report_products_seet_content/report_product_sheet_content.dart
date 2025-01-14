@@ -18,13 +18,34 @@ class ReportProductSheetContent extends StatefulWidget {
 }
 
 class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
-  final _formKey = GlobalKey<FormState>();
-
   final serialNumberController = TextEditingController();
 
   final productNameController = TextEditingController();
 
-  String _status = 'لا أعرف';
+   String serialNumberErrorText = '';
+  String productNameErrorText = '';
+
+  String status = 'لا أعرف';
+
+  bool isFormValid = false;
+
+  @override
+  void initState() {
+    super.initState();
+    serialNumberController.addListener(() {
+      _validateForm();
+    });
+    productNameController.addListener(() {
+      _validateForm();
+    });
+  }
+
+  void _validateForm() {
+    setState(() {
+      isFormValid = serialNumberController.text.isNotEmpty &&
+          productNameController.text.isNotEmpty;
+    });
+  }
 
   Future<void> _scanBarcode(BuildContext context) async {
     try {
@@ -41,40 +62,33 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
   }
 
   void submitReport(BuildContext context) async {
-    showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (_) => Center(
-              child: CircularProgressIndicator(),
-            ));
-    if (_formKey.currentState!.validate()) {
-      final report = {
-        'serialNumber': serialNumberController.text,
-        'productName': productNameController.text,
-        'status': _status,
-        'timestamp': Timestamp.now(),
-      };
-      await ReportService().sendProductReport(report);
-    }else{
+     setState(() {
+      serialNumberErrorText =
+          serialNumberController.text.isEmpty ? 'رقم التسلسلي مطلوب' : '';
+      productNameErrorText =
+          productNameController.text.isEmpty ? 'اسم المنتج مطلوب' : '';
+    });
+    if (!isFormValid) {
+      serialNumberErrorText = 'الرقم التسلسلي مطلوب';
+      productNameErrorText = 'اسم المنتج مطلوب';
+          return;
+    }
+    final report = {
+      'serialNumber': serialNumberController.text,
+      'productName': productNameController.text,
+      'status': status,
+      'timestamp': Timestamp.now(),
+    };
+
+    try {
       Navigator.pop(context);
+      await ReportService().sendProductReport(report);
+    } catch (e) {
+      AppToast.showErrorToast('حدث خطأ أثناء إرسال التقرير: $e');
     }
   }
 
   @override
-  /// A widget that contains form to report a product.
-  ///
-  /// It contains four parts:
-  ///
-  /// 1. A [TextFiledComponent] to enter the product serial number.
-  ///
-  /// 2. A [TextFiledComponent] to enter the product name.
-  ///
-  /// 3. A [DropDownComponent] to select the product status.
-  ///
-  /// 4. A [ButtonCompnent] to send the report.
-  ///
-  /// When the button is pressed, it pops the current route and shows a success
-  /// toast to indicate that the report has been sent successfully.
   Widget build(BuildContext context) {
     return Column(children: [
       TextFiledComponent(
@@ -82,7 +96,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
         icon: Icons.qr_code_rounded,
         isNumeric: true,
         hint: 'ادخل رقم التسلسلي',
-        errorText: 'الرقم التسلسلي مطلوب',
+        errorText: serialNumberErrorText,
         suffixIcon: IconButton(
           icon: const Icon(Icons.camera_alt_outlined),
           onPressed: () => _scanBarcode(context),
@@ -94,16 +108,15 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
       TextFiledComponent(
         controller: productNameController,
         icon: Icons.label_outline_rounded,
-        isRequired: false,
         hint: 'ادخل اسم المنتج',
-        errorText: 'اسم المنتج مطلوب',
+        errorText: productNameErrorText,
       ),
       SizedBox(
         height: SenseiConst.margin.h,
       ),
       RadioSelectionTileComponent(
         onChanged: (value) {
-          _status = value;
+          status = value;
         },
       ),
       SizedBox(
@@ -112,9 +125,8 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
       ButtonCompnent(
           label: 'ارسال بالتقرير',
           icon: Icons.send,
-          onPressed: () {
-            submitReport(context);
-          })
+          onPressed: isFormValid ? () => submitReport(context) : null
+          ),
     ]);
   }
 

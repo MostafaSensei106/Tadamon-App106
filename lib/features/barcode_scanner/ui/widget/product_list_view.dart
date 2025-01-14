@@ -26,6 +26,7 @@ class ProductListView extends StatelessWidget {
             trailingWidget: IconButton(
               icon: const Icon(Icons.copy),
               onPressed: () => {
+                    HapticFeedback.vibrate(),
                 Clipboard.setData(ClipboardData(text: product!.serialNumber))
               },
             ),

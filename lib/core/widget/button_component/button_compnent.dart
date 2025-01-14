@@ -5,7 +5,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 class ButtonCompnent extends StatelessWidget {
   final String label;
   final IconData icon;
-  final VoidCallback onPressed;
+  final void Function()? onPressed;
   final bool? isEnabled;
 
   const ButtonCompnent({

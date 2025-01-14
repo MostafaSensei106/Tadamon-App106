@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ImageNews extends StatefulWidget {
   const ImageNews({super.key});
@@ -16,12 +17,11 @@ class ImageNewsState extends State<ImageNews> {
   static const Duration _autoSlideDuration = Duration(seconds: 3);
   static const Duration _slideTransitionDuration = Duration(milliseconds: 400);
   static const double _indicatorDotSize = 8.0;
-
   late final PageController _pageController;
   late Timer _autoSlideTimer;
 
   final List<String> _imageUrls = [
-    "https://c4.wallpaperflare.com/wallpaper/843/56/876/night-artwork-futuristic-city-cyberpunk-wallpaper-preview.jpg",
+        "https://c4.wallpaperflare.com/wallpaper/843/56/876/night-artwork-futuristic-city-cyberpunk-wallpaper-preview.jpg",
     "https://c4.wallpaperflare.com/wallpaper/682/435/620/naruto-anime-uzumaki-naruto-jiraiya-naruto-shippuuden-hd-wallpaper-preview.jpg",
     "https://c4.wallpaperflare.com/wallpaper/966/951/802/digital-digital-art-artwork-illustration-fantasy-art-hd-wallpaper-preview.jpg",
     "https://c4.wallpaperflare.com/wallpaper/383/154/335/car-khyzyl-saleem-mazda-rx-7-simple-background-wallpaper-preview.jpg",
@@ -65,43 +65,26 @@ class ImageNewsState extends State<ImageNews> {
   }
 
   Widget _buildImageSlide(String imageUrl) {
-    return Hero(
-      tag: imageUrl,
-      child: Image.network(
-        imageUrl,
-        fit: BoxFit.cover,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) return child;
-          return Center(
-            child: CircularProgressIndicator(
-              value: loadingProgress.expectedTotalBytes != null
-                  ? loadingProgress.cumulativeBytesLoaded /
-                      loadingProgress.expectedTotalBytes!
-                  : null,
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      fit: BoxFit.cover,
+      progressIndicatorBuilder: (context, url, downloadProgress) =>
+          CircularProgressIndicator(value: downloadProgress.progress),
+      errorWidget: (context, url, error) => Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surfaceContainerHigh,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.image_not_supported_outlined,
+              color: Theme.of(context).colorScheme.error,
+              size: SenseiConst.iconSize
             ),
-          );
-        },
-        errorBuilder: (_, __, ___) => Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerHigh,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.image_not_supported_outlined,
-                color: Theme.of(context).colorScheme.error,
-                size: SenseiConst.iconSize.sp,
-              ),
-              Text(
-                'فشل تحميل الاخبار',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.error,
-                ),
-              ),
-            ],
-          ),
-        )
+            Text('فشل تحميل الصورة'),
+          ],
+        ),
       ),
     );
   }
@@ -115,7 +98,10 @@ class ImageNewsState extends State<ImageNews> {
         effect: ExpandingDotsEffect(
           dotWidth: _indicatorDotSize,
           dotHeight: _indicatorDotSize,
-            dotColor: Theme.of(context).colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
+          dotColor: Theme.of(context)
+              .colorScheme
+              .onSurface
+              .withAlpha((0.5 * 255).toInt()),
           activeDotColor: Theme.of(context).colorScheme.primaryContainer,
           expansionFactor: 2,
         ),
@@ -141,7 +127,7 @@ class ImageNewsState extends State<ImageNews> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding:  EdgeInsets.all(SenseiConst.padding.w),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
               child: AspectRatio(
@@ -169,8 +155,12 @@ class ImageNewsState extends State<ImageNews> {
 
   @override
   void dispose() {
+    _pageController.removeListener(() {});
+    _pageController.dispose();
+
     _autoSlideTimer.cancel();
     _pageController.dispose();
+
     super.dispose();
   }
 }

@@ -21,7 +21,7 @@ class ImageNewsState extends State<ImageNews> {
   late Timer _autoSlideTimer;
 
   final List<String> _imageUrls = [
-        "https://c4.wallpaperflare.com/wallpaper/843/56/876/night-artwork-futuristic-city-cyberpunk-wallpaper-preview.jpg",
+    "https://c4.wallpaperflare.com/wallpaper/843/56/876/night-artwork-futuristic-city-cyberpunk-wallpaper-preview.jpg",
     "https://c4.wallpaperflare.com/wallpaper/682/435/620/naruto-anime-uzumaki-naruto-jiraiya-naruto-shippuuden-hd-wallpaper-preview.jpg",
     "https://c4.wallpaperflare.com/wallpaper/966/951/802/digital-digital-art-artwork-illustration-fantasy-art-hd-wallpaper-preview.jpg",
     "https://c4.wallpaperflare.com/wallpaper/383/154/335/car-khyzyl-saleem-mazda-rx-7-simple-background-wallpaper-preview.jpg",
@@ -70,6 +70,7 @@ class ImageNewsState extends State<ImageNews> {
       fit: BoxFit.cover,
       progressIndicatorBuilder: (context, url, downloadProgress) =>
           CircularProgressIndicator(value: downloadProgress.progress),
+      filterQuality: FilterQuality.medium,
       errorWidget: (context, url, error) => Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surfaceContainerHigh,
@@ -77,15 +78,15 @@ class ImageNewsState extends State<ImageNews> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.image_not_supported_outlined,
-              color: Theme.of(context).colorScheme.error,
-              size: SenseiConst.iconSize
-            ),
+            Icon(Icons.image_not_supported_outlined,
+                color: Theme.of(context).colorScheme.error,
+                size: SenseiConst.iconSize),
             Text('فشل تحميل الصورة'),
           ],
         ),
       ),
+      useOldImageOnUrlChange: true,
+      
     );
   }
 
@@ -127,7 +128,7 @@ class ImageNewsState extends State<ImageNews> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding:  EdgeInsets.all(SenseiConst.padding.w),
+            padding: EdgeInsets.all(SenseiConst.padding.w),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
               child: AspectRatio(

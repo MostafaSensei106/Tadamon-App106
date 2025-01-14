@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class RadioSelectionTileComponent extends StatefulWidget {
-  const RadioSelectionTileComponent({super.key});
+  final Function(String)? onChanged;
+
+  const RadioSelectionTileComponent({super.key, this.onChanged});
 
   @override
   State<RadioSelectionTileComponent> createState() =>
@@ -15,10 +17,6 @@ class _RadioSelectionTileComponentState
   String selectedValue = 'لاأعرف';
 
   @override
-
-  /// Returns an [ExpansionTile] with the title 'الحالة' and three radio buttons
-  /// for selecting the reason for reporting a product. The selected value is
-  /// displayed as a subtitle below the radio buttons.
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -30,14 +28,14 @@ class _RadioSelectionTileComponentState
         title: Text('الحالة'),
         subtitle: Text(selectedValue),
         backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-        enableFeedback:true,
+        enableFeedback: true,
         showTrailingIcon: true,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
           side: BorderSide(
             color: Theme.of(context).colorScheme.primary,
             width: 0.2,
-          )
+          ),
         ),
         children: [
           buildRadio('لاأعرف'),
@@ -48,29 +46,16 @@ class _RadioSelectionTileComponentState
     );
   }
 
-  /// Returns a [RadioListTile] with the given [title].
-  ///
-  /// The selected value is displayed as a subtitle below the radio button.
-  ///
-  /// When the radio button is focused or unfocused, the [selectedValue]
-  /// is updated to the new value.
-  ///
-  /// When the radio button is changed, the [selectedValue] is updated to
-  /// the new value.
   Widget buildRadio(String title) {
     return RadioListTile<String>(
       title: Text(title),
-      onFocusChange: (value) {
-        setState(() {
-          selectedValue = title;
-        });
-      },
       value: title,
       groupValue: selectedValue,
       onChanged: (value) {
         setState(() {
           selectedValue = value!;
         });
+        widget.onChanged?.call(value!);
       },
     );
   }

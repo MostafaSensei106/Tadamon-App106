@@ -5,7 +5,15 @@ import 'package:tadamon/features/barcode_scanner/data/mode/product_model.dart';
 class FireStoreServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final String _collectionName = 'TadamonProducts';
+  final String _productReportCollection = 'TadamonUserReport';
 
+  /// Adds a new product to the FireStore database.
+  ///
+  /// The product is added to the '_collectionName' collection.
+  ///
+  /// If the product is added successfully, no action is taken.
+  ///
+  /// If the product cannot be added, a toast is shown with the error message.
   Future<void> addProduct(ProductModel product) async {
     try {
       await _firestore.collection(_collectionName).add(product.toMap());
@@ -14,6 +22,13 @@ class FireStoreServices {
     }
   }
 
+  /// Gets all products from the FireStore database.
+  ///
+  /// The products are retrieved from the '_collectionName' collection.
+  ///
+  /// If the products are retrieved successfully, a list of [ProductModel] is returned.
+  ///
+  /// If the products cannot be retrieved, a toast is shown with the error message and an empty list is returned.
   Future<List<ProductModel>> getAllProducts() async {
     try {
       final snapshot = await _firestore.collection(_collectionName).get();
@@ -26,6 +41,14 @@ class FireStoreServices {
     }
   }
 
+  /// Updates an existing product in the FireStore database.
+  ///
+  /// The product is updated in the '_collectionName' collection using the provided [documnetId].
+  ///
+  /// If the product is updated successfully, no action is taken.
+  ///
+  /// If the product cannot be updated, a toast is shown with the error message.
+
   Future<void> updateProduct(String documnetId, ProductModel product) async {
     try {
       await _firestore
@@ -37,6 +60,14 @@ class FireStoreServices {
     }
   }
 
+  /// Deletes an existing product from the FireStore database.
+  ///
+  /// The product is deleted from the '_collectionName' collection using the provided [documnetId].
+  ///
+  /// If the product is deleted successfully, no action is taken.
+  ///
+  /// If the product cannot be deleted, a toast is shown with the error message.
+
   Future<void> deleteProduct(String documnetId) async {
     try {
       await _firestore.collection(_collectionName).doc(documnetId).delete();
@@ -45,7 +76,6 @@ class FireStoreServices {
     }
   }
 
-  //search by serial number
   Future<dynamic> getProductBySerialNumber(String serialNumber) async {
     try {
       final snapshot =
@@ -62,7 +92,16 @@ class FireStoreServices {
     }
   }
 
-  //search by product name
+  /// Searches for products in the FireStore database using the provided [productName].
+  ///
+  /// The products are retrieved from the '_collectionName' collection using the provided [productName].
+  ///
+  /// If the products are found, they are returned as a list of [ProductModel].
+  ///
+  /// If no products are found, an empty list is returned.
+  ///
+  /// If an error occurs while searching for the products, a toast is shown with the
+  /// error message and an empty list is returned.
   Future<List<ProductModel>> searchProductByName(String productName) async {
     try {
       final snapshot = await _firestore
@@ -78,8 +117,17 @@ class FireStoreServices {
     }
   }
 
-  //search by product category
   Future<List<ProductModel>> searchProductByCategory(
+  /// Searches for products in the FireStore database using the provided [productCategory].
+  ///
+  /// The products are retrieved from the '_collectionName' collection using the provided [productCategory].
+  ///
+  /// If the products are found, they are returned as a list of [ProductModel].
+  ///
+  /// If no products are found, an empty list is returned.
+  ///
+  /// If an error occurs while searching for the products, a toast is shown with the
+  /// error message and an empty list is returned.
       List<String> productCategory) async {
     try {
       final snapshot = await _firestore
@@ -95,7 +143,17 @@ class FireStoreServices {
     }
   }
 
-  //search by product manufacturer
+  /// Searches for products in the FireStore database using the provided [productManufacturer].
+  ///
+  /// The products are retrieved from the '_collectionName' collection using the provided [productManufacturer].
+  ///
+  /// If the products are found, they are returned as a list of [ProductModel].
+  ///
+  /// If no products are found, an empty list is returned.
+  ///
+  /// If an error occurs while searching for the products, a toast is shown with the
+  /// error message and an empty list is returned.
+
   Future<List<ProductModel>> searchProductByManufacturer(
       String productManufacturer) async {
     try {
@@ -112,8 +170,17 @@ class FireStoreServices {
     }
   }
 
-  //search by product manufacturer
   Future<List<ProductModel>> searchProductByBoycottLink(
+  /// Searches for products in the FireStore database using the provided [productBoycottResonLink].
+  ///
+  /// The products are retrieved from the '_collectionName' collection where the 'productBoycottResonLink' field matches the provided link.
+  ///
+  /// If the products are found, they are returned as a list of [ProductModel].
+  ///
+  /// If no products are found, an empty list is returned.
+  ///
+  /// If an error occurs while searching for the products, a toast is shown with the error message and an empty list is returned.
+
       String productBoycottResonLink) async {
     try {
       final snapshot = await _firestore
@@ -143,5 +210,14 @@ class FireStoreServices {
       AppToast.showErrorToast(e.toString());
       return [];
     }
+  }
+
+
+
+  //Reports Section
+  Future<void> sendReportToBackEnd (Map<String,dynamic> productReport) async {
+    String productName = productReport['productName'];
+    DocumentReference documentReference = _firestore.collection(_productReportCollection).doc(productName);
+    await documentReference.set(productReport);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widget/app_toast/app_toast.dart';
@@ -15,6 +16,7 @@ class HomeAppTools extends StatelessWidget {
 
 //Scan BarCode Logic
   Future<void> _scanBarcodeCamera(BuildContext context) async {
+    HapticFeedback.vibrate();
     try {
       String? resSerialNumber = await ScannerManager().scanBarcode(context);
       if (!context.mounted ||
@@ -37,6 +39,7 @@ class HomeAppTools extends StatelessWidget {
 
   //Image Analysis logic
   Future<void> _imageAnalysis(BuildContext context) async {
+    HapticFeedback.vibrate();
     String? resSerialNumber = await ScannerManager().imageAnalysisScan(context);
     if (!context.mounted || resSerialNumber == null) return;
     final product =
@@ -75,19 +78,27 @@ class HomeAppTools extends StatelessWidget {
               onTapped: () => _imageAnalysis(context),
             ),
             HomeToolsComponent(
-              icon: Icons.short_text_outlined,
-              title: S.of(context).EditText,
-              onTapped: () => AppToast.showToast('سوف تتوافر قريبا')
-            ),
+                icon: Icons.short_text_outlined,
+                title: S.of(context).EditText,
+                onTapped: () {
+                  HapticFeedback.vibrate();
+                  AppToast.showToast('سوف تتوافر قريبا');
+                }),
             HomeToolsComponent(
               icon: Icons.map_outlined,
               title: S.of(context).PalatineMap,
-              onTapped: () => AppToast.showToast('سوف تتوافر قريبا'),
+              onTapped: () {
+                HapticFeedback.vibrate();
+                AppToast.showToast('سوف تتوافر قريبا');
+              },
             ),
             HomeToolsComponent(
               icon: Icons.volunteer_activism_outlined,
               title: S.of(context).Donate,
-              onTapped: () => AppToast.showToast('سوف تتوافر قريبا'),
+              onTapped: () {
+                HapticFeedback.vibrate();
+                AppToast.showToast('سوف تتوافر قريبا');
+              },
             ),
           ],
         ),

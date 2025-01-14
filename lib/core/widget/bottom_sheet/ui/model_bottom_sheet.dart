@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widget/bottom_sheet/widget/bottom_model_sheet_content.dart';
@@ -59,12 +60,14 @@ class ModelBottomSheet {
           style: ButtonStyle(
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             shape: WidgetStateProperty.all(RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(SenseiConst.inBorderRadius.r),
+              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
             )),
           ),
           child: Text(S.of(context).close),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () {
+            HapticFeedback.vibrate();
+            Navigator.of(context).pop();
+          },
         ),
       ],
     );

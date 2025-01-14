@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_cubit.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
-import 'package:tadamon/core/controller/network_controller/network_controller.dart';
 import 'package:tadamon/core/helpers/about_helper.dart';
 import 'package:tadamon/core/helpers/dev_helper.dart';
 import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
@@ -74,6 +74,7 @@ class SenseiDrawer extends StatelessWidget {
             },
           ),
           onTapped: () {
+            HapticFeedback.vibrate();
             bool newValue = !(state.themeMode == ThemeMode.system);
             toggleTheme(newValue, context);
           },
@@ -81,16 +82,17 @@ class SenseiDrawer extends StatelessWidget {
       },
     );
   }
-Widget _buildModeSwitch(BuildContext context) {
-  return BlocBuilder<ThemeCubit, ThemeState>(
-    buildWhen: (previous, current) =>
-        previous.isDark != current.isDark ||
-        previous.themeMode != current.themeMode,
-    builder: (context, state) {
-      return  state.themeMode == ThemeMode.system
+
+  Widget _buildModeSwitch(BuildContext context) {
+    return BlocBuilder<ThemeCubit, ThemeState>(
+      buildWhen: (previous, current) =>
+          previous.isDark != current.isDark ||
+          previous.themeMode != current.themeMode,
+      builder: (context, state) {
+        return state.themeMode == ThemeMode.system
             ? const SizedBox.shrink()
             : DrawerComponent(
-                key: ValueKey(state.isDark), 
+                key: ValueKey(state.isDark),
                 useGroupBottom: true,
                 leadingIcon: state.isDark
                     ? Icons.light_mode_outlined
@@ -108,15 +110,16 @@ Widget _buildModeSwitch(BuildContext context) {
                   },
                 ),
                 onTapped: () {
+                  HapticFeedback.vibrate();
+
                   context.read<ThemeCubit>().toggleTheme(!state.isDark);
                 },
                 useMargin: false,
                 useDivider: false,
               );
-    },
-  );
-}
-
+      },
+    );
+  }
 
   Widget _buildAppOffline(BuildContext context) {
     return DrawerComponent(
@@ -142,8 +145,8 @@ Widget _buildModeSwitch(BuildContext context) {
       title: S.of(context).EnableOnline,
       subtitle: S.of(context).EnableOnlineMassage,
       onTapped: () {
+        HapticFeedback.vibrate();
         Navigator.pop(context);
-        NetworkController().checkConnection();
       },
     );
   }
@@ -157,6 +160,8 @@ Widget _buildModeSwitch(BuildContext context) {
       title: S.of(context).clearLogs,
       subtitle: S.of(context).clearLogsMassage,
       onTapped: () {
+        HapticFeedback.vibrate();
+
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -176,6 +181,8 @@ Widget _buildModeSwitch(BuildContext context) {
         title: S.of(context).HowToUse,
         subtitle: S.of(context).HowToUseMassage,
         onTapped: () {
+          HapticFeedback.vibrate();
+
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text("سوف تتوفر في أقرب وقت ممكن"),
@@ -192,8 +199,11 @@ Widget _buildModeSwitch(BuildContext context) {
       title: S.of(context).ReportProduct,
       subtitle: S.of(context).ReportProductMassage,
       onTapped: () {
+        HapticFeedback.vibrate();
+
         Navigator.pop(context);
-        ModelBottomSheet.show(context , 'بلغ عن منتج', child:ReportProductSheetContent() );
+        ModelBottomSheet.show(context, 'بلغ عن منتج',
+            child: ReportProductSheetContent());
       },
     );
   }
@@ -208,6 +218,8 @@ Widget _buildModeSwitch(BuildContext context) {
       subtitle: S.of(context).ReportBugMassage,
       trailingWidget: Text(S.of(context).Test),
       onTapped: () {
+        HapticFeedback.vibrate();
+
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

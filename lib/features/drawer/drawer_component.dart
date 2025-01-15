@@ -33,6 +33,22 @@ class DrawerComponent extends StatelessWidget {
     this.useSingeGroup,
   });
 
+  /// Get the border radius based on the given group properties.
+  ///
+  /// This function returns a [BorderRadius] with the following rules:
+  ///
+  /// - If [useGroupTop] is true, return a [BorderRadius] with only the top
+  ///   left and right corners rounded.
+  ///
+  /// - If [useGroupBottom] is true, return a [BorderRadius] with only the
+  ///   bottom left and right corners rounded.
+  ///
+  /// - If [useSingeGroup] is true, return a [BorderRadius] with all corners
+  ///   rounded.
+  ///
+  /// - If [useGroupMiddle] is true, return a [BorderRadius] with no corners rounded.
+  ///
+  /// Otherwise, return a [BorderRadius] with all corners rounded.
   BorderRadius _getBorderRadius() {
     if (useGroupTop ?? false) {
       return BorderRadius.only(
@@ -53,6 +69,38 @@ class DrawerComponent extends StatelessWidget {
   }
 
   @override
+  /// Builds a [DrawerComponent].
+  ///
+  /// This function returns a [Container] widget with a margin and decoration
+  /// based on the given properties.
+  ///
+  /// The [Container] widget contains a [Column] widget with a
+  /// [InkWell] widget and a [SenseiDivider] widget if [useDivider] is true.
+  ///
+  /// The [InkWell] widget is configured with a rounded border with the
+  /// [SenseiConst.outBorderRadius] radius, and an [onTap] callback that calls
+  /// [onTapped] with the given [context].
+  ///
+  /// The [InkWell] widget has a [ListTile] widget as child, which is
+  /// configured with a horizontal title gap of 13 logical pixels, and a
+  /// content padding of 8 logical pixels on the left and right sides.
+  ///
+  /// The [ListTile] widget has a [Container] widget with a rounded border and
+  /// a transparent color as the leading widget.
+  ///
+  /// The [Container] widget has a [Icon] widget as child, which is configured
+  /// with the given [leadingIcon] and a size of [SenseiConst.iconSize].
+  ///
+  /// The [ListTile] widget has a [Text] widget as title, which is configured
+  /// with the given [title].
+  ///
+  /// The [ListTile] widget has a [Text] widget as subtitle, which is
+  /// configured with the given [subtitle] and an [overflow] of
+  /// [TextOverflow.ellipsis].
+  ///
+  /// The [ListTile] widget has the given [trailingWidget] as trailing widget.
+  ///
+  /// The [ListTile] widget is selected if [selected] is true.
   Widget build(BuildContext context) {
     return Container(
       margin: useMargin ?? false

@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   cupertino_icons: ^1.0.8
   google_nav_bar: ^5.0.7
   shared_preferences: ^2.3.3
@@ -18,9 +17,8 @@ dependencies:
   google_mlkit_barcode_scanning: ^0.13.0
   image_picker: ^1.1.2
   flutter_bloc: ^8.1.6
-  equatable: 2.0.5
+  equatable: ^2.0.5
   flutter_screenutil: ^5.9.3
-  http: ^1.2.2
   font_awesome_flutter: ^10.8.0
   flutter_localization: ^0.2.2
   cached_network_image: ^3.4.1
@@ -32,6 +30,7 @@ dependencies:
   flutter_native_splash: ^2.4.2
   flutter_launcher_icons: ^0.14.1
   cloud_firestore: ^5.6.0
+  intl_utils: ^2.8.8
 
 
 
@@ -44,15 +43,12 @@ dev_dependencies:
 
 
 flutter:
-
-
+  generate: true
   uses-material-design: true
-
   assets:
     - assets/icons/
     - assets/images/
-
-
+    
   fonts:
     - family: ArabicFont
       fonts:

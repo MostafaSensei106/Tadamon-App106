@@ -7,6 +7,20 @@ class BottomSheetHeader extends StatelessWidget {
   const BottomSheetHeader({super.key, required, required this.titile});
 
   @override
+  ///
+  /// A widget that displays a header in a bottom sheet.
+  ///
+  /// The header is a horizontal line with a title below it.
+  ///
+  /// The color of the line is the primary color with a dim (50%) opacity.
+  ///
+  /// The title is displayed in the [Theme.of(context).textTheme.titleMedium]
+  /// style.
+  ///
+  /// There is a 6 logical pixel gap between the title and the line.
+  ///
+  /// The header is centered horizontally.
+  ///
   Widget build(BuildContext context) {
     return Center(
       child: Column(

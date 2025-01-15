@@ -22,63 +22,82 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "About": MessageLookupByLibrary.simpleMessage("About"),
-        "AboutTadamon": MessageLookupByLibrary.simpleMessage("About Tadamon"),
-        "AppDescription": MessageLookupByLibrary.simpleMessage("Tadamon App"),
+        "About": MessageLookupByLibrary.simpleMessage("About the App"),
+        "AboutTadamon":
+            MessageLookupByLibrary.simpleMessage("About Tadamon App."),
+        "AppDescription": MessageLookupByLibrary.simpleMessage(
+            "Supporting Palestine is a humanitarian duty. Boycotting companies supporting the occupation is a voice for freedom."),
         "AppName": MessageLookupByLibrary.simpleMessage("Tadamon"),
-        "AppOffLine": MessageLookupByLibrary.simpleMessage("App OffLine"),
-        "AppOffLineMassage":
-            MessageLookupByLibrary.simpleMessage("App OffLine Massage"),
-        "AppOnLineMassage":
-            MessageLookupByLibrary.simpleMessage("App OnLine Massage"),
-        "ContactDev": MessageLookupByLibrary.simpleMessage("Contact Dev"),
+        "AppOffLine": MessageLookupByLibrary.simpleMessage("Tadamon Offline"),
+        "AppOffLineMassage": MessageLookupByLibrary.simpleMessage(
+            "App is offline. Please download the product list."),
+        "AppOnLineMassage": MessageLookupByLibrary.simpleMessage(
+            "App is running successfully."),
+        "ContactDev":
+            MessageLookupByLibrary.simpleMessage("Message from Developer"),
         "ContactDevMassage":
-            MessageLookupByLibrary.simpleMessage("Contact Dev Massage"),
+            MessageLookupByLibrary.simpleMessage("Follow me on social media."),
         "DarkTheme": MessageLookupByLibrary.simpleMessage("Dark Mode"),
-        "DevDonate": MessageLookupByLibrary.simpleMessage("Donate"),
-        "DevMassage": MessageLookupByLibrary.simpleMessage(
-            "Hi, I\'m Mostafa Mahmoud, I\'m a Flutter developer."),
-        "DevThx": MessageLookupByLibrary.simpleMessage("Thanks"),
+        "DevDonate":
+            MessageLookupByLibrary.simpleMessage("Support the Developer."),
+        "DevMassage":
+            MessageLookupByLibrary.simpleMessage("No message available."),
+        "DevThx": MessageLookupByLibrary.simpleMessage(
+            "Thank you for using Tadamon."),
         "Developer": MessageLookupByLibrary.simpleMessage("Developer"),
-        "Donate": MessageLookupByLibrary.simpleMessage("Donate"),
+        "Donate": MessageLookupByLibrary.simpleMessage("Donate for Gaza"),
         "EditText": MessageLookupByLibrary.simpleMessage("Edit Text"),
-        "EnableOnline": MessageLookupByLibrary.simpleMessage("EnableOnline"),
-        "EnableOnlineMassage":
-            MessageLookupByLibrary.simpleMessage("EnableOnline Massage"),
+        "EnableOnline":
+            MessageLookupByLibrary.simpleMessage("Download Product List"),
+        "EnableOnlineMassage": MessageLookupByLibrary.simpleMessage(
+            "Run the app without internet."),
         "FollowSystemTheme":
-            MessageLookupByLibrary.simpleMessage("Follow System Theme"),
+            MessageLookupByLibrary.simpleMessage("Match System Theme"),
+        "GithubTiket": MessageLookupByLibrary.simpleMessage("GitHub Ticket"),
+        "GithubTiketMassage": MessageLookupByLibrary.simpleMessage(
+            "Report an issue or suggest a new feature."),
         "Home": MessageLookupByLibrary.simpleMessage("Home"),
-        "HowToUse": MessageLookupByLibrary.simpleMessage("How To Use"),
+        "HowToUse": MessageLookupByLibrary.simpleMessage("FAQ"),
         "HowToUseMassage":
-            MessageLookupByLibrary.simpleMessage("How To Use Massage"),
+            MessageLookupByLibrary.simpleMessage("Learn how to use the app."),
         "ImageAnalysis": MessageLookupByLibrary.simpleMessage("Image Analysis"),
+        "LetastUpdate": MessageLookupByLibrary.simpleMessage("Latest Updates"),
+        "LetestUpdateMassage": MessageLookupByLibrary.simpleMessage(
+            "Check updates and changelog."),
         "LightTheme": MessageLookupByLibrary.simpleMessage("Light Mode"),
         "Logs": MessageLookupByLibrary.simpleMessage("Logs"),
         "MostafaMahmoud":
             MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
-        "PalatineMap": MessageLookupByLibrary.simpleMessage("Palatine Map"),
-        "ReportBug": MessageLookupByLibrary.simpleMessage("Report Bug"),
+        "PalatineMap": MessageLookupByLibrary.simpleMessage("Palestine Map"),
+        "ReadMe": MessageLookupByLibrary.simpleMessage("Read Me"),
+        "ReadMeMassage":
+            MessageLookupByLibrary.simpleMessage("App repository on GitHub."),
+        "ReportBug": MessageLookupByLibrary.simpleMessage("Report Issue"),
         "ReportBugMassage":
-            MessageLookupByLibrary.simpleMessage("Report Bug Massage"),
+            MessageLookupByLibrary.simpleMessage("Facing an issue? Report it."),
         "ReportProduct": MessageLookupByLibrary.simpleMessage("Report Product"),
         "ReportProductMassage":
-            MessageLookupByLibrary.simpleMessage("Report Product Massage"),
+            MessageLookupByLibrary.simpleMessage("Help us improve the app."),
         "ScanBarcode": MessageLookupByLibrary.simpleMessage("Scan Barcode"),
         "Search": MessageLookupByLibrary.simpleMessage("Search"),
         "SheetTitleProductInfo":
-            MessageLookupByLibrary.simpleMessage("Product Info"),
+            MessageLookupByLibrary.simpleMessage("Product Details"),
         "SwitchToDarkTheme":
             MessageLookupByLibrary.simpleMessage("Switch to Dark Mode"),
         "SwitchToLightTheme":
             MessageLookupByLibrary.simpleMessage("Switch to Light Mode"),
-        "SystemTheme": MessageLookupByLibrary.simpleMessage("System Theme"),
+        "SystemTheme": MessageLookupByLibrary.simpleMessage("App Theme Color"),
+        "TelegramChannel":
+            MessageLookupByLibrary.simpleMessage("Telegram Channel"),
+        "TelegramChannelMassage":
+            MessageLookupByLibrary.simpleMessage("Link to Telegram channel."),
         "Test": MessageLookupByLibrary.simpleMessage("Test"),
         "clearLogs": MessageLookupByLibrary.simpleMessage("Clear Logs"),
-        "clearLogsMassage":
-            MessageLookupByLibrary.simpleMessage("Clear Logs Massage"),
+        "clearLogsMassage": MessageLookupByLibrary.simpleMessage(
+            "Erase product logs in the app."),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "scanedProducts":
-            MessageLookupByLibrary.simpleMessage("Scaned Products"),
+            MessageLookupByLibrary.simpleMessage("Reviewed Products"),
         "supportedProducts":
             MessageLookupByLibrary.simpleMessage("Supported Products")
       };

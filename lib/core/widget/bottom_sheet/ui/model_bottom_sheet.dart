@@ -7,6 +7,18 @@ import 'package:tadamon/core/widget/bottom_sheet/widget/sheet_header.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class ModelBottomSheet {
+  ///
+  /// Shows a bottom sheet with the given [title] and [child] in the given
+  /// [context].
+  ///
+  /// The bottom sheet is scrollable, drags, uses the root navigator, and
+  /// is dismissible.
+  ///
+  /// The bottom sheet is clipped at the top with a corner radius of
+  /// 14 logical pixels.
+  ///
+  /// The [child] is displayed within a [ClipRRect] with a circular corner radius
+  /// of 14 logical pixels.
   static void show(BuildContext context, String title,
       {required Widget child}) {
     showModalBottomSheet<void>(
@@ -19,6 +31,32 @@ class ModelBottomSheet {
     );
   }
 
+  /// Builds a bottom sheet with the given [title] and [child].
+  ///
+  /// The bottom sheet is scrollable, has a top border radius of 14 logical
+  /// pixels, uses the root navigator, and is dismissible.
+  ///
+  /// The child is displayed within a [ClipRRect] with a circular corner radius
+  /// of 14 logical pixels.
+  ///
+  /// The [child] is wrapped in a [Column] with a [Padding] widget to add
+  /// horizontal padding and a [Wrap] widget to stack the title and the child
+  /// vertically.
+  ///
+  /// The [child] is also wrapped in a [SingleChildScrollView] to make the
+  /// bottom sheet scrollable.
+  ///
+  /// The [child] is displayed at the bottom of the screen with a padding of
+  /// 16 logical pixels.
+  ///
+  /// The [child] is also padded with a [Padding] widget to add a bottom padding
+  /// of 16 logical pixels.
+  ///
+  /// The close button is displayed at the bottom of the screen with a padding
+  /// of 16 logical pixels.
+  ///
+  /// The close button is also padded with a [Padding] widget to add a bottom
+  /// padding of 16 logical pixels.
   static Widget _buildBottomSheet(
       BuildContext context, String title, Widget child) {
     return ClipRRect(
@@ -51,6 +89,12 @@ class ModelBottomSheet {
       ),
     );
   }
+
+  /// Returns a [Row] widget containing a close [TextButton].
+  ///
+  /// The button is styled with a rounded rectangle border and shrinks its
+  /// tap target size. When pressed, the button triggers a haptic feedback
+  /// vibration and closes the current context by popping the navigator stack.
 
   static Widget _buildCloseButton(BuildContext context) {
     return Row(

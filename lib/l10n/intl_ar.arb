@@ -2,65 +2,71 @@
   "@@locale": "ar",
 
   "AppName": "تضامن",
-  "AppDescription": "دعم القضية الفلسطينية واجب إنساني، ومقاطعة الشركات الداعمة للاحتلال صوت للحرية.",
+  "AppDescription": "دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.",
 
-
-  "Home": "الرئيسية",
+  "Home": "الرئيسية",
   "Search": "بحث",
-  "Logs": "السجل",
+  "Logs": "السجلات",
 
-
-  "ScanBarcode": "باركود",
-  "ImageAnalysis": "تحليل الصورة",
-  "EditText": "تحرير النص",
+  "ScanBarcode": "فحص الباركود",
+  "ImageAnalysis": "تحليل الصور",
+  "EditText": "تعديل النص",
   "PalatineMap": "خريطة فلسطين",
-  "Donate": "تبرع لأجل غزة",
+  "Donate": "تبرع لغزة",
 
-  "scanedProducts": "المنتجات المراجعة",
+  "scanedProducts": "المنتجات التي تمت مراجعتها",
   "supportedProducts": "المنتجات المدعومة",
 
-  "SystemTheme": "لون سمة النظام",
-  "FollowSystemTheme": "تتبع لون سمة النظام",
-  "DarkTheme": "النمط الداكن",
-  "LightTheme": "النمط الفاتح",
-  "SwitchToDarkTheme": "تبديل إلى النمط الداكن",
-  "SwitchToLightTheme": "تبديل إلى النمط الفاتح",
+  "SystemTheme": "لون واجهة التطبيق",
+  "FollowSystemTheme": "مطابقة لون النظام",
+  "DarkTheme": "الوضع الداكن",
+  "LightTheme": "الوضع الفاتح",
+  "SwitchToDarkTheme": "التبديل إلى الوضع الداكن",
+  "SwitchToLightTheme": "التبديل إلى الوضع الفاتح",
 
-  "AppOffLine": "تضامن بدون انترنت",
-  "AppOffLineMassage": "لا يعمل، قم بتحميل قائمة المنتجات",
-  "AppOnLineMassage": "يعمل بنجاح",
+  "AppOffLine": "تضامن دون إنترنت",
+  "AppOffLineMassage": "التطبيق غير متصل. يرجى تحميل قائمة المنتجات.",
+  "AppOnLineMassage": "التطبيق يعمل بنجاح.",
 
   "EnableOnline": "تحميل قائمة المنتجات",
-  "EnableOnlineMassage": "تشغيل التطبيق بدون إتصال بالانترنت ",
+  "EnableOnlineMassage": "تشغيل التطبيق بدون إنترنت.",
 
-  "clearLogs": "تنظيف السجلات",
-  "clearLogsMassage": "مسح سجل المنتجات الخاصة بالتطبيق",
+  "clearLogs": "حذف السجلات",
+  "clearLogsMassage": "مسح سجلات المنتجات في التطبيق.",
 
-  "HowToUse": "الاسئلة الشائعة",
-  "HowToUseMassage": "كيفية استخدام التطبيق",
+  "HowToUse": "الأسئلة الشائعة",
+  "HowToUseMassage": "تعرف على طريقة استخدام التطبيق.",
 
-  "ReportProduct": "أبلاغ عن المنتج",
-  "ReportProductMassage": "ساعد في تحسين التطبيق",
+  "ReportProduct": "الإبلاغ عن منتج",
+  "ReportProductMassage": "ساعدنا في تحسين التطبيق.",
 
-
-  "ReportBug": "ابلاغ عن مشكلة",
-  "ReportBugMassage": "وجهت مشكلة أبلاغ عنها",
   "Test": "تجريبي",
 
-
-  "SheetTitleProductInfo": "معلومات المنتج",
+  "SheetTitleProductInfo": "تفاصيل المنتج",
   "Developer": "المطور",
   "MostafaMahmoud": "Mostafa Mahmoud",
 
+  "ReadMe": "ReadMe",
+  "ReadMeMassage": "رابط إلى مستودع التطبيق على جيت هاب.",
 
-  "About": "معلومات التطبيق",
-  "AboutTadamon": "حول تضامن",
+  "LetastUpdate": "آخر التحديثات",
+  "LetestUpdateMassage": "اطلع على التحديثات وسجل التغييرات.",
 
+  "GithubTiket": "تذكرة على جيت هاب",
+  "GithubTiketMassage": "الإبلاغ عن خطأ أو اقتراح ميزة جديدة.",
+
+  "TelegramChannel": "قناة تلغرام",
+  "TelegramChannelMassage": "رابط إلى قناة تلغرام.",
+
+  "About": "معلومات عن التطبيق",
+  "AboutTadamon": "حول تطبيق تضامن.",
 
   "ContactDev": "رسالة من المطور",
-  "DevMassage": "لا يوجد رسالة من المطور",
-  "DevThx": "شكر لك على استخدام تطبيق تضامن U_U.",
-  "DevDonate": "دعم المطور",
-  "ContactDevMassage": "تابعني علي مواقع التواصل الاجتماعي",
-  "close": "اغلاق"
+  "DevMassage": "لا توجد رسالة حالياً.",
+  "DevThx": "شكراً لاستخدام تطبيق تضامن.",
+  "DevDonate": "ادعم المطور.",
+  "ContactDevMassage": "تابعني على مواقع التواصل الاجتماعي.",
+  "close": "إغلاق"
+
+  
 }

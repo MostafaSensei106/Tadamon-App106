@@ -31,13 +31,13 @@ class TadamonApp extends StatelessWidget {
           builder: (context, themeState) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'تضامن',
+              title: 'Tadamon',
               theme: lightTheme,
               darkTheme: darkTheme,
               themeMode: themeState.themeMode,
               initialRoute: 'Routes.mainPage',
               onGenerateRoute: appRouter.generateRoute,
-              locale: const Locale('ar'),
+              locale: const Locale('ar','EG'),
               localizationsDelegates: const [
                 S.delegate,
                 GlobalMaterialLocalizations.delegate,

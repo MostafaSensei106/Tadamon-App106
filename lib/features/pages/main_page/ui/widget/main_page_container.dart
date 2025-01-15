@@ -14,6 +14,12 @@ class MainPageContainer extends StatelessWidget {
   });
 
   @override
+  /// A PageView widget that displays the three main pages of the app: Home, Search, and Logs.
+  /// The controller is used to manage the page state, and the onPageChanged callback is used
+  /// to notify the parent widget when the page changes.
+  /// When the page changes, the focus is removed from any TextField that may have been active.
+  /// This prevents the keyboard from showing when the user navigates away from a page that contains
+  /// a TextField.
   Widget build(BuildContext context) {
     return PageView(
       controller: pageController,

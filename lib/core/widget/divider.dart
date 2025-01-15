@@ -4,6 +4,9 @@ class SenseiDivider extends StatelessWidget {
   const SenseiDivider({super.key});
 
   @override
+  /// Returns a [Divider] widget with a thickness, height, indent, and endIndent of
+  /// 0, and a color of [Theme.of(context).colorScheme.outline] with an opacity
+  /// of 0.8.
   Widget build(BuildContext context) {
     return Divider(
       thickness: 0,

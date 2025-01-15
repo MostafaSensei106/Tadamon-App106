@@ -9,6 +9,11 @@ class AppBarTitle extends StatelessWidget {
   final String title;
 
   @override
+  /// Returns an [AnimatedSwitcher] which displays the [title] within a [Text]
+  /// widget. When the [title] changes, the widget is animated out by sliding
+  /// upwards and fading out, before the new widget is animated in by sliding
+  /// downwards and fading in. The animation is curve is a ease-in-out curve.
+  ///
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 600),

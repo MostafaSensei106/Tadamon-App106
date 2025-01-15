@@ -10,6 +10,12 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
+  /// A stateless widget that builds the home page of the app.
+  ///
+  /// It is a [SingleChildScrollView] with a [SafeArea] as child. The
+  /// [SingleChildScrollView] has a [Padding] widget as child, which
+  /// contains a [Column] widget with the [HomeTip], [ImageNews],
+  /// [HomeAppTools], and [ItemsCounter] widgets as children.
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(

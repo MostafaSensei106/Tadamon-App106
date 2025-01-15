@@ -21,19 +21,29 @@ class ImageNewsState extends State<ImageNews> {
   late Timer _autoSlideTimer;
 
   final List<String> _imageUrls = [
-    "https://c4.wallpaperflare.com/wallpaper/843/56/876/night-artwork-futuristic-city-cyberpunk-wallpaper-preview.jpg",
-    "https://c4.wallpaperflare.com/wallpaper/682/435/620/naruto-anime-uzumaki-naruto-jiraiya-naruto-shippuuden-hd-wallpaper-preview.jpg",
-    "https://c4.wallpaperflare.com/wallpaper/966/951/802/digital-digital-art-artwork-illustration-fantasy-art-hd-wallpaper-preview.jpg",
-    "https://c4.wallpaperflare.com/wallpaper/383/154/335/car-khyzyl-saleem-mazda-rx-7-simple-background-wallpaper-preview.jpg",
+    'https://c1.wallpaperflare.com/preview/571/220/840/jerusalem-dome-of-the-rock-israel-temple-mount.jpg'   
+
   ];
 
   int _currentPage = 0;
 
   @override
+
+  /// Initializes the state of the widget.
+  ///
+  /// This is called when the widget is inserted into the tree.
+  ///
+  /// It initializes the page controller and starts the auto slide timer.
   void initState() {
     super.initState();
     _initializeSlider();
   }
+
+  /// Initializes the page controller and sets up the automatic image slider.
+  ///
+  /// This function creates a [PageController] starting at the initial page and
+  /// starts an auto-slide timer. It also adds a listener to the page controller
+  /// to update the current page state when the page changes.
 
   void _initializeSlider() {
     _pageController = PageController(initialPage: 0);
@@ -47,6 +57,14 @@ class ImageNewsState extends State<ImageNews> {
     });
   }
 
+  /// Starts the automatic image slider.
+  ///
+  /// This function creates a periodic timer that triggers the next page to be
+  /// displayed every [_autoSlideDuration]. When the last page is displayed, the
+  /// timer triggers the first page to be shown again. The page transition is
+  /// animated with a duration of [_slideTransitionDuration] and a curve of
+  /// [Curves.easeInOut].
+  ///
   void _startAutoSlide() {
     _autoSlideTimer = Timer.periodic(_autoSlideDuration, (_) {
       if (_currentPage < _imageUrls.length - 1) {
@@ -64,6 +82,23 @@ class ImageNewsState extends State<ImageNews> {
     });
   }
 
+  /// Returns a [CachedNetworkImage] widget that displays the image at the given
+  /// [imageUrl].
+  ///
+  /// The widget is configured with a [BoxFit.cover] fit, a progress indicator
+  /// that shows the download progress, a medium filter quality, and an error
+  /// widget that displays an error message if the image fails to load.
+  ///
+  /// The error widget is a container with a color of
+  /// [Theme.of(context).colorScheme.surfaceContainerHigh], and a child of a
+  /// column with an [Icon] and a [Text] widget. The icon is an
+  /// [Icons.image_not_supported_outlined] icon with a color of
+  /// [Theme.of(context).colorScheme.error] and a size of [SenseiConst.iconSize].
+  /// The text is a string that says " " (Failed to download the image).
+  ///
+  /// The [useOldImageOnUrlChange] property is set to true, so that the same
+  /// image is used when the URL changes. This is useful if the image is updated
+  /// without changing its URL.
   Widget _buildImageSlide(String imageUrl) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
@@ -86,7 +121,6 @@ class ImageNewsState extends State<ImageNews> {
         ),
       ),
       useOldImageOnUrlChange: true,
-      
     );
   }
 

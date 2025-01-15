@@ -15,6 +15,31 @@ class GoogleNavBar extends StatelessWidget {
   });
 
   @override
+  /// Returns a [Padding] widget with a [Container] widget as child.
+  ///
+  /// The [Container] widget has a rounded border with the
+  /// [SenseiConst.outBorderRadius] radius, and a background color of
+  /// [Theme.of(context).colorScheme.surfaceContainer]. The [Container] widget
+  /// also has a thin border with a color of
+  /// [Theme.of(context).colorScheme.outline] with an alpha of 0.2.
+  ///
+  /// The [Container] widget has a [Padding] widget as child, which has a
+  /// horizontal padding of [SenseiConst.padding.w] and a vertical padding of
+  /// [SenseiConst.padding.w].
+  ///
+  /// The [Padding] widget has a [GNav] widget as child, which is configured
+  /// with the given properties.
+  ///
+  /// The [GNav] widget has an [iconSize] of [SenseiConst.iconSize], a
+  /// [tabBackgroundColor] of [Theme.of(context).colorScheme.primaryContainer],
+  /// an [activeColor] of [Theme.of(context).colorScheme.onPrimaryContainer], a
+  /// [color] of [Theme.of(context).colorScheme.onSurface], a
+  /// [tabBorderRadius] of [SenseiConst.inBorderRadius.r], and a [curve] of
+  /// [Curves.easeIn].
+  ///
+  /// The [GNav] widget has three tabs with icons and text, which are
+  /// configured with the given [currentIndex] and [onItemTapped] properties.
+  ///
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Padding(

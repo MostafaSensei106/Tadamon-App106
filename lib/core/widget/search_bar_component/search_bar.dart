@@ -7,6 +7,28 @@ class SenseiSearchBar extends StatelessWidget {
   const SenseiSearchBar({super.key});
 
   @override
+  /// A horizontal row containing a search bar and a dropdown menu.
+  ///
+  /// The search bar has a rounded border with a radius of
+  /// [SenseiConst.outBorderRadius], and a background color of
+  /// [Theme.of(context).colorScheme.surfaceContainer]. The search bar's
+  /// [onChanged] property is set to a no-op, and its [onSubmitted] property is
+  /// also set to a no-op. The search bar's [onTap] property is set to
+  /// [HapticFeedback.vibrate].
+  ///
+  /// The dropdown menu has a rounded border with a radius of
+  /// [SenseiConst.outBorderRadius], and a background color of
+  /// [Theme.of(context).colorScheme.surfaceContainer]. The dropdown menu's
+  /// [elevation] property is set to 0, and its [enableFeedback] property is set
+  /// to true. The dropdown menu's [icon] property is set to an
+  /// [Icons.arrow_drop_down_rounded] icon, and its [underline] property is set
+  /// to [Container()]. The dropdown menu's [onChanged] property is set to a
+  /// no-op. The dropdown menu's [items] property is set to a list of
+  ///
+  /// The padding of the row is set to
+  /// [EdgeInsets.only(bottom: SenseiConst.padding.h)], and the width of the
+  /// space between the search bar and the dropdown menu is set to 6 logical
+  /// pixels.
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: SenseiConst.padding.h),

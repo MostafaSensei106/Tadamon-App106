@@ -21,11 +21,12 @@ class TextFiledComponent extends StatelessWidget {
       this.isRequired = false,
       this.isNumeric = false});
 
-  /// Validates the input [value] based on the requirements of the text field.
-  ///
-  /// Returns the [errorText] if the field is required and the input is null or empty.
-  /// Returns an error message if the field should be numeric and the input is not a valid number.
-  /// Returns null if the input passes validation.
+/// Validates the input value based on the component's configuration.
+///
+/// Returns the [errorText] if the field is required and the value is null or empty.
+/// If the field is numeric, returns an error message if the value is not a valid number.
+/// Returns null if the value passes all validations.
+
   String? _validate(String? value) {
     if (isRequired && (value == null || value.isNotEmpty)) {
       return errorText;
@@ -40,19 +41,25 @@ class TextFiledComponent extends StatelessWidget {
 
   @override
 
-  /// Returns a [TextFormField] widget with the given properties.
-  ///
-  /// The text field is validated with the [_validate] function, which checks if the
-  /// input is not null or empty if the field is required, and if the input is a valid
-  /// number if the field should be numeric.
-  ///
-  /// When the user taps outside of the text field, the focus is lost.
-  ///
-  /// The text field is filled with the [Theme.of(context).colorScheme.surfaceContainer]
-  /// color and has a rounded border with the [SenseiConst.inBorderRadius] radius.
-  ///
-  /// The cursor color is set to the [Theme.of(context).colorScheme.primary] color.
-  ///
+
+  /// Builds a [TextFormField] based on the component's configuration.
+  //
+  /// The input value is validated based on the component's configuration.
+  /// If the field is required and the value is null or empty, an error message is displayed.
+  /// If the field is numeric, an error message is displayed if the value is not a valid number.
+  //
+  /// If the component is numeric, the [keyboardType] is set to [TextInputType.number],
+  /// otherwise it is set to [TextInputType.text].
+  //
+  /// When the user taps outside the field, the focus is removed from the field.
+  //
+  /// The [prefixIcon] is used to display an icon based on the [icon] argument.
+  /// The [suffixIcon] is used to display a suffix icon if provided.
+  //
+  /// The [decoration] is used to customize the appearance of the field.
+  /// The [filled] property is set to true, and the [fillColor] is set to the surface color of the theme.
+  /// The [focusedBorder] is set to an [OutlineInputBorder] with a primary color border and a width of 0.2.
+  /// The [border] is set to an [OutlineInputBorder] with no border and a circular border radius of [SenseiConst.inBorderRadius.r].
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,

@@ -13,6 +13,10 @@ class ThemeState extends Equatable {
   @override
   List<Object?> get props => [isDark, themeMode];
 
+  /// Creates a new [ThemeState] with the given values.
+  //
+  /// If a value is not provided, the corresponding value from this [ThemeState]
+  /// is used instead.
   ThemeState copyWith({
     bool? isDark,
     ThemeMode? themeMode,

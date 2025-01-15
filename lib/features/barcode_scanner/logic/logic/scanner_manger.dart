@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
-import 'package:tadamon/core/widget/app_toast/app_toast.dart';
+import 'package:tadamon/features/app_toast/app_toast.dart';
 import 'package:tadamon/generated/l10n.dart';
 import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart';
 
 class ScannerManager {
+
+
   /// Scans the barcode using the default camera.
+  //
+  /// Shows a scanner overlay with a line color of yellow and a cancel button
+  /// with the text translated as "close".
+  //
+  /// If the scan is successful, returns the scanned barcode as a string.
+  /// If the scan failed or was cancelled, returns null.
   ///
-  /// The function returns null if an error occurs or if the user cancels the scan.
-  /// Otherwise, it returns the scanned barcode as a string.
-  ///
-  /// The function also shows an error toast if an error occurs.
-  /// The error message is 'Error occurred while scanning the barcode: [error message]'.
-  ///
+  /// If an error occurred while scanning the barcode, shows an error toast
+  /// with the error message.
   Future<String?> scanBarcode(BuildContext context) async {
     try {
       final String? barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
@@ -37,18 +41,19 @@ class ScannerManager {
     }
   }
 
-  /// Scans the barcode from the selected image.
+
+
+  /// Scans a barcode from an image selected from the device's gallery.
   ///
-  /// This method takes a BuildContext as a parameter and returns the scanned
-  /// barcode as a String. If the user cancels the image selection, or if an
-  /// error occurs while scanning the image, the method returns null.
+  /// This method prompts the user to select an image from the gallery. It then
+  /// attempts to extract a barcode from the selected image using image analysis.
+  /// If a barcode is successfully extracted, the method returns the barcode as a
+  /// string. If the image is not selected, or if no barcode is found in the
+  /// image, the method returns null.
   ///
-  /// The method displays an error toast if an error occurs while scanning the
-  /// image. The error message is displayed in the following format: "Error
-  /// occurred while scanning the image: [error message]".
-  ///
-  /// The method does not throw any errors. If an error occurs, the method
-  /// displays an error toast and returns null.
+  /// If an error occurs during image selection or barcode extraction, an error
+  /// toast is displayed with the error message, and the method returns null.
+
   Future<String?> imageAnalysisScan(BuildContext context) async {
     try {
       final XFile? image = await _pickImage();
@@ -68,18 +73,17 @@ class ScannerManager {
     }
   }
 
-  /// Picks an image from the device's gallery and returns the image as an XFile.
+  
+  
+  /// Picks an image from the device's gallery.
   ///
-  /// This method takes no parameters and returns an XFile containing the picked
-  /// image. If the user cancels the image selection, or if an error occurs while
-  /// picking the image, the method returns null.
+  /// This method uses the [ImagePicker] package to prompt the user to select an
+  /// image from the device's gallery. The selected image is then returned as a
+  /// [XFile] object. If the user does not select an image, the method returns
+  /// null.
   ///
-  /// The method displays an error toast if an error occurs while picking the
-  /// image. The error message is displayed in the following format: "Error
-  /// occurred while picking the image: [error message]".
-  ///
-  /// The method does not throw any errors. If an error occurs, the method
-  /// displays an error toast and returns null.
+  /// If an error occurs during image selection, an error toast is displayed with
+  /// the error message, and the method returns null.
   Future<XFile?> _pickImage() async {
     try {
       final ImagePicker imagePicker = ImagePicker();
@@ -94,30 +98,25 @@ class ScannerManager {
     }
   }
 
-  /// Extracts the barcode from the given image.
-  //
-  /// This method takes an image in the form of an XFile and uses the Google ML
-  /// Kit's BarcodeScanner to detect the barcode in the image. If the barcode is
-  /// successfully detected, the method returns the barcode's raw value. If the
-  /// image does not contain a barcode, or if the method encounters an error
-  /// while processing the image, the method returns null.
-  //
-  /// The method displays an error toast if an error occurs while processing the
-  /// image. The error message is displayed in the following format: "Error
-  /// occurred while processing the image: [error message]".
-  //
-  /// The method does not throw any errors. If an error occurs, the method
-  /// displays an error toast and returns null.
+
+
+
+  /// Extracts a barcode from the provided image file.
+  ///
+  /// This method uses the Google ML Kit barcode scanner to extract the barcode
+  /// from the image. If a barcode is found, the method returns the barcode as a
+  /// string. If no barcode is found, the method returns null.
+  ///
+  /// If an error occurs while processing the image, an error toast is displayed
+  /// with the error message, and the method returns null.
   Future<String?> _getBarcodeFromImage(XFile image) async {
     try {
       final InputImage inputImage = InputImage.fromFilePath(image.path);
       final BarcodeScanner barcodeScanner = BarcodeScanner();
       final List<Barcode> barcodes = await barcodeScanner.processImage(inputImage);
-
       if (barcodes.isEmpty) {
         return null;
       }
-
       return barcodes.first.rawValue;
     } catch (e) {
       AppToast.showErrorToast('Error occurred while processing the image: ${e.toString()}');

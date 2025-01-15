@@ -17,6 +17,20 @@ class CounterItemsComponent extends StatelessWidget {
   });
 
   @override
+  /// A widget that displays a [Container] with a rounded border and a
+  /// [Column] inside it. The [Column] contains a [Container] with a
+  /// rounded border and an [Icon] inside it, a [Text] widget with the
+  /// given [title], and a [FutureBuilder] widget that displays a
+  /// [CircularProgressIndicator] until the [getCounter] function is
+  /// complete. Once the [getCounter] function is complete, the
+  /// [FutureBuilder] widget displays the result of the [getCounter]
+  /// function as a [Text] widget. If the [getCounter] function fails,
+  /// the [FutureBuilder] widget displays an error message as a [Text]
+  /// widget. If the [counterStream] is not null, the [FutureBuilder]
+  /// widget also displays the result of the [counterStream] as a
+  /// [Text] widget, with a tween animation that animates the value
+  /// from 0 to the result of the [counterStream] over a period of 1
+  /// second.
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(SenseiConst.padding.w),

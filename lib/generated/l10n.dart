@@ -60,10 +60,10 @@ class S {
     );
   }
 
-  /// `Tadamon App`
+  /// `Supporting Palestine is a humanitarian duty. Boycotting companies supporting the occupation is a voice for freedom.`
   String get AppDescription {
     return Intl.message(
-      'Tadamon App',
+      'Supporting Palestine is a humanitarian duty. Boycotting companies supporting the occupation is a voice for freedom.',
       name: 'AppDescription',
       desc: '',
       args: [],
@@ -130,30 +130,30 @@ class S {
     );
   }
 
-  /// `Palatine Map`
+  /// `Palestine Map`
   String get PalatineMap {
     return Intl.message(
-      'Palatine Map',
+      'Palestine Map',
       name: 'PalatineMap',
       desc: '',
       args: [],
     );
   }
 
-  /// `Donate`
+  /// `Donate for Gaza`
   String get Donate {
     return Intl.message(
-      'Donate',
+      'Donate for Gaza',
       name: 'Donate',
       desc: '',
       args: [],
     );
   }
 
-  /// `Scaned Products`
+  /// `Reviewed Products`
   String get scanedProducts {
     return Intl.message(
-      'Scaned Products',
+      'Reviewed Products',
       name: 'scanedProducts',
       desc: '',
       args: [],
@@ -170,20 +170,20 @@ class S {
     );
   }
 
-  /// `System Theme`
+  /// `App Theme Color`
   String get SystemTheme {
     return Intl.message(
-      'System Theme',
+      'App Theme Color',
       name: 'SystemTheme',
       desc: '',
       args: [],
     );
   }
 
-  /// `Follow System Theme`
+  /// `Match System Theme`
   String get FollowSystemTheme {
     return Intl.message(
-      'Follow System Theme',
+      'Match System Theme',
       name: 'FollowSystemTheme',
       desc: '',
       args: [],
@@ -230,50 +230,50 @@ class S {
     );
   }
 
-  /// `App OffLine`
+  /// `Tadamon Offline`
   String get AppOffLine {
     return Intl.message(
-      'App OffLine',
+      'Tadamon Offline',
       name: 'AppOffLine',
       desc: '',
       args: [],
     );
   }
 
-  /// `App OffLine Massage`
+  /// `App is offline. Please download the product list.`
   String get AppOffLineMassage {
     return Intl.message(
-      'App OffLine Massage',
+      'App is offline. Please download the product list.',
       name: 'AppOffLineMassage',
       desc: '',
       args: [],
     );
   }
 
-  /// `App OnLine Massage`
+  /// `App is running successfully.`
   String get AppOnLineMassage {
     return Intl.message(
-      'App OnLine Massage',
+      'App is running successfully.',
       name: 'AppOnLineMassage',
       desc: '',
       args: [],
     );
   }
 
-  /// `EnableOnline`
+  /// `Download Product List`
   String get EnableOnline {
     return Intl.message(
-      'EnableOnline',
+      'Download Product List',
       name: 'EnableOnline',
       desc: '',
       args: [],
     );
   }
 
-  /// `EnableOnline Massage`
+  /// `Run the app without internet.`
   String get EnableOnlineMassage {
     return Intl.message(
-      'EnableOnline Massage',
+      'Run the app without internet.',
       name: 'EnableOnlineMassage',
       desc: '',
       args: [],
@@ -290,30 +290,30 @@ class S {
     );
   }
 
-  /// `Clear Logs Massage`
+  /// `Erase product logs in the app.`
   String get clearLogsMassage {
     return Intl.message(
-      'Clear Logs Massage',
+      'Erase product logs in the app.',
       name: 'clearLogsMassage',
       desc: '',
       args: [],
     );
   }
 
-  /// `How To Use`
+  /// `FAQ`
   String get HowToUse {
     return Intl.message(
-      'How To Use',
+      'FAQ',
       name: 'HowToUse',
       desc: '',
       args: [],
     );
   }
 
-  /// `How To Use Massage`
+  /// `Learn how to use the app.`
   String get HowToUseMassage {
     return Intl.message(
-      'How To Use Massage',
+      'Learn how to use the app.',
       name: 'HowToUseMassage',
       desc: '',
       args: [],
@@ -330,30 +330,30 @@ class S {
     );
   }
 
-  /// `Report Product Massage`
+  /// `Help us improve the app.`
   String get ReportProductMassage {
     return Intl.message(
-      'Report Product Massage',
+      'Help us improve the app.',
       name: 'ReportProductMassage',
       desc: '',
       args: [],
     );
   }
 
-  /// `Report Bug`
+  /// `Report Issue`
   String get ReportBug {
     return Intl.message(
-      'Report Bug',
+      'Report Issue',
       name: 'ReportBug',
       desc: '',
       args: [],
     );
   }
 
-  /// `Report Bug Massage`
+  /// `Facing an issue? Report it.`
   String get ReportBugMassage {
     return Intl.message(
-      'Report Bug Massage',
+      'Facing an issue? Report it.',
       name: 'ReportBugMassage',
       desc: '',
       args: [],
@@ -370,10 +370,10 @@ class S {
     );
   }
 
-  /// `Product Info`
+  /// `Product Details`
   String get SheetTitleProductInfo {
     return Intl.message(
-      'Product Info',
+      'Product Details',
       name: 'SheetTitleProductInfo',
       desc: '',
       args: [],
@@ -400,70 +400,150 @@ class S {
     );
   }
 
-  /// `About`
+  /// `Read Me`
+  String get ReadMe {
+    return Intl.message(
+      'Read Me',
+      name: 'ReadMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App repository on GitHub.`
+  String get ReadMeMassage {
+    return Intl.message(
+      'App repository on GitHub.',
+      name: 'ReadMeMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Latest Updates`
+  String get LetastUpdate {
+    return Intl.message(
+      'Latest Updates',
+      name: 'LetastUpdate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check updates and changelog.`
+  String get LetestUpdateMassage {
+    return Intl.message(
+      'Check updates and changelog.',
+      name: 'LetestUpdateMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `GitHub Ticket`
+  String get GithubTiket {
+    return Intl.message(
+      'GitHub Ticket',
+      name: 'GithubTiket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report an issue or suggest a new feature.`
+  String get GithubTiketMassage {
+    return Intl.message(
+      'Report an issue or suggest a new feature.',
+      name: 'GithubTiketMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Telegram Channel`
+  String get TelegramChannel {
+    return Intl.message(
+      'Telegram Channel',
+      name: 'TelegramChannel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Link to Telegram channel.`
+  String get TelegramChannelMassage {
+    return Intl.message(
+      'Link to Telegram channel.',
+      name: 'TelegramChannelMassage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About the App`
   String get About {
     return Intl.message(
-      'About',
+      'About the App',
       name: 'About',
       desc: '',
       args: [],
     );
   }
 
-  /// `About Tadamon`
+  /// `About Tadamon App.`
   String get AboutTadamon {
     return Intl.message(
-      'About Tadamon',
+      'About Tadamon App.',
       name: 'AboutTadamon',
       desc: '',
       args: [],
     );
   }
 
-  /// `Contact Dev`
+  /// `Message from Developer`
   String get ContactDev {
     return Intl.message(
-      'Contact Dev',
+      'Message from Developer',
       name: 'ContactDev',
       desc: '',
       args: [],
     );
   }
 
-  /// `Hi, I'm Mostafa Mahmoud, I'm a Flutter developer.`
+  /// `No message available.`
   String get DevMassage {
     return Intl.message(
-      'Hi, I\'m Mostafa Mahmoud, I\'m a Flutter developer.',
+      'No message available.',
       name: 'DevMassage',
       desc: '',
       args: [],
     );
   }
 
-  /// `Thanks`
+  /// `Thank you for using Tadamon.`
   String get DevThx {
     return Intl.message(
-      'Thanks',
+      'Thank you for using Tadamon.',
       name: 'DevThx',
       desc: '',
       args: [],
     );
   }
 
-  /// `Donate`
+  /// `Support the Developer.`
   String get DevDonate {
     return Intl.message(
-      'Donate',
+      'Support the Developer.',
       name: 'DevDonate',
       desc: '',
       args: [],
     );
   }
 
-  /// `Contact Dev Massage`
+  /// `Follow me on social media.`
   String get ContactDevMassage {
     return Intl.message(
-      'Contact Dev Massage',
+      'Follow me on social media.',
       name: 'ContactDevMassage',
       desc: '',
       args: [],

@@ -2,67 +2,73 @@
   "@@locale": "en",
 
   "AppName": "Tadamon",
-  "AppDescription": "Tadamon App",
-
+  "AppDescription": "Supporting Palestine is a humanitarian duty. Boycotting companies supporting the occupation is a voice for freedom.",
 
   "Home": "Home",
   "Search": "Search",
   "Logs": "Logs",
 
-
   "ScanBarcode": "Scan Barcode",
   "ImageAnalysis": "Image Analysis",
   "EditText": "Edit Text",
-  "PalatineMap": "Palatine Map",
-  "Donate": "Donate",
+  "PalatineMap": "Palestine Map",
+  "Donate": "Donate for Gaza",
 
-  
-  "scanedProducts": "Scaned Products",
+  "scanedProducts": "Reviewed Products",
   "supportedProducts": "Supported Products",
 
-
-  "SystemTheme": "System Theme",
-  "FollowSystemTheme": "Follow System Theme",
+  "SystemTheme": "App Theme Color",
+  "FollowSystemTheme": "Match System Theme",
   "DarkTheme": "Dark Mode",
   "LightTheme": "Light Mode",
   "SwitchToDarkTheme": "Switch to Dark Mode",
   "SwitchToLightTheme": "Switch to Light Mode",
 
-  "AppOffLine": "App OffLine",
-  "AppOffLineMassage": "App OffLine Massage",
-  "AppOnLineMassage": "App OnLine Massage",
-  "EnableOnline": "EnableOnline",
-  "EnableOnlineMassage": "EnableOnline Massage",
+  "AppOffLine": "Tadamon Offline",
+  "AppOffLineMassage": "App is offline. Please download the product list.",
+  "AppOnLineMassage": "App is running successfully.",
+
+  "EnableOnline": "Download Product List",
+  "EnableOnlineMassage": "Run the app without internet.",
 
   "clearLogs": "Clear Logs",
-  "clearLogsMassage": "Clear Logs Massage",
+  "clearLogsMassage": "Erase product logs in the app.",
 
-  "HowToUse": "How To Use",
-  "HowToUseMassage": "How To Use Massage",
+  "HowToUse": "FAQ",
+  "HowToUseMassage": "Learn how to use the app.",
 
   "ReportProduct": "Report Product",
-  "ReportProductMassage": "Report Product Massage",
+  "ReportProductMassage": "Help us improve the app.",
 
-  "ReportBug": "Report Bug",
-  "ReportBugMassage": "Report Bug Massage",
-
+  "ReportBug": "Report Issue",
+  "ReportBugMassage": "Facing an issue? Report it.",
 
   "Test": "Test",
 
-  "SheetTitleProductInfo": "Product Info",
-
-
+  "SheetTitleProductInfo": "Product Details",
   "Developer": "Developer",
   "MostafaMahmoud": "Mostafa Mahmoud",
 
+  "ReadMe": "Read Me",
+  "ReadMeMassage": "App repository on GitHub.",
 
-  "About": "About",
-  "AboutTadamon": "About Tadamon",
+  "LetastUpdate": "Latest Updates",
+  "LetestUpdateMassage": "Check updates and changelog.",
 
-  "ContactDev": "Contact Dev",
-  "DevMassage":"Hi, I'm Mostafa Mahmoud, I'm a Flutter developer.",
-  "DevThx": "Thanks",
-  "DevDonate": "Donate",
-  "ContactDevMassage": "Contact Dev Massage",
+  "GithubTiket": "GitHub Ticket",
+  "GithubTiketMassage": "Report an issue or suggest a new feature.",
+
+  "TelegramChannel": "Telegram Channel",
+  "TelegramChannelMassage": "Link to Telegram channel.",
+
+  "About": "About the App",
+  "AboutTadamon": "About Tadamon App.",
+
+  "ContactDev": "Message from Developer",
+  "DevMassage": "No message available.",
+  "DevThx": "Thank you for using Tadamon.",
+  "DevDonate": "Support the Developer.",
+  "ContactDevMassage": "Follow me on social media.",
   "close": "Close"
+  
 }

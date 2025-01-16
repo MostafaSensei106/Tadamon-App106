@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tadamon/features/app_toast/app_toast.dart';
-import 'package:tadamon/features/barcode_scanner/data/mode/product_model.dart';
+import 'package:tadamon/features/barcode_scanner/data/models/product_model.dart';
 
 class FireStoreServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

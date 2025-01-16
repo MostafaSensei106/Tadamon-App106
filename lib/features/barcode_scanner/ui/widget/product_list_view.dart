@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tadamon/features/drawer/drawer_component.dart';
-import 'package:tadamon/features/barcode_scanner/data/mode/product_model.dart';
+import 'package:tadamon/features/barcode_scanner/data/models/product_model.dart';
 
 class ProductListView extends StatelessWidget {
   final ProductModel? product;

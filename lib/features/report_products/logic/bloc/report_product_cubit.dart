@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadamon/features/app_toast/app_toast.dart';
@@ -70,9 +69,8 @@ class ReportProductCubit extends Cubit<ReportProductState> {
     }
   }
 
-  /// Submits a product report with the given details.
-  ///
-  /// Emits [ReportProductIsLoading] while the report is being submitted.
+
+  /// Submits a product report with the given details asynchronously.
   ///
   /// The report includes:
   /// - [serialNumber]: The serial number of the product.
@@ -84,7 +82,6 @@ class ReportProductCubit extends Cubit<ReportProductState> {
   ///
   /// If an error occurs during submission, an error toast is shown with the
   /// error message.
-
   Future<void> submitReport(
       String serialNumber, String productName, String status ) async {
     emit(ReportProductIsLoading());
@@ -92,10 +89,10 @@ class ReportProductCubit extends Cubit<ReportProductState> {
       'serialNumber': serialNumber,
       'productName': productName,
       'status': status,
-      'timestamp': Timestamp.now(),
+      'timestamp': DateTime.now().toUtc().toIso8601String(),
     };
     try {
-      await ReportService.sendProductReport(report);
+      await ReportService().sendProductReport(report);
     } catch (e) {
       AppToast.showErrorToast('حدث خطاء اثناء ارسال التقرير: $e');
     }

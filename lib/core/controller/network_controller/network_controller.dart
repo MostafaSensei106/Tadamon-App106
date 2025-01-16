@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:tadamon/features/app_toast/app_toast.dart';
+import 'package:tadamon/features/report_products/logic/services/report_service.dart';
 
 class NetworkController {
   final Connectivity _connectivity = Connectivity();
@@ -26,7 +27,6 @@ class NetworkController {
     final List<ConnectivityResult> connectivityResult =
         await (Connectivity().checkConnectivity());
     if (connectivityResult.contains(ConnectivityResult.none)) {
-      AppToast.showErrorToast('لا يوجد اتصال بالانترنت');
       return false;
     }
     return true;
@@ -37,24 +37,30 @@ class NetworkController {
   /// mobile, ethernet, vpn). If the device is not connected to the internet, it
   /// shows an error toast message to the user with the message 'لا يوجد اتصال
   /// بالانترنت'.
-  void _updateConnectionStatus(ConnectivityResult result) {
+  void _updateConnectionStatus(ConnectivityResult result) async {
     switch (result) {
       case ConnectivityResult.wifi:
-        AppToast.showToast('الجهاز متصل بالواي فاي');
+        //AppToast.showToast('الجهاز متصل بالواي فاي');
+        await ReportService.resendPendingReports();
         break;
       case ConnectivityResult.mobile:
-        AppToast.showToast('الجهاز متصل بالشبكة المحمولة');
+        // AppToast.showToast('الجهاز متصل بالشبكة المحمولة');
+        await ReportService.resendPendingReports();
         break;
       case ConnectivityResult.ethernet:
-        AppToast.showToast('الجهاز متصل بالشبكة السلكية');
+        // AppToast.showToast('الجهاز متصل بالشبكة السلكية');
+        await ReportService.resendPendingReports();
+
         break;
 
       case ConnectivityResult.vpn:
-        AppToast.showToast('الجهاز متصل بالشبكة الافتراضية');
+        //AppToast.showToast('الجهاز متصل بالشبكة الافتراضية');
+                await ReportService.resendPendingReports();
+
         break;
 
       case ConnectivityResult.none:
-        AppToast.showErrorToast('لا يوجد اتصال بالانترنت');
+        // AppToast.showErrorToast('لا يوجد اتصال بالانترنت');
         break;
       default:
         AppToast.showErrorToast('حدث خطأ ما');

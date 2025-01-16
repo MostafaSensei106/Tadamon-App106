@@ -2,24 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
-class TextFiledComponent extends StatelessWidget {
+class TextFieldComponent extends StatelessWidget {
   final TextEditingController controller;
   final IconData icon;
   final IconButton? suffixIcon;
   final String hint;
-  final String errorText;
-  final bool isRequired;
+  final String? errorText;
   final bool isNumeric;
 
-  const TextFiledComponent(
+  //add on change callback
+  final ValueChanged<String> onChange;
+
+
+
+  const TextFieldComponent(
       {super.key,
       required this.controller,
       required this.icon,
       required this.hint,
-      required this.errorText,
-      this.suffixIcon,
-      this.isRequired = false,
-      this.isNumeric = false});
+      required this.onChange,
+       this.suffixIcon,
+      this.isNumeric = false,  this.errorText});
 
 /// Validates the input value based on the component's configuration.
 ///
@@ -27,17 +30,7 @@ class TextFiledComponent extends StatelessWidget {
 /// If the field is numeric, returns an error message if the value is not a valid number.
 /// Returns null if the value passes all validations.
 
-  String? _validate(String? value) {
-    if (isRequired && (value == null || value.isNotEmpty)) {
-      return errorText;
-    } else if (isNumeric &&
-        value != null &&
-        value.isNotEmpty &&
-        double.tryParse(value) == null) {
-      return 'الرجاء ادخال رقم صحيح';
-    }
-    return null;
-  }
+
 
   @override
 
@@ -63,20 +56,20 @@ class TextFiledComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      validator: _validate,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorColor: Theme.of(context).colorScheme.primary,
       cursorRadius: Radius.circular(SenseiConst.inBorderRadius.r),
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
       onFieldSubmitted: (value) => FocusScope.of(context).nextFocus(),
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      onChanged: onChange,
       decoration: InputDecoration(
         prefixIcon: Icon(
           icon,
           size: SenseiConst.iconSize.sp,
         ),
         hintText: hint,
-        errorText: isRequired && (controller.text.isEmpty) ? errorText : null,
+        errorText: errorText,
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainer,

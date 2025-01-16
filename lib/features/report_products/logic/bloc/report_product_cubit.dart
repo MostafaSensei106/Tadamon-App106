@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadamon/features/app_toast/app_toast.dart';
-import 'package:tadamon/features/barcode_scanner/logic/logic/scanner_manger.dart';
+import 'package:tadamon/features/products_scanner/logic/logic/scanner_manger.dart';
 import 'package:tadamon/features/report_products/logic/bloc/report_product_state.dart';
 import 'package:tadamon/features/report_products/logic/services/report_service.dart';
 

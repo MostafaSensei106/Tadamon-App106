@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tadamon/features/app_toast/app_toast.dart';
-import 'package:tadamon/features/barcode_scanner/data/models/product_model.dart';
+import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
 class FireStoreServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final String _collectionName = 'TadamonProducts';
-  final String _productReportCollection = 'TadamonUserReport';
-
+  static const String _collectionName = 'TadamonProducts';
+  static const String _productReportCollection = 'TadamonUserReport';
 
   /// Adds a new product to the FireStore database.
   ///
@@ -94,11 +93,23 @@ class FireStoreServices {
       if (data != null) {
         return ProductModel.fromMap(data);
       } else {
-        return ProductModel(serialNumber: serialNumber, onError: 'Product not found');
+        return ProductModel(
+          serialNumber: serialNumber,
+          isTrusted: false,
+          productCategory: '',
+          productManufacturer: '',
+          productName: '',
+        );
       }
     } catch (e) {
       AppToast.showErrorToast(e.toString());
-      return ProductModel(serialNumber: serialNumber, onError: 'An error occurred');
+      return ProductModel(
+        serialNumber: serialNumber,
+        isTrusted: false,
+        productCategory: '',
+        productManufacturer: '',
+        productName: '',
+      );
     }
   }
 
@@ -230,8 +241,6 @@ class FireStoreServices {
     }
   }
 
-
-
   /// Sends a product report to the FireStore database.
   ///
   /// The report is added to the '_productReportCollection' collection using the
@@ -243,9 +252,10 @@ class FireStoreServices {
   ///
   /// If an error occurs while sending the report, an exception is thrown.
 
-  Future<void> sendReportToBackEnd (Map<String,dynamic> productReport) async {
+  Future<void> sendReportToBackEnd(Map<String, dynamic> productReport) async {
     String productName = productReport['productName'];
-    DocumentReference documentReference = _firestore.collection(_productReportCollection).doc(productName);
+    DocumentReference documentReference =
+        _firestore.collection(_productReportCollection).doc(productName);
     await documentReference.set(productReport);
   }
 }

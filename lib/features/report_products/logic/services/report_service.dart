@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tadamon/core/controller/network_controller/network_controller.dart';
 import 'package:tadamon/features/app_toast/app_toast.dart';
-import 'package:tadamon/features/barcode_scanner/data/repository/fire_store_services.dart';
+import 'package:tadamon/features/products_scanner/data/repository/fire_store_services.dart';
 
 class ReportService {
   static late SharedPreferences pref;

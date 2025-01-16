@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
+
   /// A stateless widget that builds the home page of the app.
   ///
   /// It is a [SingleChildScrollView] with a [SafeArea] as child. The
@@ -23,12 +24,11 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.only(
               left: SenseiConst.padding.w,
               right: SenseiConst.padding.w,
-              bottom: SenseiConst.padding.h
-          ),
+              bottom: SenseiConst.padding.h),
           child: Column(
             children: [
               HomeTip(),
-             //ImageNews(),
+              ImageNews(),
               HomeAppTools(),
               ItemsCounter(),
             ],

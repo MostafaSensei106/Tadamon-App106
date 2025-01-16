@@ -12,6 +12,7 @@ import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/features/drawer/drawer_component.dart';
 import 'package:tadamon/features/drawer/drawer_header.dart';
+import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
 import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
 import 'package:tadamon/generated/l10n.dart';
 
@@ -19,12 +20,13 @@ class SenseiDrawer extends StatelessWidget {
   const SenseiDrawer({super.key});
 
   @override
-/// Builds a drawer widget with a specified width and background color derived
-/// from the current theme. The drawer contains a header and a list of settings
-/// options, each constructed by helper methods. The list is wrapped in an
-/// animated size widget, allowing for smooth resizing transitions. The drawer
-/// shape is defined by a continuous rectangle border with a radius specified
-/// in the constants.
+
+  /// Builds a drawer widget with a specified width and background color derived
+  /// from the current theme. The drawer contains a header and a list of settings
+  /// options, each constructed by helper methods. The list is wrapped in an
+  /// animated size widget, allowing for smooth resizing transitions. The drawer
+  /// shape is defined by a continuous rectangle border with a radius specified
+  /// in the constants.
 
   Widget build(BuildContext context) {
     return SizedBox(
@@ -201,17 +203,24 @@ class SenseiDrawer extends StatelessWidget {
   /// [S.enableOnlineMassage], and the trailing widget is null. When the component is tapped,
   /// [HapticFeedback.vibrate] is called and the component is popped from the navigator.
   Widget _buildEnableOnline(BuildContext context) {
-    return DrawerComponent(
-      useMargin: false,
-      useDivider: false,
-      useGroupBottom: true,
-      leadingIcon: Icons.dataset_outlined,
-      title: S.of(context).EnableOnline,
-      subtitle: S.of(context).EnableOnlineMassage,
-      onTapped: () {
-        HapticFeedback.vibrate();
-        Navigator.pop(context);
-      },
+    return BlocProvider(
+      create: (_) => HiveCubit(),
+      child: BlocBuilder<HiveCubit, HiveState>(
+        builder: (context, state) {
+          return DrawerComponent(
+            useMargin: false,
+            useDivider: false,
+            useGroupBottom: true,
+            leadingIcon: Icons.dataset_outlined,
+            title: S.of(context).EnableOnline,
+            subtitle: S.of(context).EnableOnlineMassage,
+            onTapped: () {
+              HapticFeedback.vibrate();
+              context.read<HiveCubit>().fetchDataFromFireStore();
+            },
+          );
+        },
+      ),
     );
   }
 
@@ -266,13 +275,13 @@ class SenseiDrawer extends StatelessWidget {
         });
   }
 
-/// A drawer component for reporting a product.
-/// 
-/// This component has no margin, no divider, and a group bottom. The leading icon is
-/// [Icons.production_quantity_limits_outlined], the title is [S.ReportProduct], and the
-/// subtitle is [S.ReportProductMassage]. When tapped, it triggers a haptic feedback, pops
-/// the component from the navigator, and displays a bottom sheet with the title 'بلغ عن منتج'
-/// and content from [ReportProductSheetContent].
+  /// A drawer component for reporting a product.
+  ///
+  /// This component has no margin, no divider, and a group bottom. The leading icon is
+  /// [Icons.production_quantity_limits_outlined], the title is [S.ReportProduct], and the
+  /// subtitle is [S.ReportProductMassage]. When tapped, it triggers a haptic feedback, pops
+  /// the component from the navigator, and displays a bottom sheet with the title 'بلغ عن منتج'
+  /// and content from [ReportProductSheetContent].
 
   Widget _buildReportProduct(BuildContext context) {
     return DrawerComponent(
@@ -291,12 +300,12 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-/// A drawer component for displaying the ReadMe section.
-/// 
-/// This component has a margin, a divider, and a group top. The leading icon is
-/// [Icons.description_outlined], the title is [S.ReadMe], and the subtitle is
-/// [S.ReadMeMassage]. When tapped, it triggers a haptic feedback and opens the
-/// URL specified by [SenseiConst.devReadMeLink].
+  /// A drawer component for displaying the ReadMe section.
+  ///
+  /// This component has a margin, a divider, and a group top. The leading icon is
+  /// [Icons.description_outlined], the title is [S.ReadMe], and the subtitle is
+  /// [S.ReadMeMassage]. When tapped, it triggers a haptic feedback and opens the
+  /// URL specified by [SenseiConst.devReadMeLink].
 
   Widget _buildReadMe(BuildContext context) {
     return DrawerComponent(
@@ -314,7 +323,7 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   /// A drawer component for displaying the "Letest Update" section.
-  /// 
+  ///
   /// This component has no margin, a divider, and a group middle. The leading icon is
   /// [Icons.update_outlined], the title is [S.LetastUpdate], and the subtitle is
   /// [S.LetestUpdateMassage]. When tapped, it triggers a haptic feedback and opens the
@@ -335,7 +344,7 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   /// A drawer component for displaying the GitHub token section.
-  /// 
+  ///
   /// This component has no margin, a divider, and a group middle. The leading icon is
   /// [Icons.live_help_outlined], the title is [S.GithubTiket], and the subtitle is
   /// [S.GithubTiketMassage]. When tapped, it triggers a haptic feedback and opens the
@@ -356,7 +365,7 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   /// A drawer component for displaying the Telegram channel section.
-  /// 
+  ///
   /// This component has no margin, no divider, and a group bottom. The leading icon is
   /// [Icons.telegram_rounded], the title is [S.TelegramChannel], and the subtitle is
   /// [S.TelegramChannelMassage]. When tapped, it triggers a haptic feedback and opens the
@@ -375,12 +384,12 @@ class SenseiDrawer extends StatelessWidget {
         });
   }
 
-/// A drawer component for displaying the developer section.
-/// 
-/// This component has a margin, a divider, and a group top. The leading icon is
-/// [Icons.verified_outlined], the title is [S.Developer], and the subtitle is
-/// [S.MostafaMahmoud]. The trailing widget is an avatar built by [ContactSenseiDev].
-/// When tapped, it triggers the display of a developer dialog.
+  /// A drawer component for displaying the developer section.
+  ///
+  /// This component has a margin, a divider, and a group top. The leading icon is
+  /// [Icons.verified_outlined], the title is [S.Developer], and the subtitle is
+  /// [S.MostafaMahmoud]. The trailing widget is an avatar built by [ContactSenseiDev].
+  /// When tapped, it triggers the display of a developer dialog.
 
   Widget _buildDeveloper(BuildContext context) {
     return DrawerComponent(
@@ -396,7 +405,7 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   /// A drawer component for displaying the About section.
-  /// 
+  ///
   /// This component has no margin, no divider, and a group bottom. The leading icon is
   /// [Icons.info_outline], the title is [S.About], and the subtitle is
   /// [S.AboutTadamon]. When tapped, it triggers the display of the About page.

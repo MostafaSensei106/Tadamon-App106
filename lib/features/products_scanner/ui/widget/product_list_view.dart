@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tadamon/features/drawer/drawer_component.dart';
-import 'package:tadamon/features/barcode_scanner/data/models/product_model.dart';
+import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
 class ProductListView extends StatelessWidget {
   final ProductModel? product;
@@ -66,28 +66,28 @@ class ProductListView extends StatelessWidget {
             useDivider: true,
             leadingIcon: Icons.label_outline_rounded,
             title: "إسم المنتج",
-            subtitle: product!.productName ?? "لا يوجد",
+            subtitle: product!.productName,
           ),
           DrawerComponent(
             useGroupMiddle: true,
             useDivider: true,
             leadingIcon: Icons.business_rounded,
-            title: "الشركة المصنعة",
-            subtitle: product!.productManufacturer ?? "لا يوجد",
+            title: "المصنع",
+            subtitle: product!.productManufacturer,
           ),
           DrawerComponent(
             useGroupMiddle: true,
             useDivider: true,
             leadingIcon: Icons.category_outlined,
             title: "التصنيف",
-            subtitle: product!.productCategory ?? "لا يوجد",
+            subtitle: product!.productCategory,
           ),
           DrawerComponent(
             useGroupBottom: true,
               leadingIcon: Icons.handshake_outlined,
               title: "الحالة",
               subtitle:
-                  (product!.isTrusted ?? false) ? 'لا يدعم الكيان' : 'مقاطعة'),
+                  (product!.isTrusted ) ? 'لا يدعم الكيان' : 'مقاطعة'),
         ],
       );
   }

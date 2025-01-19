@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:tadamon/features/app_toast/app_toast.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model_hive.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_services.dart';
@@ -6,18 +7,21 @@ import 'package:tadamon/features/products_scanner/data/repository/fire_store_ser
 class HiveServices {
   static const String boxName = 'LocalTadamonProducts';
 
-/// Synchronizes all products from the Firestore database to the local Hive database.
-///
-/// Opens a Hive box with the name [boxName] and retrieves all products from
-/// the Firestore database using [FireStoreServices.getAllProducts].
-/// Each product is then converted to a [ProductModel] and stored in the Hive
-/// box using its serial number as the key.
-
+  /// Synchronizes all products from the Firestore database to the local Hive database.
+  ///
+  /// Opens a Hive box with the name [boxName] and retrieves all products from
+  /// the Firestore database using [FireStoreServices.getAllProducts].
+  /// Each product is then converted to a [ProductModel] and stored in the Hive
+  /// box using its serial number as the key.
   Future<void> syncAllProductsToHive() async {
-    var box  = await Hive.openBox<HiveProductModel>(boxName);
-    for (var product in await FireStoreServices().getAllProducts()) {
-      var hiveProduct = HiveProductModel.fromProduct(product);
-      box.put(hiveProduct.serialNumber, hiveProduct);
+    try {
+      var box = await Hive.openBox<HiveProductModel>(boxName);
+      for (var product in await FireStoreServices().getAllProducts()) {
+        var hiveProduct = HiveProductModel.fromMap(product);
+        box.put(hiveProduct.serialNumber, hiveProduct);
+      }
+    } catch (e) {
+      AppToast.showErrorToast('حدث خطأ اثناء تحميل المنتجات من قاعدة البيانات');
     }
   }
 
@@ -31,8 +35,6 @@ class HiveServices {
     return box.values.isNotEmpty;
   }
 
-
-
   /// Retrieves a product from the local Hive database by its serial number.
   ///
   /// Opens a Hive box with the name [boxName] and retrieves a product with the
@@ -43,17 +45,40 @@ class HiveServices {
   /// If the product is not found, null is returned.
   Future<dynamic> getProductBySerialNumber(String serialNumber) async {
     var box = await Hive.openBox<HiveProductModel>(boxName);
-    var hiveProduct = box.get(serialNumber);
-    return hiveProduct?.toProduct().toMap();
+    var data = box.get(serialNumber);
+    if (data != null) {
+      return ProductModel.fromMap(data.toMap());
+    } else {
+      return ProductModel(
+        serialNumber: serialNumber,
+        isTrusted: false,
+        productCategory: '',
+        productManufacturer: '',
+        productName: '',
+      );
+    }
   }
+
+  // Future<bool> isLocalDataBaseUpToDate() async {
+  //   List<ProductModel> products = await FireStoreServices().getAllProducts();
+  //   List<ProductModel> localProducts = await HiveServices().getAllProducts();
+
+  //   if (products.length != localProducts.length) {
+  //     await HiveServices().syncAllProductsToHive();
+  //   }
+  // }
 
   /// Deletes all products from the local Hive database.
   ///
   /// Opens a Hive box with the name [boxName] and clears all products stored
-  /// in the box using its [clear] method.
+  /// in the box using its [clear] method. If an error occurs, a toast is shown
+  /// with the error message.
   Future<void> deleteAllLocalProducts() async {
-    var box = await Hive.openBox<HiveProductModel>(boxName);
-    await box.clear();
+    try {
+      var box = await Hive.openBox<HiveProductModel>(boxName);
+      await box.clear();
+    } catch (e) {
+      AppToast.showErrorToast('An error occurred while deleting products from the local database');
+    }
   }
-
 }

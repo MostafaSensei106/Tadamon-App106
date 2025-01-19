@@ -19,7 +19,8 @@ class DrawerHeaderWidget extends StatelessWidget {
                 SenseiConst.drawerImage,
               ),
               fit: BoxFit.cover,
-              filterQuality: FilterQuality.low),
+              filterQuality: FilterQuality.low,
+              ),
         ),
         child: null);
   }

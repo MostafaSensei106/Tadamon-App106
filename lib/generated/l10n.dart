@@ -230,31 +230,41 @@ class S {
     );
   }
 
-  /// `Tadamon Offline`
+  /// `تضامن دون إنترنت`
   String get AppOffLine {
     return Intl.message(
-      'Tadamon Offline',
+      'تضامن دون إنترنت',
       name: 'AppOffLine',
       desc: '',
       args: [],
     );
   }
 
-  /// `App is offline. Please download the product list.`
-  String get AppOffLineMassage {
+  /// `التطبيق غير متصل.`
+  String get AppOffLineMassageDontRunning {
     return Intl.message(
-      'App is offline. Please download the product list.',
-      name: 'AppOffLineMassage',
+      'التطبيق غير متصل.',
+      name: 'AppOffLineMassageDontRunning',
       desc: '',
       args: [],
     );
   }
 
-  /// `App is running successfully.`
-  String get AppOnLineMassage {
+  /// `التطبيق يعمل بنجاح.`
+  String get AppOnLineMassageRunning {
     return Intl.message(
-      'App is running successfully.',
-      name: 'AppOnLineMassage',
+      'التطبيق يعمل بنجاح.',
+      name: 'AppOnLineMassageRunning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` انتظر ...`
+  String get AppOflineLoading {
+    return Intl.message(
+      ' انتظر ...',
+      name: 'AppOflineLoading',
       desc: '',
       args: [],
     );

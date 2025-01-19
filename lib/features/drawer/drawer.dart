@@ -10,6 +10,8 @@ import 'package:tadamon/core/helpers/dev_helper.dart';
 import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
+import 'package:tadamon/core/widget/button_component/button_compnent.dart';
+import 'package:tadamon/features/app_toast/app_toast.dart';
 import 'package:tadamon/features/drawer/drawer_component.dart';
 import 'package:tadamon/features/drawer/drawer_header.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
@@ -50,6 +52,8 @@ class SenseiDrawer extends StatelessWidget {
                     _buildModeSwitch(context),
                     _buildAppOffline(context),
                     _buildEnableOnline(context),
+                    _buildUpdateLocalHiveDataBase(context),
+                    _buildDeleteLocalHiveData(context),
                     _buildHowToUse(context),
                     _buildReportProduct(context),
                     _buildClearLogs(context),
@@ -165,7 +169,6 @@ class SenseiDrawer extends StatelessWidget {
                 ),
                 onTapped: () {
                   HapticFeedback.vibrate();
-
                   context.read<ThemeCubit>().toggleTheme(!state.isDark);
                 },
                 useMargin: false,
@@ -175,57 +178,219 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A drawer component that displays a message when the app is offline.
-  ///
-  /// The component has a margin, a divider, and a group top. The leading icon is
-  /// [Icons.offline_bolt_outlined], the title is [S.appOffline], the subtitle is
-  /// [S.appOfflineMassage], and the trailing widget is an [Icon] with an
-  /// [Icons.error_outline_rounded] icon and a red color.
   Widget _buildAppOffline(BuildContext context) {
-    return DrawerComponent(
-      useMargin: true,
-      useDivider: true,
-      useGroupTop: true,
-      leadingIcon: Icons.offline_bolt_outlined,
-      title: S.of(context).AppOffLine,
-      subtitle: S.of(context).AppOffLineMassage,
-      trailingWidget: Icon(
-        Icons.error_outline_rounded,
-        color: Colors.red,
-      ),
-    );
-  }
-
-  /// A drawer component that displays a message when the app is online.
-  ///
-  /// The component has no margin, no divider, and a group bottom. The leading icon is
-  /// [Icons.dataset_outlined], the title is [S.enableOnline], the subtitle is
-  /// [S.enableOnlineMassage], and the trailing widget is null. When the component is tapped,
-  /// [HapticFeedback.vibrate] is called and the component is popped from the navigator.
-  Widget _buildEnableOnline(BuildContext context) {
     return BlocProvider(
-      create: (_) => HiveCubit(),
+      create: (context) => HiveCubit()..hiveHasData(),
       child: BlocBuilder<HiveCubit, HiveState>(
         builder: (context, state) {
+          Widget trailingWidget =
+              Icon(Icons.query_builder_rounded, color: Colors.red);
+          String subtitleText = S.of(context).AppOflineLoading;
+          bool groupTop = false;
+          if (state is HiveDataBaseHasData) {
+            trailingWidget =
+                Icon(Icons.check_box_outlined, color: Colors.green);
+            subtitleText = S.of(context).AppOnLineMassageRunning;
+            groupTop = true;
+          } else if (state is HiveDataBaseEmpty) {
+            trailingWidget =
+                Icon(Icons.error_outline_rounded, color: Colors.red);
+            subtitleText = S.of(context).AppOffLineMassageDontRunning;
+            groupTop = false;
+          } else {
+            trailingWidget =
+                Icon(Icons.query_builder_rounded, color: Colors.yellow);
+            subtitleText = S.of(context).AppOflineLoading;
+            groupTop = false;
+          }
           return DrawerComponent(
-            useMargin: false,
-            useDivider: false,
-            useGroupBottom: true,
-            leadingIcon: Icons.dataset_outlined,
-            title: S.of(context).EnableOnline,
-            subtitle: S.of(context).EnableOnlineMassage,
-            onTapped: () {
-              HapticFeedback.vibrate();
-              context.read<HiveCubit>().fetchDataFromFireStore();
-            },
+            useMargin: true,
+            useDivider: groupTop,
+            useGroupTop: groupTop,
+            leadingIcon: Icons.offline_bolt_outlined,
+            title: S.of(context).AppOffLine,
+            subtitle: subtitleText,
+            trailingWidget: trailingWidget,
           );
         },
       ),
     );
   }
 
+  Widget _buildEnableOnline(BuildContext context) {
+    return BlocProvider(
+      create: (context) => HiveCubit()..hiveHasData(),
+      child: BlocListener<HiveCubit, HiveState>(
+        listenWhen: (previous, current) => previous != current,
+        listener: (context, state) {
+          if (state is HiveDataFetchingFromFireStore) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('جاري استيراد البيانات'),
+                  content: Row(
+                    children: [
+                      CircularProgressIndicator(),
+                      SizedBox(width: 20),
+                      Expanded(
+                          child: Text('يرجى الانتظار حتى تكتمل المزامنة...')),
+                    ],
+                  ),
+                );
+              },
+            );
+          }
+          if (state is HiveDataFetchingFromFireStoreSuccess) {
+            AppToast.showSuccessToast('تم تهيئة البيانات بنجاح.');
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          } else if (state is HiveDataFetchingFromFireStoreFailure) {
+            AppToast.showErrorToast('حدث خطأ في استيراد البيانات.');
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          }
+        },
+        child: BlocBuilder<HiveCubit, HiveState>(
+          builder: (context, state) {
+            if (state is HiveDataBaseEmpty) {
+              return ButtonCompnent(
+                useMargin: true,
+                label: 'تشغيل الاونلاين',
+                icon: Icons.dataset_outlined,
+                onPressed: () {
+                  HapticFeedback.vibrate();
+                  context.read<HiveCubit>().fetchDataFromFireStore();
+                },
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUpdateLocalHiveDataBase(BuildContext context) {
+    return BlocProvider(
+      create: (_) => HiveCubit()..hiveHasData(),
+      child: BlocListener<HiveCubit, HiveState>(
+        listenWhen: (previous, current) => previous != current,
+        listener: (context, state) {
+          if (state is HiveDataFetchingFromFireStore) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('جاري تحديث قاعدة البيانات'),
+                  content: Row(
+                    children: [
+                      CircularProgressIndicator(),
+                      SizedBox(width: 20),
+                      Expanded(
+                          child:
+                              Text('يرجى الانتظار حتى تكتمل عملية التحديث...')),
+                    ],
+                  ),
+                );
+              },
+            );
+          }
+          if (state is 
+          HiveDataFetchingFromFireStoreSuccess) {
+            AppToast.showSuccessToast('تم تحديث قاعدة البيانات بنجاح.');
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          }
+          if (state is HiveDataDeleteFailure) {
+            AppToast.showErrorToast('حدث خطاء في تحديث قاعدة البيانات.');
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          }
+        },
+        child: BlocBuilder<HiveCubit, HiveState>(
+          builder: (context, state) {
+            if (state is HiveDataBaseHasData) {
+              return DrawerComponent(
+                useDivider: true,
+                useGroupMiddle: true,
+                leadingIcon: Icons.dataset_linked_outlined,
+                title: 'تحديث قاعدة البيانات',
+                subtitle: 'تحديث قاعدة البيانات',
+                onTapped: () {
+                  HapticFeedback.vibrate();
+                  context.read<HiveCubit>().updateDataBaseFromFireStore();
+                },
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDeleteLocalHiveData(BuildContext context) {
+    return BlocProvider(
+      create: (_) => HiveCubit()..hiveHasData(),
+      child: BlocListener<HiveCubit, HiveState>(
+        listenWhen: (previous, current) => previous != current,
+        listener: (context, state) {
+          if (state is HiveDataBaseDeleting) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('جاري حذف البيانات'),
+                  content: Row(
+                    children: [
+                      CircularProgressIndicator(),
+                      SizedBox(width: 20),
+                      Expanded(
+                          child:
+                              Text('يرجى الانتظار حتى تكتمل عملية الحذف...')),
+                    ],
+                  ),
+                );
+              },
+            );
+          }
+          if (state is HiveDataDeleteSuccess) {
+            AppToast.showSuccessToast('تم حذف البيانات بنجاح.');
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          }
+          if (state is HiveDataDeleteFailure) {
+            AppToast.showErrorToast('حدث خطأ في حذف البيانات.');
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          }
+        },
+        child: BlocBuilder<HiveCubit, HiveState>(
+          builder: (context, state) {
+            if (state is HiveDataBaseHasData) {
+              return DrawerComponent(
+                useGroupBottom: true,
+                leadingIcon: Icons.delete_forever_outlined,
+                title: 'حذف البيانات',
+                subtitle: 'سوف يتم حذف جميع المنتجات المحفوظة',
+                onTapped: () {
+                  HapticFeedback.vibrate();
+                  context.read<HiveCubit>().deleteAllLocalProducts();
+                },
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
+      ),
+    );
+  }
+
   /// A drawer component that clears the logs when tapped.
-  ///
   /// The component has a margin, no divider, and a single group. The leading icon is
   /// [Icons.clear_all_rounded], the title is [S.clearLogs], the subtitle is
   /// [S.clearLogsMassage], and the trailing widget is null. When the component is tapped,

@@ -7,6 +7,7 @@ class ButtonCompnent extends StatelessWidget {
   final IconData icon;
   final void Function()? onPressed;
   final bool? isEnabled;
+  final bool? useMargin;
 
   const ButtonCompnent({
     super.key,
@@ -14,6 +15,7 @@ class ButtonCompnent extends StatelessWidget {
     required this.icon,
     required this.onPressed,
     this.isEnabled = true,
+    this.useMargin = false,
   });
 
   @override
@@ -45,32 +47,35 @@ class ButtonCompnent extends StatelessWidget {
   /// The button has a padding of [SenseiConst.padding] around it, and an enabled
   /// mouse cursor.
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton.icon(
-        onPressed: isEnabled! ? onPressed : null,
-        icon: Icon(
-          icon,
-          size: SenseiConst.iconSize.sp,
-        ),
-        label: Text(label),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-          foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-          disabledBackgroundColor: Theme.of(context).colorScheme.error,
-          disabledForegroundColor: Theme.of(context).colorScheme.onError,
-          iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
-          disabledIconColor: Theme.of(context).colorScheme.onError,
-          padding: EdgeInsets.symmetric(
-            horizontal: SenseiConst.padding.w,
-            vertical: SenseiConst.padding.h,
+    return Container(
+      margin: useMargin! ? EdgeInsets.only(top: SenseiConst.margin.h) : null,
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton.icon(
+          onPressed: isEnabled! ? onPressed : null,
+          icon: Icon(
+            icon,
+            size: SenseiConst.iconSize.sp,
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+          label: Text(label),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+            foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+            disabledBackgroundColor: Theme.of(context).colorScheme.error,
+            disabledForegroundColor: Theme.of(context).colorScheme.onError,
+            iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
+            disabledIconColor: Theme.of(context).colorScheme.onError,
+            padding: EdgeInsets.symmetric(
+              horizontal: SenseiConst.padding.w,
+              vertical: SenseiConst.padding.h,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+            ),
+            elevation: 2,
+            enableFeedback: true,
+            enabledMouseCursor: WidgetStateMouseCursor.clickable,
           ),
-          elevation: 2,
-          enableFeedback: true,
-          enabledMouseCursor: WidgetStateMouseCursor.clickable,
         ),
       ),
     );

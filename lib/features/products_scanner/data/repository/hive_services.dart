@@ -25,6 +25,32 @@ class HiveServices {
     }
   }
 
+
+  //function to check if database is up to date and if not update it
+  Future<bool> isLocalDataBaseUpToDate() async {
+    try {
+      var box = await Hive.openBox<HiveProductModel>(boxName);
+      List<ProductModel> remoteProducts = await FireStoreServices().getAllProducts();
+      List<ProductModel> localProducts = box.values.map((e) => ProductModel.fromMap(e.toMap())).toList();
+
+      if (remoteProducts.length != localProducts.length) {
+        await syncAllProductsToHive();
+        return false;
+      }
+
+      for (var remoteProduct in remoteProducts) {
+        if (!localProducts.any((localProduct) => localProduct.serialNumber == remoteProduct.serialNumber)) {
+          await syncAllProductsToHive();
+          return false;
+        }
+      }
+      return true;
+    } catch (e) {
+      AppToast.showErrorToast('Error checking database synchronization');
+      return false;
+    }
+  }
+
   /// Checks if the local Hive database contains any products.
   ///
   /// Opens a Hive box with the name [boxName] and checks if it contains any products.

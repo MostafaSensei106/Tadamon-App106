@@ -11,6 +11,7 @@ import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/core/widget/button_component/button_compnent.dart';
+import 'package:tadamon/core/widget/dilog_component/dilog_component.dart';
 import 'package:tadamon/features/app_toast/app_toast.dart';
 import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/drawer/drawer_header.dart';
@@ -224,23 +225,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text('جاري استيراد البيانات'),
-                  content: Row(
-                    children: [
-                      CircularProgressIndicator(),
-                      SizedBox(width: 20),
-                      Expanded(
-                          child: Text('يرجى الانتظار حتى تكتمل المزامنة...')),
-                    ],
-                  ),
-                );
-              },
-            );
+        DilogComponent(title: 'جاري استيراد البيانات', message: 'يرجى الانتظار حتى تكتمل المزامنة...').show(context);
           }
           if (state is HiveDataFetchingFromFireStoreSuccess) {
             AppToast.showSuccessToast('تم تهيئة البيانات بنجاح.');
@@ -279,24 +264,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text('جاري تحديث قاعدة البيانات'),
-                  content: Row(
-                    children: [
-                      CircularProgressIndicator(),
-                      SizedBox(width: 20),
-                      Expanded(
-                          child:
-                              Text('يرجى الانتظار حتى تكتمل عملية التحديث...')),
-                    ],
-                  ),
-                );
-              },
-            );
+            DilogComponent(title: 'جاري تحديث قاعدة البيانات', message: 'يرجى الانتظار حتى تكتمل المزامنة...').show(context);
           }
           if (state is 
           HiveDataFetchingFromFireStoreSuccess) {
@@ -339,24 +307,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataBaseDeleting) {
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text('جاري حذف البيانات'),
-                  content: Row(
-                    children: [
-                      CircularProgressIndicator(),
-                      SizedBox(width: 20),
-                      Expanded(
-                          child:
-                              Text('يرجى الانتظار حتى تكتمل عملية الحذف...')),
-                    ],
-                  ),
-                );
-              },
-            );
+            DilogComponent(title: 'جاري حذف البيانات', message: 'يرجى الانتظار حتى تكتمل المزامنة...').show(context);
           }
           if (state is HiveDataDeleteSuccess) {
             AppToast.showSuccessToast('تم حذف البيانات بنجاح.');
@@ -586,5 +537,5 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  
+
 }

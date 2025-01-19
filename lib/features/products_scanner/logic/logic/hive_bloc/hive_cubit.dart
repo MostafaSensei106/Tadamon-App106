@@ -21,7 +21,7 @@ class HiveCubit extends Cubit<HiveState> {
   Future<void> updateDataBaseFromFireStore() async {
     emit(HiveDataFetchingFromFireStore());
     try {
-      await HiveServices().syncAllProductsToHive();
+      await HiveServices().isLocalDataBaseUpToDate();
       emit(HiveDataFetchingFromFireStoreSuccess());
     } catch (e) {
       emit(HiveDataFetchingFromFireStoreFailure());

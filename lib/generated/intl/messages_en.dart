@@ -28,11 +28,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "AppDescription": MessageLookupByLibrary.simpleMessage(
             "Supporting Palestine is a humanitarian duty. Boycotting companies supporting the occupation is a voice for freedom."),
         "AppName": MessageLookupByLibrary.simpleMessage("Tadamon"),
-        "AppOffLine": MessageLookupByLibrary.simpleMessage("Tadamon Offline"),
-        "AppOffLineMassage": MessageLookupByLibrary.simpleMessage(
-            "App is offline. Please download the product list."),
-        "AppOnLineMassage": MessageLookupByLibrary.simpleMessage(
-            "App is running successfully."),
+        "AppOffLine": MessageLookupByLibrary.simpleMessage("تضامن دون إنترنت"),
+        "AppOffLineMassageDontRunning":
+            MessageLookupByLibrary.simpleMessage("التطبيق غير متصل."),
+        "AppOflineLoading": MessageLookupByLibrary.simpleMessage(" انتظر ..."),
+        "AppOnLineMassageRunning":
+            MessageLookupByLibrary.simpleMessage("التطبيق يعمل بنجاح."),
         "ContactDev":
             MessageLookupByLibrary.simpleMessage("Message from Developer"),
         "ContactDevMassage":

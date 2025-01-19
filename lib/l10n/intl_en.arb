@@ -24,9 +24,10 @@
   "SwitchToDarkTheme": "Switch to Dark Mode",
   "SwitchToLightTheme": "Switch to Light Mode",
 
-  "AppOffLine": "Tadamon Offline",
-  "AppOffLineMassage": "App is offline. Please download the product list.",
-  "AppOnLineMassage": "App is running successfully.",
+  "AppOffLine": "تضامن دون إنترنت",
+  "AppOffLineMassageDontRunning": "التطبيق غير متصل.",
+  "AppOnLineMassageRunning": "التطبيق يعمل بنجاح.",
+  "AppOflineLoading": " انتظر ...",
 
   "EnableOnline": "Download Product List",
   "EnableOnlineMassage": "Run the app without internet.",

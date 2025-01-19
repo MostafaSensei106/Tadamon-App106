@@ -25,8 +25,9 @@
   "SwitchToLightTheme": "التبديل إلى الوضع الفاتح",
 
   "AppOffLine": "تضامن دون إنترنت",
-  "AppOffLineMassage": "التطبيق غير متصل. يرجى تحميل قائمة المنتجات.",
-  "AppOnLineMassage": "التطبيق يعمل بنجاح.",
+  "AppOffLineMassageDontRunning": "التطبيق غير متصل.",
+  "AppOnLineMassageRunning": "التطبيق يعمل بنجاح.",
+  "AppOflineLoading": " انتظر ...",
 
   "EnableOnline": "تحميل قائمة المنتجات",
   "EnableOnlineMassage": "تشغيل التطبيق بدون إنترنت.",

@@ -29,9 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية."),
         "AppName": MessageLookupByLibrary.simpleMessage("تضامن"),
         "AppOffLine": MessageLookupByLibrary.simpleMessage("تضامن دون إنترنت"),
-        "AppOffLineMassage": MessageLookupByLibrary.simpleMessage(
-            "التطبيق غير متصل. يرجى تحميل قائمة المنتجات."),
-        "AppOnLineMassage":
+        "AppOffLineMassageDontRunning":
+            MessageLookupByLibrary.simpleMessage("التطبيق غير متصل."),
+        "AppOflineLoading": MessageLookupByLibrary.simpleMessage(" انتظر ..."),
+        "AppOnLineMassageRunning":
             MessageLookupByLibrary.simpleMessage("التطبيق يعمل بنجاح."),
         "ContactDev": MessageLookupByLibrary.simpleMessage("رسالة من المطور"),
         "ContactDevMassage": MessageLookupByLibrary.simpleMessage(

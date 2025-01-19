@@ -8,7 +8,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class ImageNews extends StatefulWidget {
   const ImageNews({super.key});
-
   @override
   ImageNewsState createState() => ImageNewsState();
 }
@@ -21,10 +20,7 @@ class ImageNewsState extends State<ImageNews> {
   late Timer _autoSlideTimer;
 
   final List<String> _imageUrls = [
-    'https://scontent.fcai21-4.fna.fbcdn.net/v/t39.30808-6/397935802_2018437758522158_2569968800478949291_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ykvD8Y3sJWYQ7kNvgHpdbQP&_nc_oc=AdiO3rK_DeC4TlyfVA2jDSknshuLqw8Ww_hKATkiCjZMlVVplMUFdAyomjBkcCY-YkY&_nc_zt=23&_nc_ht=scontent.fcai21-4.fna&_nc_gid=ANrTu2YOCUHmD8X6uj6TmAJ&oh=00_AYBbcyGPdqRZ71R5LmIrNB7WBa-8NEM6fBF6toQ7J0IBrw&oe=678F3867',
-    'https://scontent.fcai21-4.fna.fbcdn.net/v/t39.30808-6/310423213_1747668878932382_1507469300678917103_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=r_ZR3tGZKrMQ7kNvgE5HgLY&_nc_oc=AdhR_E3B4DgpBEPu3pN0as1vJGgk-FzVJulEP0BcKXDzohPpqtzjJvpPDFt4oc0iYpE&_nc_zt=23&_nc_ht=scontent.fcai21-4.fna&_nc_gid=AIRo0kRsbmhILln82EP4yjA&oh=00_AYD3NWmdf0bWa6gxdi54d3Q_y8S5vygfHP8n_pEgFOPROg&oe=678F2C93',
-        
-
+    
   ];
 
   int _currentPage = 0;
@@ -125,6 +121,20 @@ class ImageNewsState extends State<ImageNews> {
       useOldImageOnUrlChange: true,
     );
   }
+
+/// Returns a [Padding] widget containing a [SmoothPageIndicator].
+///
+/// The [SmoothPageIndicator] is configured to display page indicators for the
+/// images using an [ExpandingDotsEffect]. The number of indicators is set to
+/// the length of the [_imageUrls] list.
+///
+/// The effect has dots with a width and height of [_indicatorDotSize], a dot
+/// color with an alpha of 0.5, and an active dot color from the theme's
+/// primary container. The expansion factor for the active dot is set to 2.
+///
+/// The [onDotClicked] callback animates the page controller to the selected
+/// page with a duration of [_slideTransitionDuration] and a curve of
+/// [Curves.easeInOut].
 
   Widget _buildPageIndicator() {
     return Padding(

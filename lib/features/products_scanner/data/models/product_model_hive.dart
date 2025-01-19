@@ -29,7 +29,19 @@ class HiveProductModel extends HiveObject {
     required this.isTrusted,
   });
 
-  factory HiveProductModel.fromProduct(ProductModel product) {
+
+  Map<String, dynamic> toMap() {
+    return {
+      'productName': productName,
+      'serialNumber': serialNumber,
+      'productManufacturer': productManufacturer,
+      'productCategory': productCategory,
+      'isTrusted': isTrusted,
+    };
+  }
+
+
+  static fromMap(ProductModel product) {
     return HiveProductModel(
       productName: product.productName,
       serialNumber: product.serialNumber,
@@ -39,13 +51,4 @@ class HiveProductModel extends HiveObject {
     );
   }
 
-  ProductModel toProduct() {
-    return ProductModel(
-      productName: productName,
-      serialNumber: serialNumber,
-      productManufacturer: productManufacturer,
-      productCategory: productCategory,
-      isTrusted: isTrusted,
-    );
-  }
 }

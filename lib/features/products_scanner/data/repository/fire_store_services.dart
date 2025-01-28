@@ -113,133 +113,21 @@ class FireStoreServices {
     }
   }
 
-  /// Searches for products in the FireStore database using the provided [productName].
-  ///
-  /// The products are retrieved from the '_collectionName' collection using the provided [productName].
-  ///
-  /// If the products are found, they are returned as a list of [ProductModel].
-  ///
-  /// If no products are found, an empty list is returned.
-  ///
-  /// If an error occurs while searching for the products, a toast is shown with the
-  /// error message and an empty list is returned.
-  Future<List<ProductModel>> searchProductByName(String productName) async {
-    try {
-      final snapshot = await _firestore
-          .collection(_collectionName)
-          .where('poductrName', isEqualTo: productName)
-          .get();
-      return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
-          .toList();
-    } catch (e) {
-      AppToast.showErrorToast(e.toString());
-      return [];
+
+  Future<List<ProductModel>> search(String query) async {
+    Query querySnapshot = _firestore.collection(_collectionName).orderBy('productName');
+
+    if (query.isNotEmpty) {
+      querySnapshot = querySnapshot.where('productName', isGreaterThanOrEqualTo: query);
     }
+
+    final snapshot = await querySnapshot.get();
+    final products = snapshot.docs.map((doc) => ProductModel.fromMap()).toList();
+    return products;
   }
 
-  /// Searches for products in the FireStore database using the provided [productCategory] list.
-  ///
-  /// The products are retrieved from the '_collectionName' collection where the 'productCategory' field
-  /// contains any of the categories specified in the [productCategory] list.
-  ///
-  /// If the products are found, they are returned as a list of [ProductModel].
-  ///
-  /// If no products are found, an empty list is returned.
-  ///
-  /// If an error occurs while searching for the products, a toast is shown with the error message and an empty list is returned.
 
-  Future<List<ProductModel>> searchProductByCategory(
-      List<String> productCategory) async {
-    try {
-      final snapshot = await _firestore
-          .collection(_collectionName)
-          .where('productCategory', arrayContainsAny: productCategory)
-          .get();
-      return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
-          .toList();
-    } catch (e) {
-      AppToast.showErrorToast(e.toString());
-      return [];
-    }
-  }
 
-  /// Searches for products in the FireStore database using the provided [productManufacturer].
-  ///
-  /// The products are retrieved from the '_collectionName' collection using the provided [productManufacturer].
-  ///
-  /// If the products are found, they are returned as a list of [ProductModel].
-  ///
-  /// If no products are found, an empty list is returned.
-  ///
-  /// If an error occurs while searching for the products, a toast is shown with the
-  /// error message and an empty list is returned.
-
-  Future<List<ProductModel>> searchProductByManufacturer(
-      String productManufacturer) async {
-    try {
-      final snapshot = await _firestore
-          .collection(_collectionName)
-          .where('productManufacturer', isEqualTo: productManufacturer)
-          .get();
-      return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
-          .toList();
-    } catch (e) {
-      AppToast.showErrorToast(e.toString());
-      return [];
-    }
-  }
-
-  /// Searches for products in the FireStore database using the provided [productBoycottResonLink].
-  ///
-  /// The products are retrieved from the '_collectionName' collection where the 'productBoycottResonLink' field matches the provided [productBoycottResonLink].
-  ///
-  /// If the products are found, they are returned as a list of [ProductModel].
-  ///
-  /// If no products are found, an empty list is returned.
-  ///
-  /// If an error occurs while searching for the products, a toast is shown with the error message and an empty list is returned.
-  Future<List<ProductModel>> searchProductByBoycottLink(
-      String productBoycottResonLink) async {
-    try {
-      final snapshot = await _firestore
-          .collection(_collectionName)
-          .where('productBoycottResonLink', isEqualTo: productBoycottResonLink)
-          .get();
-      return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
-          .toList();
-    } catch (e) {
-      AppToast.showErrorToast(e.toString());
-      return [];
-    }
-  }
-
-  /// Searches for products in the FireStore database using the provided [isTrusted].
-  ///
-  /// The products are retrieved from the '_collectionName' collection where the 'isTrusted' field matches the provided boolean.
-  ///
-  /// If the products are found, they are returned as a list of [ProductModel].
-  ///
-  /// If no products are found, an empty list is returned.
-  ///
-  /// If an error occurs while searching for the products, a toast is shown with the error message and an empty list is returned.
-  Future<List<ProductModel>> searchProductByIsTrusted(bool isTrusted) async {
-    try {
-      final snapshot = await _firestore
-          .collection(_collectionName)
-          .where('isTrusted', isEqualTo: isTrusted)
-          .get();
-      return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
-          .toList();
-    } catch (e) {
-      AppToast.showErrorToast(e.toString());
-      return [];
-    }
-  }
 
   /// Sends a product report to the FireStore database.
   ///
@@ -258,4 +146,6 @@ class FireStoreServices {
         _firestore.collection(_productReportCollection).doc(productName);
     await documentReference.set(productReport);
   }
+
+
 }

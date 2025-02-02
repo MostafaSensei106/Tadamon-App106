@@ -113,19 +113,20 @@ class FireStoreServices {
     }
   }
 
+Future<List<ProductModel>> search(String query) async {
+  final CollectionReference collection = _firestore.collection(_collectionName);
 
-  Future<List<ProductModel>> search(String query) async {
-    Query querySnapshot = _firestore.collection(_collectionName).orderBy('productName');
+  Query querySnapshot = collection.where('serialNumber', isGreaterThanOrEqualTo: query)
+    .where('serialNumber', isLessThanOrEqualTo: '$query\uf8ff')
+    .orderBy('serialNumber');
 
-    if (query.isNotEmpty) {
-      querySnapshot = querySnapshot.where('productName', isGreaterThanOrEqualTo: query);
-    }
-
-    final snapshot = await querySnapshot.get();
-    final products = snapshot.docs.map((doc) => ProductModel.fromMap()).toList();
-    return products;
-  }
-
+  final snapshot = await querySnapshot.get();
+  
+  return snapshot.docs.map((doc) {
+    final data = doc.data() as Map<String, dynamic>; 
+    return ProductModel.fromMap(data);
+  }).toList();
+}
 
 
 

@@ -1,96 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tadamon/features/pages/search_page/logic/search_cubit.dart';
 
 class SenseiSearchBar extends StatelessWidget {
-  const SenseiSearchBar({super.key});
+  final Function(String) onSearchChanged;
+  const SenseiSearchBar({super.key, required this.onSearchChanged});
 
   @override
-  /// A horizontal row containing a search bar and a dropdown menu.
-  ///
-  /// The search bar has a rounded border with a radius of
-  /// [SenseiConst.outBorderRadius], and a background color of
-  /// [Theme.of(context).colorScheme.surfaceContainer]. The search bar's
-  /// [onChanged] property is set to a no-op, and its [onSubmitted] property is
-  /// also set to a no-op. The search bar's [onTap] property is set to
-  /// [HapticFeedback.vibrate].
-  ///
-  /// The dropdown menu has a rounded border with a radius of
-  /// [SenseiConst.outBorderRadius], and a background color of
-  /// [Theme.of(context).colorScheme.surfaceContainer]. The dropdown menu's
-  /// [elevation] property is set to 0, and its [enableFeedback] property is set
-  /// to true. The dropdown menu's [icon] property is set to an
-  /// [Icons.arrow_drop_down_rounded] icon, and its [underline] property is set
-  /// to [Container()]. The dropdown menu's [onChanged] property is set to a
-  /// no-op. The dropdown menu's [items] property is set to a list of
-  ///
-  /// The padding of the row is set to
-  /// [EdgeInsets.only(bottom: SenseiConst.padding.h)], and the width of the
-  /// space between the search bar and the dropdown menu is set to 6 logical
-  /// pixels.
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: SenseiConst.padding.h),
-      child: Row(
-        children: [
-          Expanded(
-            child: SearchBar(
-              leading: Icon(Icons.search_rounded),
-              hintText: 'ابحث هنا',
-              backgroundColor: WidgetStateProperty.all(
-                  Theme.of(context).colorScheme.surfaceContainer),
-              elevation: WidgetStateProperty.all(0),
-              shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(SenseiConst.outBorderRadius))),
-              onChanged: (value) {},
-              onSubmitted: (value) {},
-              onTap: () {
-                HapticFeedback.vibrate();
-              },
+    return BlocProvider(
+      create: (context) => SearchCubit(),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: SenseiConst.padding.w,
+        ),
+        child: TextField(
+          onChanged: (value) => onSearchChanged(value),
+          onSubmitted: (value) => onSearchChanged(value),
+          onEditingComplete: () => FocusScope.of(context).unfocus(),
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: SenseiConst.padding.w,
+              vertical: SenseiConst.padding.h,
             ),
+            filled: true,
+            fillColor: Theme.of(context).colorScheme.primaryContainer,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50.r),
+              borderSide: BorderSide.none,
+            ),
+            prefixIcon: const Icon(Icons.search),
+            hintText: 'Search for a product',
           ),
-          SizedBox(width: 6.w),
-          Container(
-            padding: const EdgeInsets.all(4.0),
-            decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.circular(SenseiConst.outBorderRadius.r),
-              color: Theme.of(context).colorScheme.surfaceContainer,
-            ),
-            child: DropdownButton<String>(
-              elevation: 0,
-              enableFeedback: true,
-              borderRadius:
-                  BorderRadius.circular(SenseiConst.outBorderRadius.r),
-              icon: Icon(
-                Icons.arrow_drop_down_rounded,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-              underline: Container(),
-              onChanged: (value) {},
-              items: const [
-                DropdownMenuItem(
-                  value: 'الأحدث',
-                  child: Text('الأحدث'),
-                ),
-                DropdownMenuItem(
-                  value: 'الأقدم',
-                  child: Text('الأقدم'),
-                ),
-                DropdownMenuItem(
-                  value: 'الأقل سعرا',
-                  child: Text('الأقل سعرا'),
-                ),
-                DropdownMenuItem(
-                  value: 'الأعلى سعرا',
-                  child: Text('الأعلى سعرا'),
-                ),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

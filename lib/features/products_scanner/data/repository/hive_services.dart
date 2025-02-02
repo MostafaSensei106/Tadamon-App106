@@ -107,4 +107,6 @@ class HiveServices {
       AppToast.showErrorToast('An error occurred while deleting products from the local database');
     }
   }
+
+  search(String query) {}
 }

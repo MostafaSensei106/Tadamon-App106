@@ -15,7 +15,7 @@ class LogsPage extends StatelessWidget {
       ),
       child: Column(
         children: [
-          SenseiSearchBar(),
+          
           SearchBarResultContainer()
         ],
       ),

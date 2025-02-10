@@ -12,6 +12,7 @@ class ProductListView extends StatelessWidget {
   });
 
   @override
+
   /// Returns a [ListView] widget with a [shrinkWrap] of true, a
   /// [physics] of [NeverScrollableScrollPhysics], and a list of
   /// [DrawerComponent]s. The first [DrawerComponent] displays the
@@ -43,52 +44,53 @@ class ProductListView extends StatelessWidget {
   /// that copies the serial number to the clipboard and vibrates the
   /// device.
   Widget build(BuildContext context) {
-      return ListView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          DrawerComponent(
-            useGroupTop: true,
-            useDivider: true,
-            leadingIcon: Icons.qr_code_rounded,
-            title: "الرقم التسلسلي",
-            subtitle: product!.serialNumber,
-            trailingWidget: IconButton(
-              icon: const Icon(Icons.copy),
-              onPressed: () => {
-                    HapticFeedback.vibrate(),
-                Clipboard.setData(ClipboardData(text: product!.serialNumber))
-              },
-            ),
+    return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        DrawerComponent(
+          useGroupTop: true,
+          useDivider: true,
+          useinBorderRadius: true,
+          leadingIcon: Icons.qr_code_rounded,
+          title: "الرقم التسلسلي",
+          subtitle: product!.serialNumber,
+          trailingWidget: IconButton(
+            icon: const Icon(Icons.copy),
+            onPressed: () => {
+              HapticFeedback.vibrate(),
+              Clipboard.setData(ClipboardData(text: product!.serialNumber))
+            },
           ),
-          DrawerComponent(
-            useGroupMiddle: true,
-            useDivider: true,
-            leadingIcon: Icons.label_outline_rounded,
-            title: "إسم المنتج",
-            subtitle: product!.productName,
-          ),
-          DrawerComponent(
-            useGroupMiddle: true,
-            useDivider: true,
-            leadingIcon: Icons.business_rounded,
-            title: "المصنع",
-            subtitle: product!.productManufacturer,
-          ),
-          DrawerComponent(
-            useGroupMiddle: true,
-            useDivider: true,
-            leadingIcon: Icons.category_outlined,
-            title: "التصنيف",
-            subtitle: product!.productCategory,
-          ),
-          DrawerComponent(
+        ),
+        DrawerComponent(
+          useGroupMiddle: true,
+          useDivider: true,
+          leadingIcon: Icons.label_outline_rounded,
+          title: "إسم المنتج",
+          subtitle: product!.productName,
+        ),
+        DrawerComponent(
+          useGroupMiddle: true,
+          useDivider: true,
+          leadingIcon: Icons.business_rounded,
+          title: "المصنع",
+          subtitle: product!.productManufacturer,
+        ),
+        DrawerComponent(
+          useGroupMiddle: true,
+          useDivider: true,
+          leadingIcon: Icons.category_outlined,
+          title: "التصنيف",
+          subtitle: product!.productCategory,
+        ),
+        DrawerComponent(
             useGroupBottom: true,
-              leadingIcon: Icons.handshake_outlined,
-              title: "الحالة",
-              subtitle:
-                  (product!.isTrusted ) ? 'لا يدعم الكيان' : 'مقاطعة'),
-        ],
-      );
+            useinBorderRadius: true,
+            leadingIcon: Icons.handshake_outlined,
+            title: "الحالة",
+            subtitle: (product!.isTrusted) ? 'لا يدعم الكيان' : 'مقاطعة'),
+      ],
+    );
   }
 }

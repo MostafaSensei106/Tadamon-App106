@@ -20,7 +20,7 @@ class ImageNewsState extends State<ImageNews> {
   late Timer _autoSlideTimer;
 
   final List<String> _imageUrls = [
-    
+    'https://cdnuploads.aa.com.tr/uploads/Contents/2023/10/21/thumbs_b_c_f90d9d191fa2cd8c00d134bc30ba251f.jpg?v=110742',
   ];
 
   int _currentPage = 0;
@@ -206,7 +206,6 @@ class ImageNewsState extends State<ImageNews> {
     _pageController.dispose();
 
     _autoSlideTimer.cancel();
-    _pageController.dispose();
 
     super.dispose();
   }

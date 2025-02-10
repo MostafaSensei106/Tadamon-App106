@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/search_bar_component/search_bar.dart';
-import 'package:tadamon/core/widget/search_bar_component/search_result_container.dart';
+
 
 class LogsPage extends StatelessWidget {
   const LogsPage({super.key});
@@ -14,10 +13,7 @@ class LogsPage extends StatelessWidget {
         horizontal: SenseiConst.padding.w,
       ),
       child: Column(
-        children: [
-          
-          SearchBarResultContainer()
-        ],
+        children: [],
       ),
     );
   }

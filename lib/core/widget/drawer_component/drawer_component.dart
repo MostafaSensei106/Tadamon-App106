@@ -10,12 +10,13 @@ class DrawerComponent extends StatelessWidget {
   final Widget? trailingWidget;
   final VoidCallback? onTapped;
   final bool selected;
-  final bool? useMargin;
+  final bool useMargin;
   final bool? useSingeGroup;
   final bool? useGroupTop;
   final bool? useGroupMiddle;
   final bool? useGroupBottom;
-  final bool? useDivider;
+  final bool useDivider;
+  final bool useinBorderRadius;
 
   const DrawerComponent({
     super.key,
@@ -25,12 +26,12 @@ class DrawerComponent extends StatelessWidget {
     this.trailingWidget,
     this.onTapped,
     this.selected = false,
-    this.useMargin,
-    this.useDivider,
+    this.useMargin = false,
+    this.useDivider = false,
     this.useGroupTop,
     this.useGroupMiddle,
     this.useGroupBottom,
-    this.useSingeGroup,
+    this.useSingeGroup,  this.useinBorderRadius = false,
   });
 
   /// Get the border radius based on the given group properties.
@@ -50,22 +51,23 @@ class DrawerComponent extends StatelessWidget {
   ///
   /// Otherwise, return a [BorderRadius] with all corners rounded.
   BorderRadius _getBorderRadius() {
+    double borderRadius = useinBorderRadius ? SenseiConst.inBorderRadius.r : SenseiConst.outBorderRadius.r;
     if (useGroupTop ?? false) {
       return BorderRadius.only(
-        topLeft: Radius.circular(SenseiConst.outBorderRadius.r),
-        topRight: Radius.circular(SenseiConst.outBorderRadius.r),
+        topLeft: Radius.circular(borderRadius),
+        topRight: Radius.circular(borderRadius),
       );
     } else if (useGroupBottom ?? false) {
       return BorderRadius.only(
-        bottomLeft: Radius.circular(SenseiConst.outBorderRadius.r),
-        bottomRight: Radius.circular(SenseiConst.outBorderRadius.r),
+        bottomLeft: Radius.circular(borderRadius),
+        bottomRight: Radius.circular(borderRadius),
       );
     } else if (useSingeGroup ?? false) {
-      return BorderRadius.circular(SenseiConst.outBorderRadius.r);
+      return BorderRadius.circular(borderRadius);
     } else if (useGroupMiddle ?? false) {
       return BorderRadius.zero;
     }
-    return BorderRadius.circular(SenseiConst.outBorderRadius.r);
+    return BorderRadius.circular(borderRadius);
   }
 
   @override
@@ -103,7 +105,7 @@ class DrawerComponent extends StatelessWidget {
   /// The [ListTile] widget is selected if [selected] is true.
   Widget build(BuildContext context) {
     return Container(
-      margin: useMargin ?? false
+      margin: useMargin
           ? const EdgeInsets.only(top: SenseiConst.margin)
           : null,
       decoration: BoxDecoration(
@@ -151,7 +153,7 @@ class DrawerComponent extends StatelessWidget {
               ),
             ),
           ),
-          if (useDivider ?? false) const SenseiDivider(),
+          if (useDivider) const SenseiDivider(),
         ],
       ),
     );

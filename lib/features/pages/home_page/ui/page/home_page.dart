@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               HomeTip(),
-              //ImageNews(),
+              ImageNews(),
               HomeAppTools(),
               ItemsCounter(),
             ],

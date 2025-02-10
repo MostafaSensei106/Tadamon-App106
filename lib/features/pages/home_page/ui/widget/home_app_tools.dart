@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/features/app_toast/app_toast.dart';
+import 'package:tadamon/features/donation/widget/donation_sheet_content.dart';
+import 'package:tadamon/features/edit_text/widgets/edit_text_sheet_content.dart';
 import 'package:tadamon/features/pages/home_page/ui/widget/components/home_tool_components.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/product_scan_bloc/product_scan_cubit.dart';
 import 'package:tadamon/generated/l10n.dart';
@@ -56,7 +58,7 @@ class HomeAppTools extends StatelessWidget {
                 title: S.of(context).EditText,
                 onTapped: () {
                   HapticFeedback.vibrate();
-                  AppToast.showToast('سوف تتوافر قريبا');
+                  EditTextSheetContent.showEditTextBottomSheet(context);
                 }),
             HomeToolsComponent(
               icon: Icons.map_outlined,
@@ -71,7 +73,7 @@ class HomeAppTools extends StatelessWidget {
               title: S.of(context).Donate,
               onTapped: () {
                 HapticFeedback.vibrate();
-                AppToast.showToast('سوف تتوافر قريبا');
+                DonationSheetContent.showDonationBottomSheet(context);
               },
             ),
           ],

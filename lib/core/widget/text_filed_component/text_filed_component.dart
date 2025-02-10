@@ -9,11 +9,13 @@ class TextFieldComponent extends StatelessWidget {
   final String hint;
   final String? errorText;
   final bool isNumeric;
+  final bool isExpands;
+  final bool largeField;
+  final int maxLength;
+  final bool readOnly;
 
   //add on change callback
   final ValueChanged<String> onChange;
-
-
 
   const TextFieldComponent(
       {super.key,
@@ -21,19 +23,21 @@ class TextFieldComponent extends StatelessWidget {
       required this.icon,
       required this.hint,
       required this.onChange,
-       this.suffixIcon,
-      this.isNumeric = false,  this.errorText});
+      this.suffixIcon,
+      this.isNumeric = false,
+      this.errorText,
+      this.readOnly = false,
+      this.maxLength = 0,
+      this.isExpands = false,
+      this.largeField = false});
 
-/// Validates the input value based on the component's configuration.
-///
-/// Returns the [errorText] if the field is required and the value is null or empty.
-/// If the field is numeric, returns an error message if the value is not a valid number.
-/// Returns null if the value passes all validations.
-
-
+  /// Validates the input value based on the component's configuration.
+  ///
+  /// Returns the [errorText] if the field is required and the value is null or empty.
+  /// If the field is numeric, returns an error message if the value is not a valid number.
+  /// Returns null if the value passes all validations.
 
   @override
-
 
   /// Builds a [TextFormField] based on the component's configuration.
   //
@@ -57,12 +61,16 @@ class TextFieldComponent extends StatelessWidget {
     return TextFormField(
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      cursorColor: Theme.of(context).colorScheme.primary,
       cursorRadius: Radius.circular(SenseiConst.inBorderRadius.r),
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
       onFieldSubmitted: (value) => FocusScope.of(context).nextFocus(),
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       onChanged: onChange,
+      readOnly: readOnly,
+      maxLines: largeField ? 5 : 1,
+      minLines: 1,
+      enableInteractiveSelection: true,
+  
       decoration: InputDecoration(
         prefixIcon: Icon(
           icon,

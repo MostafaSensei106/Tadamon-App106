@@ -10,9 +10,14 @@ class SenseiConst {
   static const String devGitHubTokenLink = "https://github.com/MostafaSensei106/Tadamon-App106/issues";
   static const String devTelegramLink = "https://t.me/TadamonApp";
 
+  static const String donateByUnrwaLink = "https://donate.unrwa.org/int/ar/general?context_form_id=form_a81687151ce354b21b331f928cf8156a8996ab77_6767a2ac5f0560.06919295";
+  static const String donateByPalestinercsLink = "https://www.palestinercs.org/ar/Donation";
+  static const String donateByBaitzakatLink = "https://baitzakat.org.eg/donationChannels/";
+  static const String donateByEGYFoodBankLink = "https://www.efb.eg/programs/3101/daam-alasr-alflstyny-fy-msr";
+
   static const String senseiImage = "assets/images/MHlogo.png";
-  static const String drawerImage = "assets/images/mhp.jpeg";
-  static const String appBarImage = "assets/images/WaterMelonCover.jpg";
+  static const String drawerImage = "assets/images/drawer_image.jpg";
+  static const String appBarImage = "assets/images/waterMelonCover.jpg";
 
   static const double padding = 8;
   static const double iconSize = 27;

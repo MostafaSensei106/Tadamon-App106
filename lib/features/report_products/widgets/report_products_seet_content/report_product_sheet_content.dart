@@ -22,6 +22,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
   String status = 'لا أعرف';
 
   @override
+
   /// A [StatefulWidget] that builds a sheet for reporting a product.
   ///
   /// The sheet contains a [TextFieldComponent] for entering the serial number
@@ -48,16 +49,15 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
       create: (_) => ReportProductCubit(),
       child: BlocBuilder<ReportProductCubit, ReportProductState>(
         builder: (context, state) {
-          
           final bool isValid = state is ReportProductIsValid;
-          bool isSerialNumberError = state is ReportProductSerialNumberIsNotValid;
+          bool isSerialNumberError =
+              state is ReportProductSerialNumberIsNotValid;
           bool isProductNameError = state is ReportProductProductNameIsNotValid;
 
-/// Submits the product report using the [ReportProductCubit] and closes the sheet.
-/// 
-/// If both the product name and serial number are invalid, the report is not submitted.
-/// Upon successful submission, the sheet is popped from the navigation stack.
-
+          /// Submits the product report using the [ReportProductCubit] and closes the sheet.
+          ///
+          /// If both the product name and serial number are invalid, the report is not submitted.
+          /// Upon successful submission, the sheet is popped from the navigation stack.
 
           void sendReport(BuildContext context) {
             if (state is ReportProductProductNameIsNotValid &&
@@ -82,6 +82,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
                 icon: Icons.qr_code_rounded,
                 isNumeric: true,
                 hint: 'ادخل الرقم التسلسلي (6-13 أرقام)',
+                maxLength: 13,
                 errorText: isSerialNumberError ? state.error : null,
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.camera_alt_outlined),
@@ -102,6 +103,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
                 icon: Icons.label_outline_rounded,
                 hint: 'ادخل اسم المنتج',
                 errorText: isProductNameError ? state.error : null,
+                maxLength: 50,
               ),
               SizedBox(
                 height: SenseiConst.margin.h,
@@ -127,7 +129,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
                 Text(
                   state.error,
                   style: const TextStyle(color: Colors.red),
-                )
+                ),
             ],
           );
         },

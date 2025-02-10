@@ -20,7 +20,17 @@ import 'package:tadamon/features/report_products/widgets/report_products_seet_co
 import 'package:tadamon/generated/l10n.dart';
 
 class SenseiDrawer extends StatelessWidget {
-  const SenseiDrawer({super.key});
+   const SenseiDrawer({super.key});
+
+  WidgetStateProperty<Icon> thumbIcon(BuildContext context) {
+  return WidgetStateProperty.resolveWith<Icon>((Set<WidgetState> states) {
+    if (states.contains(WidgetState.selected)) {
+      return Icon(Icons.check, color: Theme.of(context).colorScheme.primary);
+    }
+    return Icon(Icons.close);
+  });
+}
+
 
   @override
 
@@ -106,6 +116,7 @@ class SenseiDrawer extends StatelessWidget {
           title: S.of(context).SystemTheme,
           subtitle: S.of(context).FollowSystemTheme,
           trailingWidget: Switch(
+            thumbIcon: thumbIcon(context),
             value: state.themeMode == ThemeMode.system,
             onChanged: (bool value) {
               toggleTheme(value, context);
@@ -163,6 +174,8 @@ class SenseiDrawer extends StatelessWidget {
                     ? S.of(context).SwitchToLightTheme
                     : S.of(context).SwitchToDarkTheme,
                 trailingWidget: Switch(
+
+                  thumbIcon: thumbIcon(context),
                   value: state.isDark,
                   onChanged: (bool value) {
                     context.read<ThemeCubit>().toggleTheme(value);
@@ -225,7 +238,10 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
-        DilogComponent(title: 'جاري استيراد البيانات', message: 'يرجى الانتظار حتى تكتمل المزامنة...').show(context);
+            DilogComponent(
+                    title: 'جاري استيراد البيانات',
+                    message: 'يرجى الانتظار حتى تكتمل المزامنة...')
+                .show(context);
           }
           if (state is HiveDataFetchingFromFireStoreSuccess) {
             AppToast.showSuccessToast('تم تهيئة البيانات بنجاح.');
@@ -264,10 +280,12 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
-            DilogComponent(title: 'جاري تحديث قاعدة البيانات', message: 'يرجى الانتظار حتى تكتمل المزامنة...').show(context);
+            DilogComponent(
+                    title: 'جاري تحديث قاعدة البيانات',
+                    message: 'يرجى الانتظار حتى تكتمل المزامنة...')
+                .show(context);
           }
-          if (state is 
-          HiveDataFetchingFromFireStoreSuccess) {
+          if (state is HiveDataFetchingFromFireStoreSuccess) {
             AppToast.showSuccessToast('تم تحديث قاعدة البيانات بنجاح.');
             Navigator.of(context).pop();
             Navigator.of(context).pop();
@@ -307,7 +325,10 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataBaseDeleting) {
-            DilogComponent(title: 'جاري حذف البيانات', message: 'يرجى الانتظار حتى تكتمل المزامنة...').show(context);
+            DilogComponent(
+                    title: 'جاري حذف البيانات',
+                    message: 'يرجى الانتظار حتى تكتمل المزامنة...')
+                .show(context);
           }
           if (state is HiveDataDeleteSuccess) {
             AppToast.showSuccessToast('تم حذف البيانات بنجاح.');
@@ -536,6 +557,4 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () => appAbout(context),
     );
   }
-
-
 }

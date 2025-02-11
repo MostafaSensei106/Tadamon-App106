@@ -1,5 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:tadamon/features/app_toast/app_toast.dart';
+import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/features/report_products/logic/services/report_service.dart';
 
 class NetworkController {

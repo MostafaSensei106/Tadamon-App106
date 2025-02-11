@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:tadamon/features/app_toast/app_toast.dart';
+import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model_hive.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_services.dart';

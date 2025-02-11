@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/features/app_bar/action_drawer_icons.dart';
-import 'package:tadamon/features/app_bar/app_bar_title.dart';
-import 'package:tadamon/features/app_bar/custom_app_bar_clipper.dart';
+import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/action_drawer_icons.dart';
+import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/app_bar_title.dart';
+import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/custom_app_bar_clipper.dart';
 
 class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;

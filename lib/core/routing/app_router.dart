@@ -26,35 +26,38 @@ class AppRouter {
     }
     return _createPageRoute(page);
   }
-/// Creates a [PageRouteBuilder] with a slide transition.
-///
-/// The transition slides the page from right to left with a duration of 250
-/// milliseconds. The transition uses an ease-in-out curve for both forward
-/// and reverse animation.
-///
-/// The [page] parameter specifies the widget to be displayed by the created
-/// route.
-///
-/// The slide animation begins from the right edge of the screen (offset 1.0, 0.0)
-/// and ends at the position (offset 0, 0).
 
- PageRouteBuilder _createPageRoute(Widget page) {
-  return PageRouteBuilder(
-    transitionDuration: const Duration(milliseconds: 250),
-    reverseTransitionDuration: const Duration(milliseconds: 250),
-    pageBuilder: (context, animation, secondaryAnimation) => page,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(1.0, 0.0); 
-      const end = Offset.zero;          
-      const curve = Curves.easeInOut;   
-      final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-      final offsetAnimation = animation.drive(tween);
-      return SlideTransition(
-        position: offsetAnimation,
-        child: child,
-      );
-    },
-  );
-}
+
+/// Creates a [PageRouteBuilder] with a custom slide and fade transition.
+///
+/// The [page] parameter is the widget to display as the page. The transition
+/// duration is set to 300 milliseconds for both entering and exiting transitions.
+///
+/// The transition consists of a fade effect combined with a slide effect from
+/// the right side of the screen (offset (1.0, 0.0)) to the center (offset zero).
+/// The slide transition uses an ease-in-out curve for a smooth animation.
+
+  PageRouteBuilder _createPageRoute(Widget page) {
+    return PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 300),
+      reverseTransitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        final opacityAnimation = animation.drive(Tween<double>(begin: 0.0, end: 1.0));
+        const begin = Offset(1.0, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.easeInOut;
+        final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        final offsetAnimation = animation.drive(tween);
+        return FadeTransition(
+          opacity: opacityAnimation,
+          child: SlideTransition(
+            position: offsetAnimation,
+            child: child,
+          ),
+        );
+      },
+    );
+  }
 
 }

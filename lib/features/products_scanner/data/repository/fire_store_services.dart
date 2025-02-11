@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tadamon/features/app_toast/app_toast.dart';
+import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
 class FireStoreServices {

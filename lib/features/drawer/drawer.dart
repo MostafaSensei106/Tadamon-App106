@@ -22,6 +22,20 @@ import 'package:tadamon/generated/l10n.dart';
 class SenseiDrawer extends StatelessWidget {
    const SenseiDrawer({super.key});
 
+  /// A [WidgetStateProperty] that returns a selected or unselected icon
+  /// depending on the presence of [WidgetState.selected] in the given
+  /// [states].
+  ///
+  /// The icon is an [Icon] widget with
+  /// - [Icons.check] if the widget is selected.
+  /// - [Icons.close] if the widget is not selected.
+  ///
+  /// The color of the icon is the primary color of the current theme.
+  ///
+  /// The widget is intended to be used as the [thumbIcon] property of a
+  /// [MaterialStateProperty] or [WidgetStateProperty] to define the icon
+  /// used by a [Switch] or [Checkbox] when the widget is in different
+  /// states.
   WidgetStateProperty<Icon> thumbIcon(BuildContext context) {
   return WidgetStateProperty.resolveWith<Icon>((Set<WidgetState> states) {
     if (states.contains(WidgetState.selected)) {

@@ -18,6 +18,7 @@ class SenseiConst {
   static const String senseiImage = "assets/images/MHlogo.png";
   static const String drawerImage = "assets/images/drawer_image.jpg";
   static const String appBarImage = "assets/images/waterMelonCover.jpg";
+  static const String palestineMap = "assets/images/palestine_map.png";
 
   static const double padding = 8;
   static const double iconSize = 27;

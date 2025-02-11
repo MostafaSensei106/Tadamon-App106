@@ -8,6 +8,7 @@ import 'package:tadamon/core/config/theme/colors/logic/theme_cubit.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_shared_preferences.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
 import 'package:tadamon/core/routing/app_router.dart';
+import 'package:tadamon/core/routing/routes.dart';
 
 import 'generated/l10n.dart';
 
@@ -32,7 +33,7 @@ class TadamonApp extends StatelessWidget {
               theme: lightTheme,
               darkTheme: darkTheme,
               themeMode: themeState.themeMode,
-              initialRoute: 'Routes.mainPage',
+              initialRoute: Routes.mainPage,
               onGenerateRoute: appRouter.generateRoute,
               locale: const Locale('ar','EG'),
               localizationsDelegates: const [

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/features/app_bar/app_bar.dart';
-import 'package:tadamon/features/drawer/drawer.dart';
-import 'package:tadamon/features/google_nav_bar/google_nav_bar.dart';
+import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/app_bar.dart';
+import 'package:tadamon/core/widget/app_drawer/drawer.dart';
+import 'package:tadamon/features/pages/main_page/ui/widget/google_nav_bar/google_nav_bar.dart';
 import 'package:tadamon/features/pages/main_page/logic/main_page_cubit.dart';
 import 'package:tadamon/features/pages/main_page/logic/main_page_state.dart';
 import 'package:tadamon/features/pages/main_page/ui/widget/main_page_container.dart';

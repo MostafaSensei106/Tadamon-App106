@@ -41,6 +41,9 @@ class FireStoreServices {
     }
   }
 
+
+
+
   /// Updates an existing product in the FireStore database.
   ///
   /// The product is updated in the '_collectionName' collection using the provided [documnetId].

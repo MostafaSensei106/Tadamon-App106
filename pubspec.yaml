@@ -25,17 +25,18 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
   simple_barcode_scanner: ^0.2.3
   firebase_core: ^3.8.1
+  cloud_firestore: ^5.6.0
   fluttertoast: ^8.2.10
   connectivity_plus: ^6.1.1
   flutter_native_splash: ^2.4.2
   flutter_launcher_icons: ^0.14.1
-  cloud_firestore: ^5.6.0
   intl_utils: ^2.8.8
   hive: ^2.2.3
   path_provider: ^2.0.15
   hive_flutter: ^1.1.0
   syncfusion_flutter_maps: ^28.2.5
   flutter_svg: ^2.0.17
+  infinite_scroll_pagination: ^4.1.0
 
 
 dev_dependencies:

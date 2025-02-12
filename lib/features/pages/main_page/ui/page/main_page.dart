@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/app_bar.dart';
 import 'package:tadamon/core/widget/app_drawer/drawer.dart';
 import 'package:tadamon/features/pages/main_page/ui/widget/google_nav_bar/google_nav_bar.dart';
@@ -130,29 +132,37 @@ class _MainPageState extends State<MainPage>
       child: BlocBuilder<PageCubit, MainPageState>(
         builder: (context, state) {
           return Scaffold(
+            
             resizeToAvoidBottomInset: true,
             key: const ValueKey<String>('main_page_scaffold'),
-            backgroundColor: Theme.of(context).colorScheme.surface,
+            backgroundColor: Color(0xffF26A5A),
             appBar: SenseiAppBar(
               _getAppBarTitle(state.currentPage),
             ),
             drawer: SenseiDrawer(),
-            body: Stack(
-              children: [
-                MainPageContainer(
-                  pageController: _pageController,
-                  onPageChanged: _onPageChanged,
+            
+            body: Container(
+                   decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surface,
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(SenseiConst.outBorderRadius.r+7),topRight: Radius.circular(SenseiConst.outBorderRadius.r+7)),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 60,
-                  right: 60,
-                  child: GoogleNavBar(
-                    onItemTapped: onItemTapped,
-                    currentIndex: state.currentPage.index,
+              child: Stack(
+                children: [
+                  MainPageContainer(
+                    pageController: _pageController,
+                    onPageChanged: _onPageChanged,
                   ),
-                ),
-              ],
+                  Positioned(
+                    bottom: 0,
+                    left: 60,
+                    right: 60,
+                    child: GoogleNavBar(
+                      onItemTapped: onItemTapped,
+                      currentIndex: state.currentPage.index,
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },

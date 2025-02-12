@@ -11,7 +11,7 @@ class PalestineMapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SidePageAppBar(title: S.of(context).PalatineMap),
+      appBar: SidePageAppBar(title: S.of(context).PalatineMap,),
       body: InteractiveViewer(
         child: ClipRRect(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(SenseiConst.outBorderRadius.r), topRight: Radius.circular(SenseiConst.outBorderRadius.r)),

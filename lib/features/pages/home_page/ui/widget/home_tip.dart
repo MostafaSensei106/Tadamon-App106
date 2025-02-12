@@ -104,23 +104,27 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
             margin: EdgeInsets.only(bottom: SenseiConst.margin),
             padding: const EdgeInsets.all(SenseiConst.padding),
             decoration: BoxDecoration(
+              border: Border.all(
+                color: Theme.of(context).colorScheme.primary,
+            width: 0.25,
+              ),
               borderRadius:
                   BorderRadius.circular(SenseiConst.outBorderRadius),
-              color: Theme.of(context).colorScheme.primaryContainer,
+              color: Theme.of(context).colorScheme.surfaceContainer,
             ),
             child: ListTile(
               subtitleTextStyle: TextStyle(
-                color: Theme.of(context).colorScheme.onSecondaryContainer,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
               leading: Icon(
                 Icons.lightbulb_outline_rounded,
                 size: SenseiConst.iconSize,
-                color: Theme.of(context).colorScheme.onSecondaryContainer,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
               title: Text(
                 S.of(context).AppName,
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.onSecondaryContainer,
+                color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               subtitle: Text(S.of(context).AppDescription),

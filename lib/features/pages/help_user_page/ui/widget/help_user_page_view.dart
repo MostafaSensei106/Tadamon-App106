@@ -5,7 +5,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widget/expansion_tile_component/expansion_tile_component.dart';
 import 'package:tadamon/features/pages/help_user_page/logic/cubit/help_user_cubit.dart';
 import 'package:tadamon/features/pages/help_user_page/logic/cubit/help_user_state.dart';
-import 'package:tadamon/features/pages/help_user_page/logic/help_search_delegate.dart';
+import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/side_page_app_bar.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class HelpUserPageView extends StatelessWidget {
@@ -14,25 +14,25 @@ class HelpUserPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).HowToUse),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              final state = context.read<HelpUserCubit>().state;
-              if (state is HlepUserLoadingQnaStateSuccess) {
-                showSearch(
-                  context: context,
-                  delegate: HelpSearchDelegate(
-                    qnaList: state.qnaList,
-                    onSearch: context.read<HelpUserCubit>().searchQA,
-                  ),
-                );
-              }
-            },
-          ),
-        ],
+      appBar: SidePageAppBar(
+        title: S.of(context).HowToUse,
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.search),
+        //     onPressed: () {
+        //       final state = context.read<HelpUserCubit>().state;
+        //       if (state is HlepUserLoadingQnaStateSuccess) {
+        //         showSearch(
+        //           context: context,
+        //           delegate: HelpSearchDelegate(
+        //             qnaList: state.qnaList,
+        //             onSearch: context.read<HelpUserCubit>().searchQA,
+        //           ),
+        //         );
+        //       }
+        //     },
+        //   ),
+        // ],
       ),
       body: SafeArea(
         child: BlocBuilder<HelpUserCubit, HelpUserState>(

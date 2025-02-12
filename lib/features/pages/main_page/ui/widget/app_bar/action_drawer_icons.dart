@@ -34,7 +34,7 @@ class ActionDrawerIcon extends StatelessWidget {
   /// child, which is a [Icon] widget with the [Icons.more_vert_rounded] icon.
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 17.r, bottom: 8.r),
+      padding: const EdgeInsets.all(SenseiConst.padding),
       child: Material(
         color: Colors.transparent,
         child: InkWell(

@@ -35,6 +35,7 @@ dependencies:
   path_provider: ^2.0.15
   hive_flutter: ^1.1.0
   syncfusion_flutter_maps: ^28.2.5
+  flutter_svg: ^2.0.17
 
 
 dev_dependencies:

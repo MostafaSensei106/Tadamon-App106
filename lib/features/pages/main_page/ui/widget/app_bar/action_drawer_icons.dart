@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:flutter/services.dart';
+
 class ActionDrawerIcon extends StatelessWidget {
   const ActionDrawerIcon({super.key});
 
@@ -15,6 +16,7 @@ class ActionDrawerIcon extends StatelessWidget {
   }
 
   @override
+
   /// Returns a [Padding] widget with a [Material] widget as child.
   ///
   /// The [Material] widget is configured with a transparent color and a
@@ -55,6 +57,7 @@ class _ActionDrawerContainer extends StatelessWidget {
   });
 
   @override
+
   /// Returns a [Container] widget with the given properties.
   ///
   /// The [padding] is set to [const EdgeInsets.all(8)].
@@ -67,11 +70,13 @@ class _ActionDrawerContainer extends StatelessWidget {
   /// The [child] is passed as-is.
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
-        color:
-            Theme.of(context).colorScheme.surfaceContainerHigh.withAlpha((0.3 * 255).toInt()),
+        color: Theme.of(context)
+            .colorScheme
+            .surfaceContainerHigh
+            .withAlpha((0.3 * 255).toInt()),
       ),
       child: child,
     );
@@ -84,6 +89,7 @@ class _ActionDrawerIcon extends StatelessWidget {
     return Icon(
       Icons.more_vert_rounded,
       size: SenseiConst.iconSize.sp,
+      color: Theme.of(context).colorScheme.onSurface,
     );
   }
 }

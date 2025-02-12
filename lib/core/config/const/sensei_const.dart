@@ -15,10 +15,10 @@ class SenseiConst {
   static const String donateByBaitzakatLink = "https://baitzakat.org.eg/donationChannels/";
   static const String donateByEGYFoodBankLink = "https://www.efb.eg/programs/3101/daam-alasr-alflstyny-fy-msr";
 
-  static const String senseiImage = "assets/images/MHlogo.png";
-  static const String drawerImage = "assets/images/drawer_image.jpg";
-  static const String appBarImage = "assets/images/waterMelonCover.jpg";
-  static const String palestineMap = "assets/images/palestine_map.png";
+  static const String senseiImage = "assets/images/MHlogo.svg";
+  static const String drawerImage = "assets/images/drawer_image.webp";
+  static const String appBarImage = "assets/images/waterMelonCover.webp";
+  static const String palestineMap = "assets/images/palestine_map.svg";
 
   static const double padding = 8;
   static const double iconSize = 27;

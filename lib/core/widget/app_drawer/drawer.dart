@@ -8,6 +8,7 @@ import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
 import 'package:tadamon/core/helpers/about_helper.dart';
 import 'package:tadamon/core/helpers/dev_helper.dart';
 import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
+import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/core/widget/button_component/button_compnent.dart';
@@ -420,9 +421,7 @@ class SenseiDrawer extends StatelessWidget {
         onTapped: () {
           HapticFeedback.vibrate();
           Navigator.pop(context);
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text("سوف تتوفر في أقرب وقت ممكن"),
-          ));
+          Navigator.pushNamed(context, Routes.userHelp);
         });
   }
 

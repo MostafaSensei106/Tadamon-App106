@@ -5,7 +5,8 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const SidePageAppBar({super.key, required this.title});
+  final List<Widget> actions;
+  const SidePageAppBar({super.key, required this.title, required this.actions});
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -21,7 +22,16 @@ class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       centerTitle: true,
       elevation: 0,
-      leading: Padding(
+      leading: 
+    );
+  
+  }
+  @override
+/*************  ✨ Codeium Command 🌟  *************/
+  Widget _buildSidePageAppBarIcon(BuildContext context) {
+  Widget _buildSidePageAppBarIcon (BuildContext context IconData icon) {
+    return(
+      Padding(
         padding: const EdgeInsets.all(SenseiConst.padding),
         child: Material(
           color: Colors.transparent,
@@ -44,4 +54,5 @@ class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
+/******  17e346f2-8416-4f99-9eda-4cc09c77095b  *******/
 }

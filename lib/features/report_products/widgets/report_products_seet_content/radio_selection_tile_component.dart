@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widget/expansion_tile_component/expansion_tile_component.dart';
+
 class RadioSelectionTileComponent extends StatefulWidget {
   final Function(String)? onChanged;
 
@@ -22,20 +24,10 @@ class _RadioSelectionTileComponentState
         color: Theme.of(context).colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
       ),
-      child: ExpansionTile(
-        leading: Icon(Icons.handshake_outlined),
-        title: Text('الحالة'),
-        subtitle: Text(selectedValue),
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-        enableFeedback: true,
-        showTrailingIcon: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
-          side: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
-            width: 0.2,
-          ),
-        ),
+      child: ExpansionTileComponent(
+        leadingIcon: Icons.handshake_outlined,
+        title: 'الحالة',
+        subtitle: selectedValue,
         children: [
           buildRadio('لا أعرف'),
           buildRadio('مقاطعة'),

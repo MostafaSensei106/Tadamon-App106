@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/features/counter_manager/widget/home_items_counter.dart';
 import 'package:tadamon/features/pages/home_page/ui/widget/home_app_tools.dart';
@@ -18,21 +17,16 @@ class HomePage extends StatelessWidget {
   /// contains a [Column] widget with the [HomeTip], [ImageNews],
   /// [HomeAppTools], and [ItemsCounter] widgets as children.
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(
-              left: SenseiConst.padding.w,
-              right: SenseiConst.padding.w,
-              bottom: SenseiConst.padding.h),
-          child: Column(
-            children: [
-              HomeTip(),
-              ImageNews(),
-              HomeAppTools(),
-              ItemsCounter(),
-            ],
-          ),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(SenseiConst.padding),
+        child: Column(
+          children: [
+            HomeTip(),
+            ImageNews(),
+            HomeAppTools(),
+            ItemsCounter(),
+          ],
         ),
       ),
     );

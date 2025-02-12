@@ -11,8 +11,7 @@ class EditTextSheetContent extends StatefulWidget {
   const EditTextSheetContent({super.key});
 
   @override
-  _EditTextSheetContentState createState() => _EditTextSheetContentState();
-
+  State<EditTextSheetContent> createState() => _EditTextSheetContentState();
   /// Shows a bottom sheet with the title translated to "Edit Text" and a
   /// [EditTextSheetContent] as its child in the given [context].
   ///

@@ -35,7 +35,5 @@ factory ProductModel.fromMap(Map<String, dynamic> map) {
     isTrusted: map['Trusted'], 
   );
 }
-
-
 }
 

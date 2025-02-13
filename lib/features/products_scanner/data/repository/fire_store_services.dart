@@ -41,9 +41,6 @@ class FireStoreServices {
     }
   }
 
-
-
-
   /// Updates an existing product in the FireStore database.
   ///
   /// The product is updated in the '_collectionName' collection using the provided [documnetId].
@@ -116,22 +113,22 @@ class FireStoreServices {
     }
   }
 
-Future<List<ProductModel>> search(String query) async {
-  final CollectionReference collection = _firestore.collection(_collectionName);
-
-  Query querySnapshot = collection.where('serialNumber', isGreaterThanOrEqualTo: query)
-    .where('serialNumber', isLessThanOrEqualTo: '$query\uf8ff')
-    .orderBy('serialNumber');
-
-  final snapshot = await querySnapshot.get();
-  
-  return snapshot.docs.map((doc) {
-    final data = doc.data() as Map<String, dynamic>; 
-    return ProductModel.fromMap(data);
-  }).toList();
-}
-
-
+  Future<List<ProductModel>> searchForProduct(String query) async {
+    try {
+      final snapshot = await _firestore
+          .collection(_collectionName)
+          .where('serialNumber', isGreaterThanOrEqualTo: query)
+          .where('serialNumber', isLessThanOrEqualTo: '$query\uf8ff')
+          .orderBy('serialNumber')
+          .get();
+      return snapshot.docs
+          .map((doc) => ProductModel.fromMap(doc.data()))
+          .toList();
+    } catch (e) {
+      AppToast.showErrorToast(e.toString());
+      return [];
+    }
+  }
 
   /// Sends a product report to the FireStore database.
   ///
@@ -150,6 +147,4 @@ Future<List<ProductModel>> search(String query) async {
         _firestore.collection(_productReportCollection).doc(productName);
     await documentReference.set(productReport);
   }
-
-
 }

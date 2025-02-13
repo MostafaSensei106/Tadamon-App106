@@ -1,10 +1,8 @@
+#dart run flutter_native_splash:create
 flutter_native_splash:
   color: "#ffffff"
-  color_dark: "#fcf1e1"
-  branding_bottom_padding: 24
-  
+
   android_12:
     color: "#fcf1e1"
 
-
-  fade_in_duration: 500
+fullscreen: true

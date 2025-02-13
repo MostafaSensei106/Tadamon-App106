@@ -40,7 +40,7 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
         shape:RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
           side: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
+            color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
             width: 0.2,
           ),
         ),

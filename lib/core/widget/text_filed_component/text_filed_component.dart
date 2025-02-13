@@ -8,6 +8,7 @@ class TextFieldComponent extends StatelessWidget {
   final IconButton? suffixIcon;
   final String hint;
   final String? errorText;
+  final bool useOutBorderRadius;
   final bool isNumeric;
   final bool isExpands;
   final bool largeField;
@@ -29,7 +30,7 @@ class TextFieldComponent extends StatelessWidget {
       this.readOnly = false,
       this.maxLength = 0,
       this.isExpands = false,
-      this.largeField = false});
+      this.largeField = false,  this.useOutBorderRadius = false});
 
   /// Validates the input value based on the component's configuration.
   ///
@@ -83,13 +84,13 @@ class TextFieldComponent extends StatelessWidget {
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
+            color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
             width: 0.2,
           ),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+          borderRadius: useOutBorderRadius ? BorderRadius.circular(SenseiConst.outBorderRadius.r) : BorderRadius.circular(SenseiConst.inBorderRadius.r),
         ),
       ),
     );

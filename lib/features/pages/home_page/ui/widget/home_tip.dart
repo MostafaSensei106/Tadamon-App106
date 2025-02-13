@@ -25,7 +25,7 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 350),
     );
     _animation = CurvedAnimation(
       parent: _controller,
@@ -105,7 +105,7 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
             padding: const EdgeInsets.all(SenseiConst.padding),
             decoration: BoxDecoration(
               border: Border.all(
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
             width: 0.25,
               ),
               borderRadius:

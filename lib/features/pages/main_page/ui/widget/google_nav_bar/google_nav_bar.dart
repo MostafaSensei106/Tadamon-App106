@@ -54,7 +54,7 @@ class GoogleNavBar extends StatelessWidget {
           border: Border.all(
             width: 0.2,
             strokeAlign: BorderSide.strokeAlignOutside,
-            color: theme.colorScheme.primary
+            color: theme.colorScheme.outline.withAlpha(0x80),
           ),
         ),
         child: Padding(

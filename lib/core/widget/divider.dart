@@ -10,11 +10,11 @@ class SenseiDivider extends StatelessWidget {
   /// of 0.8.
   Widget build(BuildContext context) {
     return Divider(
-      thickness: 0,
+      thickness: 0.1,
       height: 0,
       indent: 0,
       endIndent: 0,
-      color: Theme.of(context).colorScheme.primary,
+      color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
     );
   }
 }

@@ -1,6 +1,5 @@
 # To generate app icons, run:
 # flutter pub run flutter_launcher_icons
-
 flutter_launcher_icons:
   android: "launcher_icon"
   image_path: "assets/icons/play_store_512.png"

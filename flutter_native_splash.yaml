@@ -1,10 +1,6 @@
 #dart run flutter_native_splash:create
 flutter_native_splash:
   color: "#fcf1e1"
-
-
   android_12:
     color: "#fcf1e1"
-
-
 fullscreen: true

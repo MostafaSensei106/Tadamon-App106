@@ -1,20 +1,30 @@
-part of 'search_cubit.dart';
 
-@immutable
-abstract class SearchState {}
+import 'package:equatable/equatable.dart';
+import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
 
-class SearchStateInit extends SearchState {}
+abstract class SearchState  extends Equatable{
+  @override
+  List<Object?> get props => [];
+}
+
+class SearchInitial extends SearchState {}
 
 class SearchLoading extends SearchState {}
 
-class SearchSuccess extends SearchState {
-  final List<ProductModel> products;
+class SearchLoadingSuccess extends SearchState {
+   final List<ProductSearchModel> products;
 
-  SearchSuccess({required this.products});
+   SearchLoadingSuccess(result, {required this.products});
+
+   @override
+   List<Object> get props => [products];
 }
 
 class SearchError extends SearchState {
   final String message;
 
-  SearchError({required this.message});
+  SearchError(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

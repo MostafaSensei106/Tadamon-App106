@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tadamon/core/widget/app_toast/app_toast.dart';
+import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
 class FireStoreServices {
@@ -113,22 +114,42 @@ class FireStoreServices {
     }
   }
 
-  Future<List<ProductModel>> searchForProduct(String query) async {
-    try {
-      final snapshot = await _firestore
-          .collection(_collectionName)
-          .where('serialNumber', isGreaterThanOrEqualTo: query)
-          .where('serialNumber', isLessThanOrEqualTo: '$query\uf8ff')
-          .orderBy('serialNumber')
-          .get();
-      return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
-          .toList();
-    } catch (e) {
-      AppToast.showErrorToast(e.toString());
+  Future<List<ProductSearchModel>> searchForProduct(String searchTerm, String filter) async {
+     if (searchTerm.isEmpty) {
       return [];
     }
+
+    searchTerm = searchTerm.toLowerCase();
+    final CollectionReference productsCollection =
+        _firestore.collection(_collectionName);
+
+    Query query;
+    if (filter == 'SerialNumber') {
+      query = productsCollection
+          .where('SerialNumber', isGreaterThanOrEqualTo: searchTerm)
+          .where('SerialNumber', isLessThanOrEqualTo: '$searchTerm\uf8ff');
+    } else if (filter == 'Name') {
+      query = productsCollection
+          .where('Name', isGreaterThanOrEqualTo: searchTerm)
+          .where('Name', isLessThanOrEqualTo: '$searchTerm\uf8ff');
+    } else if (filter == 'Manufacture') {
+      query = productsCollection
+          .where('Manufacture', isGreaterThanOrEqualTo: searchTerm)
+          .where('Manufacture', isLessThanOrEqualTo: '$searchTerm\uf8ff');
+    } else if (filter == 'Category') {
+      query = productsCollection
+          .where('Category', isGreaterThanOrEqualTo: searchTerm)
+          .where('Category', isLessThanOrEqualTo: '$searchTerm\uf8ff');
+    } else {
+      query =
+          productsCollection.where('Name', isGreaterThanOrEqualTo: searchTerm);
+    }
+
+    final querySnapshot = await query.get();
+
+    return querySnapshot.docs.map((doc) => ProductSearchModel.fromDocument(doc)).toList();
   }
+  
 
   /// Sends a product report to the FireStore database.
   ///

@@ -18,15 +18,38 @@ class ProductExpansionTile extends StatelessWidget {
       ),
       child: ExpansionTile(
         leading: product.trusted
-            ? Icon(Icons.gpp_good_outlined)
-            : Icon(Icons.remove_moderator_outlined),
+            ? Container(
+                padding: EdgeInsets.all(SenseiConst.padding.w),
+                decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                    color: Theme.of(context).colorScheme.surfaceContainerHigh),
+                child: Icon(
+                  Icons.check_circle_outline_outlined,
+                  color: Colors.green,
+                  size: SenseiConst.iconSize,
+                ))
+            : Container(
+                padding: EdgeInsets.all(SenseiConst.padding.w),
+                decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                    color: Theme.of(context).colorScheme.surfaceContainerHigh),
+                child: Icon(
+                  Icons.block_rounded,
+                  color: Colors.red,
+                  size: SenseiConst.iconSize,
+                )),
         title: Text(product.name),
         subtitle: Text(product.serialNumber),
         enableFeedback: true,
         showTrailingIcon: true,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
-        ),
+            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+            side: BorderSide(
+              color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
+              width: 0.2,
+            )),
         children: [
           DrawerComponent(
             leadingIcon: Icons.qr_code_rounded,

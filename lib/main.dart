@@ -8,6 +8,18 @@ import 'package:tadamon/features/report_products/logic/services/report_service.d
 import 'package:tadamon/firebase_options.dart';
 import 'package:tadamon/tadamon.dart';
 
+/// The main entry point of the application.
+/// 
+/// This function ensures the necessary initializations are completed before
+/// running the app. It:
+/// - Ensures that the Flutter binding is initialized.
+/// - Initializes shared preferences for the ReportService.
+/// - Initializes Firebase with the default platform options.
+/// - Initializes Hive for local database storage and registers a Hive adapter
+///   for the `HiveProductModel`.
+/// - Initializes the NetworkController for network status monitoring.
+/// - Finally, it runs the `TadamonApp` with the provided `AppRouter`.
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ReportService.initializePreferences();

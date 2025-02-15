@@ -39,7 +39,7 @@ class GoogleNavBar extends StatelessWidget {
   ///
   /// The [GNav] widget has three tabs with icons and text, which are
   /// configured with the given [currentIndex] and [onItemTapped] properties.
-  ///
+  /// 
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Padding(

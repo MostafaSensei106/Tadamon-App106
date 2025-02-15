@@ -39,29 +39,31 @@ class NetworkController {
   /// بالانترنت'.
   void _updateConnectionStatus(ConnectivityResult result) async {
     switch (result) {
+      
       case ConnectivityResult.wifi:
         //AppToast.showToast('الجهاز متصل بالواي فاي');
         await ReportService.resendPendingReports();
         break;
+
       case ConnectivityResult.mobile:
         // AppToast.showToast('الجهاز متصل بالشبكة المحمولة');
         await ReportService.resendPendingReports();
         break;
+
       case ConnectivityResult.ethernet:
         // AppToast.showToast('الجهاز متصل بالشبكة السلكية');
         await ReportService.resendPendingReports();
-
         break;
 
       case ConnectivityResult.vpn:
         //AppToast.showToast('الجهاز متصل بالشبكة الافتراضية');
                 await ReportService.resendPendingReports();
-
         break;
 
       case ConnectivityResult.none:
         // AppToast.showErrorToast('لا يوجد اتصال بالانترنت');
         break;
+
       default:
         AppToast.showErrorToast('حدث خطأ ما');
         break;

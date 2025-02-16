@@ -5,7 +5,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 class TextFieldComponent extends StatelessWidget {
   final TextEditingController controller;
   final IconData icon;
-  final IconButton? suffixIcon;
+  final Widget? suffixIcon;
   final String hint;
   final String? errorText;
   final bool useOutBorderRadius;

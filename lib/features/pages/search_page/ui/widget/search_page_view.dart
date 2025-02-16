@@ -34,35 +34,52 @@ class _SearchPageViewState extends State<SearchPageView> {
 
   Row searchRow(BuildContext context) {
     return Row(
-          children: [
-            Expanded(
-              child: TextFieldComponent(
-                useOutBorderRadius: false,
-                  controller: _searchController,
-                  icon: Icons.search,
-                  hint: 'ابحث عن منتج',
-                  onChange: (value) => context.read<SearchBloc>().add(
-                        FetchSearchResult(value, _selectedFilter),
-                      )),
-            ),
-            SizedBox(width: 8.w),
-            DropdownButton<String>(
-              value: _selectedFilter,
-              onChanged: (String? newValue) {
-                setState(() {
-                  _selectedFilter = newValue!;
-                });
-              },
-              items: <String>['Name', 'Category', 'Price']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-          ],
-        );
+      children: [
+        Expanded(
+          child: TextFieldComponent(
+              useOutBorderRadius: true,
+              controller: _searchController,
+              icon: Icons.search,
+              suffixIcon: PopupMenuButton(itemBuilder: (context) {
+                return [
+                  PopupMenuItem(
+                    value: 'Name',
+                    child: Text('Name'),
+                  ),
+                  PopupMenuItem(
+                    value: 'Category',
+                    child: Text('Category'),
+                  ),
+                  PopupMenuItem(
+                    value: 'Price',
+                    child: Text('Price'),
+                  ),
+                ];
+              }),
+              hint: 'ابحث عن منتج',
+
+              onChange: (value) => context.read<SearchBloc>().add(
+                    FetchSearchResult(value, _selectedFilter),
+                  )),
+        ),
+        SizedBox(width: 8.w),
+        DropdownButton<String>(
+          value: _selectedFilter,
+          onChanged: (String? newValue) {
+            setState(() {
+              _selectedFilter = newValue!;
+            });
+          },
+          items: <String>['Name', 'Category', 'Price']
+              .map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        ),
+      ],
+    );
   }
 }
 

@@ -87,7 +87,7 @@ class _ActionDrawerIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Icon(
-      Icons.more_vert_rounded,
+      Icons.more_horiz_rounded,
       size: SenseiConst.iconSize.sp,
       color: Theme.of(context).colorScheme.onSurface,
     );

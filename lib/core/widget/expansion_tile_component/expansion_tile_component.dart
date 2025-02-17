@@ -41,7 +41,6 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
           borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
           side: BorderSide(
             color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-            width: 0.2,
           ),
         ),
         children: widget.children,

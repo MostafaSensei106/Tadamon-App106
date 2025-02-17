@@ -68,19 +68,53 @@ class _SearchPageViewState extends State<SearchPageView> {
                   return [
                     PopupMenuItem(
                       value: 'Name',
-                      child: Text('اسم المنتج'),
+                      child:  ListTile(
+                        leading: Icon(
+                          Icons.label_outline_rounded,
+                          size: SenseiConst.iconSize,
+                        ),
+                        title: Text('اسم المنتج'),
+                      )
                     ),
                     PopupMenuItem(
                       value: 'SerialNumber',
-                      child: Text('الرقم التسلسلي'),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.numbers,
+                            size: SenseiConst.iconSize,
+                          ),
+                          SizedBox(width: SenseiConst.padding.w),
+                          Text('الرقم التسلسلي'),
+                        ],
+                      ),
                     ),
                     PopupMenuItem(
                       value: 'Manufacture',
-                      child: Text('المُصنع'),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.business,
+                            size: SenseiConst.iconSize,
+                          ),
+                          SizedBox(width: SenseiConst.padding.w),
+                          Text('المُصنع'),
+                        ],
+                      ),
                     ),
                     PopupMenuItem(
                       value: 'Category',
-                      child: Text('القسم'),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.category_outlined,
+                            size: SenseiConst.iconSize,
+                          ),
+                          SizedBox(width: SenseiConst.padding.w),
+                          Text('القسم'),
+                        ],
+                      ),
+
                     ),
                   ];
                 },
@@ -90,9 +124,24 @@ class _SearchPageViewState extends State<SearchPageView> {
               onChange: (value) => context.read<SearchBloc>().add(
                     FetchSearchResult(value, _selectedFilter),
                   )),
+
+                  
         ),
-        SizedBox(width: 8.w),
       ],
     );
   }
+
+  Widget filter_list (BuildContext context , String title , IconData icon, String value){ {
+    return PopupMenuItem(
+      value: value,
+      child:  ListTile(
+        leading: Icon(
+          icon,
+          size: SenseiConst.iconSize,
+        ),
+        title: Text(title),
+      )
+    );
+  }
+}
 }

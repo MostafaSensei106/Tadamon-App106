@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widget/button_component/button_compnent.dart';
 import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
 
@@ -26,7 +27,6 @@ class ProductExpansionTile extends StatelessWidget {
                     color: Theme.of(context).colorScheme.surfaceContainerHigh),
                 child: Icon(
                   Icons.check_circle_outline_outlined,
-                  color: Colors.green,
                   size: SenseiConst.iconSize,
                 ))
             : Container(
@@ -37,7 +37,6 @@ class ProductExpansionTile extends StatelessWidget {
                     color: Theme.of(context).colorScheme.surfaceContainerHigh),
                 child: Icon(
                   Icons.block_rounded,
-                  color: Colors.red,
                   size: SenseiConst.iconSize,
                 )),
         title: Text(product.name),
@@ -86,6 +85,16 @@ class ProductExpansionTile extends StatelessWidget {
             title: "الحالة",
             subtitle: product.trusted ? "لا يدعم الكيان" : "مقاطعة",
           ),
+          if (product.trusted == false)
+            Padding(
+                padding: EdgeInsets.only(
+                    left: SenseiConst.padding.w,
+                    right: SenseiConst.padding.w,
+                    bottom: SenseiConst.padding.h),
+                child: ButtonCompnent(
+                    label: 'منتجات بديلة',
+                    icon: Icons.new_releases_outlined,
+                    onPressed: () => Navigator.pop(context, product))),
         ],
       ),
     );

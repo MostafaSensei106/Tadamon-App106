@@ -52,7 +52,7 @@ class GoogleNavBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
           color: theme.colorScheme.surfaceContainer,
           border: Border.all(
-            width: 0.2,
+            //width: 0.2,
             strokeAlign: BorderSide.strokeAlignOutside,
             color: theme.colorScheme.outline.withAlpha(0x80),
           ),

@@ -85,7 +85,8 @@ class _SearchPageViewState extends State<SearchPageView> {
                   ];
                 },
               ),
-              hint: 'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'القسم'}',
+              hint:
+                  'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'القسم'}...',
               onChange: (value) => context.read<SearchBloc>().add(
                     FetchSearchResult(value, _selectedFilter),
                   )),
@@ -94,6 +95,4 @@ class _SearchPageViewState extends State<SearchPageView> {
       ],
     );
   }
-
-
 }

@@ -67,6 +67,7 @@ class TextFieldComponent extends StatelessWidget {
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
       onFieldSubmitted: (value) => FocusScope.of(context).nextFocus(),
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      onTapUpOutside: (event) => FocusScope.of(context).unfocus(),
       onChanged: onChange,
       readOnly: readOnly,
       maxLines: largeField ? 5 : 1,

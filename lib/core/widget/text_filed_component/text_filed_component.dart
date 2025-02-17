@@ -30,7 +30,8 @@ class TextFieldComponent extends StatelessWidget {
       this.readOnly = false,
       this.maxLength = 0,
       this.isExpands = false,
-      this.largeField = false,  this.useOutBorderRadius = false});
+      this.largeField = false,
+      this.useOutBorderRadius = false});
 
   /// Validates the input value based on the component's configuration.
   ///
@@ -71,7 +72,6 @@ class TextFieldComponent extends StatelessWidget {
       maxLines: largeField ? 5 : 1,
       minLines: 1,
       enableInteractiveSelection: true,
-  
       decoration: InputDecoration(
         prefixIcon: Icon(
           icon,
@@ -83,6 +83,9 @@ class TextFieldComponent extends StatelessWidget {
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(
+          borderRadius: useOutBorderRadius
+              ? BorderRadius.circular(SenseiConst.outBorderRadius.r)
+              : BorderRadius.circular(SenseiConst.inBorderRadius.r),
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
             width: 0.2,
@@ -90,7 +93,9 @@ class TextFieldComponent extends StatelessWidget {
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: useOutBorderRadius ? BorderRadius.circular(SenseiConst.outBorderRadius.r) : BorderRadius.circular(SenseiConst.inBorderRadius.r),
+          borderRadius: useOutBorderRadius
+              ? BorderRadius.circular(SenseiConst.outBorderRadius.r)
+              : BorderRadius.circular(SenseiConst.inBorderRadius.r),
         ),
       ),
     );

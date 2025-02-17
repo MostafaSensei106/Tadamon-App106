@@ -5,8 +5,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widget/text_filed_component/text_filed_component.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_bloc.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_event.dart';
-import 'package:tadamon/features/pages/search_page/logic/search_state.dart';
-import 'package:tadamon/features/pages/search_page/ui/widget/product_expansion_tile.dart';
+import 'package:tadamon/features/pages/search_page/ui/widget/result_content.dart';
 
 class SearchPageView extends StatefulWidget {
   const SearchPageView({super.key});
@@ -24,7 +23,7 @@ class _SearchPageViewState extends State<SearchPageView> {
       padding: const EdgeInsets.all(SenseiConst.padding),
       child: Column(
         children: [
-          searchRow(context),
+          searchBar(context),
           SizedBox(height: SenseiConst.margin.h),
           ResultContent(searchController: _searchController),
         ],
@@ -32,7 +31,7 @@ class _SearchPageViewState extends State<SearchPageView> {
     );
   }
 
-  Row searchRow(BuildContext context) {
+  Row searchBar(BuildContext context) {
     return Row(
       children: [
         Expanded(
@@ -40,98 +39,61 @@ class _SearchPageViewState extends State<SearchPageView> {
               useOutBorderRadius: true,
               controller: _searchController,
               icon: Icons.search,
-              suffixIcon: PopupMenuButton(itemBuilder: (context) {
-                return [
-                  PopupMenuItem(
-                    value: 'Name',
-                    child: Text('Name'),
+              suffixIcon: PopupMenuButton<String>(
+                onSelected: (value) {
+                  setState(() {
+                    _selectedFilter = value;
+                  });
+                },
+                icon: const Icon(
+                  Icons.filter_list,
+                  size: SenseiConst.iconSize,
+                ),
+                elevation: 0,
+                enableFeedback: true,
+                borderRadius:
+                    BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                  side: BorderSide(
+                    width: 0.2,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
-                  PopupMenuItem(
-                    value: 'Category',
-                    child: Text('Category'),
-                  ),
-                  PopupMenuItem(
-                    value: 'Price',
-                    child: Text('Price'),
-                  ),
-                ];
-              }),
-              hint: 'ابحث عن منتج',
-
+                ),
+                padding: EdgeInsets.zero,
+                tooltip: 'فلتر البحث',
+                color: Theme.of(context).colorScheme.surface,
+                itemBuilder: (context) {
+                  return [
+                    PopupMenuItem(
+                      value: 'Name',
+                      child: Text('اسم المنتج'),
+                    ),
+                    PopupMenuItem(
+                      value: 'SerialNumber',
+                      child: Text('الرقم التسلسلي'),
+                    ),
+                    PopupMenuItem(
+                      value: 'Manufacture',
+                      child: Text('المُصنع'),
+                    ),
+                    PopupMenuItem(
+                      value: 'Category',
+                      child: Text('القسم'),
+                    ),
+                  ];
+                },
+              ),
+              hint: 'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'القسم'}',
               onChange: (value) => context.read<SearchBloc>().add(
                     FetchSearchResult(value, _selectedFilter),
                   )),
         ),
         SizedBox(width: 8.w),
-        DropdownButton<String>(
-          value: _selectedFilter,
-          onChanged: (String? newValue) {
-            setState(() {
-              _selectedFilter = newValue!;
-            });
-          },
-          items: <String>['Name', 'Category', 'Price']
-              .map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-        ),
       ],
     );
   }
-}
 
-class ResultContent extends StatelessWidget {
-  const ResultContent({
-    super.key,
-    required TextEditingController searchController,
-  }) : _searchController = searchController;
 
-  final TextEditingController _searchController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: BlocBuilder<SearchBloc, SearchState>(
-        builder: (context, state) {
-          if (state is SearchLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is SearchLoadingSuccess) {
-            if (state.products.isEmpty) {
-              return Center(
-                child: Text(
-                  _searchController.text.isEmpty
-                      ? 'نتائج البحث سوف تظهر هنا'
-                      : 'المنتج غير موجود',
-                ),
-              );
-            }
-            return ListView.separated(
-              itemCount: state.products.length,
-              itemBuilder: (context, index) {
-                final product = state.products[index];
-                return ProductExpansionTile(product: product);
-              },
-              separatorBuilder: (context, index) =>
-                  SizedBox(height: SenseiConst.margin.h),
-            );
-          } else if (state is SearchError) {
-            return Center(
-              child: Text('Error: ${state.message}'),
-            );
-          } else {
-            return Center(
-              child: Text(
-                'نتائج البحث سوف تظهر هنا',
-              ),
-            );
-          }
-        },
-      ),
-    );
-  }
 }

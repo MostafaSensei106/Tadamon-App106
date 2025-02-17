@@ -24,6 +24,6 @@ class SenseiConst {
   static const double iconSize = 27;
   static const double margin = 8;
 
-  static const double outBorderRadius = 14;
+  static const double outBorderRadius = inBorderRadius + padding;
   static const double inBorderRadius = 8;
 }

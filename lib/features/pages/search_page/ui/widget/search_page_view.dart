@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/divider.dart';
 import 'package:tadamon/core/widget/text_filed_component/text_filed_component.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_bloc.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_event.dart';

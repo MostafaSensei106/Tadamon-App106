@@ -11,7 +11,7 @@ class SenseiDivider extends StatelessWidget {
   
   Widget build(BuildContext context) {
     return Divider(
-      thickness: 0.1,
+      thickness: 0.2,
       height: 0,
       indent: 0,
       endIndent: 0,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widget/divider.dart';
 import 'package:tadamon/core/widget/text_filed_component/text_filed_component.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_bloc.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_event.dart';
@@ -16,7 +17,7 @@ class SearchPageView extends StatefulWidget {
 
 class _SearchPageViewState extends State<SearchPageView> {
   final TextEditingController _searchController = TextEditingController();
-  String _selectedFilter = 'Name';
+  String _selectedFilter = 'SerialNumber';
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -57,8 +58,7 @@ class _SearchPageViewState extends State<SearchPageView> {
                   borderRadius:
                       BorderRadius.circular(SenseiConst.inBorderRadius.r),
                   side: BorderSide(
-                    width: 0.2,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
                   ),
                 ),
                 padding: EdgeInsets.zero,
@@ -67,21 +67,11 @@ class _SearchPageViewState extends State<SearchPageView> {
                 itemBuilder: (context) {
                   return [
                     PopupMenuItem(
-                      value: 'Name',
-                      child:  ListTile(
-                        leading: Icon(
-                          Icons.label_outline_rounded,
-                          size: SenseiConst.iconSize,
-                        ),
-                        title: Text('اسم المنتج'),
-                      )
-                    ),
-                    PopupMenuItem(
                       value: 'SerialNumber',
                       child: Row(
                         children: [
                           Icon(
-                            Icons.numbers,
+                            Icons.qr_code_rounded,
                             size: SenseiConst.iconSize,
                           ),
                           SizedBox(width: SenseiConst.padding.w),
@@ -89,6 +79,18 @@ class _SearchPageViewState extends State<SearchPageView> {
                         ],
                       ),
                     ),
+                    PopupMenuItem(
+                        value: 'Name',
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.label_outline_rounded,
+                              size: SenseiConst.iconSize,
+                            ),
+                            SizedBox(width: SenseiConst.padding.w),
+                            Text('اسم المنتج'),
+                          ],
+                        )),
                     PopupMenuItem(
                       value: 'Manufacture',
                       child: Row(
@@ -114,7 +116,6 @@ class _SearchPageViewState extends State<SearchPageView> {
                           Text('القسم'),
                         ],
                       ),
-
                     ),
                   ];
                 },
@@ -124,24 +125,8 @@ class _SearchPageViewState extends State<SearchPageView> {
               onChange: (value) => context.read<SearchBloc>().add(
                     FetchSearchResult(value, _selectedFilter),
                   )),
-
-                  
         ),
       ],
     );
   }
-
-  Widget filter_list (BuildContext context , String title , IconData icon, String value){ {
-    return PopupMenuItem(
-      value: value,
-      child:  ListTile(
-        leading: Icon(
-          icon,
-          size: SenseiConst.iconSize,
-        ),
-        title: Text(title),
-      )
-    );
-  }
-}
 }

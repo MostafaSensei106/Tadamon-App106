@@ -106,7 +106,6 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
             decoration: BoxDecoration(
               border: Border.all(
                 color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-            width: 0.25,
               ),
               borderRadius:
                   BorderRadius.circular(SenseiConst.outBorderRadius),

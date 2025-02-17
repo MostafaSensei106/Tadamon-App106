@@ -47,12 +47,11 @@ class ProductExpansionTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
             side: BorderSide(
               color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-              width: 0.2,
             )),
         children: [
           DrawerComponent(
             leadingIcon: Icons.qr_code_rounded,
-            title: "رقم المنتج",
+            title: "الرقم التسلسلي",
             subtitle: product.serialNumber,
             useGroupTop: true,
             useDivider: true,

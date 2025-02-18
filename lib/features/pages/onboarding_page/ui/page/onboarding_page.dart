@@ -39,9 +39,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 firstTitle: 'ابحث عن المنتج',
                 secondTitle: 'اعثر على البدائل',
                 subtitle:
-                    'ابحث عن المنتجات واحصل علي البدائل للمنتجات المقاطعة بكل سهولة.',
+                    'ابحث عن المنتجات واحصل علي البدائل لمنتجات المقاطعة بكل سهولة.',
               ),
               OnboardingPageTwo(
+                height: 51.1,
                 appOnlineRun: true,
                 firstIcon: Icons.cloud_done_outlined,
                 secondIcon: Icons.cloud_off_rounded,

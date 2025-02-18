@@ -10,6 +10,7 @@ class OnboardingPageOne extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             padding: EdgeInsets.all(SenseiConst.padding.w),
@@ -30,7 +31,7 @@ class OnboardingPageOne extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 25.h),
+          SizedBox(height: 10.h),
           Text(
             "تطبيق تضامن",
             style: TextStyle(
@@ -39,7 +40,6 @@ class OnboardingPageOne extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary,
             ),
           ),
-          SizedBox(height: 10.h),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Text(

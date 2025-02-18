@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
@@ -100,12 +101,14 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                             Icons.keyboard_double_arrow_right_rounded,
                             () {
                               if (widget.pageController.page == 0) {
+                                HapticFeedback.vibrate();
                                 Navigator.pushNamedAndRemoveUntil(
                                   context,
                                   Routes.mainPage,
                                   (route) => false,
                                 );
                               } else {
+                                HapticFeedback.vibrate();
                                 widget.pageController.previousPage(
                                   duration: const Duration(milliseconds: 350),
                                   curve: Curves.easeInOut,
@@ -118,6 +121,8 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                             'السابق',
                             Icons.keyboard_double_arrow_right_rounded,
                             () {
+                              HapticFeedback.vibrate();
+
                               widget.pageController.previousPage(
                                 duration: const Duration(milliseconds: 350),
                                 curve: Curves.easeInOut,
@@ -167,6 +172,8 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                               'بدء',
                               Icons.keyboard_double_arrow_left_rounded,
                               () {
+                                HapticFeedback.vibrate();
+
                                 Navigator.pushNamedAndRemoveUntil(
                                   context,
                                   Routes.mainPage,
@@ -179,6 +186,8 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                               'التالي',
                               Icons.keyboard_double_arrow_left_rounded,
                               () {
+                                HapticFeedback.vibrate();
+
                                 widget.pageController.nextPage(
                                   duration: const Duration(milliseconds: 350),
                                   curve: Curves.easeInOut,

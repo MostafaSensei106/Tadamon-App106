@@ -236,7 +236,9 @@ class SenseiDrawer extends StatelessWidget {
             useMargin: true,
             useDivider: groupTop,
             useGroupTop: groupTop,
-            leadingIcon: Icons.offline_bolt_outlined,
+            leadingIcon: state is HiveDataBaseHasData
+                ? Icons.cloud_done_outlined
+                : Icons.cloud_off_rounded,
             title: S.of(context).AppOffLine,
             subtitle: subtitleText,
             trailingWidget: trailingWidget,
@@ -274,7 +276,7 @@ class SenseiDrawer extends StatelessWidget {
               return ButtonCompnent(
                 useMargin: true,
                 label: 'تشغيل الاونلاين',
-                icon: Icons.dataset_outlined,
+                icon: Icons.cloud_download_outlined,
                 onPressed: () {
                   HapticFeedback.vibrate();
                   context.read<HiveCubit>().fetchDataFromFireStore();

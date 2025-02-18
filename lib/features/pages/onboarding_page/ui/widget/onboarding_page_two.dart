@@ -1,12 +1,14 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/core/widget/button_component/button_compnent.dart';
+import 'package:tadamon/core/widget/dilog_component/dilog_component.dart';
+import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
 
 class OnboardingPageTwo extends StatefulWidget {
   final IconData firstIcon;
@@ -25,7 +27,7 @@ class OnboardingPageTwo extends StatefulWidget {
     required this.secondTitle,
     required this.subtitle,
     this.appOnlineRun = false,
-     this.height = 0.0,
+    this.height = 0.0,
   });
 
   @override
@@ -129,7 +131,45 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
               ),
             ),
             if (widget.appOnlineRun) ...[
-              ButtonCompnent(
+              BlocProvider(
+                create: (context) => HiveCubit()..hiveHasData(),
+                child: AppOnline(),
+              ),
+            ]
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class AppOnline extends StatelessWidget {
+  const AppOnline({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<HiveCubit, HiveState>(
+      listener: (context, state) {
+        if (state is HiveDataFetchingFromFireStore) {
+          DilogComponent(
+                  title: 'جاري استيراد البيانات',
+                  message: 'يرجى الانتظار حتى تكتمل المزامنة...')
+              .show(context);
+        }
+        if (state is HiveDataFetchingFromFireStoreSuccess) {
+          AppToast.showSuccessToast('تم تهيئة البيانات بنجاح.');
+          Navigator.pop(context);
+        } else if (state is HiveDataFetchingFromFireStoreFailure) {
+          AppToast.showErrorToast('حدث خطأ في استيراد البيانات.');
+          Navigator.pop(context);
+        }
+      },
+      child: BlocBuilder<HiveCubit, HiveState>(
+          builder: (context, state) {
+            if (state is HiveDataBaseEmpty) {
+              return ButtonCompnent(
                 useInBorderRadius: false,
                 useWidth: true,
                 width: 0.5.sw,
@@ -137,13 +177,24 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
                 icon: Icons.cloud_download_outlined,
                 onPressed: () {
                   HapticFeedback.vibrate();
-                  // context.read<HiveCubit>().fetchDataFromFireStore();
+                  context.read<HiveCubit>().fetchDataFromFireStore();
                 },
-              ),
-            ]
-          ],
-        ),
-      ],
+              );
+            }
+            return ButtonCompnent(
+                useInBorderRadius: false,
+                useWidth: true,
+                width: 0.5.sw,
+                label: 'تم تهيئة البيانات بنجاح',
+                icon: Icons.cloud_done_outlined,
+                isEnabled: false,
+                onPressed: () {
+                  HapticFeedback.vibrate();
+                  context.read<HiveCubit>().fetchDataFromFireStore();
+                },
+              );
+          },
+        )
     );
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -34,7 +33,7 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
   }
 
   void _pageListener() {
-    final isLastPage = (widget.pageController.page ?? 0).round() == 2;
+    final isLastPage = (widget.pageController.page ?? 0).round() == 3;
     if (isLastPage != _isLastPage) {
       setState(() {
         _isLastPage = isLastPage;
@@ -128,7 +127,7 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                   ),
                   SmoothPageIndicator(
                     controller: widget.pageController,
-                    count: widget.pageController.page!.toInt() + 1,
+                    count: 4,
                     effect: ExpandingDotsEffect(
                       dotWidth: SenseiConst.indicatorDotSize,
                       dotHeight: SenseiConst.indicatorDotSize,
@@ -148,41 +147,45 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                       );
                     },
                   ),
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 350),
-                    transitionBuilder: (child, animation) {
-                      return SlideTransition(
-                        position: Tween<Offset>(
-                          begin: const Offset(0, 1),
-                          end: Offset.zero,
-                        ).animate(animation),
-                        child: FadeTransition(opacity: animation, child: child),
-                      );
-                    },
-                    child: _isLastPage
-                        ? _buildButton(
-                            'start',
-                            'بدء',
-                            Icons.keyboard_double_arrow_left_rounded,
-                            () {
-                              Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                Routes.mainPage,
-                                (route) => false,
-                              );
-                            },
-                          )
-                        : _buildButton(
-                            'next',
-                            'التالي',
-                            Icons.keyboard_double_arrow_left_rounded,
-                            () {
-                              widget.pageController.nextPage(
-                                duration: const Duration(milliseconds: 350),
-                                curve: Curves.easeInOut,
-                              );
-                            },
-                          ),
+                  Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 350),
+                      transitionBuilder: (child, animation) {
+                        return SlideTransition(
+                          position: Tween<Offset>(
+                            begin: const Offset(0, 1),
+                            end: Offset.zero,
+                          ).animate(animation),
+                          child:
+                              FadeTransition(opacity: animation, child: child),
+                        );
+                      },
+                      child: _isLastPage
+                          ? _buildButton(
+                              'start',
+                              'بدء',
+                              Icons.keyboard_double_arrow_left_rounded,
+                              () {
+                                Navigator.pushNamedAndRemoveUntil(
+                                  context,
+                                  Routes.mainPage,
+                                  (route) => false,
+                                );
+                              },
+                            )
+                          : _buildButton(
+                              'next',
+                              'التالي',
+                              Icons.keyboard_double_arrow_left_rounded,
+                              () {
+                                widget.pageController.nextPage(
+                                  duration: const Duration(milliseconds: 350),
+                                  curve: Curves.easeInOut,
+                                );
+                              },
+                            ),
+                    ),
                   ),
                 ],
               ),

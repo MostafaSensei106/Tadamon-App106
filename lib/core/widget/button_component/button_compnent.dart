@@ -6,8 +6,11 @@ class ButtonCompnent extends StatelessWidget {
   final String label;
   final IconData icon;
   final void Function()? onPressed;
-  final bool? isEnabled;
-  final bool? useMargin;
+  final bool isEnabled;
+  final bool useMargin;
+  final bool useInBorderRadius;
+  final bool useWidth;
+  final double width;
 
   const ButtonCompnent({
     super.key,
@@ -16,6 +19,9 @@ class ButtonCompnent extends StatelessWidget {
     required this.onPressed,
     this.isEnabled = true,
     this.useMargin = false,
+    this.useInBorderRadius = true,
+    this.useWidth = false,
+    this.width = 0,
   });
 
   @override
@@ -48,11 +54,11 @@ class ButtonCompnent extends StatelessWidget {
   /// mouse cursor.
   Widget build(BuildContext context) {
     return Container(
-      margin: useMargin! ? EdgeInsets.only(top: SenseiConst.margin.h) : null,
+      margin: useMargin ? EdgeInsets.only(top: SenseiConst.margin.h) : null,
       child: SizedBox(
-        width: double.infinity,
+        width: useWidth ? width : 1.sw,
         child: ElevatedButton.icon(
-          onPressed: isEnabled! ? onPressed : null,
+          onPressed: isEnabled ? onPressed : null,
           icon: Icon(
             icon,
             size: SenseiConst.iconSize.sp,
@@ -66,11 +72,11 @@ class ButtonCompnent extends StatelessWidget {
             iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
             disabledIconColor: Theme.of(context).colorScheme.onError,
             padding: EdgeInsets.symmetric(
-              horizontal: SenseiConst.padding.w,
-              vertical: SenseiConst.padding.h,
+              horizontal:  SenseiConst.padding.w,
+              vertical:  SenseiConst.padding.h,
             ),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+              borderRadius: useInBorderRadius? BorderRadius.circular(SenseiConst.inBorderRadius.r) : BorderRadius.circular(SenseiConst.outBorderRadius.r),
             ),
             elevation: 2,
             enableFeedback: true,

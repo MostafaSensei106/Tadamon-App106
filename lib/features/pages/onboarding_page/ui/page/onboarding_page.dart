@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/routes.dart';
+import 'package:tadamon/core/widget/button_component/button_compnent.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -37,7 +38,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     children: [
                       Text(
                         'Welcome to Tadamon',
-                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineLarge
+                            ?.copyWith(
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),
                       )
@@ -53,11 +57,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     children: [
                       Text(
                         'Search for a charity',
-                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineLarge
+                            ?.copyWith(
                               color: Theme.of(context).colorScheme.onSecondary,
                             ),
                       ),
-            
                     ],
                   ),
                 ),
@@ -70,72 +76,99 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     children: [
                       Text(
                         'Donate',
-                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                              color: Theme.of(context).colorScheme.onTertiaryContainer,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onTertiaryContainer,
+                                ),
                       ),
                       SizedBox(
                         height: 16.h,
                       ),
-            
                     ],
                   ),
                 ),
               ),
             ],
           ),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              width: 1.sw,
-              height: 0.10.sh,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
-                shape: BoxShape.rectangle,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      _pageController.previousPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                    child: const Text('Prev'),
-                  ),
-                  SmoothPageIndicator(
-                    controller: _pageController,
-                    count: 3,
-                    effect: ExpandingDotsEffect(
-                      dotWidth: SenseiConst.indicatorDotSize+3,
-                      dotHeight: SenseiConst.indicatorDotSize+3,
-                      dotColor: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withAlpha((0.5 * 255).toInt()),
-                      activeDotColor: Theme.of(context).colorScheme.primaryContainer,
-                      expansionFactor: 2,
-                    ),
-                    
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      _pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                    child: const Text('Next'),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          DotIndicator(pageController: _pageController),
         ],
       ),
     );
   }
 }
 
+class DotIndicator extends StatelessWidget {
+  const DotIndicator({
+    super.key,
+    required PageController pageController,
+  }) : _pageController = pageController;
+
+  final PageController _pageController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(SenseiConst.padding.w),
+      alignment: Alignment.bottomCenter,
+      // width: 1.sw,
+      // height: 0.20.sh,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+      ),
+      child: Row(
+        children: [
+          ButtonCompnent(
+            label: 'Back',
+            icon: Icons.arrow_back,
+            useInBorderRadius: false,
+            useWidth: true,
+            width: 0.4.sw,
+            onPressed: () {
+              _pageController.previousPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+          ),
+          SmoothPageIndicator(
+              controller: _pageController,
+              count: 3,
+              effect: ExpandingDotsEffect(
+                dotWidth: SenseiConst.indicatorDotSize,
+                dotHeight: SenseiConst.indicatorDotSize,
+                dotColor: Theme.of(context)
+                    .colorScheme
+                    .onSurface
+                    .withAlpha((0.5 * 255).toInt()),
+                activeDotColor: Theme.of(context).colorScheme.primaryContainer,
+                expansionFactor: 2,
+              ),
+              onDotClicked: (index) {
+                _pageController.animateToPage(
+                  index,
+                  duration: _pageController.page == 0
+                      ? const Duration(milliseconds: 500)
+                      : const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              }),
+          ButtonCompnent(
+            label: 'Next',
+            icon: Icons.arrow_forward,
+            useInBorderRadius: false,
+            useWidth: true,
+            width: 0.4.sw,
+            onPressed: () {
+              _pageController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}

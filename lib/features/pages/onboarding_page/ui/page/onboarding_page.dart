@@ -42,12 +42,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     'ابحث عن المنتجات واحصل علي البدائل للمنتجات المقاطعة بكل سهولة.',
               ),
               OnboardingPageTwo(
+                appOnlineRun: true,
                 firstIcon: Icons.cloud_done_outlined,
                 secondIcon: Icons.cloud_off_rounded,
                 firstTitle: 'مع اتصال بالإنترنت',
                 secondTitle: 'دون اتصال بالإنترنت',
                 subtitle:
-                    'التطبيق يعمل بكفاءة سواء كنت متصلاً بالإنترنت أو لا.',
+                    ' اضغط على الزر الموجود في الاسفل لتفعيل التطبيق يعمل بكفاءة سواء كنت متصلاً بالإنترنت أو لا.',
               )
             ],
           ),

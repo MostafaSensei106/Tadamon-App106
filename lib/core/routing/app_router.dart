@@ -3,7 +3,7 @@ import 'package:tadamon/core/error/no_routes.dart';
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/features/pages/help_user_page/ui/page/help_user_page.dart';
 import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart';
-import 'package:tadamon/features/pages/palestine_map/page/palestine_map_page.dart';
+import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart';
 
 class AppRouter {
   /// Returns a route for the given [RouteSettings].

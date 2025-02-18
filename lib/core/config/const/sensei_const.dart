@@ -28,7 +28,7 @@ class SenseiConst {
   static const String drawerImage = "assets/images/drawer_image.webp";
   static const String appBarImage = "assets/images/waterMelonCover.webp";
   static const String palestineMap = "assets/images/palestine_map.svg";
-  static const String tadamonAppImage = "assets/images/Tadamon_App_Logo.webp";
+  static const String tadamonAppImage = "assets/images/tadamon_App_Logo.webp";
 
   static const double padding = 8;
   static const double iconSize = 27;

@@ -15,7 +15,6 @@ class ImageNews extends StatefulWidget {
 class ImageNewsState extends State<ImageNews> {
   static const Duration _autoSlideDuration = Duration(seconds: 3);
   static const Duration _slideTransitionDuration = Duration(milliseconds: 400);
-  static const double _indicatorDotSize = 8.0;
   late final PageController _pageController;
   late Timer _autoSlideTimer;
 
@@ -122,36 +121,35 @@ class ImageNewsState extends State<ImageNews> {
     );
   }
 
-/// Returns a [Padding] widget containing a [SmoothPageIndicator].
-///
-/// The [SmoothPageIndicator] is configured to display page indicators for the
-/// images using an [ExpandingDotsEffect]. The number of indicators is set to
-/// the length of the [_imageUrls] list.
-///
-/// The effect has dots with a width and height of [_indicatorDotSize], a dot
-/// color with an alpha of 0.5, and an active dot color from the theme's
-/// primary container. The expansion factor for the active dot is set to 2.
-///
-/// The [onDotClicked] callback animates the page controller to the selected
-/// page with a duration of [_slideTransitionDuration] and a curve of
-/// [Curves.easeInOut].
+  /// Returns a [Padding] widget containing a [SmoothPageIndicator].
+  ///
+  /// The [SmoothPageIndicator] is configured to display page indicators for the
+  /// images using an [ExpandingDotsEffect]. The number of indicators is set to
+  /// the length of the [_imageUrls] list.
+  ///
+  /// The effect has dots with a width and height of [_indicatorDotSize], a dot
+  /// color with an alpha of 0.5, and an active dot color from the theme's
+  /// primary container. The expansion factor for the active dot is set to 2.
+  ///
+  /// The [onDotClicked] callback animates the page controller to the selected
+  /// page with a duration of [_slideTransitionDuration] and a curve of
+  /// [Curves.easeInOut].
 
   Widget _buildPageIndicator() {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding:  EdgeInsets.only(bottom:SenseiConst.padding.h),
       child: SmoothPageIndicator(
         controller: _pageController,
         count: _imageUrls.length,
         effect: ExpandingDotsEffect(
-          dotWidth: _indicatorDotSize,
-          dotHeight: _indicatorDotSize,
-          dotColor: Theme.of(context)
-              .colorScheme
-              .onSurface
-              .withAlpha((0.5 * 255).toInt()),
-          activeDotColor: Theme.of(context).colorScheme.primaryContainer,
-          expansionFactor: 2,
-        ),
+            dotWidth: SenseiConst.indicatorDotSize,
+            dotHeight: SenseiConst.indicatorDotSize,
+            dotColor: Theme.of(context)
+                .colorScheme
+                .onSurface
+                .withAlpha((0.5 * 255).toInt()),
+            activeDotColor: Theme.of(context).colorScheme.primaryContainer,
+            expansionFactor: 2,),
         onDotClicked: (index) {
           _pageController.animateToPage(
             index,

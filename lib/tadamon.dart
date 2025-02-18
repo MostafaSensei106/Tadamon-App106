@@ -55,7 +55,7 @@ class TadamonApp extends StatelessWidget {
               theme: lightTheme,
               darkTheme: darkTheme,
               themeMode: themeState.themeMode,
-              initialRoute: Routes.mainPage,
+              initialRoute: Routes.onBoarding,
               onGenerateRoute: appRouter.generateRoute,
               locale: const Locale('ar','EG'),
               localizationsDelegates: const [

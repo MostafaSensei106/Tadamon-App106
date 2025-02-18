@@ -275,6 +275,7 @@ class SenseiDrawer extends StatelessWidget {
             if (state is HiveDataBaseEmpty) {
               return ButtonCompnent(
                 useMargin: true,
+                useInBorderRadius: false,
                 label: 'تشغيل الاونلاين',
                 icon: Icons.cloud_download_outlined,
                 onPressed: () {

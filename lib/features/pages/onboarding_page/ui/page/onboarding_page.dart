@@ -99,75 +99,99 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 }
 
-class DotIndicator extends StatelessWidget {
+class DotIndicator extends StatefulWidget {
   const DotIndicator({
     super.key,
-    required PageController pageController,
-  }) : _pageController = pageController;
+    required this.pageController,
+  });
 
-  final PageController _pageController;
+  final PageController pageController;
+
+  @override
+  State<DotIndicator> createState() => _DotIndicatorState();
+}
+
+class _DotIndicatorState extends State<DotIndicator> {
+  bool get _isLastPage => widget.pageController.page == 2;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(SenseiConst.padding.w),
-      alignment: Alignment.bottomCenter,
-      // width: 1.sw,
-      // height: 0.20.sh,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-      ),
-      child: Row(
-        children: [
-          ButtonCompnent(
-            label: 'Back',
-            icon: Icons.arrow_back,
-            useInBorderRadius: false,
-            useWidth: true,
-            width: 0.4.sw,
-            onPressed: () {
-              _pageController.previousPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
-            },
-          ),
-          SmoothPageIndicator(
-              controller: _pageController,
-              count: 3,
-              effect: ExpandingDotsEffect(
-                dotWidth: SenseiConst.indicatorDotSize,
-                dotHeight: SenseiConst.indicatorDotSize,
-                dotColor: Theme.of(context)
-                    .colorScheme
-                    .onSurface
-                    .withAlpha((0.5 * 255).toInt()),
-                activeDotColor: Theme.of(context).colorScheme.primaryContainer,
-                expansionFactor: 2,
+    return Positioned(
+      bottom: 10,
+      left: 10,
+      right: 10,
+      child: Container(
+        padding: EdgeInsets.all(SenseiConst.padding.w),
+        alignment: Alignment.bottomCenter,
+        width: 1.sw,
+        height: 0.08.sh,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ButtonCompnent(
+              label: 'تخطي',
+              icon: Icons.keyboard_double_arrow_right_rounded,
+              useWidth: true,
+              width: 0.3.sw,
+              onPressed: _isLastPage
+                  ? null
+                  : () {
+                      widget.pageController.previousPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+            ),
+            SmoothPageIndicator(
+                controller: widget.pageController,
+                count: 3,
+                effect: ExpandingDotsEffect(
+                  dotWidth: SenseiConst.indicatorDotSize,
+                  dotHeight: SenseiConst.indicatorDotSize,
+                  dotColor: Theme.of(context)
+                      .colorScheme
+                      .onSurface
+                      .withAlpha((0.5 * 255).toInt()),
+                  activeDotColor:
+                      Theme.of(context).colorScheme.primaryContainer,
+                  expansionFactor: 2,
+                ),
+                onDotClicked: (index) {
+                  widget.pageController.animateToPage(
+                    index,
+                    duration: SenseiConst.animationDuration,
+                    curve: Curves.easeInOut,
+                  );
+                }),
+            Directionality(
+              textDirection: TextDirection.ltr,
+              child: ButtonCompnent(
+                label: _isLastPage ? 'بدء' : 'التالي',
+                icon: Icons.keyboard_double_arrow_left_rounded,
+                useWidth: true,
+                width: 0.3.sw,
+                onPressed: _isLastPage
+                    ? () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          Routes.mainPage,
+                          (route) => false,
+                        );
+                      }
+                    : () {
+                        widget.pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      },
               ),
-              onDotClicked: (index) {
-                _pageController.animateToPage(
-                  index,
-                  duration: _pageController.page == 0
-                      ? const Duration(milliseconds: 500)
-                      : const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                );
-              }),
-          ButtonCompnent(
-            label: 'Next',
-            icon: Icons.arrow_forward,
-            useInBorderRadius: false,
-            useWidth: true,
-            width: 0.4.sw,
-            onPressed: () {
-              _pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
-            },
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -29,10 +29,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               }
             },
             children: const [
-              _OnboardingPageItem(
-                color: Color(0xffF26A5A),
-                title: 'Welcome to Tadamon',
-              ),
+              OnboardingPage(),
               _OnboardingPageItem(
                 color: Color(0xffE9F1FF),
                 title: 'Search for a charity',

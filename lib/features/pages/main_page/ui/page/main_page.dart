@@ -8,7 +8,6 @@ import 'package:tadamon/features/pages/main_page/ui/widget/google_nav_bar/google
 import 'package:tadamon/features/pages/main_page/logic/main_page_cubit.dart';
 import 'package:tadamon/features/pages/main_page/logic/main_page_state.dart';
 import 'package:tadamon/features/pages/main_page/ui/widget/main_page_container.dart';
-import 'package:tadamon/features/pages/onboarding_page/ui/widget/animated_triangles.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class MainPage extends StatefulWidget {

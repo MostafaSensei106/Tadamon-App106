@@ -8,6 +8,7 @@ import 'package:tadamon/features/pages/main_page/ui/widget/google_nav_bar/google
 import 'package:tadamon/features/pages/main_page/logic/main_page_cubit.dart';
 import 'package:tadamon/features/pages/main_page/logic/main_page_state.dart';
 import 'package:tadamon/features/pages/main_page/ui/widget/main_page_container.dart';
+import 'package:tadamon/features/pages/onboarding_page/ui/widget/animated_triangles.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class MainPage extends StatefulWidget {
@@ -26,6 +27,7 @@ class _MainPageState extends State<MainPage>
   bool get wantKeepAlive => true;
 
   @override
+
   /// Initializes the state of the widget.
   ///
   /// This is called when the widget is inserted into the tree.
@@ -38,6 +40,7 @@ class _MainPageState extends State<MainPage>
   }
 
   @override
+
   /// Disposes of the page controller and the page cubit.
   ///
   /// This is called when the widget is removed from the tree.
@@ -50,21 +53,21 @@ class _MainPageState extends State<MainPage>
     super.dispose();
   }
 
-/// Handles the page change event for the `PageView`.
-///
-/// This method is triggered when a new page is selected in the `PageView`.
-/// It updates the current page in the `PageCubit` using the given [index].
-///
-/// The [index] parameter is the index of the page that the user navigated to.
+  /// Handles the page change event for the `PageView`.
+  ///
+  /// This method is triggered when a new page is selected in the `PageView`.
+  /// It updates the current page in the `PageCubit` using the given [index].
+  ///
+  /// The [index] parameter is the index of the page that the user navigated to.
 
-/// Updates the current page in the `PageCubit` when a new page is selected.
-///
-/// This method is called whenever the user navigates to a different page
-/// in the `PageView`. It takes the [index] of the new page and updates
-/// the `PageCubit` state to reflect the currently selected page.
-///
-/// The [index] parameter corresponds to the index of the page that
-/// the user has navigated to in the `PageView`.
+  /// Updates the current page in the `PageCubit` when a new page is selected.
+  ///
+  /// This method is called whenever the user navigates to a different page
+  /// in the `PageView`. It takes the [index] of the new page and updates
+  /// the `PageCubit` state to reflect the currently selected page.
+  ///
+  /// The [index] parameter corresponds to the index of the page that
+  /// the user has navigated to in the `PageView`.
 
   void _onPageChanged(int index) {
     _pageCubit.changePage(AppPage.values[index]);
@@ -84,13 +87,13 @@ class _MainPageState extends State<MainPage>
     );
   }
 
-/// Returns the title for the app bar based on the given [page].
-///
-/// The title is determined by the current page index of the `PageCubit` state.
-/// It returns localized strings for "Home", "Search", and "Logs" based on the index.
-/// If the index does not match any known page, it returns "Unknown Page".
-///
-/// The [page] parameter represents the current page in the application.
+  /// Returns the title for the app bar based on the given [page].
+  ///
+  /// The title is determined by the current page index of the `PageCubit` state.
+  /// It returns localized strings for "Home", "Search", and "Logs" based on the index.
+  /// If the index does not match any known page, it returns "Unknown Page".
+  ///
+  /// The [page] parameter represents the current page in the application.
 
   String _getAppBarTitle(AppPage page) {
     switch (_pageCubit.state.currentPage.index) {
@@ -106,6 +109,7 @@ class _MainPageState extends State<MainPage>
   }
 
   @override
+
   /// Builds the main page of the application.
   ///
   /// This is the top most widget of the application. It is a [Scaffold] with
@@ -132,22 +136,24 @@ class _MainPageState extends State<MainPage>
       child: BlocBuilder<PageCubit, MainPageState>(
         builder: (context, state) {
           return Scaffold(
-            
-            resizeToAvoidBottomInset: true,
+
             key: const ValueKey<String>('main_page_scaffold'),
             backgroundColor: Color(0xffF26A5A),
             appBar: SenseiAppBar(
               _getAppBarTitle(state.currentPage),
             ),
             drawer: SenseiDrawer(),
-            
             body: Container(
-                   decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surface,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(SenseiConst.outBorderRadius.r+7),topRight: Radius.circular(SenseiConst.outBorderRadius.r+7)),
-                ),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(SenseiConst.outBorderRadius.r + 7),
+                    topRight:
+                        Radius.circular(SenseiConst.outBorderRadius.r + 7)),
+              ),
               child: Stack(
                 children: [
+                 // AnimatedTriangles(),
                   MainPageContainer(
                     pageController: _pageController,
                     onPageChanged: _onPageChanged,

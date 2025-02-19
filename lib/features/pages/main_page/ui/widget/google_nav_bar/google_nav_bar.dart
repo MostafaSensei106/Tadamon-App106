@@ -88,7 +88,7 @@ class GoogleNavBar extends StatelessWidget {
               ),
               GButton(
                 icon:
-                    currentIndex == 2 ? Icons.dns_rounded : Icons.dns_outlined,
+                    currentIndex == 2 ? Icons.update : Icons.dns_outlined,
                 iconSize: SenseiConst.iconSize,
                 text: S.of(context).Logs,
               ),

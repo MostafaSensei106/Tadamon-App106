@@ -31,13 +31,22 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
         borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
       ),
       child: ExpansionTile(
-        leading: Icon(widget.leadingIcon,size:SenseiConst.iconSize,),
+        leading: Container(
+            padding: EdgeInsets.all(SenseiConst.padding.w),
+            decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                color: Theme.of(context).colorScheme.surfaceContainerHigh),
+            child: Icon(
+              widget.leadingIcon,
+              size: SenseiConst.iconSize,
+            )),
         title: Text(widget.title),
         subtitle: Text(widget.subtitle),
         backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
         enableFeedback: true,
         showTrailingIcon: true,
-        shape:RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
           side: BorderSide(
             color: Theme.of(context).colorScheme.outline.withAlpha(0x80),

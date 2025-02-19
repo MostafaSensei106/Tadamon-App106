@@ -8,7 +8,6 @@
             "name": "tadamon_app",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
         },
         {
             "name": "tadamon_app (profile mode)",

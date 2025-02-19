@@ -9,7 +9,6 @@ import 'package:tadamon/core/config/theme/colors/logic/theme_shared_preferences.
 import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
 import 'package:tadamon/core/routing/app_router.dart';
 import 'package:tadamon/core/routing/routes.dart';
-
 import 'generated/l10n.dart';
 
 class TadamonApp extends StatelessWidget {
@@ -39,6 +38,7 @@ class TadamonApp extends StatelessWidget {
   /// will be adjusted based on the screen size.
   ///
   Widget build(BuildContext context) {
+
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -71,4 +71,5 @@ class TadamonApp extends StatelessWidget {
       ),
     );
   }
+
 }

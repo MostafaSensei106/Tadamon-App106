@@ -60,7 +60,7 @@ class GoogleNavBar extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: SenseiConst.padding.w,
-            vertical: SenseiConst.padding.w,
+            vertical: SenseiConst.padding.h,
           ),
           child: GNav(
             iconSize: SenseiConst.iconSize,
@@ -70,8 +70,8 @@ class GoogleNavBar extends StatelessWidget {
             tabBorderRadius: SenseiConst.inBorderRadius.r,
             curve: Curves.easeIn,
             padding: EdgeInsets.symmetric(
-              horizontal: 14.w,
-              vertical: 14.w,
+              horizontal: SenseiConst.padding.w+5,
+              vertical: SenseiConst.padding.h+3,
             ),
             tabs: [
               GButton(

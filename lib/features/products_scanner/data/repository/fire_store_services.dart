@@ -95,27 +95,22 @@ class FireStoreServices {
         return ProductModel.fromMap(data);
       } else {
         return ProductModel(
+          productName: 'غير موجود',
           serialNumber: serialNumber,
+          productManufacturer: 'غير معروف المصنع',
+          productCategory: 'غير معروف',
           isTrusted: false,
-          productCategory: '',
-          productManufacturer: '',
-          productName: '',
+          onError: 'Product not found',
         );
       }
     } catch (e) {
       AppToast.showErrorToast(e.toString());
-      return ProductModel(
-        serialNumber: serialNumber,
-        isTrusted: false,
-        productCategory: '',
-        productManufacturer: '',
-        productName: '',
-      );
     }
   }
 
-  Future<List<ProductSearchModel>> searchForProduct(String searchTerm, String filter) async {
-     if (searchTerm.isEmpty) {
+  Future<List<ProductSearchModel>> searchForProduct(
+      String searchTerm, String filter) async {
+    if (searchTerm.isEmpty) {
       return [];
     }
 
@@ -147,9 +142,10 @@ class FireStoreServices {
 
     final querySnapshot = await query.get();
 
-    return querySnapshot.docs.map((doc) => ProductSearchModel.fromDocument(doc)).toList();
+    return querySnapshot.docs
+        .map((doc) => ProductSearchModel.fromDocument(doc))
+        .toList();
   }
-  
 
   /// Sends a product report to the FireStore database.
   ///

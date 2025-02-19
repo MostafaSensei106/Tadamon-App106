@@ -22,12 +22,12 @@ class ProductScanCubit extends Cubit<ProductScanState> {
   /// [product] is the product info to be displayed.
   ///
   /// This method is private and should not be called directly.
-  void _showProductInfo(BuildContext context, ProductModel product) {
+  void _showProductInfo(BuildContext context, ProductModel product,  ) {
     if (!context.mounted) return;
     ModelBottomSheet.show(
       context,
       S.of(context).SheetTitleProductInfo,
-      child: ProductListView(product: product),
+      child: ProductListView(product: product,),
     );
   }
 
@@ -65,7 +65,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         product = await HiveServices().getProductBySerialNumber(scanResult);
       }
       if (context.mounted) {
-        _showProductInfo(context, product);
+        _showProductInfo(context, product,);
         emit(ProductScanSuccess());
       }
     } catch (e) {
@@ -76,7 +76,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
   Future<void> imageAnalysisScan(BuildContext context) async {
     HapticFeedback.vibrate();
     bool isConnected = await NetworkController().checkConnection();
-    ProductModel? product;
+    ProductModel product;
     try {
       if (!context.mounted) return;
       String? scanResult = await ScannerManager().imageAnalysisScan(context);
@@ -87,11 +87,9 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       } else {
         product = await HiveServices().getProductBySerialNumber(scanResult);
       }
-      if (product != null) {
-        if (!context.mounted) return;
-        _showProductInfo(context, product);
-        emit(ProductScanSuccess());
-      }
+      if (!context.mounted) return;
+      _showProductInfo(context, product);
+      emit(ProductScanSuccess());
     } catch (e) {
       debugPrint("Error in imageAnalysisScan: $e");
     }

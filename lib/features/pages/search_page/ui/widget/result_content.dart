@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lottie/lottie.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widget/lottie_component/lottie_component.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_bloc.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_state.dart';
 import 'package:tadamon/features/pages/search_page/ui/widget/product_expansion_tile.dart';
@@ -26,11 +26,13 @@ class ResultContent extends StatelessWidget {
             );
           } else if (state is SearchLoadingSuccess) {
             if (state.products.isEmpty) {
-              return Center(
-                child: _searchController.text.isEmpty
-                    ? _buildSearchPlaceholder(context)
-                    : _buildNotFoundPlaceholder(context),
-              );
+              return _searchController.text.isEmpty
+                  ? LottieComponent(
+                      lottiePath: SenseiConst.lottieSearchAnimation,
+                      text: 'نتائج البحث سوف تظهر هنا')
+                  : LottieComponent(
+                      lottiePath: SenseiConst.lottieNoFoundAnimation,
+                      text: 'لم يتم العثور على المنتج');
             }
             return ListView.separated(
               itemCount: state.products.length,
@@ -47,66 +49,12 @@ class ResultContent extends StatelessWidget {
             );
           } else {
             return Center(
-              child: _buildSearchPlaceholder(context),
-            );
+                child: LottieComponent(
+                    lottiePath: SenseiConst.lottieSearchAnimation,
+                    text: 'نتائج البحث سوف تظهر هنا'));
           }
         },
       ),
-    );
-  }
-
-  Widget _buildSearchPlaceholder(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          padding: EdgeInsets.all(SenseiConst.padding.w),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainer,
-            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
-          ),
-          child: Lottie.asset(
-            'assets/animations/search_placeholder.json',
-            width: 230.w,
-            height: 230.h,
-            fit: BoxFit.cover,
-          ),
-        ),
-        SizedBox(height: 10.h),
-        Text(
-          'نتائج البحث سوف تظهر هنا',
-          style: TextStyle(
-              fontSize: 16.sp, color: Theme.of(context).colorScheme.primary),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildNotFoundPlaceholder(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-            padding: EdgeInsets.all(SenseiConst.padding.w),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainer,
-            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
-          ),
-          child: Lottie.asset(
-            'assets/animations/not_found.json',
-            width: 230.w,
-            height: 230.h,
-            fit: BoxFit.cover,
-          ),
-        ),
-        SizedBox(height: 10.h),
-        Text(
-          'المنتج غير موجود',
-          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
-        ),
-      ],
     );
   }
 }

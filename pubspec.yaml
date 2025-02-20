@@ -52,7 +52,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
-    - assets/animations/
+    - assets/animations/lottie/
 
   fonts:
     - family: ArabicFont

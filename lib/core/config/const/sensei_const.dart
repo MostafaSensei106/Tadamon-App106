@@ -30,6 +30,9 @@ class SenseiConst {
   static const String palestineMap = "assets/images/palestine_map.svg";
   static const String tadamonAppImage = "assets/images/tadamon_App_Logo.webp";
 
+  static const String lottieSearchAnimation = "assets/animations/lottie/search_placeholder.json";
+  static const String lottieNoFoundAnimation = "assets/animations/lottie/not_found.json";
+
   static const double padding = 8;
   static const double iconSize = 27;
   static const double margin = 8;

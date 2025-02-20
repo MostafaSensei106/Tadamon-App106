@@ -1,62 +1,75 @@
-import "dart:async";
-import "package:shared_preferences/shared_preferences.dart";
+import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class CounterManger {
-  
-  static const String counterKey = 'scanCounter';
-  static final StreamController<int> _counterController =
-      StreamController<int>.broadcast(onListen: initializeCounter);
-  static final bool _isClosed = false;
+class CounterManager {
+  static const String scannedProductsKey = 'scannedProductsCounter';
+  static const String supportedProductsKey = 'supportedProductsCounter';
 
-  static Stream<int> get counterStream => _counterController.stream;
+  // Stream for scanned products counter
+  static final StreamController<int> _scannedProductsController =
+      StreamController<int>.broadcast(onListen: initializeScannedProducts);
+  static Stream<int> get scannedProductsStream =>
+      _scannedProductsController.stream;
 
-  /// This function is called when a stream is added to the stream controller.
-  /// It retrieves the current counter from the shared preferences and adds it
-  /// to the stream controller.
-  static Future<void> initializeCounter() async {
+  // Stream for supported products counter
+  static final StreamController<int> _supportedProductsController =
+      StreamController<int>.broadcast(onListen: initializeSupportedProducts);
+  static Stream<int> get supportedProductsStream =>
+      _supportedProductsController.stream;
+
+  // Initialize scanned products counter
+  static Future<void> initializeScannedProducts() async {
     final prefs = await SharedPreferences.getInstance();
-    int counter = prefs.getInt(counterKey) ?? 0;
-    if (!_isClosed) {
-      _counterController.add(counter);
-    }
+    int counter = prefs.getInt(scannedProductsKey) ?? 0;
+    _scannedProductsController.add(counter);
   }
 
-  /// Retrieves the current counter from the shared preferences and returns it
-  /// as a future. If there is no stored counter, it returns 0.
-  static Future<int> getCounter() async {
+  // Initialize supported products counter
+  static Future<void> initializeSupportedProducts() async {
     final prefs = await SharedPreferences.getInstance();
-    int counter = prefs.getInt(counterKey) ?? 0;
-    return counter;
+    int counter = prefs.getInt(supportedProductsKey) ?? 0;
+    _supportedProductsController.add(counter);
   }
 
-  /// Increment the counter in the shared preferences by one and broadcast the
-  /// new value on the stream. If the counter has not been initialized yet, it
-  /// will be set to 1. If the counter has been initialized, it is incremented
-  /// by one and the new value is broadcasted on the stream.
-  ///
-  /// This function is idempotent. If the counter has already been incremented
-  /// before, it will not be incremented again. If the counter is reset while
-  /// this function is pending, the new value will be broadcasted on the stream
-  /// and the counter will be reset to 0.
-  static Future<void> incrementCounter() async {
+  // Get scanned products count from Firestore
+  static Future<int> getScannedProductsCount() async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('products') // Replace with your collection name
+        .where('isScanned', isEqualTo: true) // Assuming you have an "isScanned" field
+        .get();
+    return querySnapshot.docs.length;
+  }
+
+  // Increment scanned products counter
+  static Future<void> incrementScannedProducts() async {
     final prefs = await SharedPreferences.getInstance();
-    int currentCounter = prefs.getInt(counterKey) ?? 0;
+    int currentCounter = prefs.getInt(scannedProductsKey) ?? 0;
     currentCounter++;
-    await prefs.setInt(counterKey, currentCounter);
-    if (!_isClosed) {
-      _counterController.add(currentCounter);
-    }
+    await prefs.setInt(scannedProductsKey, currentCounter);
+    _scannedProductsController.add(currentCounter);
   }
 
-  /// Resets the counter in the shared preferences to zero and broadcasts the
-  /// new value on the stream. If the stream is closed, the new value is not
-  /// added to the stream.
-
-  static Future<void> resetCounter() async {
+  // Reset scanned products counter
+  static Future<void> resetScannedProducts() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(counterKey, 0);
-    if (!_isClosed) {
-      _counterController.add(0);
-    }
+    await prefs.setInt(scannedProductsKey, 0);
+    _scannedProductsController.add(0);
+  }
+
+  // Increment supported products counter
+  static Future<void> incrementSupportedProducts() async {
+    final prefs = await SharedPreferences.getInstance();
+    int currentCounter = prefs.getInt(supportedProductsKey) ?? 0;
+    currentCounter++;
+    await prefs.setInt(supportedProductsKey, currentCounter);
+    _supportedProductsController.add(currentCounter);
+  }
+
+  // Reset supported products counter
+  static Future<void> resetSupportedProducts() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(supportedProductsKey, 0);
+    _supportedProductsController.add(0);
   }
 }

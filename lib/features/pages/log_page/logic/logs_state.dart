@@ -6,11 +6,23 @@ abstract class LogsState extends Equatable {
   List<Object> get props => [];
 }
 
+class LogsInitial extends LogsState {}
+
 class LogsLoading extends LogsState {}
 
-class LogsLoaded extends LogsState {
-  final List<HiveProductModel> logs;
-  LogsLoaded(this.logs);
+class LogsLoadingSuccess extends LogsState {
+  final List<HiveProductModel> products;
+
+  LogsLoadingSuccess(result, {required this.products});
+
   @override
-  List<Object> get props => [logs];
+  List<Object> get props => [products];
+}
+
+class LogsError extends LogsState {
+  final String message;
+  LogsError(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

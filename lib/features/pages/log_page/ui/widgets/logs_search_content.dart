@@ -5,8 +5,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widget/lottie_component/lottie_component.dart';
 import 'package:tadamon/features/pages/log_page/logic/logs_bloc.dart';
 import 'package:tadamon/features/pages/log_page/logic/logs_state.dart';
-import 'package:tadamon/features/pages/search_page/logic/search_state.dart';
-import 'package:tadamon/features/pages/search_page/ui/widget/product_expansion_tile.dart';
+import 'package:tadamon/features/pages/log_page/ui/widgets/ss.dart';
 
 class LogsSearchContent extends StatelessWidget {
   const LogsSearchContent({
@@ -21,12 +20,12 @@ class LogsSearchContent extends StatelessWidget {
     return Expanded(
       child: BlocBuilder<LogsBloc, LogsState>(
         builder: (context, state) {
-          if (state is SearchLoading) {
+          if (state is LogsLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is SearchLoadingSuccess) {
-            if (state.ptoducts.isEmpty) {
+          } else if (state is LogsLoadingSuccess) {
+            if (state.products.isEmpty) {
               return _searchController.text.isEmpty
                   ? LottieComponent(
                       lottiePath: SenseiConst.lottieSearchAnimation,
@@ -39,14 +38,14 @@ class LogsSearchContent extends StatelessWidget {
               itemCount: state.products.length,
               itemBuilder: (context, index) {
                 final product = state.products[index];
-                return ProductExpansionTileComponent(product: product);
+                return ProductLogsExpansionTileComponent(product: product);
               },
               separatorBuilder: (context, index) =>
                   SizedBox(height: SenseiConst.margin.h),
             );
-          } else if (state is SearchError) {
+          } else if (state is LogsError) {
             return Center(
-             // child: Text('Error: ${state.message}'),
+             child: Text('Error: ${state.message}'),
             );
           } else {
             return Center(

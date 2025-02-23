@@ -1,20 +1,23 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tadamon/features/pages/log_page/logic/logs_event.dart';
+import 'package:tadamon/features/pages/log_page/logic/logs_state.dart';
 import 'package:tadamon/features/products_scanner/data/repository/hive_services.dart';
-import 'logs_event.dart';
-import 'logs_state.dart';
 
 class LogsBloc extends Bloc<LogsEvent, LogsState> {
-  final HiveServices _hiveServices = HiveServices();
+  final HiveServices repository;
 
-  LogsBloc() : super(LogsLoading()) {
-    on<LoadLogs>((event, emit) async {
-      final logs = await _hiveServices.getLogs();
-      emit(LogsLoaded(logs));
-    });
+  LogsBloc(this.repository) : super(LogsInitial()) {
+    on<GetLogsResult>(_onFeatchSearchResult);
+  }
 
-    on<SearchLogs>((event, emit) async {
-      final logs = await _hiveServices.searchLogs(event.query);
-      emit(LogsLoaded(logs));
-    });
+  void _onFeatchSearchResult(
+      GetLogsResult event, Emitter<LogsState> emit) async {
+    emit(LogsLoading());
+    try {
+      final products = await repository.getLogs();
+      emit(LogsLoadingSuccess([], products: products));
+    } catch (e) {
+      emit(LogsError(e.toString()));
+    }
   }
 }

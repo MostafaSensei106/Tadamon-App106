@@ -6,10 +6,10 @@ import 'package:tadamon/core/widget/button_component/button_compnent.dart';
 import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
 
-class ProductExpansionTile extends StatelessWidget {
+class ProductExpansionTileComponent extends StatelessWidget {
   final ProductSearchModel product;
 
-  const ProductExpansionTile({super.key, required this.product});
+  const ProductExpansionTileComponent({super.key, required this.product});
   @override
   Widget build(BuildContext context) {
     return Container(

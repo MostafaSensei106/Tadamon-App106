@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widget/text_filed_component/text_filed_component.dart';
-import 'package:tadamon/features/pages/search_page/logic/search_bloc.dart';
-import 'package:tadamon/features/pages/search_page/logic/search_event.dart';
-import 'package:tadamon/features/pages/search_page/ui/widget/search_result_content.dart';
+import 'package:tadamon/features/pages/log_page/ui/widgets/logs_search_content.dart';
 
-class SearchPageView extends StatefulWidget {
-  const SearchPageView({super.key});
+class LogsPageView extends StatefulWidget {
+  const LogsPageView({super.key});
 
   @override
-  State<SearchPageView> createState() => _SearchPageViewState();
+  State<LogsPageView> createState() => _LogsPageViewState();
 }
 
-class _SearchPageViewState extends State<SearchPageView> {
+class _LogsPageViewState extends State<LogsPageView> {
   final TextEditingController _searchController = TextEditingController();
   String _selectedFilter = 'SerialNumber';
   @override
@@ -25,7 +22,7 @@ class _SearchPageViewState extends State<SearchPageView> {
         children: [
           searchBar(context),
           SizedBox(height: SenseiConst.margin.h),
-          SearchResultContent(searchController: _searchController),
+          LogsSearchContent(searchController: _searchController),
         ],
       ),
     );
@@ -57,7 +54,8 @@ class _SearchPageViewState extends State<SearchPageView> {
                   borderRadius:
                       BorderRadius.circular(SenseiConst.inBorderRadius.r),
                   side: BorderSide(
-                    color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
+                    color:
+                        Theme.of(context).colorScheme.outline.withAlpha(0x80),
                   ),
                 ),
                 padding: EdgeInsets.zero,
@@ -120,10 +118,7 @@ class _SearchPageViewState extends State<SearchPageView> {
                 },
               ),
               hint:
-                  'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'القسم'}...',
-              onChange: (value) => context.read<SearchBloc>().add(
-                    FetchSearchResult(value, _selectedFilter),
-                  )),
+                  'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'القسم'}...', onChange: (String value) {  },),
         ),
       ],
     );

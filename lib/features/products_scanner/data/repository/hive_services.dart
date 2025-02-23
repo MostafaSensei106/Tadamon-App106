@@ -7,6 +7,8 @@ import 'package:tadamon/features/products_scanner/data/repository/fire_store_ser
 class HiveServices {
   static const String boxName = 'LocalTadamonProducts';
 
+  static const String logsBoxName = 'TadamonLogs';
+
   /// Synchronizes all products from the Firestore database to the local Hive database.
   ///
   /// Opens a Hive box with the name [boxName] and retrieves all products from
@@ -20,18 +22,21 @@ class HiveServices {
         var hiveProduct = HiveProductModel.fromMap(product);
         box.put(hiveProduct.serialNumber, hiveProduct);
       }
+      await box.close();
     } catch (e) {
-      AppToast.showErrorToast('حدث خطأ اثناء تحميل المنتجات من قاعدة البيانات');
+      AppToast.showErrorToast(
+          'حدث خطأ اثناء تحميل المنتجات من قاعدة البيانات');
     }
   }
-
 
   //function to check if database is up to date and if not update it
   Future<bool> isLocalDataBaseUpToDate() async {
     try {
       var box = await Hive.openBox<HiveProductModel>(boxName);
-      List<ProductModel> remoteProducts = await FireStoreServices().getAllProducts();
-      List<ProductModel> localProducts = box.values.map((e) => ProductModel.fromMap(e.toMap())).toList();
+      List<ProductModel> remoteProducts =
+          await FireStoreServices().getAllProducts();
+      List<ProductModel> localProducts =
+          box.values.map((e) => ProductModel.fromMap(e.toMap())).toList();
 
       if (remoteProducts.length != localProducts.length) {
         await syncAllProductsToHive();
@@ -39,11 +44,13 @@ class HiveServices {
       }
 
       for (var remoteProduct in remoteProducts) {
-        if (!localProducts.any((localProduct) => localProduct.serialNumber == remoteProduct.serialNumber)) {
+        if (!localProducts.any((localProduct) =>
+            localProduct.serialNumber == remoteProduct.serialNumber)) {
           await syncAllProductsToHive();
           return false;
         }
       }
+      await box.close();
       return true;
     } catch (e) {
       AppToast.showErrorToast('Error checking database synchronization');
@@ -73,14 +80,17 @@ class HiveServices {
     var box = await Hive.openBox<HiveProductModel>(boxName);
     var data = box.get(serialNumber);
     if (data != null) {
+      await box.close();
+
       return ProductModel.fromMap(data.toMap());
     } else {
       return ProductModel(
+        productName: 'غير موجود',
         serialNumber: serialNumber,
+        productManufacturer: 'غير معروف المصنع',
+        productCategory: 'غير معروف',
         isTrusted: false,
-        productCategory: '',
-        productManufacturer: '',
-        productName: '',
+        onError: 'Product not found',
       );
     }
   }
@@ -103,10 +113,41 @@ class HiveServices {
     try {
       var box = await Hive.openBox<HiveProductModel>(boxName);
       await box.clear();
+      await box.close();
     } catch (e) {
-      AppToast.showErrorToast('An error occurred while deleting products from the local database');
+      AppToast.showErrorToast(
+          'An error occurred while deleting products from the local database');
     }
   }
 
-  search(String query) {}
+  //save a copy of ProductMoel to hive
+  Future<void> saveProductToHive(ProductModel product) async {
+    try {
+      var box = Hive.box<HiveProductModel>(logsBoxName);
+      var hiveProduct = HiveProductModel.fromMap(product);
+      await box.put(hiveProduct.serialNumber, hiveProduct);
+      AppToast.showToast('Product saved successfully');
+    } catch (e) {
+      AppToast.showErrorToast('An error occurred while saving the product');
+    }
+  }
+
+  //clear all logs
+
+  Future<void> clearLogs() async {
+    var box = Hive.box<HiveProductModel>(logsBoxName);
+    await box.clear();
+    AppToast.showToast('Logs cleared successfully');
+  }
+Future<List<HiveProductModel>> getLogs() async {
+    var box = Hive.box<HiveProductModel>(logsBoxName);
+    return box.values.toList();
+  }
+
+ Future<List<HiveProductModel>> searchLogs(String query) async {
+    final logs = await getLogs();
+    return logs
+        .where((log) => log.serialNumber.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+  }
 }

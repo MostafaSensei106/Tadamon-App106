@@ -32,7 +32,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.3
   intl_utils: ^2.8.8
   hive: ^2.2.3
-  path_provider: ^2.0.15
+  path_provider: ^2.1.5
   hive_flutter: ^1.1.0
   syncfusion_flutter_maps: ^28.2.5
   flutter_svg: ^2.0.17

@@ -16,12 +16,13 @@ import 'package:tadamon/core/widget/dilog_component/dilog_component.dart';
 import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
 import 'package:tadamon/core/widget/app_drawer/drawer_header.dart';
+import 'package:tadamon/features/products_scanner/data/repository/hive_services.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
 import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class SenseiDrawer extends StatelessWidget {
-   const SenseiDrawer({super.key});
+  const SenseiDrawer({super.key});
 
   /// A [WidgetStateProperty] that returns a selected or unselected icon
   /// depending on the presence of [WidgetState.selected] in the given
@@ -38,14 +39,13 @@ class SenseiDrawer extends StatelessWidget {
   /// used by a [Switch] or [Checkbox] when the widget is in different
   /// states.
   WidgetStateProperty<Icon> thumbIcon(BuildContext context) {
-  return WidgetStateProperty.resolveWith<Icon>((Set<WidgetState> states) {
-    if (states.contains(WidgetState.selected)) {
-      return Icon(Icons.check, color: Theme.of(context).colorScheme.primary);
-    }
-    return Icon(Icons.close);
-  });
-}
-
+    return WidgetStateProperty.resolveWith<Icon>((Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
+        return Icon(Icons.check, color: Theme.of(context).colorScheme.primary);
+      }
+      return Icon(Icons.close);
+    });
+  }
 
   @override
 
@@ -189,7 +189,6 @@ class SenseiDrawer extends StatelessWidget {
                     ? S.of(context).SwitchToLightTheme
                     : S.of(context).SwitchToDarkTheme,
                 trailingWidget: Switch(
-
                   thumbIcon: thumbIcon(context),
                   value: state.isDark,
                   onChanged: (bool value) {
@@ -397,11 +396,7 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("سوف تتوفر في أقرب وقت ممكن"),
-          ),
-        );
+        HiveServices().clearLogs();
       },
     );
   }

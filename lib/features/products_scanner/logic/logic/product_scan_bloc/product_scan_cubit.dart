@@ -29,6 +29,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       S.of(context).SheetTitleProductInfo,
       child: ProductListView(product: product,),
     );
+    HiveServices().saveProductToHive(product);
   }
 
   /// Scans a barcode using the camera and shows a bottom sheet with the product info.

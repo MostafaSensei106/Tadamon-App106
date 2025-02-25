@@ -22,28 +22,6 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
   String status = 'لا أعرف';
 
   @override
-
-  /// A [StatefulWidget] that builds a sheet for reporting a product.
-  ///
-  /// The sheet contains a [TextFieldComponent] for entering the serial number
-  /// of the product, another [TextFieldComponent] for entering the product name,
-  /// a [RadioSelectionTileComponent] for selecting the status of the product, and
-  /// a [ButtonCompnent] for submitting the report.
-  ///
-  /// The sheet uses a [BlocProvider] to provide the [ReportProductCubit] to its
-  /// children. The [BlocBuilder] is used to listen to the state of the
-  /// [ReportProductCubit] and rebuild the sheet when the state changes.
-  ///
-  /// The validity of the report is determined by the [ReportProductIsValid] state
-  /// of the [ReportProductCubit]. If the report is valid, the button is enabled.
-  /// If the report is invalid, the button is disabled and an error message is
-  /// displayed.
-  ///
-  /// If the report is submitted successfully, the sheet is popped from the
-  /// navigator.
-  ///
-  /// If an error occurs while submitting the report, an error message is
-  /// displayed.
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => ReportProductCubit(),
@@ -53,12 +31,6 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
           bool isSerialNumberError =
               state is ReportProductSerialNumberIsNotValid;
           bool isProductNameError = state is ReportProductProductNameIsNotValid;
-
-          /// Submits the product report using the [ReportProductCubit] and closes the sheet.
-          ///
-          /// If both the product name and serial number are invalid, the report is not submitted.
-          /// Upon successful submission, the sheet is popped from the navigation stack.
-
           void sendReport(BuildContext context) {
             if (state is ReportProductProductNameIsNotValid &&
                 state is ReportProductSerialNumberIsNotValid) {

@@ -12,27 +12,6 @@ class ProductListView extends StatelessWidget {
   });
 
   @override
-
-  /// A [ListView] widget that displays a list of [DrawerComponent] widgets.
-  /// Each [DrawerComponent] widget is configured with a title, subtitle, and
-  /// trailing widget. The [DrawerComponent] widget is used to display a single
-  /// item in the list. The [ListView] widget is used to display the list of
-  /// items. The [ListView] widget has a [shrinkWrap] property set to true, and
-  /// a [physics] property set to [NeverScrollableScrollPhysics], so that the
-  /// list is not scrollable. The [ListView] widget is used as a child of a
-  /// [SingleChildScrollView].
-  ///
-  /// The [DrawerComponent] widgets are used to display the product name, serial
-  /// number, manufacturer, category, and status. The [DrawerComponent] widgets
-  /// are configured with a [leadingIcon], [title], [subtitle], and
-  /// [trailingWidget]. The [trailingWidget] is used to display a copy icon, and
-  /// when the icon is tapped, it copies the product serial number to the
-  /// clipboard. The [DrawerComponent] widgets are also configured with a
-  /// [useGroupTop], [useGroupMiddle], and [useGroupBottom] property, which is
-  /// used to group the [DrawerComponent] widgets together. The
-  /// [useinBorderRadius] property is used to set the border radius of the
-  /// [DrawerComponent] widgets. The [useDivider] property is used to set the
-  /// divider between the [DrawerComponent] widgets.
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,

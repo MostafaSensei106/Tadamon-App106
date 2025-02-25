@@ -24,20 +24,6 @@ import 'package:tadamon/generated/l10n.dart';
 class SenseiDrawer extends StatelessWidget {
   const SenseiDrawer({super.key});
 
-  /// A [WidgetStateProperty] that returns a selected or unselected icon
-  /// depending on the presence of [WidgetState.selected] in the given
-  /// [states].
-  ///
-  /// The icon is an [Icon] widget with
-  /// - [Icons.check] if the widget is selected.
-  /// - [Icons.close] if the widget is not selected.
-  ///
-  /// The color of the icon is the primary color of the current theme.
-  ///
-  /// The widget is intended to be used as the [thumbIcon] property of a
-  /// [WidgetStateProperty] or [WidgetStateProperty] to define the icon
-  /// used by a [Switch] or [Checkbox] when the widget is in different
-  /// states.
   WidgetStateProperty<Icon> thumbIcon(BuildContext context) {
     return WidgetStateProperty.resolveWith<Icon>((Set<WidgetState> states) {
       if (states.contains(WidgetState.selected)) {
@@ -49,12 +35,7 @@ class SenseiDrawer extends StatelessWidget {
 
   @override
 
-  /// Builds a drawer widget with a specified width and background color derived
-  /// from the current theme. The drawer contains a header and a list of settings
-  /// options, each constructed by helper methods. The list is wrapped in an
-  /// animated size widget, allowing for smooth resizing transitions. The drawer
-  /// shape is defined by a continuous rectangle border with a radius specified
-  /// in the constants.
+
 
   Widget build(BuildContext context) {
     return SizedBox(
@@ -62,7 +43,8 @@ class SenseiDrawer extends StatelessWidget {
       child: Drawer(
         backgroundColor: Theme.of(context).colorScheme.surface,
         shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+          borderRadius:
+              BorderRadius.circular(SenseiConst.outBorderRadius.r + 7),
         ),
         child: ListView(
           padding: EdgeInsets.zero,
@@ -99,26 +81,7 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A switch to toggle between light and dark theme based on the system
-  /// setting.
-  ///
-  /// The switch is disabled if the theme mode is not [ThemeMode.system].
-  ///
-  /// When the switch is toggled, the theme mode is updated by calling
-  /// [toggleTheme].
-  ///
-  /// The switch is wrapped in a [BlocBuilder] to rebuild when the theme mode
-  /// changes.
-  ///
-  /// The switch is wrapped in a [DrawerComponent] with a divider and a group
-  /// top if the theme mode is not [ThemeMode.system].
-  ///
-  /// The switch is wrapped in a [DrawerComponent] with a title of
-  /// [S.systemTheme], a subtitle of [S.followSystemTheme], and a leading icon
-  /// of [Icons.brightness_auto_outlined].
-  ///
-  /// When the switch is tapped, the [HapticFeedback.vibrate] is called and the
-  /// switch is toggled.
+
   Widget _buildThemeSwitch(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(
       buildWhen: (previous, current) => previous.themeMode != current.themeMode,
@@ -147,27 +110,6 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A switch to toggle between light and dark theme.
-  //
-  /// The switch is disabled if the theme mode is [ThemeMode.system].
-  //
-  /// When the switch is toggled, the theme is updated by calling
-  /// [toggleTheme].
-  //
-  /// The switch is wrapped in a [BlocBuilder] to rebuild when the theme mode
-  /// changes.
-  //
-  /// The switch is wrapped in a [DrawerComponent] with a divider and a group
-  /// bottom if the theme mode is not [ThemeMode.system].
-  //
-  /// The switch is wrapped in a [DrawerComponent] with a title of
-  /// [S.darkTheme] or [S.lightTheme], a subtitle of
-  /// [S.switchToLightTheme] or [S.switchToDarkTheme], a leading icon of
-  /// [Icons.light_mode_outlined] or [Icons.dark_mode_outlined], and a trailing
-  /// widget of a [Switch] with the current theme mode.
-  //
-  /// When the switch is tapped, the [HapticFeedback.vibrate] is called and the
-  /// switch is toggled.
   Widget _buildModeSwitch(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(
       buildWhen: (previous, current) =>
@@ -379,12 +321,10 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A drawer component that clears the logs when tapped.
-  /// The component has a margin, no divider, and a single group. The leading icon is
-  /// [Icons.clear_all_rounded], the title is [S.clearLogs], the subtitle is
-  /// [S.clearLogsMassage], and the trailing widget is null. When the component is tapped,
-  /// [HapticFeedback.vibrate] is called, the component is popped from the navigator, and
-  /// a [SnackBar] is shown with the text "سوف تتوفر في أقرب وقت ممكن".
+
+
+
+
   Widget _buildClearLogs(BuildContext context) {
     return DrawerComponent(
       useMargin: true,
@@ -401,13 +341,11 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A drawer component that displays a message when the user wants to know how to use the app.
-  ///
-  /// The component has a margin, a divider, and a group top. The leading icon is
-  /// [Icons.question_answer_outlined], the title is [S.HowToUse], the subtitle is
-  /// [S.HowToUseMassage], and the trailing widget is null. When the component is tapped,
-  /// [HapticFeedback.vibrate] is called, the component is popped from the navigator, and
-  /// a [SnackBar] is shown with the text "سوف تتوفر في أقرب وقت ممكن".
+
+
+
+
+
   Widget _buildHowToUse(BuildContext context) {
     return DrawerComponent(
         useMargin: true,
@@ -423,13 +361,11 @@ class SenseiDrawer extends StatelessWidget {
         });
   }
 
-  /// A drawer component for reporting a product.
-  ///
-  /// This component has no margin, no divider, and a group bottom. The leading icon is
-  /// [Icons.production_quantity_limits_outlined], the title is [S.ReportProduct], and the
-  /// subtitle is [S.ReportProductMassage]. When tapped, it triggers a haptic feedback, pops
-  /// the component from the navigator, and displays a bottom sheet with the title 'بلغ عن منتج'
-  /// and content from [ReportProductSheetContent].
+
+
+
+
+
 
   Widget _buildReportProduct(BuildContext context) {
     return DrawerComponent(
@@ -448,12 +384,9 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A drawer component for displaying the ReadMe section.
-  ///
-  /// This component has a margin, a divider, and a group top. The leading icon is
-  /// [Icons.description_outlined], the title is [S.ReadMe], and the subtitle is
-  /// [S.ReadMeMassage]. When tapped, it triggers a haptic feedback and opens the
-  /// URL specified by [SenseiConst.devReadMeLink].
+
+
+
 
   Widget _buildReadMe(BuildContext context) {
     return DrawerComponent(
@@ -470,12 +403,11 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A drawer component for displaying the "Letest Update" section.
-  ///
-  /// This component has no margin, a divider, and a group middle. The leading icon is
-  /// [Icons.update_outlined], the title is [S.LetastUpdate], and the subtitle is
-  /// [S.LetestUpdateMassage]. When tapped, it triggers a haptic feedback and opens the
-  /// URL specified by [SenseiConst.devReleaseAppLink].
+
+
+
+
+
   Widget _buildLetestUpdate(BuildContext context) {
     return DrawerComponent(
       useMargin: false,
@@ -491,12 +423,11 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A drawer component for displaying the GitHub token section.
-  ///
-  /// This component has no margin, a divider, and a group middle. The leading icon is
-  /// [Icons.live_help_outlined], the title is [S.GithubTiket], and the subtitle is
-  /// [S.GithubTiketMassage]. When tapped, it triggers a haptic feedback and opens the
-  /// URL specified by [SenseiConst.devGitHubTokenLink].
+
+
+
+
+
   Widget _buildGithubToken(BuildContext context) {
     return DrawerComponent(
       useMargin: false,
@@ -512,12 +443,12 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A drawer component for displaying the Telegram channel section.
-  ///
-  /// This component has no margin, no divider, and a group bottom. The leading icon is
-  /// [Icons.telegram_rounded], the title is [S.TelegramChannel], and the subtitle is
-  /// [S.TelegramChannelMassage]. When tapped, it triggers a haptic feedback and opens the
-  /// URL specified by [SenseiConst.devTelegramLink].
+
+
+
+
+
+
   Widget _buildTelegramChannel(BuildContext context) {
     return DrawerComponent(
         useMargin: false,
@@ -532,12 +463,13 @@ class SenseiDrawer extends StatelessWidget {
         });
   }
 
-  /// A drawer component for displaying the developer section.
-  ///
-  /// This component has a margin, a divider, and a group top. The leading icon is
-  /// [Icons.verified_outlined], the title is [S.Developer], and the subtitle is
-  /// [S.MostafaMahmoud]. The trailing widget is an avatar built by [ContactSenseiDev].
-  /// When tapped, it triggers the display of a developer dialog.
+
+
+
+
+
+
+
 
   Widget _buildDeveloper(BuildContext context) {
     return DrawerComponent(
@@ -552,11 +484,10 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  /// A drawer component for displaying the About section.
-  ///
-  /// This component has no margin, no divider, and a group bottom. The leading icon is
-  /// [Icons.info_outline], the title is [S.About], and the subtitle is
-  /// [S.AboutTadamon]. When tapped, it triggers the display of the About page.
+
+
+
+
   Widget _buildAbout(BuildContext context) {
     return DrawerComponent(
       useMargin: false,

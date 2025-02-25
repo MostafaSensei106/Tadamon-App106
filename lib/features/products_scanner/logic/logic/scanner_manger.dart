@@ -8,16 +8,9 @@ import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart
 class ScannerManager {
 
 
-  /// Scans the barcode using the default camera.
-  //
-  /// Shows a scanner overlay with a line color of yellow and a cancel button
-  /// with the text translated as "close".
-  //
-  /// If the scan is successful, returns the scanned barcode as a string.
-  /// If the scan failed or was cancelled, returns null.
-  ///
-  /// If an error occurred while scanning the barcode, shows an error toast
-  /// with the error message.
+
+
+
   Future<String?> scanBarcode(BuildContext context) async {
     try {
       final String? barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
@@ -43,16 +36,7 @@ class ScannerManager {
 
 
 
-  /// Scans a barcode from an image selected from the device's gallery.
-  ///
-  /// This method prompts the user to select an image from the gallery. It then
-  /// attempts to extract a barcode from the selected image using image analysis.
-  /// If a barcode is successfully extracted, the method returns the barcode as a
-  /// string. If the image is not selected, or if no barcode is found in the
-  /// image, the method returns null.
-  ///
-  /// If an error occurs during image selection or barcode extraction, an error
-  /// toast is displayed with the error message, and the method returns null.
+
 
   Future<String?> imageAnalysisScan(BuildContext context) async {
     try {
@@ -75,15 +59,9 @@ class ScannerManager {
 
   
   
-  /// Picks an image from the device's gallery.
-  ///
-  /// This method uses the [ImagePicker] package to prompt the user to select an
-  /// image from the device's gallery. The selected image is then returned as a
-  /// [XFile] object. If the user does not select an image, the method returns
-  /// null.
-  ///
-  /// If an error occurs during image selection, an error toast is displayed with
-  /// the error message, and the method returns null.
+
+
+
   Future<XFile?> _pickImage() async {
     try {
       final ImagePicker imagePicker = ImagePicker();
@@ -101,14 +79,7 @@ class ScannerManager {
 
 
 
-  /// Extracts a barcode from the provided image file.
-  ///
-  /// This method uses the Google ML Kit barcode scanner to extract the barcode
-  /// from the image. If a barcode is found, the method returns the barcode as a
-  /// string. If no barcode is found, the method returns null.
-  ///
-  /// If an error occurs while processing the image, an error toast is displayed
-  /// with the error message, and the method returns null.
+
   Future<String?> _getBarcodeFromImage(XFile image) async {
     try {
       final InputImage inputImage = InputImage.fromFilePath(image.path);

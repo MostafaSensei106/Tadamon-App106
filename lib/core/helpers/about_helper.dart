@@ -63,31 +63,29 @@ void appAbout(BuildContext context) {
           icon: Icons.difference_outlined,
           onpressed: () {
             showLicensePage(
-                context: context,
-                applicationName: 'تطبيق تضامن',
-                applicationLegalese:
-                    'تم تطوير هذا التطبيق من اجل دعم القضية الفلسطينية',
-                applicationIcon: Container(
-                  padding: EdgeInsets.all(SenseiConst.padding.w),
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surfaceContainer,
-                      borderRadius:
-                          BorderRadius.circular(SenseiConst.outBorderRadius.r),
-                      border: Border.all(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .outline
-                            .withAlpha(0x80),
-                      )),
-                  child: ClipRRect(
-                      borderRadius:
-                          BorderRadius.circular(SenseiConst.inBorderRadius.r),
-                      child: Image.asset(
-                          width: 100,
-                          height: 100,
-                          SenseiConst.tadamonAppImage)),
-                ),
-                applicationVersion: 'v${SenseiConst.appVersion}');
+              context: context,
+              applicationName: 'تطبيق تضامن',
+              applicationLegalese:
+                  'تم تطوير هذا التطبيق من اجل دعم القضية الفلسطينية',
+              applicationIcon: Container(
+                padding: EdgeInsets.all(SenseiConst.padding.w),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surfaceContainer,
+                    borderRadius:
+                        BorderRadius.circular(SenseiConst.outBorderRadius.r),
+                    border: Border.all(
+                      color:
+                          Theme.of(context).colorScheme.outline.withAlpha(0x80),
+                    )),
+                child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                    child: Image.asset(
+                        width: 100, height: 100, SenseiConst.tadamonAppImage)),
+              ),
+              applicationVersion: 'v${SenseiConst.appVersion}',
+              useRootNavigator: true,
+            );
           },
           text: 'الترخيص',
         ),

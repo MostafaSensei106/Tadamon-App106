@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:tadamon/features/products_scanner/data/models/product_model_hive.dart';
+import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
 abstract class LogsState extends Equatable {
   @override
@@ -11,9 +11,9 @@ class LogsInitial extends LogsState {}
 class LogsLoading extends LogsState {}
 
 class LogsLoadingSuccess extends LogsState {
-  final List<HiveProductModel> products;
+  final List<ProductModel> products;
 
-  LogsLoadingSuccess(result, {required this.products});
+  LogsLoadingSuccess({required this.products});
 
   @override
   List<Object> get props => [products];

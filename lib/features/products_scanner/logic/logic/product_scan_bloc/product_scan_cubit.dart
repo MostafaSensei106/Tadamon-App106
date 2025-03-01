@@ -28,7 +28,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         product: product,
       ),
     );
-    HiveServices().saveProductToHive(product);
+    HiveServices().saveProductToHiveLogs(product);
   }
 
   Future<void> scanBarcodeCamera(BuildContext context) async {

@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/button_component/button_compnent.dart';
 import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
-import 'package:tadamon/features/products_scanner/data/models/product_model_hive.dart';
+import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
 class ProductLogsExpansionTileComponent extends StatelessWidget {
-  final HiveProductModel product;
+  final ProductModel product;
   const ProductLogsExpansionTileComponent({super.key, required this.product});
   @override
   Widget build(BuildContext context) {
@@ -81,18 +80,9 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
           DrawerComponent(
             leadingIcon: Icons.handshake_outlined,
             title: "الحالة",
-            subtitle: product.isTrusted ? "لا يدعم الكيان" : "مقاطعة",
+            subtitle: product.onError == "Product not found" ? "المنتج غير موجود" : product.isTrusted ? "مؤمن" : "غير مؤمن",
           ),
-          if (product.isTrusted == false)
-            Padding(
-                padding: EdgeInsets.only(
-                    left: SenseiConst.padding.w,
-                    right: SenseiConst.padding.w,
-                    bottom: SenseiConst.padding.h),
-                child: ButtonCompnent(
-                    label: 'منتجات بديلة',
-                    icon: Icons.new_releases_outlined,
-                    onPressed: () => Navigator.pop(context, product))),
+        
         ],
       ),
     );

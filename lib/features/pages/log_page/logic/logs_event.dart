@@ -5,8 +5,11 @@ abstract class LogsEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class GetAllLogs extends LogsEvent {}
+
 class GetLogsResult extends LogsEvent {
-  final String query, filter;
+  final String query; 
+  final String filter;
 
   GetLogsResult(this.query, this.filter);
 

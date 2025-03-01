@@ -6,11 +6,7 @@ import 'package:tadamon/generated/l10n.dart';
 import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart';
 
 class ScannerManager {
-
-
-
-
-
+  
   Future<String?> scanBarcode(BuildContext context) async {
     try {
       final String? barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
@@ -33,11 +29,6 @@ class ScannerManager {
       return null;
     }
   }
-
-
-
-
-
   Future<String?> imageAnalysisScan(BuildContext context) async {
     try {
       final XFile? image = await _pickImage();

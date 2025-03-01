@@ -1106,14 +1106,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
-  shimmer:
-    dependency: "direct main"
-    description:
-      name: shimmer
-      sha256: "5f88c883a22e9f9f299e5ba0e4f7e6054857224976a5d9f839d4ebdc94a14ac9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
   simple_barcode_scanner:
     dependency: "direct main"
     description:
@@ -1239,22 +1231,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
-  syncfusion_flutter_core:
-    dependency: transitive
-    description:
-      name: syncfusion_flutter_core
-      sha256: "634adbc5c7d41e31513e9e3d60213bbc6aedff6e90ddb23b6495bfc0a23a260e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "28.2.6"
-  syncfusion_flutter_maps:
-    dependency: "direct main"
-    description:
-      name: syncfusion_flutter_maps
-      sha256: "52a6a3d545a380e8808d061dee4977193b3c225a159ee80d71aa036c00dad245"
-      url: "https://pub.dev"
-    source: hosted
-    version: "28.2.6"
   synchronized:
     dependency: transitive
     description:

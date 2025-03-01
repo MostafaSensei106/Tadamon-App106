@@ -28,7 +28,7 @@ class TadamonApp extends StatelessWidget {
           builder: (context, themeState) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Tadamon',
+              title: 'تضامن',
               theme: lightTheme,
               darkTheme: darkTheme,
               themeMode: themeState.themeMode,

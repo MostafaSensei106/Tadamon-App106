@@ -49,4 +49,6 @@ ThemeData lightTheme = ThemeData(
     surfaceContainerHigh: Color(0xfffae3e0),
     surfaceContainerHighest: Color(0xfff5ddda),
   ),
+  fontFamily: 'ArabicFont',
+  
 );

@@ -18,7 +18,7 @@ class HomeAppTools extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: SenseiConst.margin.h),
-      padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h-4.h),
+      padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h-4.h ,horizontal: SenseiConst.padding.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
         color: Theme.of(context).colorScheme.surfaceContainer,

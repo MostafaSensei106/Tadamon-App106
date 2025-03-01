@@ -34,9 +34,7 @@ dependencies:
   hive: ^2.2.3
   path_provider: ^2.1.5
   hive_flutter: ^1.1.0
-  syncfusion_flutter_maps: ^28.2.5
   flutter_svg: ^2.0.17
-  shimmer: ^3.0.0
   lottie: ^3.3.1
 
 dev_dependencies:

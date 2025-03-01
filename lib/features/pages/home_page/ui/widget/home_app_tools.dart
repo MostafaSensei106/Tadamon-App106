@@ -14,34 +14,20 @@ class HomeAppTools extends StatelessWidget {
   const HomeAppTools({super.key});
 
   @override
-  /// A [StatelessWidget] that builds a row of tools that are commonly used in the app.
-  ///
-  /// The tools are represented as a [Row] of [HomeToolsComponent] widgets. The
-  /// [HomeToolsComponent] is a [StatelessWidget] that displays an [Icon] and a [Text]
-  /// widget with a [onTap] callback. The [onTap] callback is called when the
-  /// [HomeToolsComponent] is tapped.
-  ///
-  /// The [HomeToolsComponent] is configured with the following properties:
-  ///
-  /// - [icon]: The [Icon] to display. The [Icon] is displayed with a color of
-  /// [Theme.of(context).colorScheme.onSecondary].
-  /// - [title]: The [Text] to display. The [Text] is displayed with a color of
-  /// [Theme.of(context).colorScheme.onSecondary].
-  /// - [onTapped]: The callback to call when the [HomeToolsComponent] is tapped.
-  ///
+
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: SenseiConst.margin.h),
-      padding: EdgeInsets.all(SenseiConst.padding.w),
+      padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h-4.h),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
         color: Theme.of(context).colorScheme.surfaceContainer,
       ),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             BlocProvider(
               create: (_) => ProductScanCubit(),

@@ -38,7 +38,10 @@ class CounterItemsComponent extends StatelessWidget {
             ),
           ),
           SizedBox(height: 4.h),
-          Text(title),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+          ),
           SizedBox(height: 4.h),
           Text(
             '$counter',

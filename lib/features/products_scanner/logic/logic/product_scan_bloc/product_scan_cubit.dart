@@ -37,11 +37,9 @@ class ProductScanCubit extends Cubit<ProductScanState> {
     ProductModel product;
 
     try {
-      String? scanResult = await ScannerManager().scanBarcode(context);
+      dynamic scanResult = await ScannerManager().scanBarcode(context);
 
-      if (scanResult == null || scanResult == "-1") {
-        return;
-      }
+
       bool isConnected = await NetworkController().checkConnection();
 
       emit(ProductScanLoading());

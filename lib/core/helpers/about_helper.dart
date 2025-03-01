@@ -56,11 +56,13 @@ void appAbout(BuildContext context) {
           icon: Icons.close,
           onpressed: () => Navigator.pop(context),
           text: S.of(context).close,
+          isClose: true,
         ),
 
         ///show license
         TextButtonComponent(
           icon: Icons.difference_outlined,
+        
           onpressed: () {
             showLicensePage(
               context: context,

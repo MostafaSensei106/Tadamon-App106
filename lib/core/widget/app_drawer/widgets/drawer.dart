@@ -34,9 +34,6 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   @override
-
-
-
   Widget build(BuildContext context) {
     return SizedBox(
       width: 0.90.sw,
@@ -80,7 +77,6 @@ class SenseiDrawer extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildThemeSwitch(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(
@@ -321,10 +317,6 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-
-
-
-
   Widget _buildClearLogs(BuildContext context) {
     return DrawerComponent(
       useMargin: true,
@@ -335,16 +327,11 @@ class SenseiDrawer extends StatelessWidget {
       subtitle: S.of(context).clearLogsMassage,
       onTapped: () {
         HapticFeedback.vibrate();
-        Navigator.pop(context);
+        Navigator.of(context).pop();
         HiveServices().clearLogs();
       },
     );
   }
-
-
-
-
-
 
   Widget _buildHowToUse(BuildContext context) {
     return DrawerComponent(
@@ -360,12 +347,6 @@ class SenseiDrawer extends StatelessWidget {
           Navigator.pushNamed(context, Routes.userHelp);
         });
   }
-
-
-
-
-
-
 
   Widget _buildReportProduct(BuildContext context) {
     return DrawerComponent(
@@ -384,10 +365,6 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-
-
-
-
   Widget _buildReadMe(BuildContext context) {
     return DrawerComponent(
       useMargin: true,
@@ -402,11 +379,6 @@ class SenseiDrawer extends StatelessWidget {
       },
     );
   }
-
-
-
-
-
 
   Widget _buildLetestUpdate(BuildContext context) {
     return DrawerComponent(
@@ -423,11 +395,6 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-
-
-
-
-
   Widget _buildGithubToken(BuildContext context) {
     return DrawerComponent(
       useMargin: false,
@@ -443,12 +410,6 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-
-
-
-
-
-
   Widget _buildTelegramChannel(BuildContext context) {
     return DrawerComponent(
         useMargin: false,
@@ -463,14 +424,6 @@ class SenseiDrawer extends StatelessWidget {
         });
   }
 
-
-
-
-
-
-
-
-
   Widget _buildDeveloper(BuildContext context) {
     return DrawerComponent(
       useMargin: true,
@@ -483,10 +436,6 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () => const ContactSenseiDev().showDevDialog(context),
     );
   }
-
-
-
-
 
   Widget _buildAbout(BuildContext context) {
     return DrawerComponent(

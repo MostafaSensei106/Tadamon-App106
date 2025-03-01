@@ -6,7 +6,18 @@ import 'package:tadamon/generated/l10n.dart';
 import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart';
 
 class ScannerManager {
-  
+
+
+  //if barcode is number 
+  bool isNumber(String input) {
+    if (input.isEmpty) {
+      return false;
+    }
+    final number = num.tryParse(input);
+    return number != null;
+  }
+
+
   Future<String?> scanBarcode(BuildContext context) async {
     try {
       final String? barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
@@ -23,11 +34,16 @@ class ScannerManager {
       if (barcodeScanRes == null || barcodeScanRes == '-1'){
         AppToast.showErrorToast('لم يتم قراءة اي باركود');
       }
-      return barcodeScanRes;
+      if(isNumber(barcodeScanRes!)){
+              return barcodeScanRes;
+      } else {
+        AppToast.showErrorToast(' الباركود لا يحتوي علي اي ارقام ');
+      }
     } catch (e) {
       AppToast.showErrorToast('Error occurred while scanning the barcode: ${e.toString()}');
       return null;
     }
+    return null;
   }
   Future<String?> imageAnalysisScan(BuildContext context) async {
     try {
@@ -41,11 +57,16 @@ class ScannerManager {
         AppToast.showErrorToast('الصورة غير واضحة او لا تحتوي علي باركود');
         return null;
       }
-      return barcode;
+           if(isNumber(barcode)){
+              return barcode;
+      } else {
+        AppToast.showErrorToast(' الباركود لا يحتوي علي اي ارقام ');
+      }
     } catch (e) {
       AppToast.showErrorToast('Error occurred while scanning the image: ${e.toString()}');
       return null;
     }
+    return null;
   }
 
   

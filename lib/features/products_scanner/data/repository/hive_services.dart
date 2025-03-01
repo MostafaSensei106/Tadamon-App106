@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:tadamon/core/widget/app_toast/app_toast.dart';
+import 'package:tadamon/core/widget/dilog_component/dilog_component.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model_hive.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_services.dart';
@@ -8,9 +9,6 @@ class HiveServices {
   static const String boxName = 'LocalTadamonProducts';
   static const String logsBoxName = 'TadamonLogs';
 
-
-
-
   Future<void> syncAllProductsToHive() async {
     try {
       var box = await Hive.openBox<HiveProductModel>(boxName);
@@ -18,14 +16,11 @@ class HiveServices {
         var hiveProduct = HiveProductModel.fromMap(product);
         box.put(hiveProduct.serialNumber, hiveProduct);
       }
-      await box.close();
     } catch (e) {
       AppToast.showErrorToast(
           'حدث خطأ اثناء تحميل المنتجات من قاعدة البيانات');
     }
   }
-
-
 
   Future<bool> isLocalDataBaseUpToDate() async {
     try {
@@ -47,7 +42,6 @@ class HiveServices {
           return false;
         }
       }
-      await box.close();
       return true;
     } catch (e) {
       AppToast.showErrorToast('Error checking database synchronization');
@@ -55,23 +49,15 @@ class HiveServices {
     }
   }
 
-
-
-
   Future<bool> hiveDbHasData() async {
     var box = await Hive.openBox<HiveProductModel>(boxName);
     return box.values.isNotEmpty;
   }
 
-
-
-
-
   Future<dynamic> getProductBySerialNumber(String serialNumber) async {
     var box = await Hive.openBox<HiveProductModel>(boxName);
     var data = box.get(serialNumber);
     if (data != null) {
-      await box.close();
 
       return ProductModel.fromMap(data.toMap());
     } else {
@@ -86,59 +72,46 @@ class HiveServices {
     }
   }
 
-
-
-
-
   Future<void> deleteAllLocalProducts() async {
     try {
       var box = await Hive.openBox<HiveProductModel>(boxName);
       await box.clear();
-      await box.close();
     } catch (e) {
       AppToast.showErrorToast(
           'An error occurred while deleting products from the local database');
     }
   }
 
-
-
-
   Future<void> saveProductToHive(ProductModel product) async {
     try {
-      var box = Hive.box<HiveProductModel>(logsBoxName);
+      var box = await Hive.openBox<HiveProductModel>(logsBoxName);
       var hiveProduct = HiveProductModel.fromMap(product);
       await box.put(hiveProduct.serialNumber, hiveProduct);
-      AppToast.showToast('Product saved successfully');
     } catch (e) {
-      AppToast.showErrorToast('An error occurred while saving the product');
+      AppToast.showErrorToast('An error occurred while saving the product: $e');
     }
   }
 
-
-
-
-
-
   Future<void> clearLogs() async {
-    var box = Hive.box<HiveProductModel>(logsBoxName);
-    await box.clear();
-    AppToast.showToast('Logs cleared successfully');
+    var box = await Hive.openBox<HiveProductModel>(logsBoxName);
+    if (box.isNotEmpty) {
+      await box.clear();
+      AppToast.showToast('Logs cleared successfully');
+    } else {
+      AppToast.showToast('There are no logs to be cleared');
+    }
   }
-Future<List<HiveProductModel>> getLogs() async {
+
+  Future<List<HiveProductModel>> getLogs() async {
     var box = Hive.box<HiveProductModel>(logsBoxName);
     return box.values.toList();
   }
 
-
-
-
-  
-
- Future<List<HiveProductModel>> searchLogs(String query) async {
+  Future<List<HiveProductModel>> searchLogs(String query) async {
     final logs = await getLogs();
     return logs
-        .where((log) => log.serialNumber.toLowerCase().contains(query.toLowerCase()))
+        .where((log) =>
+            log.serialNumber.toLowerCase().contains(query.toLowerCase()))
         .toList();
   }
 }

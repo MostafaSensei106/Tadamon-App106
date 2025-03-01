@@ -34,16 +34,11 @@ class ScannerManager {
       if (barcodeScanRes == null || barcodeScanRes == '-1'){
         AppToast.showErrorToast('لم يتم قراءة اي باركود');
       }
-      if(isNumber(barcodeScanRes!)){
-              return barcodeScanRes;
-      } else {
-        AppToast.showErrorToast(' الباركود لا يحتوي علي اي ارقام ');
-      }
+      return barcodeScanRes;
     } catch (e) {
       AppToast.showErrorToast('Error occurred while scanning the barcode: ${e.toString()}');
       return null;
     }
-    return null;
   }
   Future<String?> imageAnalysisScan(BuildContext context) async {
     try {
@@ -57,16 +52,11 @@ class ScannerManager {
         AppToast.showErrorToast('الصورة غير واضحة او لا تحتوي علي باركود');
         return null;
       }
-           if(isNumber(barcode)){
-              return barcode;
-      } else {
-        AppToast.showErrorToast(' الباركود لا يحتوي علي اي ارقام ');
-      }
+      return barcode;
     } catch (e) {
       AppToast.showErrorToast('Error occurred while scanning the image: ${e.toString()}');
       return null;
     }
-    return null;
   }
 
   

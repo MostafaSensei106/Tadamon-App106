@@ -11,9 +11,8 @@ class LogsSearchContent extends StatelessWidget {
   const LogsSearchContent({
     super.key,
     required TextEditingController searchController,
-  }) : _searchController = searchController;
+  });
 
-  final TextEditingController _searchController;
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +25,7 @@ class LogsSearchContent extends StatelessWidget {
             );
           } else if (state is LogsLoadingSuccess) {
             if (state.products.isEmpty) {
-              return _searchController.text.isEmpty
-                  ? LottieComponent(
-                      lottiePath: SenseiConst.lottieSearchAnimation,
-                      text: 'نتائج البحث سوف تظهر هنا')
-                  : LottieComponent(
+              return  LottieComponent(
                       lottiePath: SenseiConst.lottieNoFoundAnimation,
                       text: 'لم يتم العثور على المنتج في السجلات');
             }

@@ -1,6 +1,5 @@
 import 'package:hive/hive.dart';
 import 'package:tadamon/core/widget/app_toast/app_toast.dart';
-import 'package:tadamon/core/widget/dilog_component/dilog_component.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model_hive.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_services.dart';
@@ -58,7 +57,6 @@ class HiveServices {
     var box = await Hive.openBox<HiveProductModel>(boxName);
     var data = box.get(serialNumber);
     if (data != null) {
-
       return ProductModel.fromMap(data.toMap());
     } else {
       return ProductModel(
@@ -82,7 +80,7 @@ class HiveServices {
     }
   }
 
-  Future<void> saveProductToHive(ProductModel product) async {
+  Future<void> saveProductToHiveLogs(ProductModel product) async {
     try {
       var box = await Hive.openBox<HiveProductModel>(logsBoxName);
       var hiveProduct = HiveProductModel.fromMap(product);
@@ -103,15 +101,20 @@ class HiveServices {
   }
 
   Future<List<HiveProductModel>> getLogs() async {
-    var box = Hive.box<HiveProductModel>(logsBoxName);
+    var box = await Hive.openBox<HiveProductModel>(logsBoxName);
     return box.values.toList();
   }
 
-  Future<List<HiveProductModel>> searchLogs(String query) async {
+
+   Future<List<HiveProductModel>> searchLogs(String query, String filter) async {
     final logs = await getLogs();
-    return logs
-        .where((log) =>
-            log.serialNumber.toLowerCase().contains(query.toLowerCase()))
-        .toList();
+    return logs.where((log) {
+      bool matchesQuery = log.serialNumber.toLowerCase().contains(query.toLowerCase());
+      if (filter.isNotEmpty) {
+        return matchesQuery && log.productCategory == filter;
+      }
+      return matchesQuery;
+    }).toList();
   }
+
 }

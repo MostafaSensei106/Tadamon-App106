@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tadamon/core/controller/network_controller/network_controller.dart';
 import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
+import 'package:tadamon/features/counter_manager/logic/counter_manager.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_services.dart';
 import 'package:tadamon/features/products_scanner/data/repository/hive_services.dart';
@@ -15,23 +16,20 @@ part 'product_scan_state.dart';
 class ProductScanCubit extends Cubit<ProductScanState> {
   ProductScanCubit() : super(ProductScanInitial());
 
-
-
-
-  void _showProductInfo(BuildContext context, ProductModel product,  ) {
+  void _showProductInfo(
+    BuildContext context,
+    ProductModel product,
+  ) {
     if (!context.mounted) return;
     ModelBottomSheet.show(
       context,
       S.of(context).SheetTitleProductInfo,
-      child: ProductListView(product: product,),
+      child: ProductListView(
+        product: product,
+      ),
     );
     HiveServices().saveProductToHive(product);
   }
-
-
-
-
-
 
   Future<void> scanBarcodeCamera(BuildContext context) async {
     HapticFeedback.vibrate();
@@ -51,11 +49,16 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       if (isConnected) {
         product =
             await FireStoreServices().getProductBySerialNumber(scanResult);
+        CounterManager.incrementScannedProducts();
       } else {
         product = await HiveServices().getProductBySerialNumber(scanResult);
+        CounterManager.incrementScannedProducts();
       }
       if (context.mounted) {
-        _showProductInfo(context, product,);
+        _showProductInfo(
+          context,
+          product,
+        );
         emit(ProductScanSuccess());
       }
     } catch (e) {
@@ -74,8 +77,10 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       if (isConnected) {
         product =
             await FireStoreServices().getProductBySerialNumber(scanResult);
+        CounterManager.incrementScannedProducts();
       } else {
         product = await HiveServices().getProductBySerialNumber(scanResult);
+        CounterManager.incrementScannedProducts();
       }
       if (!context.mounted) return;
       _showProductInfo(context, product);

@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CounterManager {
+
   static const String scannedProductsKey = 'scannedProductsCounter';
   static const String supportedProductsKey = 'supportedProductsCounter';
 
@@ -35,8 +36,7 @@ class CounterManager {
   // Get scanned products count from Firestore
   static Future<int> getScannedProductsCount() async {
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-        .collection('products') // Replace with your collection name
-        .where('isScanned', isEqualTo: true) // Assuming you have an "isScanned" field
+        .collection('TadakProducts') 
         .get();
     return querySnapshot.docs.length;
   }
@@ -57,19 +57,4 @@ class CounterManager {
     _scannedProductsController.add(0);
   }
 
-  // Increment supported products counter
-  static Future<void> incrementSupportedProducts() async {
-    final prefs = await SharedPreferences.getInstance();
-    int currentCounter = prefs.getInt(supportedProductsKey) ?? 0;
-    currentCounter++;
-    await prefs.setInt(supportedProductsKey, currentCounter);
-    _supportedProductsController.add(currentCounter);
-  }
-
-  // Reset supported products counter
-  static Future<void> resetSupportedProducts() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(supportedProductsKey, 0);
-    _supportedProductsController.add(0);
-  }
 }

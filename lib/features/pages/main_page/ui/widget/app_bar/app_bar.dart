@@ -9,12 +9,12 @@ class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
   const SenseiAppBar(this.title, {super.key});
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(SenseiConst.appBarImage),
           fit: BoxFit.cover,

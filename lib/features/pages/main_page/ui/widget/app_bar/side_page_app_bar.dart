@@ -8,7 +8,7 @@ class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   const SidePageAppBar({super.key, required this.title,});
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
 
   /// Navigate back in the app by calling [Navigator.pop] on the given [context], and

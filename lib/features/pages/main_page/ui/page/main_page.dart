@@ -137,11 +137,11 @@ class _MainPageState extends State<MainPage>
           return Scaffold(
 
             key: const ValueKey<String>('main_page_scaffold'),
-            backgroundColor: Color(0xffF26A5A),
+            backgroundColor: const Color(0xffF26A5A),
             appBar: SenseiAppBar(
               _getAppBarTitle(state.currentPage),
             ),
-            drawer: SenseiDrawer(),
+            drawer: const SenseiDrawer(),
             body: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surface,

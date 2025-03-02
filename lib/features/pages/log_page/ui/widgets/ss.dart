@@ -23,7 +23,7 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(SenseiConst.inBorderRadius.r),
                     color: Theme.of(context).colorScheme.surfaceContainerHigh),
-                child: Icon(
+                child: const Icon(
                   Icons.check_circle_outline_outlined,
                   size: SenseiConst.iconSize,
                 ))
@@ -33,7 +33,7 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(SenseiConst.inBorderRadius.r),
                     color: Theme.of(context).colorScheme.surfaceContainerHigh),
-                child: Icon(
+                child: const Icon(
                   Icons.block_rounded,
                   size: SenseiConst.iconSize,
                 )),

@@ -19,13 +19,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return Scaffold(
       body: Stack(
         children: [
-          AnimatedTriangles(),
+          const AnimatedTriangles(),
           PageView(
             scrollDirection: Axis.horizontal,
             controller: _pageController,
             children: [
-              OnboardingPageOne(),
-              OnboardingPageTwo(
+              const OnboardingPageOne(),
+              const OnboardingPageTwo(
                 firstIcon: Icons.qr_code_rounded,
                 secondIcon: Icons.image_search_rounded,
                 firstTitle: 'فحص الباركود',
@@ -33,7 +33,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 subtitle:
                     "اكشف عن المنتجات باستخدام الكاميرا أو حلل الصور بتقنية تعلّم الآلة.",
               ),
-              OnboardingPageTwo(
+              const OnboardingPageTwo(
                 firstIcon: Icons.search_rounded,
                 secondIcon: Icons.new_releases_outlined,
                 firstTitle: 'ابحث عن المنتج',
@@ -41,7 +41,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 subtitle:
                     'ابحث عن المنتجات واحصل علي البدائل لمنتجات المقاطعة بكل سهولة.',
               ),
-              OnboardingPageTwo(
+              const OnboardingPageTwo(
                 height: 51.1,
                 appOnlineRun: true,
                 firstIcon: Icons.cloud_done_outlined,

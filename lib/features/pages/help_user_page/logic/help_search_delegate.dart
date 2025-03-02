@@ -57,7 +57,7 @@ class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
 
   Widget _buildSearchResults() {
     if (qnaList.isEmpty) {
-      return Center(
+      return const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -65,7 +65,7 @@ class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
               Icons.search_off,
               size: 64,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Text(
               'لم يتم العثور على نتائج',
               style: TextStyle(

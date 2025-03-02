@@ -71,12 +71,12 @@ class _LogsPageViewState extends State<LogsPageView> {
                     value: 'SerialNumber',
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.qr_code_rounded,
                           size: SenseiConst.iconSize,
                         ),
                         SizedBox(width: SenseiConst.padding.w),
-                        Text('الرقم التسلسلي'),
+                        const Text('الرقم التسلسلي'),
                       ],
                     ),
                   ),
@@ -84,24 +84,24 @@ class _LogsPageViewState extends State<LogsPageView> {
                       value: 'Name',
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.label_outline_rounded,
                             size: SenseiConst.iconSize,
                           ),
                           SizedBox(width: SenseiConst.padding.w),
-                          Text('اسم المنتج'),
+                          const Text('اسم المنتج'),
                         ],
                       )),
                   PopupMenuItem(
                     value: 'Manufacture',
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.business,
                           size: SenseiConst.iconSize,
                         ),
                         SizedBox(width: SenseiConst.padding.w),
-                        Text('المُصنع'),
+                        const Text('المُصنع'),
                       ],
                     ),
                   ),
@@ -109,12 +109,12 @@ class _LogsPageViewState extends State<LogsPageView> {
                     value: 'Category',
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.category_outlined,
                           size: SenseiConst.iconSize,
                         ),
                         SizedBox(width: SenseiConst.padding.w),
-                        Text('القسم'),
+                        const Text('القسم'),
                       ],
                     ),
                   ),

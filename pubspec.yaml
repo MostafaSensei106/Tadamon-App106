@@ -35,7 +35,8 @@ dependencies:
   flutter_svg: ^2.0.17
   lottie: ^3.3.1
   objectbox: ^4.1.0
-  objectbox_flutter_libs: ^4.1.0
+  objectbox_flutter_libs: ^4.1.0 
+  toastification: ^3.0.1
 
 dev_dependencies:
   flutter_test:

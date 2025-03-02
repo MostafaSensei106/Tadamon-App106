@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-ThemeData lightTheme = ThemeData(
+final ThemeData lightTheme = ThemeData(
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
     primary: Color(0xffaa352c),
@@ -50,5 +50,4 @@ ThemeData lightTheme = ThemeData(
     surfaceContainerHighest: Color(0xfff5ddda),
   ),
   fontFamily: 'ArabicFont',
-  
 );

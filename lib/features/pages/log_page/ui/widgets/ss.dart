@@ -16,7 +16,7 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
       ),
       child: ExpansionTile(
-        leading: product.isTrusted
+        leading: product.trusted
             ? Container(
                 padding: EdgeInsets.all(SenseiConst.padding.w),
                 decoration: BoxDecoration(
@@ -37,7 +37,7 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
                   Icons.block_rounded,
                   size: SenseiConst.iconSize,
                 )),
-        title: Text(product.productName),
+        title: Text(product.name),
         subtitle: Text(product.serialNumber),
         enableFeedback: true,
         showTrailingIcon: true,
@@ -62,25 +62,25 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
           DrawerComponent(
             leadingIcon: Icons.label_outline_rounded,
             title: "اسم المنتج",
-            subtitle: product.productName,
+            subtitle: product.name,
             useDivider: true,
           ),
           DrawerComponent(
             leadingIcon: Icons.business_rounded,
             title: "الشركة المصنعة",
-            subtitle: product.productManufacturer,
+            subtitle: product.manufacture,
             useDivider: true,
           ),
           DrawerComponent(
             leadingIcon: Icons.category_outlined,
             title: "التصنيف",
-            subtitle: product.productCategory,
+            subtitle: product.category,
             useDivider: true,
           ),
           DrawerComponent(
             leadingIcon: Icons.handshake_outlined,
             title: "الحالة",
-            subtitle: product.onError == "Product not found" ? "المنتج غير موجود" : product.isTrusted ? "مؤمن" : "غير مؤمن",
+            subtitle: product.onError == "Product not found" ? "المنتج غير موجود" : product.trusted ? "مؤمن" : "غير مؤمن",
           ),
         
         ],

@@ -6,7 +6,6 @@ import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/features/counter_manager/logic/counter_manager.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_services.dart';
-import 'package:tadamon/features/products_scanner/data/repository/hive_services.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/scanner_manger.dart';
 import 'package:tadamon/features/products_scanner/ui/widget/product_list_view.dart';
 import 'package:tadamon/generated/l10n.dart';
@@ -28,7 +27,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         product: product,
       ),
     );
-    HiveServices().saveProductToHiveLogs(product);
+    //  HiveServices().saveProductToHiveLogs(product);
   }
 
   Future<void> scanBarcodeCamera(BuildContext context) async {
@@ -39,7 +38,6 @@ class ProductScanCubit extends Cubit<ProductScanState> {
     try {
       dynamic scanResult = await ScannerManager().scanBarcode(context);
 
-
       bool isConnected = await NetworkController().checkConnection();
 
       emit(ProductScanLoading());
@@ -49,7 +47,9 @@ class ProductScanCubit extends Cubit<ProductScanState> {
             await FireStoreServices().getProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       } else {
-        product = await HiveServices().getProductBySerialNumber(scanResult);
+       product = await FireStoreServices().getProductBySerialNumber(scanResult);
+
+       // product = await HiveServices().getProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       }
       if (context.mounted) {
@@ -77,7 +77,8 @@ class ProductScanCubit extends Cubit<ProductScanState> {
             await FireStoreServices().getProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       } else {
-        product = await HiveServices().getProductBySerialNumber(scanResult);
+      //  product = await HiveServices().getProductBySerialNumber(scanResult);
+      product = await FireStoreServices().getProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       }
       if (!context.mounted) return;

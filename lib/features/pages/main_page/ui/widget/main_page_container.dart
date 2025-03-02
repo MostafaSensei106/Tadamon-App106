@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tadamon/features/pages/home_page/ui/page/home_page.dart';
-import 'package:tadamon/features/pages/log_page/ui/page/log_page.dart';
 import 'package:tadamon/features/pages/search_page/ui/page/search_page.dart';
 
 class MainPageContainer extends StatelessWidget {
@@ -28,7 +27,7 @@ class MainPageContainer extends StatelessWidget {
       children: [
         const HomePage(),
         const SearchPage(),
-        const LogsPage(),
+       // const LogsPage(),
       ],
     );
   }

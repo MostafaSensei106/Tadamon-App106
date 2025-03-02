@@ -1,27 +1,24 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/features/products_scanner/data/repository/hive_services.dart';
 
 part 'hive_state.dart';
 
 class HiveCubit extends Cubit<HiveState> {
   HiveCubit() : super(HiveDataIntial());
 
-
   Future<void> fetchDataFromFireStore() async {
     emit(HiveDataFetchingFromFireStore());
     try {
-      await HiveServices().syncAllProductsToHive();
+      //await HiveServices().syncAllProductsToHive();
       emit(HiveDataFetchingFromFireStoreSuccess());
     } catch (e) {
       emit(HiveDataFetchingFromFireStoreFailure());
     }
   }
 
-
   Future<void> updateDataBaseFromFireStore() async {
     emit(HiveDataFetchingFromFireStore());
     try {
-      await HiveServices().isLocalDataBaseUpToDate();
+      //await HiveServices().isLocalDataBaseUpToDate();
       emit(HiveDataFetchingFromFireStoreSuccess());
     } catch (e) {
       emit(HiveDataFetchingFromFireStoreFailure());
@@ -31,7 +28,7 @@ class HiveCubit extends Cubit<HiveState> {
   Future<void> deleteAllLocalProducts() async {
     emit(HiveDataBaseDeleting());
     try {
-      await HiveServices().deleteAllLocalProducts();
+      // await HiveServices().deleteAllLocalProducts();
       emit(HiveDataDeleteSuccess());
     } catch (e) {
       emit(HiveDataDeleteFailure());
@@ -39,16 +36,13 @@ class HiveCubit extends Cubit<HiveState> {
   }
 
   Future<bool> hiveHasData() async {
-    bool hasData = await HiveServices().hiveDbHasData();
-    if (hasData) {
-      emit(HiveDataBaseHasData());
-      return true;
-    } else {
-      emit(HiveDataBaseEmpty());
-      return false;
-    }
+    // bool hasData = await HiveServices().hiveDbHasData();
+    //if (hasData) {
+    emit(HiveDataBaseHasData());
+    return true;
+    //   } else {
+    //   emit(HiveDataBaseEmpty());
+    // return false;
+    //}
   }
-
-
-
 }

@@ -71,11 +71,11 @@ class FireStoreServices {
         return ProductModel.fromMap(data);
       } else {
         return ProductModel(
-          productName: 'غير موجود',
+          name: 'غير موجود',
           serialNumber: serialNumber,
-          productManufacturer: 'غير معروف المصنع',
-          productCategory: 'غير معروف',
-          isTrusted: false,
+          manufacture: 'غير معروف المصنع',
+          category: 'غير معروف',
+          trusted: false,
           onError: 'Product not found',
         );
       }

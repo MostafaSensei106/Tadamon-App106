@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-ThemeData darkTheme = ThemeData(
+final ThemeData darkTheme = ThemeData(
   colorScheme: const ColorScheme(
     brightness: Brightness.dark,
     primary: Color(0xfffff9f9),
@@ -49,5 +49,5 @@ ThemeData darkTheme = ThemeData(
     surfaceContainerHigh: Color(0xff342725),
     surfaceContainerHighest: Color(0xff403130),
   ),
-    fontFamily: 'ArabicFont',
+  fontFamily: 'ArabicFont',
 );

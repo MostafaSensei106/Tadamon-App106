@@ -9,6 +9,7 @@ import 'package:tadamon/core/config/theme/colors/logic/theme_shared_preferences.
 import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
 import 'package:tadamon/core/routing/app_router.dart';
 import 'package:tadamon/core/routing/routes.dart';
+import 'package:toastification/toastification.dart';
 import 'generated/l10n.dart';
 
 class TadamonApp extends StatelessWidget {
@@ -26,22 +27,24 @@ class TadamonApp extends StatelessWidget {
           ..initializeTheme(),
         child: BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, themeState) {
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'تضامن',
-              theme: lightTheme,
-              darkTheme: darkTheme,
-              themeMode: themeState.themeMode,
-              initialRoute: Routes.onBoarding,
-              onGenerateRoute: appRouter.generateRoute,
-              locale: const Locale('ar','EG'),
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
+            return ToastificationWrapper(
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'تضامن',
+                theme: lightTheme,
+                darkTheme: darkTheme,
+                themeMode: themeState.themeMode,
+                initialRoute: Routes.onBoarding,
+                onGenerateRoute: appRouter.generateRoute,
+                locale: const Locale('ar','EG'),
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+              ),
             );
           },
         ),

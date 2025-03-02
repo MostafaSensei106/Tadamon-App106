@@ -25,7 +25,7 @@ class LogsSearchContent extends StatelessWidget {
             );
           } else if (state is LogsLoadingSuccess) {
             if (state.products.isEmpty) {
-              return  LottieComponent(
+              return  const LottieComponent(
                       lottiePath: SenseiConst.lottieNoFoundAnimation,
                       text: 'لم يتم العثور على المنتج في السجلات');
             }
@@ -43,7 +43,7 @@ class LogsSearchContent extends StatelessWidget {
              child: Text('Error: ${state.message}'),
             );
           } else {
-            return Center(
+            return const Center(
                 child: LottieComponent(
                     lottiePath: SenseiConst.lottieSearchAnimation,
                     text: 'نتائج البحث سوف تظهر هنا'));

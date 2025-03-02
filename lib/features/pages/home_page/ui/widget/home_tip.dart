@@ -104,7 +104,7 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
         child: GestureDetector(
           onDoubleTap: _onClosePressed,
           child: Container(
-            margin: EdgeInsets.only(bottom: SenseiConst.margin),
+            margin: const EdgeInsets.only(bottom: SenseiConst.margin),
             padding: const EdgeInsets.all(SenseiConst.padding),
             decoration: BoxDecoration(
               border: Border.all(

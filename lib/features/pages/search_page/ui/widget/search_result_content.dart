@@ -27,10 +27,10 @@ class SearchResultContent extends StatelessWidget {
           } else if (state is SearchLoadingSuccess) {
             if (state.products.isEmpty) {
               return _searchController.text.isEmpty
-                  ? LottieComponent(
+                  ? const LottieComponent(
                       lottiePath: SenseiConst.lottieSearchAnimation,
                       text: 'نتائج البحث سوف تظهر هنا')
-                  : LottieComponent(
+                  : const LottieComponent(
                       lottiePath: SenseiConst.lottieNoFoundAnimation,
                       text: 'لم يتم العثور على المنتج');
             }
@@ -48,7 +48,7 @@ class SearchResultContent extends StatelessWidget {
               child: Text('Error: ${state.message}'),
             );
           } else {
-            return Center(
+            return const Center(
                 child: LottieComponent(
                     lottiePath: SenseiConst.lottieSearchAnimation,
                     text: 'نتائج البحث سوف تظهر هنا'));

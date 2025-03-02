@@ -29,7 +29,7 @@ class SenseiDrawer extends StatelessWidget {
       if (states.contains(WidgetState.selected)) {
         return Icon(Icons.check, color: Theme.of(context).colorScheme.primary);
       }
-      return Icon(Icons.close);
+      return const Icon(Icons.close);
     });
   }
 
@@ -46,7 +46,7 @@ class SenseiDrawer extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            SizedBox(height: 0.25.sh, child: DrawerHeaderWidget()),
+            SizedBox(height: 0.25.sh, child: const DrawerHeaderWidget()),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
               child: AnimatedSize(
@@ -150,22 +150,22 @@ class SenseiDrawer extends StatelessWidget {
       child: BlocBuilder<HiveCubit, HiveState>(
         builder: (context, state) {
           Widget trailingWidget =
-              Icon(Icons.query_builder_rounded, color: Colors.red);
+              const Icon(Icons.query_builder_rounded, color: Colors.red);
           String subtitleText = S.of(context).AppOflineLoading;
           bool groupTop = false;
           if (state is HiveDataBaseHasData) {
             trailingWidget =
-                Icon(Icons.check_box_outlined, color: Colors.green);
+                const Icon(Icons.check_box_outlined, color: Colors.green);
             subtitleText = S.of(context).AppOnLineMassageRunning;
             groupTop = true;
           } else if (state is HiveDataBaseEmpty) {
             trailingWidget =
-                Icon(Icons.error_outline_rounded, color: Colors.red);
+                const Icon(Icons.error_outline_rounded, color: Colors.red);
             subtitleText = S.of(context).AppOffLineMassageDontRunning;
             groupTop = false;
           } else {
             trailingWidget =
-                Icon(Icons.query_builder_rounded, color: Colors.yellow);
+                const Icon(Icons.query_builder_rounded, color: Colors.yellow);
             subtitleText = S.of(context).AppOflineLoading;
             groupTop = false;
           }
@@ -192,7 +192,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
-            DilogComponent(
+            const DilogComponent(
                     title: 'جاري استيراد البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);
@@ -235,7 +235,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
-            DilogComponent(
+            const DilogComponent(
                     title: 'جاري تحديث قاعدة البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);
@@ -280,7 +280,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataBaseDeleting) {
-            DilogComponent(
+            const DilogComponent(
                     title: 'جاري حذف البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);
@@ -360,7 +360,7 @@ class SenseiDrawer extends StatelessWidget {
         HapticFeedback.vibrate();
         Navigator.pop(context);
         ModelBottomSheet.show(context, 'بلغ عن منتج',
-            child: ReportProductSheetContent());
+            child: const ReportProductSheetContent());
       },
     );
   }

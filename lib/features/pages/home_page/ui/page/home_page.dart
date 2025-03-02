@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
   /// contains a [Column] widget with the [HomeTip], [ImageNews],
   /// [HomeAppTools], and [ItemsCounter] widgets as children.
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(SenseiConst.padding),
         child: Column(

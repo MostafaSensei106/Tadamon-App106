@@ -31,7 +31,7 @@ void appAbout(BuildContext context) {
               'About',
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            Text(
+            const Text(
               'v${SenseiConst.appVersion}',
             ),
           ],

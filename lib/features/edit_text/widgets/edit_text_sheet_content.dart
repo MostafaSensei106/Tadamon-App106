@@ -20,7 +20,7 @@ class EditTextSheetContent extends StatefulWidget {
     ModelBottomSheet.show(
       context,
       S.of(context).EditText,
-      child: EditTextSheetContent(),
+      child: const EditTextSheetContent(),
     );
   }
 }

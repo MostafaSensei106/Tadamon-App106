@@ -133,7 +133,7 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
             if (widget.appOnlineRun) ...[
               BlocProvider(
                 create: (context) => HiveCubit()..hiveHasData(),
-                child: AppOnline(),
+                child: const AppOnline(),
               ),
             ]
           ],
@@ -153,7 +153,7 @@ class AppOnline extends StatelessWidget {
     return BlocListener<HiveCubit, HiveState>(
       listener: (context, state) {
         if (state is HiveDataFetchingFromFireStore) {
-          DilogComponent(
+          const DilogComponent(
                   title: 'جاري استيراد البيانات',
                   message: 'يرجى الانتظار حتى تكتمل المزامنة...')
               .show(context);

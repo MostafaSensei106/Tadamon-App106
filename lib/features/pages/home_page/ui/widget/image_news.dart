@@ -113,7 +113,7 @@ class ImageNewsState extends State<ImageNews> {
             Icon(Icons.image_not_supported_outlined,
                 color: Theme.of(context).colorScheme.error,
                 size: SenseiConst.iconSize),
-            Text('فشل تحميل الصورة'),
+            const Text('فشل تحميل الصورة'),
           ],
         ),
       ),

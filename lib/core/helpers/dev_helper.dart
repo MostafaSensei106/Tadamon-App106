@@ -207,7 +207,7 @@ class ContactSenseiDev extends StatelessWidget {
             S.of(context).ContactDevMassage,
             style: _getMessageStyle(context),
           ),
-          _SocialMediaRow(socialLinks: _socialLinks),
+          const _SocialMediaRow(socialLinks: _socialLinks),
         ],
       ),
     );

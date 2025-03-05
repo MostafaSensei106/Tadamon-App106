@@ -99,6 +99,7 @@ class ObjectboxRepositories {
   Future<void> saveProductToTadamonLogs(ScannedLogsProductModel product) async {
     try {
       ObjectBoxService.instance.tadamonLogsBox.put(product);
+      AppToast.showSuccessToast('Product saved successfully');
     } catch (e) {
       AppToast.showErrorToast('An error occurred while saving the product: $e');
     }

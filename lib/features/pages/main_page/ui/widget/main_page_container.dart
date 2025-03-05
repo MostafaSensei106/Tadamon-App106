@@ -27,7 +27,7 @@ class MainPageContainer extends StatelessWidget {
       children: [
         const HomePage(),
         const SearchPage(),
-       // const LogsPage(),
+        const LogsPage(),
       ],
     );
   }

@@ -1,23 +1,23 @@
 part of 'hive_cubit.dart';
 
-abstract class HiveState {}
+abstract class LocalDBState {}
 
-class HiveDataIntial extends HiveState {
+class HiveDataIntial extends LocalDBState {
   
 }
 
-class HiveDataFetchingFromFireStore extends HiveState {}
+class HiveDataFetchingFromFireStore extends LocalDBState {}
 
-class HiveDataFetchingFromFireStoreSuccess extends HiveState {}
+class HiveDataFetchingFromFireStoreSuccess extends LocalDBState {}
 
-class HiveDataFetchingFromFireStoreFailure extends HiveState {}
+class HiveDataFetchingFromFireStoreFailure extends LocalDBState {}
 
-class HiveDataBaseDeleting extends HiveState {}
+class HiveDataBaseDeleting extends LocalDBState {}
 
-class HiveDataDeleteSuccess extends HiveState {}
+class HiveDataDeleteSuccess extends LocalDBState {}
 
-class HiveDataDeleteFailure extends HiveState {}
+class HiveDataDeleteFailure extends LocalDBState {}
 
-class HiveDataBaseHasData extends HiveState {}
+class HiveDataBaseHasData extends LocalDBState {}
 
-class HiveDataBaseEmpty extends HiveState {}
+class HiveDataBaseEmpty extends LocalDBState {}

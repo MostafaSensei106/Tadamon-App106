@@ -11,7 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ReportService.initializePreferences();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
-  await ObjectBoxService.intit();
+  await ObjectBoxService.init();
   NetworkController().initNetworkController();
   runApp(TadamonApp(AppRouter(),));
 }

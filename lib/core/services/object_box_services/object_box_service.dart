@@ -1,19 +1,20 @@
+import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
+import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/objectbox.g.dart';
 
 class ObjectBoxService {
-  static ObjectBoxService? _instance;
-  late final Store _store;
+  static final ObjectBoxService _instance = ObjectBoxService._internal();
+  late final Store store;
+  late final Box<ProductModel> tadamonProductsBox;
+  late final Box<ScannedLogsProductModel> tadamonLogsBox;
 
-  ObjectBoxService._create(this._store);
+  ObjectBoxService._internal();
 
-  static  Future<ObjectBoxService> intit() async {
-    if (_instance == null) {
-      final store = await openStore();
-      _instance = ObjectBoxService._create(store);
-    }
-    return _instance!;
+  static Future<void> init() async {
+    _instance.store = await openStore();
+    _instance.tadamonProductsBox = Box<ProductModel>(_instance.store);
+    _instance.tadamonLogsBox = Box<ScannedLogsProductModel>(_instance.store);
   }
 
-  Store get store => _store;
-
+  static ObjectBoxService get instance => _instance;
 }

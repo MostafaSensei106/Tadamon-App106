@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:tadamon/core/controller/network_controller/network_controller.dart';
 import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/features/counter_manager/logic/counter_manager.dart';
+import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
-import 'package:tadamon/features/products_scanner/data/repository/fire_store_services.dart';
+import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
+import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/scanner_manger.dart';
 import 'package:tadamon/features/products_scanner/ui/widget/product_list_view.dart';
 import 'package:tadamon/generated/l10n.dart';
@@ -27,7 +29,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         product: product,
       ),
     );
-    //  HiveServices().saveProductToHiveLogs(product);
+    ObjectboxRepositories().saveProductToTadamonLogs(product as ScannedLogsProductModel);
   }
 
   Future<void> scanBarcodeCamera(BuildContext context) async {
@@ -44,12 +46,10 @@ class ProductScanCubit extends Cubit<ProductScanState> {
 
       if (isConnected) {
         product =
-            await FireStoreServices().getProductBySerialNumber(scanResult);
+            await FireStoreRepositorie().getProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       } else {
-       product = await FireStoreServices().getProductBySerialNumber(scanResult);
-
-       // product = await HiveServices().getProductBySerialNumber(scanResult);
+        product = await ObjectboxRepositories().getTadamonProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       }
       if (context.mounted) {
@@ -74,11 +74,10 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       if (!context.mounted || scanResult == null) return;
       if (isConnected) {
         product =
-            await FireStoreServices().getProductBySerialNumber(scanResult);
+            await FireStoreRepositorie().getProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       } else {
-      //  product = await HiveServices().getProductBySerialNumber(scanResult);
-      product = await FireStoreServices().getProductBySerialNumber(scanResult);
+        product = await ObjectboxRepositories().getTadamonProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       }
       if (!context.mounted) return;

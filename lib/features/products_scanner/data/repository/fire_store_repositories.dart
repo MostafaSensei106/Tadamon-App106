@@ -3,7 +3,7 @@ import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
-class FireStoreServices {
+class FireStoreRepositorie {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static const String _collectionName = 'TadamonProducts';
   static const String _productReportCollection = 'TadamonUserReport';
@@ -13,6 +13,18 @@ class FireStoreServices {
       await _firestore.collection(_collectionName).add(product.toMap());
     } catch (e) {
       AppToast.showErrorToast(e.toString());
+    }
+  }
+
+  Future<List<ProductModel>> downloadAllProductsFromFirebase() async {
+    try {
+      final snapshot = await _firestore.collection(_collectionName).get();
+      return snapshot.docs
+          .map((doc) => ProductModel.fromMap(doc.data()))
+          .toList();
+    } catch (e) {
+      AppToast.showErrorToast(e.toString());
+      return [];
     }
   }
 
@@ -133,4 +145,5 @@ class FireStoreServices {
         _firestore.collection(_productReportCollection).doc(productName);
     await documentReference.set(productReport);
   }
+
 }

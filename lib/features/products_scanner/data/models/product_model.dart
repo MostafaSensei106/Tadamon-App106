@@ -26,22 +26,22 @@ class ProductModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'productName': name,
-      'serialNumber': serialNumber,
-      'productManufacturer': manufacture,
-      'productCategory': category,
-      'isTrusted': trusted,
+      'Name': name,
+      'SerialNumber': serialNumber,
+      'Manufacture': manufacture,
+      'Category': category,
+      'Trusted': trusted,
       'onError': onError
     };
   }
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      name: map['productName'] ?? '',
-      serialNumber: map['serialNumber'] ?? '',
-      manufacture: map['productManufacturer'] ?? '',
-      category: map['productCategory'] ?? '',
-      trusted: map['isTrusted'] ?? false,
+      name: map['Name'] ?? '',
+      serialNumber: map['SerialNumber'] ?? '',
+      manufacture: map['Manufacture'] ?? '',
+      category: map['Category'] ?? '',
+      trusted: map['Trusted'] ?? false,
       onError: map['onError'] ?? '',
     );
   }

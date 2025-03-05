@@ -7,6 +7,7 @@ import 'package:tadamon/features/report_products/logic/services/report_service.d
 import 'package:tadamon/firebase_options.dart';
 import 'package:tadamon/tadamon.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ReportService.initializePreferences();

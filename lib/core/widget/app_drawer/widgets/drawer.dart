@@ -347,127 +347,126 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.of(context).pop();
-        PdfExportServices().saveDocument('TadamonLogs');
-       // ObjectboxRepositories().exportTadamonLogsFromLocalDB();
+        PdfExportServices()
+            .saveDocument(ObjectboxRepositories().saveLogsTOPDF());
+        // ObjectboxRepositories().exportTadamonLogsFromLocalDB();
       },
     );
-    }
   }
+}
 
-  Widget _buildHowToUse(BuildContext context) {
-    return DrawerComponent(
-        useMargin: true,
-        useDivider: true,
-        useGroupTop: true,
-        leadingIcon: Icons.question_answer_outlined,
-        title: S.of(context).HowToUse,
-        subtitle: S.of(context).HowToUseMassage,
-        onTapped: () {
-          HapticFeedback.vibrate();
-          Navigator.pop(context);
-          Navigator.pushNamed(context, Routes.userHelp);
-        });
-  }
-
-  Widget _buildReportProduct(BuildContext context) {
-    return DrawerComponent(
-      useMargin: false,
-      useDivider: false,
-      useGroupBottom: true,
-      leadingIcon: Icons.production_quantity_limits_outlined,
-      title: S.of(context).ReportProduct,
-      subtitle: S.of(context).ReportProductMassage,
+Widget _buildHowToUse(BuildContext context) {
+  return DrawerComponent(
+      useMargin: true,
+      useDivider: true,
+      useGroupTop: true,
+      leadingIcon: Icons.question_answer_outlined,
+      title: S.of(context).HowToUse,
+      subtitle: S.of(context).HowToUseMassage,
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.pop(context);
-        ModelBottomSheet.show(context, 'بلغ عن منتج',
-            child: const ReportProductSheetContent());
-      },
-    );
-  }
+        Navigator.pushNamed(context, Routes.userHelp);
+      });
+}
 
-  Widget _buildReadMe(BuildContext context) {
-    return DrawerComponent(
-      useMargin: true,
-      useDivider: true,
-      useGroupTop: true,
-      leadingIcon: Icons.description_outlined,
-      title: S.of(context).ReadMe,
-      subtitle: S.of(context).ReadMeMassage,
-      onTapped: () {
-        HapticFeedback.vibrate();
-        UrlRunServices.launchURL(SenseiConst.devReadMeLink);
-      },
-    );
-  }
+Widget _buildReportProduct(BuildContext context) {
+  return DrawerComponent(
+    useMargin: false,
+    useDivider: false,
+    useGroupBottom: true,
+    leadingIcon: Icons.production_quantity_limits_outlined,
+    title: S.of(context).ReportProduct,
+    subtitle: S.of(context).ReportProductMassage,
+    onTapped: () {
+      HapticFeedback.vibrate();
+      Navigator.pop(context);
+      ModelBottomSheet.show(context, 'بلغ عن منتج',
+          child: const ReportProductSheetContent());
+    },
+  );
+}
 
-  Widget _buildLetestUpdate(BuildContext context) {
-    return DrawerComponent(
-      useMargin: false,
-      useDivider: true,
-      useGroupMiddle: true,
-      leadingIcon: Icons.update_outlined,
-      title: S.of(context).LetastUpdate,
-      subtitle: S.of(context).LetestUpdateMassage,
-      onTapped: () {
-        HapticFeedback.vibrate();
-        UrlRunServices.launchURL(SenseiConst.devReleaseAppLink);
-      },
-    );
-  }
+Widget _buildReadMe(BuildContext context) {
+  return DrawerComponent(
+    useMargin: true,
+    useDivider: true,
+    useGroupTop: true,
+    leadingIcon: Icons.description_outlined,
+    title: S.of(context).ReadMe,
+    subtitle: S.of(context).ReadMeMassage,
+    onTapped: () {
+      HapticFeedback.vibrate();
+      UrlRunServices.launchURL(SenseiConst.devReadMeLink);
+    },
+  );
+}
 
-  Widget _buildGithubToken(BuildContext context) {
-    return DrawerComponent(
-      useMargin: false,
-      useDivider: true,
-      useGroupMiddle: true,
-      leadingIcon: Icons.live_help_outlined,
-      title: S.of(context).GithubTiket,
-      subtitle: S.of(context).GithubTiketMassage,
-      onTapped: () {
-        HapticFeedback.vibrate();
-        UrlRunServices.launchURL(SenseiConst.devGitHubTokenLink);
-      },
-    );
-  }
+Widget _buildLetestUpdate(BuildContext context) {
+  return DrawerComponent(
+    useMargin: false,
+    useDivider: true,
+    useGroupMiddle: true,
+    leadingIcon: Icons.update_outlined,
+    title: S.of(context).LetastUpdate,
+    subtitle: S.of(context).LetestUpdateMassage,
+    onTapped: () {
+      HapticFeedback.vibrate();
+      UrlRunServices.launchURL(SenseiConst.devReleaseAppLink);
+    },
+  );
+}
 
-  Widget _buildTelegramChannel(BuildContext context) {
-    return DrawerComponent(
-        useMargin: false,
-        useDivider: false,
-        useGroupBottom: true,
-        leadingIcon: Icons.telegram_rounded,
-        title: S.of(context).TelegramChannel,
-        subtitle: S.of(context).TelegramChannelMassage,
-        onTapped: () {
-          HapticFeedback.vibrate();
-          UrlRunServices.launchURL(SenseiConst.devTelegramLink);
-        });
-  }
+Widget _buildGithubToken(BuildContext context) {
+  return DrawerComponent(
+    useMargin: false,
+    useDivider: true,
+    useGroupMiddle: true,
+    leadingIcon: Icons.live_help_outlined,
+    title: S.of(context).GithubTiket,
+    subtitle: S.of(context).GithubTiketMassage,
+    onTapped: () {
+      HapticFeedback.vibrate();
+      UrlRunServices.launchURL(SenseiConst.devGitHubTokenLink);
+    },
+  );
+}
 
-  Widget _buildDeveloper(BuildContext context) {
-    return DrawerComponent(
-      useMargin: true,
-      useDivider: true,
-      useGroupTop: true,
-      leadingIcon: Icons.verified_outlined,
-      title: S.of(context).Developer,
-      subtitle: S.of(context).MostafaMahmoud,
-      trailingWidget: const ContactSenseiDev().buildAvatar(context),
-      onTapped: () => const ContactSenseiDev().showDevDialog(context),
-    );
-  }
-
-  Widget _buildAbout(BuildContext context) {
-    return DrawerComponent(
+Widget _buildTelegramChannel(BuildContext context) {
+  return DrawerComponent(
       useMargin: false,
       useDivider: false,
       useGroupBottom: true,
-      leadingIcon: Icons.info_outline,
-      title: S.of(context).About,
-      subtitle: S.of(context).AboutTadamon,
-      onTapped: () => appAbout(context),
-    );
-  }
+      leadingIcon: Icons.telegram_rounded,
+      title: S.of(context).TelegramChannel,
+      subtitle: S.of(context).TelegramChannelMassage,
+      onTapped: () {
+        HapticFeedback.vibrate();
+        UrlRunServices.launchURL(SenseiConst.devTelegramLink);
+      });
+}
 
+Widget _buildDeveloper(BuildContext context) {
+  return DrawerComponent(
+    useMargin: true,
+    useDivider: true,
+    useGroupTop: true,
+    leadingIcon: Icons.verified_outlined,
+    title: S.of(context).Developer,
+    subtitle: S.of(context).MostafaMahmoud,
+    trailingWidget: const ContactSenseiDev().buildAvatar(context),
+    onTapped: () => const ContactSenseiDev().showDevDialog(context),
+  );
+}
 
+Widget _buildAbout(BuildContext context) {
+  return DrawerComponent(
+    useMargin: false,
+    useDivider: false,
+    useGroupBottom: true,
+    leadingIcon: Icons.info_outline,
+    title: S.of(context).About,
+    subtitle: S.of(context).AboutTadamon,
+    onTapped: () => appAbout(context),
+  );
+}

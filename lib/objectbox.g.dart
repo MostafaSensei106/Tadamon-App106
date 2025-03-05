@@ -65,48 +65,48 @@ final _entities = <obx_int.ModelEntity>[
       relations: <obx_int.ModelRelation>[],
       backlinks: <obx_int.ModelBacklink>[]),
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(3, 6674380074645599672),
-      name: 'ProductScannedLogsModel',
-      lastPropertyId: const obx_int.IdUid(8, 8259691590146978420),
+      id: const obx_int.IdUid(4, 9160064887395371876),
+      name: 'ScannedLogsProductModel',
+      lastPropertyId: const obx_int.IdUid(8, 2925683875874442903),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 8316824247462543173),
+            id: const obx_int.IdUid(1, 1385172095795576905),
             name: 'id',
             type: 6,
             flags: 1),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 2878691409008529064),
+            id: const obx_int.IdUid(2, 8460290129714846462),
             name: 'name',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 8553239779623812279),
+            id: const obx_int.IdUid(3, 3102439661023963751),
             name: 'serialNumber',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 136166845008193984),
+            id: const obx_int.IdUid(4, 8580526240427098784),
             name: 'manufacture',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 4333210679318052728),
+            id: const obx_int.IdUid(5, 867992797942690652),
             name: 'category',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(6, 667664151190914925),
+            id: const obx_int.IdUid(6, 2757222515576532312),
             name: 'trusted',
             type: 1,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 6348219516869610320),
+            id: const obx_int.IdUid(7, 7202032809465492346),
             name: 'onError',
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(8, 8259691590146978420),
+            id: const obx_int.IdUid(8, 2925683875874442903),
             name: 'scannedAt',
             type: 10,
             flags: 0)
@@ -150,11 +150,11 @@ Future<obx.Store> openStore(
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
       entities: _entities,
-      lastEntityId: const obx_int.IdUid(3, 6674380074645599672),
+      lastEntityId: const obx_int.IdUid(4, 9160064887395371876),
       lastIndexId: const obx_int.IdUid(0, 0),
       lastRelationId: const obx_int.IdUid(0, 0),
       lastSequenceId: const obx_int.IdUid(0, 0),
-      retiredEntityUids: const [6072440110067899483],
+      retiredEntityUids: const [6072440110067899483, 6674380074645599672],
       retiredIndexUids: const [],
       retiredPropertyUids: const [
         3257500603860786490,
@@ -163,7 +163,15 @@ obx_int.ModelDefinition getObjectBoxModel() {
         7999642378580237386,
         1774581651058165040,
         6648500980729496271,
-        5083381345625000545
+        5083381345625000545,
+        8316824247462543173,
+        2878691409008529064,
+        8553239779623812279,
+        136166845008193984,
+        4333210679318052728,
+        667664151190914925,
+        6348219516869610320,
+        8259691590146978420
       ],
       retiredRelationUids: const [],
       modelVersion: 5,
@@ -322,7 +330,7 @@ class ProductModel_ {
 }
 
 /// [ScannedLogsProductModel] entity fields to define ObjectBox queries.
-class ProductScannedLogsModel_ {
+class ScannedLogsProductModel_ {
   /// See [ScannedLogsProductModel.id].
   static final id = obx.QueryIntegerProperty<ScannedLogsProductModel>(
       _entities[1].properties[0]);

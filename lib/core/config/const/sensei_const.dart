@@ -2,6 +2,8 @@ class SenseiConst {
   static const String appName = "تضامن";
   static const String appVersion = "1.0.0";
 
+
+
   static const String devFaceBookLink =
       "https://www.facebook.com/MostafaSensei106";
   static const String devLinkedInLink =

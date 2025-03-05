@@ -108,4 +108,12 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    serialNumberController.dispose();
+    productNameController.dispose();
+    super.dispose();
+  }
+  
 }

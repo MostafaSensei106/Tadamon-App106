@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tadamon/core/helpers/extensions/date_format.dart';
 import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/scanner_manger.dart';
 import 'package:tadamon/features/report_products/logic/bloc/report_product_state.dart';
@@ -52,7 +53,7 @@ class ReportProductCubit extends Cubit<ReportProductState> {
       'serialNumber': serialNumber,
       'productName': productName,
       'status': status,
-      'timestamp': DateTime.now().toUtc().toIso8601String(),
+      'timestamp': DateTime.now().formatted
     };
     try {
       await ReportService().sendProductReport(report);

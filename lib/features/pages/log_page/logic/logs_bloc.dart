@@ -26,7 +26,7 @@ class LogsBloc extends Bloc<LogsEvent, LogsState> {
     emit(LogsLoading()); 
     try {
       final products = await repository.searchProductsBySerialNumber(event.query);
-      emit(LogsLoadingSuccess(products: products)); 
+      emit(LogsLoadingSuccess( products: products)); 
     } catch (e) {
       emit(LogsError(e.toString())); 
     }

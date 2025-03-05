@@ -80,14 +80,18 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
           DrawerComponent(
             leadingIcon: Icons.handshake_outlined,
             title: "الحالة",
-            subtitle: product.onError == "Product not found" ? "المنتج غير موجود" : product.trusted ? "مؤمن" : "غير مؤمن",
+            useDivider: true,
+            subtitle: product.onError == "Product not found"
+                ? "المنتج غير موجود"
+                : product.trusted
+                    ? "مؤمن"
+                    : "غير مؤمن",
           ),
           DrawerComponent(
             leadingIcon: Icons.date_range_outlined,
             title: "التاريخ",
-            subtitle: product.scannedAt.toString(),
+            subtitle: 
           ),
-        
         ],
       ),
     );

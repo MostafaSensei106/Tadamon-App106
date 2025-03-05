@@ -110,9 +110,8 @@ class ObjectboxRepositories {
     return box;
   }
 
-  //SEARCH BY SERIAL NUMBER
-  Future<List<ProductModel>> searchProductsBySerialNumber(String query) async {
-    var box = ObjectBoxService.instance.tadamonProductsBox.getAll();
+  Future<List<ScannedLogsProductModel>> searchProductsBySerialNumber(String query) async {
+    var box = ObjectBoxService.instance.tadamonLogsBox.getAll();
     return box
         .where((product) => product.serialNumber.contains(query))
         .toList();

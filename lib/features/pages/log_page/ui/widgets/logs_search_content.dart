@@ -5,7 +5,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widget/lottie_component/lottie_component.dart';
 import 'package:tadamon/features/pages/log_page/logic/logs_bloc.dart';
 import 'package:tadamon/features/pages/log_page/logic/logs_state.dart';
-import 'package:tadamon/features/pages/log_page/ui/widgets/ss.dart';
+import 'package:tadamon/features/pages/log_page/ui/widgets/productlogs_expansiontile_component.dart';
 
 class LogsSearchContent extends StatelessWidget {
   const LogsSearchContent({

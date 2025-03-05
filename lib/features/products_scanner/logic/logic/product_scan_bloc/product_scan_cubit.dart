@@ -29,7 +29,8 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         product: product,
       ),
     );
-    ObjectboxRepositories().saveProductToTadamonLogs(product as ScannedLogsProductModel);
+    ScannedLogsProductModel scannedProductToLogs = ScannedLogsProductModel.fromProduct(product);
+    ObjectboxRepositories().saveProductToTadamonLogs(scannedProductToLogs);
   }
 
   Future<void> scanBarcodeCamera(BuildContext context) async {

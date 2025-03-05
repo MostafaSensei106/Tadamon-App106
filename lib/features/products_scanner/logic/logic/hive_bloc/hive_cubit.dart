@@ -1,14 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
 
 part 'hive_state.dart';
 
-class HiveCubit extends Cubit<HiveState> {
-  HiveCubit() : super(HiveDataIntial());
+class LocalDBCubit extends Cubit<LocalDBState> {
+  LocalDBCubit() : super(HiveDataIntial());
 
   Future<void> fetchDataFromFireStore() async {
     emit(HiveDataFetchingFromFireStore());
     try {
-      //await HiveServices().syncAllProductsToHive();
+      await ObjectboxRepositories().syncAllProductsToLocalDB();
       emit(HiveDataFetchingFromFireStoreSuccess());
     } catch (e) {
       emit(HiveDataFetchingFromFireStoreFailure());
@@ -18,7 +19,7 @@ class HiveCubit extends Cubit<HiveState> {
   Future<void> updateDataBaseFromFireStore() async {
     emit(HiveDataFetchingFromFireStore());
     try {
-      //await HiveServices().isLocalDataBaseUpToDate();
+      await ObjectboxRepositories().syncAllProductsToLocalDB();
       emit(HiveDataFetchingFromFireStoreSuccess());
     } catch (e) {
       emit(HiveDataFetchingFromFireStoreFailure());
@@ -28,21 +29,21 @@ class HiveCubit extends Cubit<HiveState> {
   Future<void> deleteAllLocalProducts() async {
     emit(HiveDataBaseDeleting());
     try {
-      // await HiveServices().deleteAllLocalProducts();
-      emit(HiveDataDeleteSuccess());
+      await ObjectboxRepositories().deleteAllTadamonProductsFromLocalDB();
+            emit(HiveDataDeleteSuccess());
     } catch (e) {
       emit(HiveDataDeleteFailure());
     }
   }
 
   Future<bool> hiveHasData() async {
-    // bool hasData = await HiveServices().hiveDbHasData();
-    //if (hasData) {
+     bool hasData = await ObjectboxRepositories().tadamonProductsBoxHasData();
+    if (hasData) {
     emit(HiveDataBaseHasData());
     return true;
-    //   } else {
-    //   emit(HiveDataBaseEmpty());
-    // return false;
-    //}
+       } else {
+       emit(HiveDataBaseEmpty());
+    return false;
+    }
   }
 }

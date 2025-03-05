@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tadamon/core/controller/network_controller/network_controller.dart';
 import 'package:tadamon/core/widget/app_toast/app_toast.dart';
-import 'package:tadamon/features/products_scanner/data/repository/fire_store_services.dart';
+import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
 
 class ReportService {
   static late SharedPreferences pref;
@@ -18,7 +18,7 @@ class ReportService {
       Map<String, dynamic> productReport) async {
     if (await NetworkController().checkConnection()) {
       try {
-        await FireStoreServices().sendReportToBackEnd(productReport);
+        await FireStoreRepositorie().sendReportToBackEnd(productReport);
         AppToast.showSuccessToast('لقد تلقينا بلاغك');
       } catch (e) {
         AppToast.showErrorToast('حث خطاء');
@@ -50,7 +50,7 @@ class ReportService {
     final localReports = await _getLocalReports();
       for (final report in localReports) {
         try{
-        await FireStoreServices().sendReportToBackEnd(report);
+        await FireStoreRepositorie().sendReportToBackEnd(report);
         await _clearLocalReports(report);
         AppToast.showToast('تم إرسال بلاغ معلق');
         }catch(e){

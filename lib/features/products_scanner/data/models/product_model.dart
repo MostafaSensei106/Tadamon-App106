@@ -1,18 +1,25 @@
-class ProductModel {
-  final String name;
-  final String serialNumber;
-  final String manufacture;
-  final String category;
-  //final String? productBoycottResonLink;
-  final bool trusted;
-  final String onError;
+import 'package:objectbox/objectbox.dart';
 
-  const ProductModel({
+@Entity()
+class ProductModel {
+  @Id()
+  int id = 0;
+
+  String name;
+  String serialNumber;
+  String manufacture;
+  String category;
+  //String productBoycottResonLink;
+  bool trusted;
+  String onError;
+
+  ProductModel({
+    this.id = 0,
     required this.name,
     required this.serialNumber,
     required this.manufacture,
     required this.category,
-    //this.productBoycottResonLink,
+    //required this.productBoycottResonLink,
     required this.trusted,
     this.onError = '',
   });
@@ -23,7 +30,6 @@ class ProductModel {
       'serialNumber': serialNumber,
       'productManufacturer': manufacture,
       'productCategory': category,
-      //'productBoycottResonLink': productBoycottResonLink,
       'isTrusted': trusted,
       'onError': onError
     };
@@ -31,11 +37,11 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      name: map['Name'],
-      serialNumber: map['SerialNumber'],
-      manufacture: map['Manufacture'],
-      category: map['Category'],
-      trusted: map['Trusted'],
+      name: map['productName'] ?? '',
+      serialNumber: map['serialNumber'] ?? '',
+      manufacture: map['productManufacturer'] ?? '',
+      category: map['productCategory'] ?? '',
+      trusted: map['isTrusted'] ?? false,
       onError: map['onError'] ?? '',
     );
   }

@@ -132,7 +132,7 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
             ),
             if (widget.appOnlineRun) ...[
               BlocProvider(
-                create: (context) => HiveCubit()..hiveHasData(),
+                create: (context) => LocalDBCubit()..hiveHasData(),
                 child: const AppOnline(),
               ),
             ]
@@ -150,7 +150,7 @@ class AppOnline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<HiveCubit, HiveState>(
+    return BlocListener<LocalDBCubit, LocalDBState>(
       listener: (context, state) {
         if (state is HiveDataFetchingFromFireStore) {
           const DilogComponent(
@@ -166,7 +166,7 @@ class AppOnline extends StatelessWidget {
           Navigator.pop(context);
         }
       },
-      child: BlocBuilder<HiveCubit, HiveState>(
+      child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
             if (state is HiveDataBaseEmpty) {
               return ButtonCompnent(
@@ -177,7 +177,7 @@ class AppOnline extends StatelessWidget {
                 icon: Icons.cloud_download_outlined,
                 onPressed: () {
                   HapticFeedback.vibrate();
-                  context.read<HiveCubit>().fetchDataFromFireStore();
+                  context.read<LocalDBCubit>().fetchDataFromFireStore();
                 },
               );
             }
@@ -190,7 +190,7 @@ class AppOnline extends StatelessWidget {
                 isEnabled: false,
                 onPressed: () {
                   HapticFeedback.vibrate();
-                  context.read<HiveCubit>().fetchDataFromFireStore();
+                  context.read<LocalDBCubit>().fetchDataFromFireStore();
                 },
               );
           },

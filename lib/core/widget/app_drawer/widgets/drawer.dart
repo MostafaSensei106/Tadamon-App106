@@ -16,6 +16,7 @@ import 'package:tadamon/core/widget/dilog_component/dilog_component.dart';
 import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
 import 'package:tadamon/core/widget/app_drawer/widgets/drawer_header.dart';
+import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
 import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
 import 'package:tadamon/generated/l10n.dart';
@@ -145,8 +146,8 @@ class SenseiDrawer extends StatelessWidget {
 
   Widget _buildAppOffline(BuildContext context) {
     return BlocProvider(
-      create: (context) => HiveCubit()..hiveHasData(),
-      child: BlocBuilder<HiveCubit, HiveState>(
+      create: (context) => LocalDBCubit()..hiveHasData(),
+      child: BlocBuilder<LocalDBCubit, LocalDBState>(
         builder: (context, state) {
           Widget trailingWidget =
               const Icon(Icons.query_builder_rounded, color: Colors.red);
@@ -186,8 +187,8 @@ class SenseiDrawer extends StatelessWidget {
 
   Widget _buildEnableOnline(BuildContext context) {
     return BlocProvider(
-      create: (context) => HiveCubit()..hiveHasData(),
-      child: BlocListener<HiveCubit, HiveState>(
+      create: (context) => LocalDBCubit()..hiveHasData(),
+      child: BlocListener<LocalDBCubit, LocalDBState>(
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
@@ -206,7 +207,7 @@ class SenseiDrawer extends StatelessWidget {
             Navigator.of(context).pop();
           }
         },
-        child: BlocBuilder<HiveCubit, HiveState>(
+        child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
             if (state is HiveDataBaseEmpty) {
               return ButtonCompnent(
@@ -216,7 +217,7 @@ class SenseiDrawer extends StatelessWidget {
                 icon: Icons.cloud_download_outlined,
                 onPressed: () {
                   HapticFeedback.vibrate();
-                  context.read<HiveCubit>().fetchDataFromFireStore();
+                  context.read<LocalDBCubit>().fetchDataFromFireStore();
                 },
               );
             }
@@ -229,8 +230,8 @@ class SenseiDrawer extends StatelessWidget {
 
   Widget _buildUpdateLocalHiveDataBase(BuildContext context) {
     return BlocProvider(
-      create: (_) => HiveCubit()..hiveHasData(),
-      child: BlocListener<HiveCubit, HiveState>(
+      create: (_) => LocalDBCubit()..hiveHasData(),
+      child: BlocListener<LocalDBCubit, LocalDBState>(
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
@@ -250,7 +251,7 @@ class SenseiDrawer extends StatelessWidget {
             Navigator.of(context).pop();
           }
         },
-        child: BlocBuilder<HiveCubit, HiveState>(
+        child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
             if (state is HiveDataBaseHasData) {
               return DrawerComponent(
@@ -261,7 +262,7 @@ class SenseiDrawer extends StatelessWidget {
                 subtitle: 'تحديث قاعدة البيانات',
                 onTapped: () {
                   HapticFeedback.vibrate();
-                  context.read<HiveCubit>().updateDataBaseFromFireStore();
+                  context.read<LocalDBCubit>().updateDataBaseFromFireStore();
                 },
               );
             }
@@ -274,8 +275,8 @@ class SenseiDrawer extends StatelessWidget {
 
   Widget _buildDeleteLocalHiveData(BuildContext context) {
     return BlocProvider(
-      create: (_) => HiveCubit()..hiveHasData(),
-      child: BlocListener<HiveCubit, HiveState>(
+      create: (_) => LocalDBCubit()..hiveHasData(),
+      child: BlocListener<LocalDBCubit, LocalDBState>(
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataBaseDeleting) {
@@ -295,7 +296,7 @@ class SenseiDrawer extends StatelessWidget {
             Navigator.of(context).pop();
           }
         },
-        child: BlocBuilder<HiveCubit, HiveState>(
+        child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
             if (state is HiveDataBaseHasData) {
               return DrawerComponent(
@@ -305,7 +306,7 @@ class SenseiDrawer extends StatelessWidget {
                 subtitle: 'سوف يتم حذف جميع المنتجات المحفوظة',
                 onTapped: () {
                   HapticFeedback.vibrate();
-                  context.read<HiveCubit>().deleteAllLocalProducts();
+                  context.read<LocalDBCubit>().deleteAllLocalProducts();
                 },
               );
             }
@@ -327,7 +328,7 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.of(context).pop();
-       // HiveServices().clearLogs();
+        ObjectboxRepositories().deleteAllTadamonLogsFromLocalDB();
       },
     );
   }

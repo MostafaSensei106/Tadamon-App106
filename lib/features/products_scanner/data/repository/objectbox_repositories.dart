@@ -1,3 +1,4 @@
+
 import 'package:tadamon/core/services/object_box_services/object_box_service.dart';
 import 'package:tadamon/core/widget/app_toast/app_toast.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
@@ -14,33 +15,6 @@ class ObjectboxRepositories {
       AppToast.showErrorToast('حدث خطأ أثناء تحميل المنتجات من قاعدة البيانات');
     }
   }
-
-//   Future<bool> isLocalDataBaseUpToDate() async {
-//     try {
-//       var box = await Hive.openBox<HiveProductModel>(boxName);
-//       List<ProductModel> remoteProducts =
-//           await FireStoreServices().getAllProducts();
-//       List<ProductModel> localProducts =
-//           box.values.map((e) => ProductModel.fromMap(e.toMap())).toList();
-
-//       if (remoteProducts.length != localProducts.length) {
-//         await syncAllProductsToHive();
-//         return false;
-//       }
-
-//       for (var remoteProduct in remoteProducts) {
-//         if (!localProducts.any((localProduct) =>
-//             localProduct.serialNumber == remoteProduct.serialNumber)) {
-//           await syncAllProductsToHive();
-//           return false;
-//         }
-//       }
-//       return true;
-//     } catch (e) {
-//       AppToast.showErrorToast('Error checking database synchronization');
-//       return false;
-//     }
-//   }
 
   Future<bool> tadamonProductsBoxHasData() async {
     var box = ObjectBoxService.instance.tadamonProductsBox.getAll();
@@ -116,5 +90,6 @@ class ObjectboxRepositories {
         .where((product) => product.serialNumber.contains(query))
         .toList();
   }
+
 
 }

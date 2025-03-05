@@ -50,4 +50,5 @@ final ThemeData darkTheme = ThemeData(
     surfaceContainerHighest: Color(0xff403130),
   ),
   fontFamily: 'ArabicFont',
+
 );

@@ -37,6 +37,8 @@ dependencies:
   objectbox: ^4.1.0
   objectbox_flutter_libs: ^4.1.0 
   toastification: ^3.0.1
+  pdf: ^3.11.3
+  open_file: ^3.5.10
 
 dev_dependencies:
   flutter_test:

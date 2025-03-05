@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/features/pages/log_page/logic/logs_bloc.dart';
-import 'package:tadamon/features/pages/log_page/logic/logs_event.dart';
+import 'package:tadamon/features/pages/log_page/logic/bloc/logs_bloc.dart';
+import 'package:tadamon/features/pages/log_page/logic/bloc/logs_event.dart';
 import 'package:tadamon/features/pages/log_page/ui/widgets/logs_page_view.dart';
 import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
 

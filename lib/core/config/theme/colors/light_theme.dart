@@ -50,4 +50,10 @@ final ThemeData lightTheme = ThemeData(
     surfaceContainerHighest: Color(0xfff5ddda),
   ),
   fontFamily: 'ArabicFont',
+
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+  ),
+
 );

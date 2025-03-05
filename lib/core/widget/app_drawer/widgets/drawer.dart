@@ -10,6 +10,7 @@ import 'package:tadamon/core/helpers/dev_helper.dart';
 import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
 
 import 'package:tadamon/core/routing/routes.dart';
+import 'package:tadamon/core/services/logs_export/pdf_export_services.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/core/widget/button_component/button_compnent.dart';
@@ -63,6 +64,7 @@ class SenseiDrawer extends StatelessWidget {
                     _buildHowToUse(context),
                     _buildReportProduct(context),
                     _buildClearLogs(context),
+                    _buildExportLogs(context),
                     _buildReadMe(context),
                     _buildLetestUpdate(context),
                     _buildGithubToken(context),
@@ -321,8 +323,8 @@ class SenseiDrawer extends StatelessWidget {
   Widget _buildClearLogs(BuildContext context) {
     return DrawerComponent(
       useMargin: true,
-      useDivider: false,
-      useSingeGroup: true,
+      useDivider: true,
+      useGroupTop: true,
       leadingIcon: Icons.clear_all_rounded,
       title: S.of(context).clearLogs,
       subtitle: S.of(context).clearLogsMassage,
@@ -332,6 +334,24 @@ class SenseiDrawer extends StatelessWidget {
         ObjectboxRepositories().clearTadamonLogsFromLocalDB();
       },
     );
+  }
+
+  Widget _buildExportLogs(BuildContext context) {
+    return DrawerComponent(
+      useMargin: false,
+      useDivider: false,
+      useGroupBottom: true,
+      leadingIcon: Icons.picture_as_pdf_rounded,
+      title: 'تصدير السجلات',
+      subtitle: 'تصطير السجلات علي شكل PDF',
+      onTapped: () {
+        HapticFeedback.vibrate();
+        Navigator.of(context).pop();
+        PdfExportServices().saveDocument('TadamonLogs');
+       // ObjectboxRepositories().exportTadamonLogsFromLocalDB();
+      },
+    );
+    }
   }
 
   Widget _buildHowToUse(BuildContext context) {
@@ -449,4 +469,5 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () => appAbout(context),
     );
   }
-}
+
+

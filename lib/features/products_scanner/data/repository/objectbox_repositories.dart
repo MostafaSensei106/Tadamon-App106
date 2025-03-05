@@ -82,7 +82,7 @@ class ObjectboxRepositories {
     }
   }
 
-  Future<void> deleteAllTadamonLogsFromLocalDB() async {
+  Future<void> clearTadamonLogsFromLocalDB() async {
     try {
       if (ObjectBoxService.instance.tadamonLogsBox.isEmpty()) {
         AppToast.showErrorToast('NO DATA TO BE CLEARED');
@@ -105,45 +105,17 @@ class ObjectboxRepositories {
     }
   }
 
+  Future<List<ScannedLogsProductModel>> getAllTadamonLogs() async {
+    var box = ObjectBoxService.instance.tadamonLogsBox.getAll();
+    return box;
+  }
 
+  //SEARCH BY SERIAL NUMBER
+  Future<List<ProductModel>> searchProductsBySerialNumber(String query) async {
+    var box = ObjectBoxService.instance.tadamonProductsBox.getAll();
+    return box
+        .where((product) => product.serialNumber.contains(query))
+        .toList();
+  }
 
-
-
-//   Future<void> saveProductToHiveLogs(ProductModel product) async {
-//     try {
-//       var box = await Hive.openBox<HiveProductModel>(logsBoxName);
-//       var hiveProduct = HiveProductModel.fromMap(product);
-//       await box.put(hiveProduct.serialNumber, hiveProduct);
-//     } catch (e) {
-//       AppToast.showErrorToast('An error occurred while saving the product: $e');
-//     }
-//   }
-
-//   Future<void> clearLogs() async {
-//     var box = await Hive.openBox<HiveProductModel>(logsBoxName);
-//     if (box.isNotEmpty) {
-//       await box.clear();
-//       AppToast.showToast('Logs cleared successfully');
-//     } else {
-//       AppToast.showToast('There are no logs to be cleared');
-//     }
-//   }
-
-//   Future<List<HiveProductModel>> getLogs() async {
-//     var box = await Hive.openBox<HiveProductModel>(logsBoxName);
-//     return box.values.toList();
-//   }
-
-//    Future<List<HiveProductModel>> searchLogs(String query, String filter) async {
-//     final logs = await getLogs();
-//     return logs.where((log) {
-//       bool matchesQuery = log.serialNumber.toLowerCase().contains(query.toLowerCase());
-//       if (filter.isNotEmpty) {
-//         return matchesQuery && log.productCategory == filter;
-//       }
-//       return matchesQuery;
-//     }).toList();
-//   }
-
-// }
 }

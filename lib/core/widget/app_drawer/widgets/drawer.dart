@@ -328,7 +328,7 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.of(context).pop();
-        ObjectboxRepositories().deleteAllTadamonLogsFromLocalDB();
+        ObjectboxRepositories().clearTadamonLogsFromLocalDB();
       },
     );
   }

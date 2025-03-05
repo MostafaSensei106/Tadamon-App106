@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
-import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
+import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 
 class ProductLogsExpansionTileComponent extends StatelessWidget {
-  final ProductModel product;
+  final ScannedLogsProductModel product;
   const ProductLogsExpansionTileComponent({super.key, required this.product});
   @override
   Widget build(BuildContext context) {
@@ -81,6 +81,11 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
             leadingIcon: Icons.handshake_outlined,
             title: "الحالة",
             subtitle: product.onError == "Product not found" ? "المنتج غير موجود" : product.trusted ? "مؤمن" : "غير مؤمن",
+          ),
+          DrawerComponent(
+            leadingIcon: Icons.date_range_outlined,
+            title: "التاريخ",
+            subtitle: product.scannedAt.toString(),
           ),
         
         ],

@@ -16,7 +16,7 @@ class ExpansionTileComponent extends StatefulWidget {
     required this.title,
     required this.subtitle,
     required this.children,
-    this.useInBorderRadius = true,
+    this.useInBorderRadius = false,
   });
 
   @override
@@ -31,7 +31,7 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(
-          SenseiConst.outBorderRadius.r,
+          widget.useInBorderRadius ? SenseiConst.inBorderRadius.r : SenseiConst.outBorderRadius.r,
         ),
       ),
       child: ExpansionTile(

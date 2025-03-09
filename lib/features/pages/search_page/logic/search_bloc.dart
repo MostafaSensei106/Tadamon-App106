@@ -15,7 +15,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     emit(SearchLoading());
     try {
       final products =
-          await repository.searchForProduct(event.query, event.filter);
+          await repository.searchInFireStore(event.query, event.filter);
       emit(SearchLoadingSuccess([], products: products));
     } catch (e) {
       emit(SearchError(e.toString()));

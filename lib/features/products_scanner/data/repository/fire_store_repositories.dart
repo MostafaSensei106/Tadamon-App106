@@ -5,12 +5,12 @@ import 'package:tadamon/features/products_scanner/data/models/product_model.dart
 
 class FireStoreRepositorie {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  static const String _collectionName = 'TadamonProducts';
+  static const String _tadamonProductsCollection = 'TadamonProducts';
   static const String _productReportCollection = 'TadamonUserReport';
 
   Future<void> addProduct(ProductModel product) async {
     try {
-      await _firestore.collection(_collectionName).add(product.toMap());
+      await _firestore.collection(_tadamonProductsCollection).add(product.toMap());
     } catch (e) {
       AppToast.showErrorToast(e.toString());
     }
@@ -18,7 +18,7 @@ class FireStoreRepositorie {
 
   Future<List<ProductModel>> downloadAllProductsFromFirebase() async {
     try {
-      final snapshot = await _firestore.collection(_collectionName).get();
+      final snapshot = await _firestore.collection(_tadamonProductsCollection).get();
       return snapshot.docs
           .map((doc) => ProductModel.fromMap(doc.data()))
           .toList();
@@ -32,7 +32,7 @@ class FireStoreRepositorie {
 
   Future<List<ProductModel>> getAllProducts() async {
     try {
-      final snapshot = await _firestore.collection(_collectionName).get();
+      final snapshot = await _firestore.collection(_tadamonProductsCollection).get();
       return snapshot.docs
           .map((doc) => ProductModel.fromMap(doc.data()))
           .toList();
@@ -49,7 +49,7 @@ class FireStoreRepositorie {
   Future<void> updateProduct(String documnetId, ProductModel product) async {
     try {
       await _firestore
-          .collection(_collectionName)
+          .collection(_tadamonProductsCollection)
           .doc(documnetId)
           .update(product.toMap());
     } catch (e) {
@@ -63,7 +63,7 @@ class FireStoreRepositorie {
 
   Future<void> deleteProduct(String documnetId) async {
     try {
-      await _firestore.collection(_collectionName).doc(documnetId).delete();
+      await _firestore.collection(_tadamonProductsCollection).doc(documnetId).delete();
     } catch (e) {
       AppToast.showErrorToast(e.toString());
     }
@@ -77,7 +77,7 @@ class FireStoreRepositorie {
   Future<dynamic> getProductBySerialNumber(String serialNumber) async {
     try {
       final snapshot =
-          await _firestore.collection(_collectionName).doc(serialNumber).get();
+          await _firestore.collection(_tadamonProductsCollection).doc(serialNumber).get();
       final data = snapshot.data();
       if (data != null) {
         return ProductModel.fromMap(data);
@@ -96,7 +96,7 @@ class FireStoreRepositorie {
     }
   }
 
-  Future<List<ProductSearchModel>> searchForProduct(
+  Future<List<ProductSearchModel>> searchInFireStore(
       String searchTerm, String filter) async {
     if (searchTerm.isEmpty) {
       return [];
@@ -104,29 +104,12 @@ class FireStoreRepositorie {
 
     searchTerm = searchTerm.toLowerCase();
     final CollectionReference productsCollection =
-        _firestore.collection(_collectionName);
+        _firestore.collection(_tadamonProductsCollection);
 
-    Query query;
-    if (filter == 'SerialNumber') {
-      query = productsCollection
-          .where('SerialNumber', isGreaterThanOrEqualTo: searchTerm)
-          .where('SerialNumber', isLessThanOrEqualTo: '$searchTerm\uf8ff');
-    } else if (filter == 'Name') {
-      query = productsCollection
-          .where('Name', isGreaterThanOrEqualTo: searchTerm)
-          .where('Name', isLessThanOrEqualTo: '$searchTerm\uf8ff');
-    } else if (filter == 'Manufacture') {
-      query = productsCollection
-          .where('Manufacture', isGreaterThanOrEqualTo: searchTerm)
-          .where('Manufacture', isLessThanOrEqualTo: '$searchTerm\uf8ff');
-    } else if (filter == 'Category') {
-      query = productsCollection
-          .where('Category', isGreaterThanOrEqualTo: searchTerm)
-          .where('Category', isLessThanOrEqualTo: '$searchTerm\uf8ff');
-    } else {
-      query =
-          productsCollection.where('Name', isGreaterThanOrEqualTo: searchTerm);
-    }
+    Query query = productsCollection
+        .orderBy(filter)
+        .startAt([searchTerm])
+        .endAt(["$searchTerm\uF8FF"]);
 
     final querySnapshot = await query.get();
 

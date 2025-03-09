@@ -12,10 +12,10 @@ class HelpUserInitial extends HelpUserState {}
 
 class HlepUserLoadingQnaState extends HelpUserState {}
 
-class HlepUserLoadingQnaStateSuccess extends HelpUserState {
+class HelpUserLoadingQnaStateSuccess extends HelpUserState {
   final List<QnaModel> qnaList;
 
-  const HlepUserLoadingQnaStateSuccess(this.qnaList);
+  const HelpUserLoadingQnaStateSuccess(this.qnaList);
 
   @override
   List<Object> get props => [qnaList];

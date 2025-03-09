@@ -10,7 +10,9 @@ class FireStoreRepositorie {
 
   Future<void> addProduct(ProductModel product) async {
     try {
-      await _firestore.collection(_tadamonProductsCollection).add(product.toMap());
+      await _firestore
+          .collection(_tadamonProductsCollection)
+          .add(product.toMap());
     } catch (e) {
       AppToast.showErrorToast(e.toString());
     }
@@ -18,7 +20,8 @@ class FireStoreRepositorie {
 
   Future<List<ProductModel>> downloadAllProductsFromFirebase() async {
     try {
-      final snapshot = await _firestore.collection(_tadamonProductsCollection).get();
+      final snapshot =
+          await _firestore.collection(_tadamonProductsCollection).get();
       return snapshot.docs
           .map((doc) => ProductModel.fromMap(doc.data()))
           .toList();
@@ -27,12 +30,11 @@ class FireStoreRepositorie {
       return [];
     }
   }
-
-
 
   Future<List<ProductModel>> getAllProducts() async {
     try {
-      final snapshot = await _firestore.collection(_tadamonProductsCollection).get();
+      final snapshot =
+          await _firestore.collection(_tadamonProductsCollection).get();
       return snapshot.docs
           .map((doc) => ProductModel.fromMap(doc.data()))
           .toList();
@@ -41,10 +43,6 @@ class FireStoreRepositorie {
       return [];
     }
   }
-
- 
-
-
 
   Future<void> updateProduct(String documnetId, ProductModel product) async {
     try {
@@ -57,27 +55,23 @@ class FireStoreRepositorie {
     }
   }
 
-
-
-
-
   Future<void> deleteProduct(String documnetId) async {
     try {
-      await _firestore.collection(_tadamonProductsCollection).doc(documnetId).delete();
+      await _firestore
+          .collection(_tadamonProductsCollection)
+          .doc(documnetId)
+          .delete();
     } catch (e) {
       AppToast.showErrorToast(e.toString());
     }
   }
 
-
-
-
-
-
   Future<dynamic> getProductBySerialNumber(String serialNumber) async {
     try {
-      final snapshot =
-          await _firestore.collection(_tadamonProductsCollection).doc(serialNumber).get();
+      final snapshot = await _firestore
+          .collection(_tadamonProductsCollection)
+          .doc(serialNumber)
+          .get();
       final data = snapshot.data();
       if (data != null) {
         return ProductModel.fromMap(data);
@@ -108,8 +102,7 @@ class FireStoreRepositorie {
 
     Query query = productsCollection
         .orderBy(filter)
-        .startAt([searchTerm])
-        .endAt(["$searchTerm\uF8FF"]);
+        .startAt([searchTerm]).endAt(["$searchTerm\uF8FF"]);
 
     final querySnapshot = await query.get();
 
@@ -118,15 +111,10 @@ class FireStoreRepositorie {
         .toList();
   }
 
-
-
-
-
   Future<void> sendReportToBackEnd(Map<String, dynamic> productReport) async {
     String productName = productReport['productName'];
     DocumentReference documentReference =
         _firestore.collection(_productReportCollection).doc(productName);
     await documentReference.set(productReport);
   }
-
 }

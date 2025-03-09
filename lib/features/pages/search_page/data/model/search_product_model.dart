@@ -23,7 +23,7 @@ class ProductSearchModel {
       serialNumber: doc['SerialNumber'],
       name: doc['Name'],
       manufacturer: doc['Manufacture'],
-      trusted: doc['Trusted'] ?? false,
+      trusted: doc['Trusted'],
       category: doc['Category'],
     );
   }

@@ -14,80 +14,71 @@ class HelpUserPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SidePageAppBar(
-        title: S.of(context).HowToUse,
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.search),
-        //     onPressed: () {
-        //       final state = context.read<HelpUserCubit>().state;
-        //       if (state is HlepUserLoadingQnaStateSuccess) {
-        //         showSearch(
-        //           context: context,
-        //           delegate: HelpSearchDelegate(
-        //             qnaList: state.qnaList,
-        //             onSearch: context.read<HelpUserCubit>().searchQA,
-        //           ),
-        //         );
-        //       }
-        //     },
-        //   ),
-        // ],
-      ),
-      body: BlocBuilder<HelpUserCubit, HelpUserState>(
-        builder: (context, state) {
-          if (state is HlepUserLoadingQnaState) {
-            return const Center(child: CircularProgressIndicator());
-          }
-      
-          if (state is HelpUserErrorState) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.error_outline, size: 48, color: Colors.red),
-                  const SizedBox(height: 16),
-                  Text(state.error),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () => context.read<HelpUserCubit>().loadQna(),
-                    child: const Text('إعادة المحاولة'),
-                  ),
-                ],
-              ),
-            );
-          }
-      
-          if (state is HlepUserLoadingQnaStateSuccess) {
-            return ListView.separated(
-              itemCount: state.qnaList.length,
-              padding: EdgeInsets.all(SenseiConst.padding.w),
-              itemBuilder: (context, index) {
-                final qna = state.qnaList[index];
-                return ExpansionTileComponent(
-                  leadingIcon: Icons.help_outline,
-                  title: qna.question,
-                  subtitle: qna.simAnswer,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        qna.fullAnswer,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          height: 1.5,
+      body: CustomScrollView(
+        slivers: [
+          SidePageAppBar(title: S.of(context).HowToUse),
+
+          SliverToBoxAdapter(
+            child: BlocBuilder<HelpUserCubit, HelpUserState>(
+              builder: (context, state) {
+                if (state is HlepUserLoadingQnaState) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (state is HelpUserErrorState) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.error_outline, size: 48, color: Colors.red),
+                        const SizedBox(height: 16),
+                        Text(state.error),
+                        const SizedBox(height: 16),
+                        ElevatedButton(
+                          onPressed: () => context.read<HelpUserCubit>().loadQna(),
+                          child: const Text('إعادة المحاولة'),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                );
+                  );
+                }
+
+                if (state is HelpUserLoadingQnaStateSuccess) {
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: state.qnaList.length,
+                    padding: EdgeInsets.all(SenseiConst.padding.w),
+                    itemBuilder: (context, index) {
+                      final qna = state.qnaList[index];
+                      return ExpansionTileComponent(
+                        leadingIcon: Icons.help_outline,
+                        title: qna.question,
+                        subtitle: qna.simAnswer,
+                        useInBorderRadius: false,
+                        
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Text(
+                              qna.fullAnswer,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                height: 1.5,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                    separatorBuilder: (context, index) => SizedBox(height: 8.h),
+                  );
+                }
+                return const SizedBox.shrink();
               },
-              separatorBuilder: (context, index) =>
-                   SizedBox(height: 8.h),
-            );
-          }
-          return const SizedBox.shrink();
-        },
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -11,7 +11,7 @@ class HelpUserCubit extends Cubit<HelpUserState> {
     try {
       emit(HlepUserLoadingQnaState());
       final qnaList = await QnaRepositore.getQna();
-      emit(HlepUserLoadingQnaStateSuccess(qnaList));
+      emit(HelpUserLoadingQnaStateSuccess(qnaList));
     } catch (e) {
       emit(HelpUserErrorState(e.toString()));
     }
@@ -21,7 +21,7 @@ class HelpUserCubit extends Cubit<HelpUserState> {
     try {
       if (query.isEmpty) {
         final qnaList = await QnaRepositore.getQna();
-        emit(HlepUserLoadingQnaStateSuccess(qnaList));
+        emit(HelpUserLoadingQnaStateSuccess(qnaList));
         return;
       }
 
@@ -31,7 +31,7 @@ class HelpUserCubit extends Cubit<HelpUserState> {
           qna.simAnswer.toLowerCase().contains(query.toLowerCase()) ||
           qna.fullAnswer.toLowerCase().contains(query.toLowerCase())).toList();
 
-      emit(HlepUserLoadingQnaStateSuccess(filteredList));
+      emit(HelpUserLoadingQnaStateSuccess(filteredList));
     } catch (e) {
       emit(HelpUserErrorState(e.toString()));
     }

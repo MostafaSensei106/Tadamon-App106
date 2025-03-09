@@ -75,8 +75,6 @@ class ImageNewsState extends State<ImageNews> {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       fit: BoxFit.cover,
-      progressIndicatorBuilder: (context, url, downloadProgress) =>
-          CircularProgressIndicator(value: downloadProgress.progress),
       filterQuality: FilterQuality.medium,
       errorWidget: (context, url, error) => Container(
         decoration: BoxDecoration(
@@ -94,7 +92,7 @@ class ImageNewsState extends State<ImageNews> {
           ],
         ),
       ),
-      useOldImageOnUrlChange: true,
+      useOldImageOnUrlChange: false,
     );
   }
 

@@ -21,6 +21,7 @@ class DotIndicatorNav extends StatefulWidget {
 
 class _DotIndicatorNavState extends State<DotIndicatorNav> {
   bool _isLastPage = false;
+  bool _isFirstPage = true;
 
   @override
   void initState() {
@@ -35,15 +36,19 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
   }
 
   void _pageListener() {
-    final isLastPage = (widget.pageController.page ?? 0).round() == 3;
-    if (isLastPage != _isLastPage) {
+    final currentPage = (widget.pageController.page ?? 0).round();
+    final isFirstPage = currentPage == 0;
+    final isLastPage = currentPage == 3;
+
+    if (isFirstPage != _isFirstPage || isLastPage != _isLastPage) {
       setState(() {
+        _isFirstPage = isFirstPage;
         _isLastPage = isLastPage;
       });
     }
   }
 
-  Widget _buildButton(
+  Widget _getActionButton(
       String key, String label, IconData icon, VoidCallback onPressed) {
     return ButtonCompnent(
       key: ValueKey(key),
@@ -53,6 +58,11 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
       width: 0.3.sw,
       onPressed: onPressed,
     );
+  }
+
+  void _handleNavigation(VoidCallback action) {
+    HapticFeedback.vibrate();
+    action();
   }
 
   @override
@@ -95,41 +105,30 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                         child: FadeTransition(opacity: animation, child: child),
                       );
                     },
-                    child: widget.pageController.page == 0
-                        ? _buildButton(
+                    child: _isFirstPage
+                        ? _getActionButton(
                             'skip',
                             'تخطي',
                             Icons.keyboard_double_arrow_right_rounded,
-                            () {
-                              if (widget.pageController.page == 0) {
-                                HapticFeedback.vibrate();
-                                Navigator.pushNamedAndRemoveUntil(
-                                  context,
-                                  Routes.mainPage,
-                                  (route) => false,
-                                );
-                                AppToast.showToast('مرحبا بك في تضامن');
-                              } else {
-                                HapticFeedback.vibrate();
-                                widget.pageController.previousPage(
-                                  duration: const Duration(milliseconds: 350),
-                                  curve: Curves.easeInOut,
-                                );
-                              }
-                            },
+                            () => _handleNavigation(() {
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                Routes.mainPage,
+                                (route) => false,
+                              );
+                              AppToast.showToast('مرحبا بك في تضامن');
+                            }),
                           )
-                        : _buildButton(
+                        : _getActionButton(
                             'previous',
                             'السابق',
                             Icons.keyboard_double_arrow_right_rounded,
-                            () {
-                              HapticFeedback.vibrate();
-
+                            () => _handleNavigation(() {
                               widget.pageController.previousPage(
                                 duration: const Duration(milliseconds: 350),
                                 curve: Curves.easeInOut,
                               );
-                            },
+                            }),
                           ),
                   ),
                   SmoothPageIndicator(
@@ -169,32 +168,28 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                         );
                       },
                       child: _isLastPage
-                          ? _buildButton(
+                          ? _getActionButton(
                               'start',
                               'بدء',
                               Icons.keyboard_double_arrow_left_rounded,
-                              () {
-                                HapticFeedback.vibrate();
-
+                              () => _handleNavigation(() {
                                 Navigator.pushNamedAndRemoveUntil(
                                   context,
                                   Routes.mainPage,
                                   (route) => false,
                                 );
-                              },
+                              }),
                             )
-                          : _buildButton(
+                          : _getActionButton(
                               'next',
                               'التالي',
                               Icons.keyboard_double_arrow_left_rounded,
-                              () {
-                                HapticFeedback.vibrate();
-
+                              () => _handleNavigation(() {
                                 widget.pageController.nextPage(
                                   duration: const Duration(milliseconds: 350),
                                   curve: Curves.easeInOut,
                                 );
-                              },
+                              }),
                             ),
                     ),
                   ),

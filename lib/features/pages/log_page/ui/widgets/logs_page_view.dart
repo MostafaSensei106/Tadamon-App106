@@ -18,8 +18,6 @@ class _LogsPageViewState extends State<LogsPageView> {
   final TextEditingController _searchController = TextEditingController();
   String _selectedFilter = 'SerialNumber';
 
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,85 +40,7 @@ class _LogsPageViewState extends State<LogsPageView> {
             useOutBorderRadius: true,
             controller: _searchController,
             icon: Icons.search,
-            suffixIcon: PopupMenuButton<String>(
-              onSelected: (value) {
-                setState(() {
-                  _selectedFilter = value;
-                });
-              },
-              icon: const Icon(
-                Icons.filter_list,
-                size: SenseiConst.iconSize,
-              ),
-              elevation: 0,
-              enableFeedback: true,
-              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(SenseiConst.inBorderRadius.r),
-                side: BorderSide(
-                  color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-                ),
-              ),
-              padding: EdgeInsets.zero,
-              tooltip: 'فلتر البحث',
-              color: Theme.of(context).colorScheme.surface,
-              itemBuilder: (context) {
-                return [
-                  PopupMenuItem(
-                    value: 'SerialNumber',
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.qr_code_rounded,
-                          size: SenseiConst.iconSize,
-                        ),
-                        SizedBox(width: SenseiConst.padding.w),
-                        const Text('الرقم التسلسلي'),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                      value: 'Name',
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.label_outline_rounded,
-                            size: SenseiConst.iconSize,
-                          ),
-                          SizedBox(width: SenseiConst.padding.w),
-                          const Text('اسم المنتج'),
-                        ],
-                      )),
-                  PopupMenuItem(
-                    value: 'Manufacture',
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.business,
-                          size: SenseiConst.iconSize,
-                        ),
-                        SizedBox(width: SenseiConst.padding.w),
-                        const Text('المُصنع'),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: 'Category',
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.category_outlined,
-                          size: SenseiConst.iconSize,
-                        ),
-                        SizedBox(width: SenseiConst.padding.w),
-                        const Text('القسم'),
-                      ],
-                    ),
-                  ),
-                ];
-              },
-            ),
+            suffixIcon: menuButton(context),
             hint:
                 'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'القسم'}...',
             onChange: (value) {
@@ -130,6 +50,151 @@ class _LogsPageViewState extends State<LogsPageView> {
           ),
         ),
       ],
+    );
+  }
+
+  PopupMenuButton<String> menuButton(BuildContext context) {
+    return PopupMenuButton<String>(
+      onSelected: (value) {
+        setState(() {
+          _selectedFilter = value;
+        });
+      },
+      icon: Icon(
+        Icons.filter_list,
+        size: SenseiConst.iconSize,
+        color: _selectedFilter != 'SerialNumber'
+            ? Theme.of(context).colorScheme.primary
+            : null,
+      ),
+      elevation: 0,
+      enableFeedback: true,
+      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
+        ),
+      ),
+      padding: EdgeInsets.zero,
+      tooltip: 'فلتر البحث',
+      color: Theme.of(context).colorScheme.surface,
+      itemBuilder: (context) {
+        return [
+          PopupMenuItem(
+            value: 'SerialNumber',
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.qr_code_rounded,
+                  size: SenseiConst.iconSize,
+                ),
+                SizedBox(width: SenseiConst.padding.w),
+                Text(
+                  'الرقم التسلسلي',
+                  style: TextStyle(
+                    color: _selectedFilter == 'SerialNumber'
+                        ? Theme.of(context).colorScheme.primary
+                        : null,
+                  ),
+                ),
+                if (_selectedFilter == 'SerialNumber') ...[
+                  const Spacer(),
+                  Icon(
+                    Icons.check_circle,
+                    color: Theme.of(context).colorScheme.primary,
+                    size: SenseiConst.iconSize * 0.8,
+                  ),
+                ],
+              ],
+            ),
+          ),
+          PopupMenuItem(
+            value: 'Name',
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.label_outline_rounded,
+                  size: SenseiConst.iconSize,
+                ),
+                SizedBox(width: SenseiConst.padding.w),
+                Text(
+                  'اسم المنتج',
+                  style: TextStyle(
+                    color: _selectedFilter == 'Name'
+                        ? Theme.of(context).colorScheme.primary
+                        : null,
+                  ),
+                ),
+                if (_selectedFilter == 'Name') ...[
+                  const Spacer(),
+                  Icon(
+                    Icons.check_circle,
+                    color: Theme.of(context).colorScheme.primary,
+                    size: SenseiConst.iconSize * 0.8,
+                  ),
+                ],
+              ],
+            ),
+          ),
+          PopupMenuItem(
+            value: 'Manufacture',
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.business,
+                  size: SenseiConst.iconSize,
+                ),
+                SizedBox(width: SenseiConst.padding.w),
+                Text(
+                  'المُصنع',
+                  style: TextStyle(
+                    color: _selectedFilter == 'Manufacture'
+                        ? Theme.of(context).colorScheme.primary
+                        : null,
+                  ),
+                ),
+                if (_selectedFilter == 'Manufacture') ...[
+                  const Spacer(),
+                  Icon(
+                    Icons.check_circle,
+                    color: Theme.of(context).colorScheme.primary,
+                    size: SenseiConst.iconSize * 0.8,
+                  ),
+                ],
+              ],
+            ),
+          ),
+          PopupMenuItem(
+            value: 'Category',
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.category_outlined,
+                  size: SenseiConst.iconSize,
+                ),
+                SizedBox(width: SenseiConst.padding.w),
+                Text(
+                  'القسم',
+                  style: TextStyle(
+                    color: _selectedFilter == 'Category'
+                        ? Theme.of(context).colorScheme.primary
+                        : null,
+                  ),
+                ),
+                if (_selectedFilter == 'Category') ...[
+                  const Spacer(),
+                  Icon(
+                    Icons.check_circle,
+                    color: Theme.of(context).colorScheme.primary,
+                    size: SenseiConst.iconSize * 0.8,
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ];
+      },
     );
   }
 }

@@ -6,15 +6,11 @@ import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/core/widget/button_component/button_compnent.dart';
 import 'package:tadamon/core/widget/text_filed_component/text_filed_component.dart';
 import 'package:tadamon/generated/l10n.dart';
-
 class EditTextSheetContent extends StatefulWidget {
   const EditTextSheetContent({super.key});
 
   @override
   State<EditTextSheetContent> createState() => _EditTextSheetContentState();
-
-
-
 
   static void showEditTextBottomSheet(BuildContext context) {
     ModelBottomSheet.show(
@@ -28,89 +24,50 @@ class EditTextSheetContent extends StatefulWidget {
 class _EditTextSheetContentState extends State<EditTextSheetContent> {
   final TextEditingController _controller = TextEditingController();
   String _processedText = '';
+
+  /// Removes dots from Arabic characters in the input text.
   String removeArabicDots(String text) {
+    // Define a map of Arabic characters with dots and their dotless equivalents
     const Map<String, String> arabicLetters = {
-      'ب': 'ٮ',
-      'ت': 'ٮ',
-      'ث': 'ٮ',
-      'ج': 'ح',
-      'خ': 'ح',
-      'ذ': 'د',
-      'ز': 'ر',
-      'ش': 'س',
-      'ض': 'ص',
-      'ظ': 'ط',
-      'غ': 'ع',
-      'ف': 'ڡ',
-      'ق': 'ٯ',
-      'ن': 'ٮ',
+      // Isolated forms
+      'ب': 'ٮ', 'ت': 'ٮ', 'ث': 'ٮ', 'ج': 'ح', 'خ': 'ح', 'ذ': 'د', 'ز': 'ر',
+      'ش': 'س', 'ض': 'ص', 'ظ': 'ط', 'غ': 'ع', 'ف': 'ڡ', 'ق': 'ٯ', 'ن': 'ٮ',
 
-      'ﺑ': 'ٮ',
-      'ﺗ': 'ٮ',
-      'ﺛ': 'ٮ',
-      'ﺟ': 'ﺣ',
-      'ﺧ': 'ﺣ',
-      'ﺷ': 'ﺳ',
-      'ﺿ': 'ﺻ',
-      'ﻅ': 'ﻁ',
-      'ﻏ': 'ﻋ',
-      'ﻓ': 'ڡ',
-      'ﻗ': 'ٯ',
-      'ﻧ': 'ٮ',
-      'ﻳ': 'ﻯ',
+      // Initial forms
+      'ﺑ': 'ٮ', 'ﺗ': 'ٮ', 'ﺛ': 'ٮ', 'ﺟ': 'ﺣ', 'ﺧ': 'ﺣ', 'ﺷ': 'ﺳ', 'ﺿ': 'ﺻ',
+      'ﻇ': 'ﻁ', 'ﻏ': 'ﻋ', 'ﻓ': 'ﻑ', 'ﻗ': 'ٯ', 'ﻧ': 'ٮ', 'ﻳ': 'ﻯ',
 
-      'ﺒ': 'ٮ',
-      'ﺘ': 'ٮ',
-      'ﺜ': 'ٮ',
-      'ﺠ': 'ﺤ',
-      'ﺨ': 'ﺤ',
-      'ﺸ': 'ﺴ',
-      'ﻀ': 'ﺼ',
-      'ﻆ': 'ﻄ',
-      'ﻐ': 'ﻌ',
-      'ﻔ': 'ڡ',
-      'ﻘ': 'ٯ',
-      'ﻨ': 'ٮ',
-      'ﻴ': 'ﻰ',
-      'ﺐ': 'ٮ',
-      'ﺖ': 'ٮ',
-      'ﺚ': 'ٮ',
-      'ﺞ': 'ﺢ',
-      'ﺦ': 'ﺢ',
-      'ﺶ': 'ﺲ',
-      'ﺾ': 'ﺺ',
-      'ﻎ': 'ﻌ',
-      'ﻒ': 'ڡ',
-      'ﻖ': 'ٯ',
-      'ﻦ': 'ٮ',
-      'ﻲ': 'ﻯ',
-      'ﻻ': 'ﻻ',
-      'ﻷ': 'ﻻ',
-      'ﻹ': 'ﻻ',
-      'ﻵ': 'ﻻ',
-      'ل': 'ل',
-      'لل': 'ل',
-      'للا': 'ل',
+      // Medial forms
+      'ﺒ': 'ٮ', 'ﺘ': 'ٮ', 'ﺜ': 'ٮ', 'ﺠ': 'ﺤ', 'ﺨ': 'ﺤ', 'ﺸ': 'ﺴ', 'ﻀ': 'ﺼ',
+      'ﻆ': 'ﻄ', 'ﻐ': 'ﻌ', 'ﻔ': 'ﻑ', 'ﻘ': 'ٯ', 'ﻨ': 'ٮ', 'ﻴ': 'ﻰ',
+
+      // Final forms
+      'ﺐ': 'ٮ', 'ﺖ': 'ٮ', 'ﺚ': 'ٮ', 'ﺞ': 'ﺢ', 'ﺦ': 'ﺢ', 'ﺶ': 'ﺲ', 'ﺾ': 'ﺺ',
+      'ﻎ': 'ﻊ', 'ﻒ': 'ﻑ', 'ﻖ': 'ٯ', 'ﻦ': 'ٮ', 'ﻲ': 'ﻯ',
+
+      // Special cases
+      'ﻻ': 'ﻻ', 'ﻷ': 'ﻻ', 'ﻹ': 'ﻻ', 'ﻵ': 'ﻻ', 'ل': 'ل', 'لل': 'ل', 'للا': 'ل',
+
+      // Additional letters
+      'ا': 'ا', 'أ': 'ا', 'إ': 'ا', 'آ': 'ا', 'ء': 'ء', 'ؤ': 'و', 'ئ': 'ي',
+      'ى': 'ي', 'ة': 'ه', 'و': 'و', 'ه': 'ه', 'ي': 'ي',
     };
 
+    // Replace each character in the text using the map
     StringBuffer buffer = StringBuffer();
     for (int i = 0; i < text.length; i++) {
       String char = text[i];
-      buffer
-          .write(arabicLetters.containsKey(char) ? arabicLetters[char] : char);
+      buffer.write(arabicLetters.containsKey(char) ? arabicLetters[char] : char);
     }
 
     return buffer.toString();
   }
-
-
 
   void _processText(String text) {
     setState(() {
       _processedText = removeArabicDots(text);
     });
   }
-
 
   /// Copies the [_processedText] to the device's clipboard.
   void _copyToClipboard() {

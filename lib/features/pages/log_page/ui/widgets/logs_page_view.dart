@@ -197,4 +197,10 @@ class _LogsPageViewState extends State<LogsPageView> {
       },
     );
   }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 }

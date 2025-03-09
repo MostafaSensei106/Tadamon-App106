@@ -22,6 +22,8 @@ class ImageNewsState extends State<ImageNews> {
 
   final List<String> _imageUrls = [
     'https://cdnuploads.aa.com.tr/uploads/Contents/2023/10/21/thumbs_b_c_f90d9d191fa2cd8c00d134bc30ba251f.jpg?v=110742',
+    'https://i.guim.co.uk/img/media/5d9ea77d27c95d327caee787ddc6af484faaa567/0_0_8192_4918/master/8192.jpg?width=1200&quality=85&auto=format&fit=max&s=bf17013c1bd811669951ebcda28e7c95',
+    'https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iSuF7fmisxDk/v0/-1x-1.webp',
   ];
 
   int _currentPage = 0;
@@ -148,7 +150,8 @@ class ImageNewsState extends State<ImageNews> {
                     scrollDirection: Axis.horizontal,
                     physics: const ScrollPhysics(),
                     itemCount: _imageUrls.length,
-                    itemBuilder: (context, index) => _buildImageSlide(_imageUrls[index]),
+                    itemBuilder: (context, index) =>
+                        _buildImageSlide(_imageUrls[index]),
                     onPageChanged: (index) {
                       setState(() => _currentPage = index);
                     },

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widget/text_filed_component/text_filed_component.dart';
-import 'package:tadamon/features/pages/log_page/ui/widgets/logs_search_content.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_bloc.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_event.dart';
 import 'package:tadamon/features/pages/search_page/ui/widget/search_result_content.dart';
@@ -27,7 +26,7 @@ class _SearchPageViewState extends State<SearchPageView> {
         children: [
           searchBar(context),
           SizedBox(height: SenseiConst.margin.h),
-          LogsSearchContent(searchController: _searchController),
+          SearchResultContent(searchController: _searchController),
         ],
       ),
     );
@@ -43,7 +42,7 @@ class _SearchPageViewState extends State<SearchPageView> {
             icon: Icons.search,
             suffixIcon: menuButton(context),
             hint:
-                'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'القسم'}...',
+                'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'التصنيف'}...',
             onChange: (value) {
               BlocProvider.of<SearchBloc>(context)
                   .add(FetchSearchResult(value, _selectedFilter));
@@ -176,7 +175,7 @@ class _SearchPageViewState extends State<SearchPageView> {
                 ),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
-                  'القسم',
+                  'التصنيف',
                   style: TextStyle(
                     color: _selectedFilter == 'Category'
                         ? Theme.of(context).colorScheme.primary

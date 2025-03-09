@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/helpers/extensions/date_format_extension.dart';
-import 'package:tadamon/core/widget/button_component/button_compnent.dart';
 import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 
@@ -94,8 +93,6 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
             title: "التاريخ",
             subtitle: product.scannedAt.formatted,
           ),
-          if (product.trusted)
-      ButtonCompnent(label: "حذف", icon: Icons.delete, onPressed: () {})
         ],
       ),
     );

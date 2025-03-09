@@ -42,7 +42,7 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
   void initState() {
     super.initState();
     _timer = Timer.periodic(
-      const Duration(seconds: 2),
+      const Duration(seconds: 1),
       (timer) {
         setState(() {
           isFirstIcon = !isFirstIcon;

@@ -73,9 +73,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "ReadMe": MessageLookupByLibrary.simpleMessage("Read Me"),
         "ReadMeMassage":
             MessageLookupByLibrary.simpleMessage("App repository on GitHub."),
-        "ReportBug": MessageLookupByLibrary.simpleMessage("Report Issue"),
-        "ReportBugMassage":
-            MessageLookupByLibrary.simpleMessage("Facing an issue? Report it."),
         "ReportProduct": MessageLookupByLibrary.simpleMessage("Report Product"),
         "ReportProductMassage":
             MessageLookupByLibrary.simpleMessage("Help us improve the app."),

@@ -97,6 +97,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "scanedProducts":
             MessageLookupByLibrary.simpleMessage("المنتجات التي تمت مراجعتها"),
         "supportedProducts":
-            MessageLookupByLibrary.simpleMessage("المنتجات المدعومة")
+            MessageLookupByLibrary.simpleMessage("المنتجات التي تم دعمها")
       };
 }

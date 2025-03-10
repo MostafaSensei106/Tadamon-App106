@@ -19,7 +19,7 @@ class TadamonApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initTheme(context);
-    //initLocalization(context);
+   // initLocalization(context);
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,

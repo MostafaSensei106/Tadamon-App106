@@ -23,7 +23,6 @@ errorScreen() {
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  // يمكنك تنفيذ إعادة تشغيل التطبيق هنا
                 },
                 child: const Text('إعادة المحاولة'),
               ),

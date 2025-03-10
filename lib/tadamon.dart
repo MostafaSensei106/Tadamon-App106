@@ -4,9 +4,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/theme/colors/dark_theme.dart';
 import 'package:tadamon/core/config/theme/colors/light_theme.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_cubit.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_shared_preferences.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_cubit.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_shared_preferences.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_state.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_helper.dart';
+import 'package:tadamon/core/helpers/localization_helper/localization_helper.dart';
 import 'package:tadamon/core/routing/app_router.dart';
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:toastification/toastification.dart';
@@ -17,6 +19,8 @@ class TadamonApp extends StatelessWidget {
   TadamonApp(AppRouter appRouter, {super.key});
   @override
   Widget build(BuildContext context) {
+    initLocalization(context);
+    initTheme(context);
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,

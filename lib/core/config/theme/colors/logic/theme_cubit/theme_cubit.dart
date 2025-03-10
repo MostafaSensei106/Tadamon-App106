@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_shared_preferences.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_state.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_helper.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
   final ThemeSharedPreferences _themeSharedPreferences;

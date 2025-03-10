@@ -3,11 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_cubit.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_state.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_cubit.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_state.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_helper.dart';
 import 'package:tadamon/core/helpers/about_helper.dart';
 import 'package:tadamon/core/helpers/dev_helper.dart';
-import 'package:tadamon/core/helpers/theme_toggle_helper.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_toggle_helper.dart';
+import 'package:tadamon/core/helpers/localization_helper/localization_helper.dart';
 
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/core/services/logs_export/pdf_export_services.dart';
@@ -21,7 +23,6 @@ import 'package:tadamon/core/widget/app_drawer/widgets/drawer_header.dart';
 import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
 import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
-import 'package:tadamon/generated/l10n.dart';
 
 class SenseiDrawer extends StatelessWidget {
   const SenseiDrawer({super.key});
@@ -29,7 +30,7 @@ class SenseiDrawer extends StatelessWidget {
   WidgetStateProperty<Icon> thumbIcon(BuildContext context) {
     return WidgetStateProperty.resolveWith<Icon>((Set<WidgetState> states) {
       if (states.contains(WidgetState.selected)) {
-        return Icon(Icons.check, color: Theme.of(context).colorScheme.primary);
+        return Icon(Icons.check, color: appThemeData.colorScheme.primary);
       }
       return const Icon(Icons.close);
     });
@@ -40,7 +41,7 @@ class SenseiDrawer extends StatelessWidget {
     return SizedBox(
       width: 0.90.sw,
       child: Drawer(
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: appThemeData.colorScheme.surface,
         shape: ContinuousRectangleBorder(
           borderRadius:
               BorderRadius.circular(SenseiConst.outBorderRadius.r + 7),
@@ -90,8 +91,8 @@ class SenseiDrawer extends StatelessWidget {
           useDivider: state.themeMode != ThemeMode.system,
           useGroupTop: state.themeMode != ThemeMode.system,
           leadingIcon: Icons.brightness_auto_outlined,
-          title: S.of(context).SystemTheme,
-          subtitle: S.of(context).FollowSystemTheme,
+          title: appLocalizations.SystemTheme,
+          subtitle: appLocalizations.FollowSystemTheme,
           trailingWidget: Switch(
             thumbIcon: thumbIcon(context),
             value: state.themeMode == ThemeMode.system,
@@ -124,11 +125,11 @@ class SenseiDrawer extends StatelessWidget {
                     ? Icons.light_mode_outlined
                     : Icons.dark_mode_outlined,
                 title: state.isDark
-                    ? S.of(context).DarkTheme
-                    : S.of(context).LightTheme,
+                    ? appLocalizations.DarkTheme
+                    : appLocalizations.LightTheme,
                 subtitle: state.isDark
-                    ? S.of(context).SwitchToLightTheme
-                    : S.of(context).SwitchToDarkTheme,
+                    ? appLocalizations.SwitchToLightTheme
+                    : appLocalizations.SwitchToDarkTheme,
                 trailingWidget: Switch(
                   thumbIcon: thumbIcon(context),
                   value: state.isDark,
@@ -154,22 +155,22 @@ class SenseiDrawer extends StatelessWidget {
         builder: (context, state) {
           Widget trailingWidget =
               const Icon(Icons.query_builder_rounded, color: Colors.red);
-          String subtitleText = S.of(context).AppOflineLoading;
+          String subtitleText = appLocalizations.AppOflineLoading;
           bool groupTop = false;
           if (state is HiveDataBaseHasData) {
             trailingWidget =
                 const Icon(Icons.check_box_outlined, color: Colors.green);
-            subtitleText = S.of(context).AppOnLineMassageRunning;
+            subtitleText = appLocalizations.AppOnLineMassageRunning;
             groupTop = true;
           } else if (state is HiveDataBaseEmpty) {
             trailingWidget =
                 const Icon(Icons.error_outline_rounded, color: Colors.red);
-            subtitleText = S.of(context).AppOffLineMassageDontRunning;
+            subtitleText = appLocalizations.AppOffLineMassageDontRunning;
             groupTop = false;
           } else {
             trailingWidget =
                 const Icon(Icons.query_builder_rounded, color: Colors.yellow);
-            subtitleText = S.of(context).AppOflineLoading;
+            subtitleText = appLocalizations.AppOflineLoading;
             groupTop = false;
           }
           return DrawerComponent(
@@ -179,7 +180,7 @@ class SenseiDrawer extends StatelessWidget {
             leadingIcon: state is HiveDataBaseHasData
                 ? Icons.cloud_done_outlined
                 : Icons.cloud_off_rounded,
-            title: S.of(context).AppOffLine,
+            title: appLocalizations.AppOffLine,
             subtitle: subtitleText,
             trailingWidget: trailingWidget,
           );
@@ -326,8 +327,8 @@ class SenseiDrawer extends StatelessWidget {
       useDivider: true,
       useGroupTop: true,
       leadingIcon: Icons.clear_all_rounded,
-      title: S.of(context).clearLogs,
-      subtitle: S.of(context).clearLogsMassage,
+      title: appLocalizations.clearLogs,
+      subtitle: appLocalizations.clearLogsMassage,
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.of(context).pop();
@@ -361,8 +362,8 @@ Widget _buildHowToUse(BuildContext context) {
       useDivider: true,
       useGroupTop: true,
       leadingIcon: Icons.question_answer_outlined,
-      title: S.of(context).HowToUse,
-      subtitle: S.of(context).HowToUseMassage,
+      title: appLocalizations.HowToUse,
+      subtitle: appLocalizations.HowToUseMassage,
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.pop(context);
@@ -376,8 +377,8 @@ Widget _buildReportProduct(BuildContext context) {
     useDivider: false,
     useGroupBottom: true,
     leadingIcon: Icons.production_quantity_limits_outlined,
-    title: S.of(context).ReportProduct,
-    subtitle: S.of(context).ReportProductMassage,
+    title: appLocalizations.ReportProduct,
+    subtitle: appLocalizations.ReportProductMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       Navigator.pop(context);
@@ -393,8 +394,8 @@ Widget _buildReadMe(BuildContext context) {
     useDivider: true,
     useGroupTop: true,
     leadingIcon: Icons.description_outlined,
-    title: S.of(context).ReadMe,
-    subtitle: S.of(context).ReadMeMassage,
+    title: appLocalizations.ReadMe,
+    subtitle: appLocalizations.ReadMeMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devReadMeLink);
@@ -408,8 +409,8 @@ Widget _buildLetestUpdate(BuildContext context) {
     useDivider: true,
     useGroupMiddle: true,
     leadingIcon: Icons.update_outlined,
-    title: S.of(context).LetastUpdate,
-    subtitle: S.of(context).LetestUpdateMassage,
+    title: appLocalizations.LetastUpdate,
+    subtitle: appLocalizations.LetestUpdateMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devReleaseAppLink);
@@ -423,8 +424,8 @@ Widget _buildGithubToken(BuildContext context) {
     useDivider: true,
     useGroupMiddle: true,
     leadingIcon: Icons.live_help_outlined,
-    title: S.of(context).GithubTiket,
-    subtitle: S.of(context).GithubTiketMassage,
+    title: appLocalizations.GithubTiket,
+    subtitle: appLocalizations.GithubTiketMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devGitHubTokenLink);
@@ -438,8 +439,8 @@ Widget _buildTelegramChannel(BuildContext context) {
       useDivider: false,
       useGroupBottom: true,
       leadingIcon: Icons.telegram_rounded,
-      title: S.of(context).TelegramChannel,
-      subtitle: S.of(context).TelegramChannelMassage,
+      title: appLocalizations.TelegramChannel,
+      subtitle: appLocalizations.TelegramChannelMassage,
       onTapped: () {
         HapticFeedback.vibrate();
         UrlRunServices.launchURL(SenseiConst.devTelegramLink);
@@ -452,8 +453,8 @@ Widget _buildDeveloper(BuildContext context) {
     useDivider: true,
     useGroupTop: true,
     leadingIcon: Icons.verified_outlined,
-    title: S.of(context).Developer,
-    subtitle: S.of(context).MostafaMahmoud,
+    title: appLocalizations.Developer,
+    subtitle: appLocalizations.MostafaMahmoud,
     trailingWidget: const ContactSenseiDev().buildAvatar(context),
     onTapped: () => const ContactSenseiDev().showDevDialog(context),
   );
@@ -465,8 +466,8 @@ Widget _buildAbout(BuildContext context) {
     useDivider: false,
     useGroupBottom: true,
     leadingIcon: Icons.info_outline,
-    title: S.of(context).About,
-    subtitle: S.of(context).AboutTadamon,
+    title: appLocalizations.About,
+    subtitle: appLocalizations.AboutTadamon,
     onTapped: () => appAbout(context),
   );
 }

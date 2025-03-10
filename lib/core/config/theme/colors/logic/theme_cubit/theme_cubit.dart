@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -79,9 +78,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   /// current platform brightness and sets the theme accordingly.
   ///
   /// Emits a new [ThemeState] with the chosen [isDark] and [ThemeMode].
-  Future<void> initializeTheme(BuildContext context) async {
-        initTheme(context);
-
+  Future<void> initializeTheme() async {
     final isFirstRun = await _themeSharedPreferences.isFirstRun();
 
     if (isFirstRun == null || isFirstRun) {
@@ -92,7 +89,8 @@ class ThemeCubit extends Cubit<ThemeState> {
       final savedMode = await _themeSharedPreferences.getThemeMode();
 
       if (savedMode == ThemeMode.system) {
-        final platformBrightness = PlatformDispatcher.instance.platformBrightness;
+        final platformBrightness =
+            PlatformDispatcher.instance.platformBrightness;
         final newIsDark = platformBrightness == Brightness.dark;
         final newState = state.copyWith(
           isDark: newIsDark,

@@ -13,7 +13,6 @@ class ReportService {
     pref = await SharedPreferences.getInstance();
   }
 
-
    Future<void> sendProductReport(
       Map<String, dynamic> productReport) async {
     if (await NetworkController().checkConnection()) {
@@ -68,3 +67,4 @@ class ReportService {
   }
 
 }
+

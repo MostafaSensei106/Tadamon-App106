@@ -10,14 +10,15 @@ import 'package:tadamon/tadamon.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- // errorScreen();
-
+  errorScreen();
   await ReportService.initializePreferences();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await ObjectBoxService.init();
   NetworkController().initNetworkController();
+
   runApp(TadamonApp(
     AppRouter(),
   ));

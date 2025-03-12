@@ -8,6 +8,7 @@ import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_cubit.d
 import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_shared_preferences.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_state.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_helper.dart';
+import 'package:tadamon/core/helpers/localization_helper/localization_helper.dart';
 import 'package:tadamon/core/routing/app_router.dart';
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:toastification/toastification.dart';
@@ -15,16 +16,16 @@ import 'generated/l10n.dart';
 
 class TadamonApp extends StatelessWidget {
   final AppRouter appRouter = AppRouter();
+
   TadamonApp(AppRouter appRouter, {super.key});
+
   @override
   Widget build(BuildContext context) {
-    initTheme(context);
-   // initLocalization(context);
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: BlocProvider(
-        lazy:true,
+        lazy: true,
         create: (context) => ThemeCubit(
             themeSharedPreferences: ThemeSharedPreferences(), context: context)
           ..initializeTheme(),
@@ -39,7 +40,7 @@ class TadamonApp extends StatelessWidget {
                 themeMode: themeState.themeMode,
                 initialRoute: Routes.onBoarding,
                 onGenerateRoute: appRouter.generateRoute,
-                locale: const Locale('ar','EG'),
+                locale: const Locale('ar', 'EG'),
                 localizationsDelegates: const [
                   S.delegate,
                   GlobalMaterialLocalizations.delegate,
@@ -47,6 +48,13 @@ class TadamonApp extends StatelessWidget {
                   GlobalCupertinoLocalizations.delegate,
                 ],
                 supportedLocales: S.delegate.supportedLocales,
+                builder: (context, child) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    AppLocalization.initLocalization(context);
+                    initTheme(context);
+                  });
+                  return child!;
+                },
               ),
             );
           },
@@ -54,5 +62,4 @@ class TadamonApp extends StatelessWidget {
       ),
     );
   }
-
 }

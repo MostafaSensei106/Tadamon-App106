@@ -35,13 +35,12 @@ class SenseiDrawer extends StatelessWidget {
       return const Icon(Icons.close);
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 0.90.sw,
       child: Drawer(
-        backgroundColor: appThemeData.colorScheme.surface,
+        //backgroundColor: appThemeData.colorScheme.surface,
         shape: ContinuousRectangleBorder(
           borderRadius:
               BorderRadius.circular(SenseiConst.outBorderRadius.r + 7),
@@ -91,8 +90,8 @@ class SenseiDrawer extends StatelessWidget {
           useDivider: state.themeMode != ThemeMode.system,
           useGroupTop: state.themeMode != ThemeMode.system,
           leadingIcon: Icons.brightness_auto_outlined,
-          title: appLocalizations.SystemTheme,
-          subtitle: appLocalizations.FollowSystemTheme,
+          title: AppLocalization.appLocalizations.SystemTheme,
+          subtitle: AppLocalization.appLocalizations.FollowSystemTheme,
           trailingWidget: Switch(
             thumbIcon: thumbIcon(context),
             value: state.themeMode == ThemeMode.system,
@@ -125,11 +124,11 @@ class SenseiDrawer extends StatelessWidget {
                     ? Icons.light_mode_outlined
                     : Icons.dark_mode_outlined,
                 title: state.isDark
-                    ? appLocalizations.DarkTheme
-                    : appLocalizations.LightTheme,
+                    ? AppLocalization.appLocalizations.DarkTheme
+                    : AppLocalization.appLocalizations.LightTheme,
                 subtitle: state.isDark
-                    ? appLocalizations.SwitchToLightTheme
-                    : appLocalizations.SwitchToDarkTheme,
+                    ? AppLocalization.appLocalizations.SwitchToLightTheme
+                    : AppLocalization.appLocalizations.SwitchToDarkTheme,
                 trailingWidget: Switch(
                   thumbIcon: thumbIcon(context),
                   value: state.isDark,
@@ -155,22 +154,22 @@ class SenseiDrawer extends StatelessWidget {
         builder: (context, state) {
           Widget trailingWidget =
               const Icon(Icons.query_builder_rounded, color: Colors.red);
-          String subtitleText = appLocalizations.AppOflineLoading;
+          String subtitleText = AppLocalization.appLocalizations.AppOflineLoading;
           bool groupTop = false;
           if (state is HiveDataBaseHasData) {
             trailingWidget =
                 const Icon(Icons.check_box_outlined, color: Colors.green);
-            subtitleText = appLocalizations.AppOnLineMassageRunning;
+            subtitleText = AppLocalization.appLocalizations.AppOnLineMassageRunning;
             groupTop = true;
           } else if (state is HiveDataBaseEmpty) {
             trailingWidget =
                 const Icon(Icons.error_outline_rounded, color: Colors.red);
-            subtitleText = appLocalizations.AppOffLineMassageDontRunning;
+            subtitleText = AppLocalization.appLocalizations.AppOffLineMassageDontRunning;
             groupTop = false;
           } else {
             trailingWidget =
                 const Icon(Icons.query_builder_rounded, color: Colors.yellow);
-            subtitleText = appLocalizations.AppOflineLoading;
+            subtitleText = AppLocalization.appLocalizations.AppOflineLoading;
             groupTop = false;
           }
           return DrawerComponent(
@@ -180,7 +179,7 @@ class SenseiDrawer extends StatelessWidget {
             leadingIcon: state is HiveDataBaseHasData
                 ? Icons.cloud_done_outlined
                 : Icons.cloud_off_rounded,
-            title: appLocalizations.AppOffLine,
+            title: AppLocalization.appLocalizations.AppOffLine,
             subtitle: subtitleText,
             trailingWidget: trailingWidget,
           );
@@ -327,8 +326,8 @@ class SenseiDrawer extends StatelessWidget {
       useDivider: true,
       useGroupTop: true,
       leadingIcon: Icons.clear_all_rounded,
-      title: appLocalizations.clearLogs,
-      subtitle: appLocalizations.clearLogsMassage,
+      title: AppLocalization.appLocalizations.clearLogs,
+      subtitle: AppLocalization.appLocalizations.clearLogsMassage,
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.of(context).pop();
@@ -362,8 +361,8 @@ Widget _buildHowToUse(BuildContext context) {
       useDivider: true,
       useGroupTop: true,
       leadingIcon: Icons.question_answer_outlined,
-      title: appLocalizations.HowToUse,
-      subtitle: appLocalizations.HowToUseMassage,
+      title: AppLocalization.appLocalizations.HowToUse,
+      subtitle: AppLocalization.appLocalizations.HowToUseMassage,
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.pop(context);
@@ -377,8 +376,8 @@ Widget _buildReportProduct(BuildContext context) {
     useDivider: false,
     useGroupBottom: true,
     leadingIcon: Icons.production_quantity_limits_outlined,
-    title: appLocalizations.ReportProduct,
-    subtitle: appLocalizations.ReportProductMassage,
+    title: AppLocalization.appLocalizations.ReportProduct,
+    subtitle: AppLocalization.appLocalizations.ReportProductMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       Navigator.pop(context);
@@ -394,8 +393,8 @@ Widget _buildReadMe(BuildContext context) {
     useDivider: true,
     useGroupTop: true,
     leadingIcon: Icons.description_outlined,
-    title: appLocalizations.ReadMe,
-    subtitle: appLocalizations.ReadMeMassage,
+    title: AppLocalization.appLocalizations.ReadMe,
+    subtitle: AppLocalization.appLocalizations.ReadMeMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devReadMeLink);
@@ -409,8 +408,8 @@ Widget _buildLetestUpdate(BuildContext context) {
     useDivider: true,
     useGroupMiddle: true,
     leadingIcon: Icons.update_outlined,
-    title: appLocalizations.LetastUpdate,
-    subtitle: appLocalizations.LetestUpdateMassage,
+    title: AppLocalization.appLocalizations.LetastUpdate,
+    subtitle: AppLocalization.appLocalizations.LetestUpdateMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devReleaseAppLink);
@@ -424,8 +423,8 @@ Widget _buildGithubToken(BuildContext context) {
     useDivider: true,
     useGroupMiddle: true,
     leadingIcon: Icons.live_help_outlined,
-    title: appLocalizations.GithubTiket,
-    subtitle: appLocalizations.GithubTiketMassage,
+    title: AppLocalization.appLocalizations.GithubTiket,
+    subtitle: AppLocalization.appLocalizations.GithubTiketMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devGitHubTokenLink);
@@ -439,8 +438,8 @@ Widget _buildTelegramChannel(BuildContext context) {
       useDivider: false,
       useGroupBottom: true,
       leadingIcon: Icons.telegram_rounded,
-      title: appLocalizations.TelegramChannel,
-      subtitle: appLocalizations.TelegramChannelMassage,
+      title: AppLocalization.appLocalizations.TelegramChannel,
+      subtitle: AppLocalization.appLocalizations.TelegramChannelMassage,
       onTapped: () {
         HapticFeedback.vibrate();
         UrlRunServices.launchURL(SenseiConst.devTelegramLink);
@@ -453,8 +452,8 @@ Widget _buildDeveloper(BuildContext context) {
     useDivider: true,
     useGroupTop: true,
     leadingIcon: Icons.verified_outlined,
-    title: appLocalizations.Developer,
-    subtitle: appLocalizations.MostafaMahmoud,
+    title: AppLocalization.appLocalizations.Developer,
+    subtitle: AppLocalization.appLocalizations.MostafaMahmoud,
     trailingWidget: const ContactSenseiDev().buildAvatar(context),
     onTapped: () => const ContactSenseiDev().showDevDialog(context),
   );
@@ -466,8 +465,8 @@ Widget _buildAbout(BuildContext context) {
     useDivider: false,
     useGroupBottom: true,
     leadingIcon: Icons.info_outline,
-    title: appLocalizations.About,
-    subtitle: appLocalizations.AboutTadamon,
+    title: AppLocalization.appLocalizations.About,
+    subtitle: AppLocalization.appLocalizations.AboutTadamon,
     onTapped: () => appAbout(context),
   );
 }

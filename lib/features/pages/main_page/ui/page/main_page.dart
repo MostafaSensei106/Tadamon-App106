@@ -135,7 +135,6 @@ class _MainPageState extends State<MainPage>
       child: BlocBuilder<PageCubit, MainPageState>(
         builder: (context, state) {
           return Scaffold(
-
             key: const ValueKey<String>('main_page_scaffold'),
             backgroundColor: const Color(0xffF26A5A),
             appBar: SenseiAppBar(
@@ -152,7 +151,7 @@ class _MainPageState extends State<MainPage>
               ),
               child: Stack(
                 children: [
-                 // AnimatedTriangles(),
+                  // AnimatedTriangles(),
                   MainPageContainer(
                     pageController: _pageController,
                     onPageChanged: _onPageChanged,

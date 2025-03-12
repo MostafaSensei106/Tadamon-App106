@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class AppLocalization {
-  static late S appLocalizations;
+  static late S setLocalization;
 
   static void initLocalization(BuildContext context) {
-    appLocalizations = S.of(context);
+    setLocalization = S.of(context);
   }
 
 //   static bool isInitialized() {

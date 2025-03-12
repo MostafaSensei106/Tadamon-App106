@@ -51,7 +51,6 @@ class TadamonApp extends StatelessWidget {
                 builder: (context, child) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     AppLocalization.initLocalization(context);
-                    initTheme(context);
                   });
                   return child!;
                 },

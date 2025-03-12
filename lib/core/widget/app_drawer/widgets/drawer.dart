@@ -30,7 +30,7 @@ class SenseiDrawer extends StatelessWidget {
   WidgetStateProperty<Icon> thumbIcon(BuildContext context) {
     return WidgetStateProperty.resolveWith<Icon>((Set<WidgetState> states) {
       if (states.contains(WidgetState.selected)) {
-        return Icon(Icons.check, color: appThemeData.colorScheme.primary);
+        return Icon(Icons.check, color: Theme.of(context).colorScheme.primary);
       }
       return const Icon(Icons.close);
     });
@@ -40,7 +40,7 @@ class SenseiDrawer extends StatelessWidget {
     return SizedBox(
       width: 0.90.sw,
       child: Drawer(
-        //backgroundColor: appThemeData.colorScheme.surface,
+        //backgroundColor: Theme.of(context).colorScheme.surface,
         shape: ContinuousRectangleBorder(
           borderRadius:
               BorderRadius.circular(SenseiConst.outBorderRadius.r + 7),

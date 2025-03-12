@@ -7,8 +7,6 @@ import 'package:tadamon/core/config/theme/colors/light_theme.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_cubit.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_shared_preferences.dart';
 import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_state.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_helper.dart';
-import 'package:tadamon/core/helpers/localization_helper/localization_helper.dart';
 import 'package:tadamon/core/routing/app_router.dart';
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:toastification/toastification.dart';
@@ -48,12 +46,7 @@ class TadamonApp extends StatelessWidget {
                   GlobalCupertinoLocalizations.delegate,
                 ],
                 supportedLocales: S.delegate.supportedLocales,
-                builder: (context, child) {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    AppLocalization.initLocalization(context);
-                  });
-                  return child!;
-                },
+
               ),
             );
           },

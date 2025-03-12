@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_helper.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class HomeTip extends StatefulWidget {
@@ -82,16 +83,16 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   ///
   /// The [Container] widget has a [ListTile] widget as child, which is
   /// configured with a subtitleTextStyle of a [TextStyle] with a color of
-  /// [Theme.of(context).colorScheme.onSecondaryContainer].
+  /// [appThemeData.colorScheme.onSecondaryContainer].
   ///
   /// The [ListTile] widget has an [Icon] widget as leading, which is
   /// configured with an [Icons.lightbulb_outline_rounded] icon, a size of
   /// [SenseiConst.iconSize], and a color of
-  /// [Theme.of(context).colorScheme.onSecondaryContainer].
+  /// [appThemeData.colorScheme.onSecondaryContainer].
   ///
   /// The [ListTile] widget has a [Text] widget as title, which is configured
   /// with the [S.of(context).AppName] text, and a style of a [TextStyle] with
-  /// a color of [Theme.of(context).colorScheme.onSecondaryContainer].
+  /// a color of [appThemeData.colorScheme.onSecondaryContainer].
   ///
   /// The [ListTile] widget has a [Text] widget as subtitle, which is
   /// configured with the [S.of(context).AppDescription] text.
@@ -108,24 +109,24 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
             padding: const EdgeInsets.all(SenseiConst.padding),
             decoration: BoxDecoration(
               border: Border.all(
-                color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
+                color: appThemeData.colorScheme.outline.withAlpha(0x80),
               ),
               borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-              color: Theme.of(context).colorScheme.surfaceContainer,
+              color: appThemeData.colorScheme.surfaceContainer,
             ),
             child: ListTile(
               subtitleTextStyle: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
+                color: appThemeData.colorScheme.onSurface,
               ),
               leading: Icon(
                 Icons.lightbulb_outline_rounded,
                 size: SenseiConst.iconSize,
-                color: Theme.of(context).colorScheme.onSurface,
+                color: appThemeData.colorScheme.onSurface,
               ),
               title: Text(
                 S.of(context).AppName,
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurface,
+                  color: appThemeData.colorScheme.onSurface,
                 ),
               ),
               subtitle: Text(

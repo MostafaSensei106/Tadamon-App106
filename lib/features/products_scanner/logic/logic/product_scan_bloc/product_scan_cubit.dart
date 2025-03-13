@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tadamon/core/controller/network_controller/network_controller.dart';
-import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
+import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/features/counter_manager/logic/counter_manager.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';

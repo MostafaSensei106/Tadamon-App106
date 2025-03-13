@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/app_toast/app_toast.dart';
-import 'package:tadamon/core/widget/button_component/button_compnent.dart';
-import 'package:tadamon/core/widget/dilog_component/dilog_component.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
+import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
 
 class OnboardingPageTwo extends StatefulWidget {
@@ -153,7 +153,7 @@ class AppOnline extends StatelessWidget {
     return BlocListener<LocalDBCubit, LocalDBState>(
       listener: (context, state) {
         if (state is HiveDataFetchingFromFireStore) {
-          const DilogComponent(
+          const DilogWatingComponent(
                   title: 'جاري استيراد البيانات',
                   message: 'يرجى الانتظار حتى تكتمل المزامنة...')
               .show(context);

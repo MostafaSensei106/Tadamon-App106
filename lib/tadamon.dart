@@ -46,7 +46,6 @@ class TadamonApp extends StatelessWidget {
                   GlobalCupertinoLocalizations.delegate,
                 ],
                 supportedLocales: S.delegate.supportedLocales,
-
               ),
             );
           },

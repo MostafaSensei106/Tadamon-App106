@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
-import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
-import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
+import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
+import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class DonationSheetContent extends StatelessWidget {

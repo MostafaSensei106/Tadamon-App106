@@ -1,5 +1,5 @@
 import 'package:tadamon/core/services/object_box_services/object_box_service.dart';
-import 'package:tadamon/core/widget/app_toast/app_toast.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';

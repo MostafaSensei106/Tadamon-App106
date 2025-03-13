@@ -6,7 +6,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/features/donation/widget/donation_sheet_content.dart';
 import 'package:tadamon/features/edit_text/widgets/edit_text_sheet_content.dart';
-import 'package:tadamon/core/widget/home_tool_component/home_tool_component.dart';
+import 'package:tadamon/core/widgets/home_tool_component/home_tool_component.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/product_scan_bloc/product_scan_cubit.dart';
 import 'package:tadamon/generated/l10n.dart';
 

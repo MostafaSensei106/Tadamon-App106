@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/core/widget/app_toast/app_toast.dart';
-import 'package:tadamon/core/widget/button_component/button_compnent.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 
 class DotIndicatorNav extends StatefulWidget {
   const DotIndicatorNav({

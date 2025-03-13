@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/lottie_component/lottie_component.dart';
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
+import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart';
 
 errorScreen() {
   ErrorWidget.builder = (details) {
@@ -14,6 +15,10 @@ errorScreen() {
               LottieComponent(
                   lottiePath: SenseiConst.lottieCatErrorAnimation,
                   text: details.exception.toString()),
+              const SizedBox(
+                height: 8,
+              ),
+              const Text('حدث خطاء في التطبيق'),
               const SizedBox(height: 8),
               Text(
                 details.exception.toString(),
@@ -21,10 +26,10 @@ errorScreen() {
                 style: const TextStyle(color: Colors.grey),
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                },
-                child: const Text('إعادة المحاولة'),
+              ButtonCompnent(
+                label: 'ابلع غن الخطاء',
+                icon: Icons.report_gmailerrorred_rounded,
+                onPressed: () => {},
               ),
             ],
           ),

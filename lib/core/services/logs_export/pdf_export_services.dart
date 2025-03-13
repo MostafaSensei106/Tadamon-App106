@@ -5,7 +5,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/helpers/extensions/date_format_extension.dart';
-import 'package:tadamon/core/widget/app_toast/app_toast.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 
 class PdfExportServices {
@@ -27,13 +27,11 @@ class PdfExportServices {
       build: (context) => pw.Column(
         crossAxisAlignment: pw.CrossAxisAlignment.start,
         children: [
-          // إضافة الصورة في الأعلى
           pw.Center(
             child: pw.Image(image, width: 150, height: 150),
           ),
           pw.SizedBox(height: 20),
           
-          // عنوان التقرير بتنسيق جذاب
           pw.Center(
             child: pw.Text(
               " تقرير البيانات",
@@ -42,7 +40,6 @@ class PdfExportServices {
           ),
           pw.SizedBox(height: 20),
           
-          // جدول البيانات
           // ignore: deprecated_member_use
       pw.Table.fromTextArray(
             headers: headers,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/lottie_component/lottie_component.dart';
+import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_bloc.dart';
 import 'package:tadamon/features/pages/search_page/logic/search_state.dart';
 import 'package:tadamon/features/pages/search_page/ui/widget/product_expansion_tile.dart';

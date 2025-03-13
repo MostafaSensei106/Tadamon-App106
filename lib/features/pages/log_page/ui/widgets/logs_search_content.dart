@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/lottie_component/lottie_component.dart';
+import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart';
 import 'package:tadamon/features/pages/log_page/logic/bloc/logs_bloc.dart';
 import 'package:tadamon/features/pages/log_page/logic/bloc/logs_state.dart';
 import 'package:tadamon/features/pages/log_page/ui/widgets/productlogs_expansiontile_component.dart';

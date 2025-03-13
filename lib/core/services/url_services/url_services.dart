@@ -1,4 +1,4 @@
-import 'package:tadamon/core/widget/app_toast/app_toast.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlRunServices {

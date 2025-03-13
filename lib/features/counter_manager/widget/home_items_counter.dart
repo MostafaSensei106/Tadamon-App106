@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/counter_items_component/counter_items_component.dart';
+import 'package:tadamon/core/widgets/counter_items_component/counter_items_component.dart';
 import 'package:tadamon/features/counter_manager/logic/counter_manager.dart';
 import 'package:tadamon/generated/l10n.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
-import 'package:tadamon/core/widget/app_toast/app_toast.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/generated/l10n.dart';
 import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart';
 

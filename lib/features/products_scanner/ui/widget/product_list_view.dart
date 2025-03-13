@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
+import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
 class ProductListView extends StatelessWidget {

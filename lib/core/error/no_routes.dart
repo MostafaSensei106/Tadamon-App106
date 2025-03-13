@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_helper.dart';
 
 class NoRoutes extends StatelessWidget {
   const NoRoutes({super.key});
@@ -19,21 +18,21 @@ class NoRoutes extends StatelessWidget {
             children: [
               Icon(
                 Icons.warning_amber_rounded,
-                color: appThemeData.colorScheme.error,
+                color: Theme.of(context).colorScheme.error,
                 size: 100,
               ),
               const SizedBox(height: 20),
               Text(
                 'لم يتم العثور على الصفحة:',
-                style: appThemeData.textTheme.headlineSmall?.copyWith(
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: appThemeData.colorScheme.error,
+                      color: Theme.of(context).colorScheme.error,
                     ),
               ),
               const SizedBox(height: 10),
               Text(
                 '${ModalRoute.of(context)?.settings.name}',
-                style: appThemeData.textTheme.bodyLarge?.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontStyle: FontStyle.italic,
                       color: Colors.grey[600],
                     ),
@@ -42,7 +41,7 @@ class NoRoutes extends StatelessWidget {
               ElevatedButton(
                 onPressed: () => Navigator.pop(context),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: appThemeData.colorScheme.error,
+                  backgroundColor: Theme.of(context).colorScheme.error,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   shape: RoundedRectangleBorder(

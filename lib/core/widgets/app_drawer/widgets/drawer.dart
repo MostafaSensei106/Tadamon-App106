@@ -12,12 +12,12 @@ import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_toggle
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/core/services/logs_export/pdf_export_services.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
-import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
-import 'package:tadamon/core/widget/button_component/button_compnent.dart';
-import 'package:tadamon/core/widget/dilog_component/dilog_component.dart';
-import 'package:tadamon/core/widget/app_toast/app_toast.dart';
-import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
-import 'package:tadamon/core/widget/app_drawer/widgets/drawer_header.dart';
+import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
+import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
+import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
+import 'package:tadamon/core/widgets/app_drawer/widgets/drawer_header.dart';
 import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
 import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
@@ -193,7 +193,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
-            const DilogComponent(
+            const DilogWatingComponent(
                     title: 'جاري استيراد البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);
@@ -236,7 +236,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
-            const DilogComponent(
+            const DilogWatingComponent(
                     title: 'جاري تحديث قاعدة البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);
@@ -281,7 +281,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataBaseDeleting) {
-            const DilogComponent(
+            const DilogWatingComponent(
                     title: 'جاري حذف البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);

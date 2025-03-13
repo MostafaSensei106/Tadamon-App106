@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_helper.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class HomeTip extends StatefulWidget {

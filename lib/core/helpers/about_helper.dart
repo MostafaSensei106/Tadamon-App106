@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/textbutton_component/textbutton_component.dart';
+import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 void appAbout(BuildContext context) {
@@ -54,16 +54,14 @@ void appAbout(BuildContext context) {
       actions: <Widget>[
         TextButtonComponent(
           icon: Icons.close,
-          onpressed: () => Navigator.pop(context),
+          onTap: () => Navigator.pop(context),
           text: S.of(context).close,
           isClose: true,
         ),
-
-        ///show license
         TextButtonComponent(
           icon: Icons.difference_outlined,
         
-          onpressed: () {
+          onTap: () {
             showLicensePage(
               context: context,
               applicationName: 'تطبيق تضامن',

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/bottom_sheet/ui/model_bottom_sheet.dart';
-import 'package:tadamon/core/widget/button_component/button_compnent.dart';
-import 'package:tadamon/core/widget/text_filed_component/text_filed_component.dart';
+import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
+import 'package:tadamon/core/widgets/text_filed_component/text_filed_component.dart';
 import 'package:tadamon/generated/l10n.dart';
 class EditTextSheetContent extends StatefulWidget {
   const EditTextSheetContent({super.key});

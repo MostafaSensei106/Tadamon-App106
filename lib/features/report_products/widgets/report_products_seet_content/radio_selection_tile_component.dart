@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/expansion_tile_component/expansion_tile_component.dart';
+import 'package:tadamon/core/widgets/expansion_tile_component/expansion_tile_component.dart';
 
 class RadioSelectionTileComponent extends StatefulWidget {
   final Function(String)? onChanged;

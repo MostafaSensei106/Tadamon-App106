@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/divider.dart';
+import 'package:tadamon/core/widgets/divider.dart';
 
 class DrawerComponent extends StatelessWidget {
   final IconData leadingIcon;

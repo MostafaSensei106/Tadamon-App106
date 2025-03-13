@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/button_component/button_compnent.dart';
-import 'package:tadamon/core/widget/drawer_component/drawer_component.dart';
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
+import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
 
 class ProductExpansionTileComponent extends StatelessWidget {

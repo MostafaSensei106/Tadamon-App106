@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widget/bottom_sheet/widget/bottom_model_sheet_content.dart';
-import 'package:tadamon/core/widget/bottom_sheet/widget/sheet_header.dart';
+import 'package:tadamon/core/widgets/bottom_sheet/widget/bottom_model_sheet_content.dart';
+import 'package:tadamon/core/widgets/bottom_sheet/widget/sheet_header.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class ModelBottomSheet {

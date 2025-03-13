@@ -53,4 +53,7 @@ final ThemeData lightTheme = ThemeData(
   drawerTheme: const DrawerThemeData(
     backgroundColor: Color(0xfffff8f7),
   ),
+  dialogTheme: const DialogThemeData(
+    backgroundColor: Color(0xfffff8f7)
+  )
 );

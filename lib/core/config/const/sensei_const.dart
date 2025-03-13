@@ -36,7 +36,7 @@ class SenseiConst {
       "assets/animations/lottie/not_found.json";
   static const String lottieCatErrorAnimation = "assets/animations/lottie/cat_error.json";
   static const String lottieLoadingAnimation =
-      "assets/animations/lottie/loading_animation.json";
+      "assets/animations/lottie/loading.json";
 
   static const double padding = 8;
   static const double iconSize = 27;

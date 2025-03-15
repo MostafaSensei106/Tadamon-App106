@@ -64,6 +64,7 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top: SenseiConst.margin.h),
       padding: EdgeInsets.all(SenseiConst.padding.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),

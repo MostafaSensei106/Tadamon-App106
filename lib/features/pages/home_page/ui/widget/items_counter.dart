@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/counter_items_component/counter_items_component.dart';
 import 'package:tadamon/features/counter_manager/logic/counter_cubit.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
@@ -42,21 +44,20 @@ class ItemsCounterView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Expanded(
-          child: _buildStreamCounter(
-            stream: ObjectboxRepository().getTadamonLogsProductsCount(),
-            icon: Icons.qr_code_rounded,
-            title: S.of(context).scanBarcode,
-            formatter: formatter!,
-          ),
+        _buildStreamCounter(
+          stream: ObjectboxRepository().getTadamonLogsProductsCount(),
+          icon: Icons.qr_code_rounded,
+          title: S.of(context).scanBarcode,
+          formatter: formatter!,
         ),
-        Expanded(
-          child: _buildStreamCounter(
-            stream: FireStoreRepository().getProductsCount(),
-            icon: Icons.checklist_rounded,
-            title: S.of(context).supportedProducts,
-            formatter: formatter,
-          ),
+        SizedBox(
+          width: SenseiConst.margin.w,
+        ),
+        _buildStreamCounter(
+          stream: FireStoreRepository().getProductsCount(),
+          icon: Icons.checklist_rounded,
+          title: S.of(context).supportedProducts,
+          formatter: formatter,
         ),
       ],
     );
@@ -80,10 +81,12 @@ class ItemsCounterView extends StatelessWidget {
         }
 
         final count = snapshot.data!;
-        return CounterItemsComponent(
-          icon: icon,
-          title: title,
-          targetValue: count,
+        return Expanded(
+          child: CounterItemsComponent(
+            icon: icon,
+            title: title,
+            targetValue: count,
+          ),
         );
       },
     );

@@ -1,71 +1,253 @@
 {
   "@@locale": "ar",
 
+  "@appName": {
+    "description": "اسم التطبيق"
+  },
   "appName": "تضامن",
+
+  "@appDescription": {
+    "description": "وصف التطبيق"
+  },
   "appDescription": "دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.",
 
+  "@home": {
+    "description": "العنوان الرئيسي في التطبيق"
+  },
   "home": "الرئيسية",
+
+  "@search": {
+    "description": "زر البحث"
+  },
   "search": "بحث",
+
+  "@logs": {
+    "description": "صفحة السجلات"
+  },
   "logs": "السجلات",
 
+  "@scanBarcode": {
+    "description": "زر فحص الباركود"
+  },
   "scanBarcode": "فحص الباركود",
+
+  "@imageAnalysis": {
+    "description": "تحليل الصور"
+  },
   "imageAnalysis": "تحليل الصور",
+
+  "@editText": {
+    "description": "تعديل النصوص"
+  },
   "editText": "تعديل النص",
-  "palestineMap": "خريطة فلسطين",
+
+  "@palatineMap": {
+    "description": "خريطة فلسطين"
+  },
+  "palatineMap": "خريطة فلسطين",
+
+  "@donate": {
+    "description": "زر التبرع لغزة"
+  },
   "donate": "تبرع لغزة",
 
-  "scannedProducts": "المنتجات التي تمت مراجعتها",
+  "@scanedProducts": {
+    "description": "عدد المنتجات التي تمت مراجعتها"
+  },
+  "scanedProducts": "المنتجات التي تمت مراجعتها",
+
+  "@supportedProducts": {
+    "description": "عدد المنتجات التي تم دعمها"
+  },
   "supportedProducts": "المنتجات التي تم دعمها",
 
+  "@systemTheme": {
+    "description": "إعدادات لون الواجهة"
+  },
   "systemTheme": "لون واجهة التطبيق",
+
+  "@followSystemTheme": {
+    "description": "مطابقة لون التطبيق مع النظام"
+  },
   "followSystemTheme": "مطابقة لون النظام",
+
+  "@darkTheme": {
+    "description": "الوضع الداكن"
+  },
   "darkTheme": "الوضع الداكن",
+
+  "@lightTheme": {
+    "description": "الوضع الفاتح"
+  },
   "lightTheme": "الوضع الفاتح",
+
+  "@switchToDarkTheme": {
+    "description": "التبديل إلى الوضع الداكن"
+  },
   "switchToDarkTheme": "التبديل إلى الوضع الداكن",
+
+  "@switchToLightTheme": {
+    "description": "التبديل إلى الوضع الفاتح"
+  },
   "switchToLightTheme": "التبديل إلى الوضع الفاتح",
 
-  "appOffline": "تضامن دون إنترنت",
-  "appOfflineMessageDontRunning": "التطبيق غير متصل.",
-  "appOnlineMessageRunning": "التطبيق يعمل بنجاح.",
-  "appOfflineLoading": "انتظر ...",
+  "@appOffLine": {
+    "description": "حالة التطبيق عند عدم الاتصال بالإنترنت"
+  },
+  "appOffLine": "تضامن دون إنترنت",
 
+  "@appOffLineMassageDontRunning": {
+    "description": "رسالة عدم الاتصال بالإنترنت"
+  },
+  "appOffLineMassageDontRunning": "التطبيق غير متصل.",
+
+  "@appOnLineMassageRunning": {
+    "description": "رسالة نجاح تشغيل التطبيق"
+  },
+  "appOnLineMassageRunning": "التطبيق يعمل بنجاح.",
+
+  "@appOflineLoading": {
+    "description": "تحميل بيانات التطبيق دون اتصال"
+  },
+  "appOflineLoading": "انتظر ...",
+
+  "@enableOnline": {
+    "description": "تحميل قائمة المنتجات"
+  },
   "enableOnline": "تحميل قائمة المنتجات",
-  "enableOnlineMessage": "تشغيل التطبيق بدون إنترنت.",
 
+  "@enableOnlineMassage": {
+    "description": "رسالة عند تشغيل التطبيق بدون إنترنت"
+  },
+  "enableOnlineMassage": "تشغيل التطبيق بدون إنترنت.",
+
+  "@clearLogs": {
+    "description": "حذف السجلات"
+  },
   "clearLogs": "حذف السجلات",
-  "clearLogsMessage": "مسح سجلات المنتجات في التطبيق.",
 
+  "@clearLogsMassage": {
+    "description": "مسح سجلات المنتجات في التطبيق"
+  },
+  "clearLogsMassage": "مسح سجلات المنتجات في التطبيق.",
+
+  "@howToUse": {
+    "description": "الأسئلة الشائعة"
+  },
   "howToUse": "الأسئلة الشائعة",
-  "howToUseMessage": "تعرف على طريقة استخدام التطبيق.",
 
+  "@howToUseMassage": {
+    "description": "طريقة استخدام التطبيق"
+  },
+  "howToUseMassage": "تعرف على طريقة استخدام التطبيق.",
+
+  "@reportProduct": {
+    "description": "الإبلاغ عن منتج"
+  },
   "reportProduct": "الإبلاغ عن منتج",
-  "reportProductMessage": "ساعدنا في تحسين التطبيق.",
 
+  "@reportProductMassage": {
+    "description": "مساعدة في تحسين التطبيق"
+  },
+  "reportProductMassage": "ساعدنا في تحسين التطبيق.",
+
+  "@test": {
+    "description": "اختبار"
+  },
   "test": "تجريبي",
 
+  "@sheetTitleProductInfo": {
+    "description": "عنوان تفاصيل المنتج"
+  },
   "sheetTitleProductInfo": "تفاصيل المنتج",
+
+  "@developer": {
+    "description": "اسم المطور"
+  },
   "developer": "المطور",
+
+  "@mostafaMahmoud": {
+    "description": "اسم المطور بالكامل"
+  },
   "mostafaMahmoud": "Mostafa Mahmoud",
 
+  "@readMe": {
+    "description": "زر قراءة مستند المشروع"
+  },
   "readMe": "ReadMe",
-  "readMeMessage": "رابط إلى مستودع التطبيق على جيت هاب.",
 
-  "latestUpdate": "آخر التحديثات",
-  "latestUpdateMessage": "اطلع على التحديثات وسجل التغييرات.",
+  "@readMeMassage": {
+    "description": "رابط إلى مستودع التطبيق على جيت هاب"
+  },
+  "readMeMassage": "رابط إلى مستودع التطبيق على جيت هاب.",
 
-  "githubTicket": "تذكرة على جيت هاب",
-  "githubTicketMessage": "الإبلاغ عن خطأ أو اقتراح ميزة جديدة.",
+  "@letastUpdate": {
+    "description": "آخر التحديثات"
+  },
+  "letastUpdate": "آخر التحديثات",
 
+  "@letestUpdateMassage": {
+    "description": "تفاصيل آخر تحديث"
+  },
+  "letestUpdateMassage": "اطلع على التحديثات وسجل التغييرات.",
+
+  "@githubTiket": {
+    "description": "إنشاء تذكرة على جيت هاب"
+  },
+  "githubTiket": "تذكرة على جيت هاب",
+
+  "@githubTiketMassage": {
+    "description": "الإبلاغ عن خطأ أو اقتراح ميزة جديدة"
+  },
+  "githubTiketMassage": "الإبلاغ عن خطأ أو اقتراح ميزة جديدة.",
+
+  "@telegramChannel": {
+    "description": "قناة تلغرام"
+  },
   "telegramChannel": "قناة تلغرام",
-  "telegramChannelMessage": "رابط إلى قناة تلغرام.",
 
+  "@telegramChannelMassage": {
+    "description": "رابط إلى قناة تلغرام"
+  },
+  "telegramChannelMassage": "رابط إلى قناة تلغرام.",
+
+  "@about": {
+    "description": "صفحة معلومات عن التطبيق"
+  },
   "about": "معلومات عن التطبيق",
+
+  "@aboutTadamon": {
+    "description": "حول تطبيق تضامن"
+  },
   "aboutTadamon": "حول تطبيق تضامن.",
 
+  "@contactDev": {
+    "description": "زر التواصل مع المطور"
+  },
   "contactDev": "رسالة من المطور",
-  "devMessage": "لا توجد رسالة حالياً.",
-  "devThanks": "شكراً لاستخدام تطبيق تضامن.",
+
+  "@devMassage": {
+    "description": "رسالة المطور"
+  },
+  "devMassage": "لا توجد رسالة حالياً.",
+
+  "@devThx": {
+    "description": "شكر من المطور"
+  },
+  "devThx": "شكراً لاستخدام تطبيق تضامن.",
+
+  "@devDonate": {
+    "description": "التبرع للمطور"
+  },
   "devDonate": "ادعم المطور.",
-  "contactDevMessage": "تابعني على مواقع التواصل الاجتماعي.",
+
+  "@contactDevMassage": {
+    "description": "طرق التواصل مع المطور"
+  },
+  "contactDevMassage": "تابعني على مواقع التواصل الاجتماعي.",
+
+  "@close": {
+    "description": "زر الإغلاق"
+  },
   "close": "إغلاق"
 }

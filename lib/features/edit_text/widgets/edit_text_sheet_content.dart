@@ -15,7 +15,7 @@ class EditTextSheetContent extends StatefulWidget {
   static void showEditTextBottomSheet(BuildContext context) {
     ModelBottomSheet.show(
       context,
-      S.of(context).EditText,
+      S.of(context).editText,
       child: const EditTextSheetContent(),
     );
   }

@@ -14,7 +14,7 @@ class HelpUserPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SidePageAppBar(title:S.of(context).HowToUse),
+      appBar: SidePageAppBar(title:S.of(context).howToUse),
       body: BlocBuilder<HelpUserCubit, HelpUserState>(
         builder: (context, state) {
           if (state is HlepUserLoadingQnaState) {

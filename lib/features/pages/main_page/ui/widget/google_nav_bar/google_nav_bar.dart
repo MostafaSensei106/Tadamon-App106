@@ -53,18 +53,18 @@ class GoogleNavBar extends StatelessWidget {
                     ? Icons.house_rounded
                     : Icons.house_outlined,
                 iconSize: SenseiConst.iconSize.sp,
-                text: S.of(context).Home,
+                text: S.of(context).home,
               ),
               GButton(
                 icon: Icons.search,
                 iconSize: SenseiConst.iconSize,
-                text: S.of(context).Search,
+                text: S.of(context).search,
               ),
               GButton(
                 icon:
                     currentIndex == 2 ? Icons.update_rounded : Icons.update,
                 iconSize: SenseiConst.iconSize,
-                text: S.of(context).Logs,
+                text: S.of(context).logs,
               ),
             ],
             selectedIndex: currentIndex,

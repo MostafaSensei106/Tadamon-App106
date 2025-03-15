@@ -64,7 +64,7 @@ class ContactSenseiDev extends StatelessWidget {
             ),
           ),
           Text(
-            S.of(context).ContactDev,
+            S.of(context).contactDev,
             style: theme.textTheme.titleMedium?.copyWith(fontFamily: 'Tajawal'),
           ),
           SizedBox(height: 6.h),
@@ -88,9 +88,9 @@ class ContactSenseiDev extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 8.0),
-                _buildMessageContainer(context, S.of(context).DevMassage),
+                _buildMessageContainer(context, S.of(context).devMessage),
                 const SizedBox(height: 4.0),
-                _buildProfileRow(context, S.of(context).DevThx),
+                _buildProfileRow(context, S.of(context).devThanks),
                 const SizedBox(height: 4.0),
                 _buildSupportButton(context),
                 const SizedBox(height: 4.0),
@@ -166,7 +166,7 @@ class ContactSenseiDev extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Text(
-                  S.of(context).DevDonate,
+                  S.of(context).devDonate,
                   style: TextStyle(
                     fontFamily: 'Tajawal',
                     color: theme.colorScheme.onPrimaryContainer,
@@ -204,7 +204,7 @@ class ContactSenseiDev extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            S.of(context).ContactDevMassage,
+            S.of(context).contactDevMessage,
             style: _getMessageStyle(context),
           ),
           const _SocialMediaRow(socialLinks: _socialLinks),

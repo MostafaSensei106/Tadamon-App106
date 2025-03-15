@@ -12,7 +12,7 @@ class PalestineMapPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SidePageAppBar(
-        title: S.of(context).PalatineMap,
+        title: S.of(context).palestineMap,
       ),
       body: ClipRRect(
         borderRadius: BorderRadius.only(

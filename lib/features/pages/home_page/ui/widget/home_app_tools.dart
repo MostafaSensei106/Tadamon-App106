@@ -35,7 +35,7 @@ class HomeAppTools extends StatelessWidget {
                   builder: (context, state) {
                 return HomeToolsComponent(
                   icon: Icons.qr_code_rounded,
-                  title: S.of(context).ScanBarcode,
+                  title: S.of(context).scanBarcode,
                   onTapped: () => context
                       .read<ProductScanCubit>()
                       .scanBarcodeCamera(context),
@@ -48,7 +48,7 @@ class HomeAppTools extends StatelessWidget {
                 builder: (context, state) {
                   return HomeToolsComponent(
                     icon: Icons.image_search_rounded,
-                    title: S.of(context).ImageAnalysis,
+                    title: S.of(context).imageAnalysis,
                     onTapped: () => context
                         .read<ProductScanCubit>()
                         .imageAnalysisScan(context),
@@ -58,21 +58,21 @@ class HomeAppTools extends StatelessWidget {
             ),
             HomeToolsComponent(
                 icon: Icons.short_text_outlined,
-                title: S.of(context).EditText,
+                title: S.of(context).editText,
                 onTapped: () {
                   HapticFeedback.vibrate();
                   EditTextSheetContent.showEditTextBottomSheet(context);
                 }),
             HomeToolsComponent(
                 icon: Icons.map_outlined,
-                title: S.of(context).PalatineMap,
+                title: S.of(context).palestineMap,
                 onTapped: () {
                   HapticFeedback.vibrate();
                   Navigator.pushNamed(context, Routes.palatineMap);
                 }),
             HomeToolsComponent(
               icon: Icons.volunteer_activism_outlined,
-              title: S.of(context).Donate,
+              title: S.of(context).donate,
               onTapped: () {
                 HapticFeedback.vibrate();
                 DonationSheetContent.showDonationBottomSheet(context);

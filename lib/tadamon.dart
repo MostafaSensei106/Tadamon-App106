@@ -32,20 +32,23 @@ class TadamonApp extends StatelessWidget {
             return ToastificationWrapper(
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,
-                title: 'تضامن',
+                title: ' تَضَامُنٌ',
                 theme: lightTheme,
                 darkTheme: darkTheme,
                 themeMode: themeState.themeMode,
                 initialRoute: Routes.onBoarding,
                 onGenerateRoute: appRouter.generateRoute,
                 locale: const Locale('ar', 'EG'),
+                supportedLocales: const [
+                  Locale('ar', 'EG'),
+                ], 
                 localizationsDelegates: const [
                   S.delegate,
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,
                 ],
-                supportedLocales: S.delegate.supportedLocales,
+                localeResolutionCallback:(locale, supportedLocales) => const Locale('ar', 'EG'),
               ),
             );
           },

@@ -63,7 +63,7 @@ class _ItemsCounterState extends State<ItemsCounter> {
           Expanded(
             child: CounterItemsComponent(
               icon: Icons.qr_code_rounded,
-              title: S.of(context).scanedProducts,
+              title: S.of(context).scanBarcode,
               counter: _scannedProducts,
             ),
           ),

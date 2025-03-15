@@ -8,7 +8,7 @@ package="com.mhsensei.tadamon">
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:label="تضامن"
+        android:label=" تَضَامُنٌ"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

@@ -88,9 +88,9 @@ class ContactSenseiDev extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 8.0),
-                _buildMessageContainer(context, S.of(context).devMessage),
+                _buildMessageContainer(context, S.of(context).devMassage),
                 const SizedBox(height: 4.0),
-                _buildProfileRow(context, S.of(context).devThanks),
+                _buildProfileRow(context, S.of(context).devThx),
                 const SizedBox(height: 4.0),
                 _buildSupportButton(context),
                 const SizedBox(height: 4.0),
@@ -204,7 +204,7 @@ class ContactSenseiDev extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            S.of(context).contactDevMessage,
+            S.of(context).contactDevMassage,
             style: _getMessageStyle(context),
           ),
           const _SocialMediaRow(socialLinks: _socialLinks),

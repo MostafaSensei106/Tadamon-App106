@@ -93,301 +93,301 @@ abstract class AppLocalizations {
     Locale('ar')
   ];
 
-  /// No description provided for @appName.
+  /// اسم التطبيق
   ///
   /// In ar, this message translates to:
   /// **'تضامن'**
   String get appName;
 
-  /// No description provided for @appDescription.
+  /// وصف التطبيق
   ///
   /// In ar, this message translates to:
   /// **'دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.'**
   String get appDescription;
 
-  /// No description provided for @home.
+  /// العنوان الرئيسي في التطبيق
   ///
   /// In ar, this message translates to:
   /// **'الرئيسية'**
   String get home;
 
-  /// No description provided for @search.
+  /// زر البحث
   ///
   /// In ar, this message translates to:
   /// **'بحث'**
   String get search;
 
-  /// No description provided for @logs.
+  /// صفحة السجلات
   ///
   /// In ar, this message translates to:
   /// **'السجلات'**
   String get logs;
 
-  /// No description provided for @scanBarcode.
+  /// زر فحص الباركود
   ///
   /// In ar, this message translates to:
   /// **'فحص الباركود'**
   String get scanBarcode;
 
-  /// No description provided for @imageAnalysis.
+  /// تحليل الصور
   ///
   /// In ar, this message translates to:
   /// **'تحليل الصور'**
   String get imageAnalysis;
 
-  /// No description provided for @editText.
+  /// تعديل النصوص
   ///
   /// In ar, this message translates to:
   /// **'تعديل النص'**
   String get editText;
 
-  /// No description provided for @palestineMap.
+  /// خريطة فلسطين
   ///
   /// In ar, this message translates to:
   /// **'خريطة فلسطين'**
-  String get palestineMap;
+  String get palatineMap;
 
-  /// No description provided for @donate.
+  /// زر التبرع لغزة
   ///
   /// In ar, this message translates to:
   /// **'تبرع لغزة'**
   String get donate;
 
-  /// No description provided for @scannedProducts.
+  /// عدد المنتجات التي تمت مراجعتها
   ///
   /// In ar, this message translates to:
   /// **'المنتجات التي تمت مراجعتها'**
-  String get scannedProducts;
+  String get scanedProducts;
 
-  /// No description provided for @supportedProducts.
+  /// عدد المنتجات التي تم دعمها
   ///
   /// In ar, this message translates to:
   /// **'المنتجات التي تم دعمها'**
   String get supportedProducts;
 
-  /// No description provided for @systemTheme.
+  /// إعدادات لون الواجهة
   ///
   /// In ar, this message translates to:
   /// **'لون واجهة التطبيق'**
   String get systemTheme;
 
-  /// No description provided for @followSystemTheme.
+  /// مطابقة لون التطبيق مع النظام
   ///
   /// In ar, this message translates to:
   /// **'مطابقة لون النظام'**
   String get followSystemTheme;
 
-  /// No description provided for @darkTheme.
+  /// الوضع الداكن
   ///
   /// In ar, this message translates to:
   /// **'الوضع الداكن'**
   String get darkTheme;
 
-  /// No description provided for @lightTheme.
+  /// الوضع الفاتح
   ///
   /// In ar, this message translates to:
   /// **'الوضع الفاتح'**
   String get lightTheme;
 
-  /// No description provided for @switchToDarkTheme.
+  /// التبديل إلى الوضع الداكن
   ///
   /// In ar, this message translates to:
   /// **'التبديل إلى الوضع الداكن'**
   String get switchToDarkTheme;
 
-  /// No description provided for @switchToLightTheme.
+  /// التبديل إلى الوضع الفاتح
   ///
   /// In ar, this message translates to:
   /// **'التبديل إلى الوضع الفاتح'**
   String get switchToLightTheme;
 
-  /// No description provided for @appOffline.
+  /// حالة التطبيق عند عدم الاتصال بالإنترنت
   ///
   /// In ar, this message translates to:
   /// **'تضامن دون إنترنت'**
-  String get appOffline;
+  String get appOffLine;
 
-  /// No description provided for @appOfflineMessageDontRunning.
+  /// رسالة عدم الاتصال بالإنترنت
   ///
   /// In ar, this message translates to:
   /// **'التطبيق غير متصل.'**
-  String get appOfflineMessageDontRunning;
+  String get appOffLineMassageDontRunning;
 
-  /// No description provided for @appOnlineMessageRunning.
+  /// رسالة نجاح تشغيل التطبيق
   ///
   /// In ar, this message translates to:
   /// **'التطبيق يعمل بنجاح.'**
-  String get appOnlineMessageRunning;
+  String get appOnLineMassageRunning;
 
-  /// No description provided for @appOfflineLoading.
+  /// تحميل بيانات التطبيق دون اتصال
   ///
   /// In ar, this message translates to:
   /// **'انتظر ...'**
-  String get appOfflineLoading;
+  String get appOflineLoading;
 
-  /// No description provided for @enableOnline.
+  /// تحميل قائمة المنتجات
   ///
   /// In ar, this message translates to:
   /// **'تحميل قائمة المنتجات'**
   String get enableOnline;
 
-  /// No description provided for @enableOnlineMessage.
+  /// رسالة عند تشغيل التطبيق بدون إنترنت
   ///
   /// In ar, this message translates to:
   /// **'تشغيل التطبيق بدون إنترنت.'**
-  String get enableOnlineMessage;
+  String get enableOnlineMassage;
 
-  /// No description provided for @clearLogs.
+  /// حذف السجلات
   ///
   /// In ar, this message translates to:
   /// **'حذف السجلات'**
   String get clearLogs;
 
-  /// No description provided for @clearLogsMessage.
+  /// مسح سجلات المنتجات في التطبيق
   ///
   /// In ar, this message translates to:
   /// **'مسح سجلات المنتجات في التطبيق.'**
-  String get clearLogsMessage;
+  String get clearLogsMassage;
 
-  /// No description provided for @howToUse.
+  /// الأسئلة الشائعة
   ///
   /// In ar, this message translates to:
   /// **'الأسئلة الشائعة'**
   String get howToUse;
 
-  /// No description provided for @howToUseMessage.
+  /// طريقة استخدام التطبيق
   ///
   /// In ar, this message translates to:
   /// **'تعرف على طريقة استخدام التطبيق.'**
-  String get howToUseMessage;
+  String get howToUseMassage;
 
-  /// No description provided for @reportProduct.
+  /// الإبلاغ عن منتج
   ///
   /// In ar, this message translates to:
   /// **'الإبلاغ عن منتج'**
   String get reportProduct;
 
-  /// No description provided for @reportProductMessage.
+  /// مساعدة في تحسين التطبيق
   ///
   /// In ar, this message translates to:
   /// **'ساعدنا في تحسين التطبيق.'**
-  String get reportProductMessage;
+  String get reportProductMassage;
 
-  /// No description provided for @test.
+  /// اختبار
   ///
   /// In ar, this message translates to:
   /// **'تجريبي'**
   String get test;
 
-  /// No description provided for @sheetTitleProductInfo.
+  /// عنوان تفاصيل المنتج
   ///
   /// In ar, this message translates to:
   /// **'تفاصيل المنتج'**
   String get sheetTitleProductInfo;
 
-  /// No description provided for @developer.
+  /// اسم المطور
   ///
   /// In ar, this message translates to:
   /// **'المطور'**
   String get developer;
 
-  /// No description provided for @mostafaMahmoud.
+  /// اسم المطور بالكامل
   ///
   /// In ar, this message translates to:
   /// **'Mostafa Mahmoud'**
   String get mostafaMahmoud;
 
-  /// No description provided for @readMe.
+  /// زر قراءة مستند المشروع
   ///
   /// In ar, this message translates to:
   /// **'ReadMe'**
   String get readMe;
 
-  /// No description provided for @readMeMessage.
+  /// رابط إلى مستودع التطبيق على جيت هاب
   ///
   /// In ar, this message translates to:
   /// **'رابط إلى مستودع التطبيق على جيت هاب.'**
-  String get readMeMessage;
+  String get readMeMassage;
 
-  /// No description provided for @latestUpdate.
+  /// آخر التحديثات
   ///
   /// In ar, this message translates to:
   /// **'آخر التحديثات'**
-  String get latestUpdate;
+  String get letastUpdate;
 
-  /// No description provided for @latestUpdateMessage.
+  /// تفاصيل آخر تحديث
   ///
   /// In ar, this message translates to:
   /// **'اطلع على التحديثات وسجل التغييرات.'**
-  String get latestUpdateMessage;
+  String get letestUpdateMassage;
 
-  /// No description provided for @githubTicket.
+  /// إنشاء تذكرة على جيت هاب
   ///
   /// In ar, this message translates to:
   /// **'تذكرة على جيت هاب'**
-  String get githubTicket;
+  String get githubTiket;
 
-  /// No description provided for @githubTicketMessage.
+  /// الإبلاغ عن خطأ أو اقتراح ميزة جديدة
   ///
   /// In ar, this message translates to:
   /// **'الإبلاغ عن خطأ أو اقتراح ميزة جديدة.'**
-  String get githubTicketMessage;
+  String get githubTiketMassage;
 
-  /// No description provided for @telegramChannel.
+  /// قناة تلغرام
   ///
   /// In ar, this message translates to:
   /// **'قناة تلغرام'**
   String get telegramChannel;
 
-  /// No description provided for @telegramChannelMessage.
+  /// رابط إلى قناة تلغرام
   ///
   /// In ar, this message translates to:
   /// **'رابط إلى قناة تلغرام.'**
-  String get telegramChannelMessage;
+  String get telegramChannelMassage;
 
-  /// No description provided for @about.
+  /// صفحة معلومات عن التطبيق
   ///
   /// In ar, this message translates to:
   /// **'معلومات عن التطبيق'**
   String get about;
 
-  /// No description provided for @aboutTadamon.
+  /// حول تطبيق تضامن
   ///
   /// In ar, this message translates to:
   /// **'حول تطبيق تضامن.'**
   String get aboutTadamon;
 
-  /// No description provided for @contactDev.
+  /// زر التواصل مع المطور
   ///
   /// In ar, this message translates to:
   /// **'رسالة من المطور'**
   String get contactDev;
 
-  /// No description provided for @devMessage.
+  /// رسالة المطور
   ///
   /// In ar, this message translates to:
   /// **'لا توجد رسالة حالياً.'**
-  String get devMessage;
+  String get devMassage;
 
-  /// No description provided for @devThanks.
+  /// شكر من المطور
   ///
   /// In ar, this message translates to:
   /// **'شكراً لاستخدام تطبيق تضامن.'**
-  String get devThanks;
+  String get devThx;
 
-  /// No description provided for @devDonate.
+  /// التبرع للمطور
   ///
   /// In ar, this message translates to:
   /// **'ادعم المطور.'**
   String get devDonate;
 
-  /// No description provided for @contactDevMessage.
+  /// طرق التواصل مع المطور
   ///
   /// In ar, this message translates to:
   /// **'تابعني على مواقع التواصل الاجتماعي.'**
-  String get contactDevMessage;
+  String get contactDevMassage;
 
-  /// No description provided for @close.
+  /// زر الإغلاق
   ///
   /// In ar, this message translates to:
   /// **'إغلاق'**

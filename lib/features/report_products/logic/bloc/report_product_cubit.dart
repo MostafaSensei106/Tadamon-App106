@@ -9,20 +9,20 @@ import 'package:tadamon/features/report_products/logic/services/report_service.d
 class ReportProductCubit extends Cubit<ReportProductState> {
   ReportProductCubit() : super(ReportProductInitial());
   bool isFormNotEmpty(String serialNumber, String productName) {
-    if (serialNumber.isNotEmpty &&
-        productName.isNotEmpty) {
+    if (serialNumber.isNotEmpty && productName.isNotEmpty) {
       return true;
     }
     return false;
   }
 
-
   void validateInputs(String serialNumber, String productName) {
     if (isFormNotEmpty(serialNumber, productName)) {
       if (productName.length >= 50) {
-        emit( ReportProductProductNameIsNotValid('الاسم يجب أن يكون أقل من أو يساوى 50 حرف'));
+        emit(ReportProductProductNameIsNotValid(
+            'الاسم يجب أن يكون أقل من أو يساوى 50 حرف'));
       } else if (!RegExp(r'^[0-9]{6,13}$').hasMatch(serialNumber)) {
-        emit( ReportProductSerialNumberIsNotValid('الرقم التسلسلي يجب أن يتكون من 6-13 أرقام'));
+        emit(ReportProductSerialNumberIsNotValid(
+            'الرقم التسلسلي يجب أن يتكون من 6-13 أرقام'));
       } else {
         emit(ReportProductIsValid());
       }
@@ -31,23 +31,20 @@ class ReportProductCubit extends Cubit<ReportProductState> {
     }
   }
 
-
   Future<void> scanBarcode(
       BuildContext context, TextEditingController controller) async {
     try {
-      String? resSerialNumber = await ScannerManager().scanBarcode(context);
-      if (resSerialNumber != null && resSerialNumber != '-1') {
-        controller.text = resSerialNumber;
-      }
+      String scanResult = await ScannerManager().scanBarcode(context);
+      if (scanResult == '-1') return;
+      if (scanResult == '-404') return;
+      controller.text = scanResult;
     } catch (e) {
       AppToast.showErrorToast(e.toString());
     }
   }
 
-
-
   Future<void> submitReport(
-      String serialNumber, String productName, String status ) async {
+      String serialNumber, String productName, String status) async {
     emit(ReportProductIsLoading());
     final report = {
       'serialNumber': serialNumber,
@@ -61,5 +58,4 @@ class ReportProductCubit extends Cubit<ReportProductState> {
       AppToast.showErrorToast('حدث خطاء اثناء ارسال التقرير: $e');
     }
   }
-
 }

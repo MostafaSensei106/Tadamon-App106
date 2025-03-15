@@ -47,7 +47,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         return;
       }
 
-      if (scanResult == '-999') {
+      if (scanResult == '-404') {
         return;
       }
 
@@ -83,6 +83,8 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       if (!context.mounted) return;
       String? scanResult = await ScannerManager().imageAnalysisScan(context);
       if (!context.mounted || scanResult == null) return;
+
+      emit(ProductScanLoading());
       bool isConnected = await NetworkController().checkConnection();
 
       if (isConnected) {
@@ -94,9 +96,10 @@ class ProductScanCubit extends Cubit<ProductScanState> {
             .getTadamonProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       }
-      if (!context.mounted) return;
-      _showProductInfo(context, product);
-      emit(ProductScanSuccess());
+      if (context.mounted) {
+        _showProductInfo(context, product);
+        emit(ProductScanSuccess());
+      }
     } catch (e) {
       AppToast.showErrorToast("Error in imageAnalysisScan: $e");
     }

@@ -88,8 +88,8 @@ class SenseiDrawer extends StatelessWidget {
           useDivider: state.themeMode != ThemeMode.system,
           useGroupTop: state.themeMode != ThemeMode.system,
           leadingIcon: Icons.brightness_auto_outlined,
-          title: S.of(context).SystemTheme,
-          subtitle: S.of(context).FollowSystemTheme,
+          title: S.of(context).systemTheme,
+          subtitle: S.of(context).followSystemTheme,
           trailingWidget: Switch(
             thumbIcon: thumbIcon(context),
             value: state.themeMode == ThemeMode.system,
@@ -122,11 +122,11 @@ class SenseiDrawer extends StatelessWidget {
                     ? Icons.light_mode_outlined
                     : Icons.dark_mode_outlined,
                 title: state.isDark
-                    ? S.of(context).DarkTheme
-                    : S.of(context).LightTheme,
+                    ? S.of(context).darkTheme
+                    : S.of(context).lightTheme,
                 subtitle: state.isDark
-                    ? S.of(context).SwitchToLightTheme
-                    : S.of(context).SwitchToDarkTheme,
+                    ? S.of(context).switchToLightTheme
+                    : S.of(context).switchToDarkTheme,
                 trailingWidget: Switch(
                   thumbIcon: thumbIcon(context),
                   value: state.isDark,
@@ -152,22 +152,22 @@ class SenseiDrawer extends StatelessWidget {
         builder: (context, state) {
           Widget trailingWidget =
               const Icon(Icons.query_builder_rounded, color: Colors.red);
-          String subtitleText = S.of(context).AppOflineLoading;
+          String subtitleText = S.of(context).appOffline;
           bool groupTop = false;
           if (state is HiveDataBaseHasData) {
             trailingWidget =
                 const Icon(Icons.check_box_outlined, color: Colors.green);
-            subtitleText = S.of(context).AppOnLineMassageRunning;
+            subtitleText = S.of(context).appOnlineMessageRunning;
             groupTop = true;
           } else if (state is HiveDataBaseEmpty) {
             trailingWidget =
                 const Icon(Icons.error_outline_rounded, color: Colors.red);
-            subtitleText = S.of(context).AppOffLineMassageDontRunning;
+            subtitleText = S.of(context).appOfflineMessageDontRunning;
             groupTop = false;
           } else {
             trailingWidget =
                 const Icon(Icons.query_builder_rounded, color: Colors.yellow);
-            subtitleText = S.of(context).AppOflineLoading;
+            subtitleText = S.of(context).appOfflineLoading;
             groupTop = false;
           }
           return DrawerComponent(
@@ -177,7 +177,7 @@ class SenseiDrawer extends StatelessWidget {
             leadingIcon: state is HiveDataBaseHasData
                 ? Icons.cloud_done_outlined
                 : Icons.cloud_off_rounded,
-            title: S.of(context).AppOffLine,
+            title: S.of(context).appOffline,
             subtitle: subtitleText,
             trailingWidget: trailingWidget,
           );
@@ -325,7 +325,7 @@ class SenseiDrawer extends StatelessWidget {
       useGroupTop: true,
       leadingIcon: Icons.clear_all_rounded,
       title: S.of(context).clearLogs,
-      subtitle: S.of(context).clearLogsMassage,
+      subtitle: S.of(context).clearLogs,
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.of(context).pop();
@@ -359,8 +359,8 @@ Widget _buildHowToUse(BuildContext context) {
       useDivider: true,
       useGroupTop: true,
       leadingIcon: Icons.question_answer_outlined,
-      title: S.of(context).HowToUse,
-      subtitle: S.of(context).HowToUseMassage,
+      title: S.of(context).howToUse,
+      subtitle: S.of(context).howToUseMessage,
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.pop(context);
@@ -374,8 +374,8 @@ Widget _buildReportProduct(BuildContext context) {
     useDivider: false,
     useGroupBottom: true,
     leadingIcon: Icons.production_quantity_limits_outlined,
-    title: S.of(context).ReportProduct,
-    subtitle: S.of(context).ReportProductMassage,
+    title: S.of(context).reportProduct,
+    subtitle: S.of(context).reportProductMessage,
     onTapped: () {
       HapticFeedback.vibrate();
       Navigator.pop(context);
@@ -391,8 +391,8 @@ Widget _buildReadMe(BuildContext context) {
     useDivider: true,
     useGroupTop: true,
     leadingIcon: Icons.description_outlined,
-    title: S.of(context).ReadMe,
-    subtitle: S.of(context).ReadMeMassage,
+    title: S.of(context).readMe,
+    subtitle: S.of(context).readMeMessage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devReadMeLink);
@@ -406,8 +406,8 @@ Widget _buildLetestUpdate(BuildContext context) {
     useDivider: true,
     useGroupMiddle: true,
     leadingIcon: Icons.update_outlined,
-    title: S.of(context).LetastUpdate,
-    subtitle: S.of(context).LetestUpdateMassage,
+    title: S.of(context).latestUpdate,
+    subtitle: S.of(context).latestUpdateMessage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devReleaseAppLink);
@@ -421,8 +421,8 @@ Widget _buildGithubToken(BuildContext context) {
     useDivider: true,
     useGroupMiddle: true,
     leadingIcon: Icons.live_help_outlined,
-    title: S.of(context).GithubTiket,
-    subtitle: S.of(context).GithubTiketMassage,
+    title: S.of(context).githubTicket,
+    subtitle: S.of(context).githubTicketMessage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devGitHubTokenLink);
@@ -436,8 +436,8 @@ Widget _buildTelegramChannel(BuildContext context) {
       useDivider: false,
       useGroupBottom: true,
       leadingIcon: Icons.telegram_rounded,
-      title: S.of(context).TelegramChannel,
-      subtitle: S.of(context).TelegramChannelMassage,
+      title: S.of(context).telegramChannel,
+      subtitle: S.of(context).telegramChannelMessage,
       onTapped: () {
         HapticFeedback.vibrate();
         UrlRunServices.launchURL(SenseiConst.devTelegramLink);
@@ -450,8 +450,8 @@ Widget _buildDeveloper(BuildContext context) {
     useDivider: true,
     useGroupTop: true,
     leadingIcon: Icons.verified_outlined,
-    title: S.of(context).Developer,
-    subtitle: S.of(context).MostafaMahmoud,
+    title: S.of(context).developer,
+    subtitle: S.of(context).mostafaMahmoud,
     trailingWidget: const ContactSenseiDev().buildAvatar(context),
     onTapped: () => const ContactSenseiDev().showDevDialog(context),
   );
@@ -463,8 +463,8 @@ Widget _buildAbout(BuildContext context) {
     useDivider: false,
     useGroupBottom: true,
     leadingIcon: Icons.info_outline,
-    title: S.of(context).About,
-    subtitle: S.of(context).AboutTadamon,
+    title: S.of(context).about,
+    subtitle: S.of(context).about,
     onTapped: () => appAbout(context),
   );
 }

@@ -1,73 +1,71 @@
 {
   "@@locale": "ar",
 
-  "AppName": "تضامن",
-  "AppDescription": "دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.",
+  "appName": "تضامن",
+  "appDescription": "دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.",
 
-  "Home": "الرئيسية",
-  "Search": "بحث",
-  "Logs": "السجلات",
+  "home": "الرئيسية",
+  "search": "بحث",
+  "logs": "السجلات",
 
-  "ScanBarcode": "فحص الباركود",
-  "ImageAnalysis": "تحليل الصور",
-  "EditText": "تعديل النص",
-  "PalatineMap": "خريطة فلسطين",
-  "Donate": "تبرع لغزة",
+  "scanBarcode": "فحص الباركود",
+  "imageAnalysis": "تحليل الصور",
+  "editText": "تعديل النص",
+  "palestineMap": "خريطة فلسطين",
+  "donate": "تبرع لغزة",
 
-  "scanedProducts": "المنتجات التي تمت مراجعتها",
+  "scannedProducts": "المنتجات التي تمت مراجعتها",
   "supportedProducts": "المنتجات التي تم دعمها",
 
-  "SystemTheme": "لون واجهة التطبيق",
-  "FollowSystemTheme": "مطابقة لون النظام",
-  "DarkTheme": "الوضع الداكن",
-  "LightTheme": "الوضع الفاتح",
-  "SwitchToDarkTheme": "التبديل إلى الوضع الداكن",
-  "SwitchToLightTheme": "التبديل إلى الوضع الفاتح",
+  "systemTheme": "لون واجهة التطبيق",
+  "followSystemTheme": "مطابقة لون النظام",
+  "darkTheme": "الوضع الداكن",
+  "lightTheme": "الوضع الفاتح",
+  "switchToDarkTheme": "التبديل إلى الوضع الداكن",
+  "switchToLightTheme": "التبديل إلى الوضع الفاتح",
 
-  "AppOffLine": "تضامن دون إنترنت",
-  "AppOffLineMassageDontRunning": "التطبيق غير متصل.",
-  "AppOnLineMassageRunning": "التطبيق يعمل بنجاح.",
-  "AppOflineLoading": " انتظر ...",
+  "appOffline": "تضامن دون إنترنت",
+  "appOfflineMessageDontRunning": "التطبيق غير متصل.",
+  "appOnlineMessageRunning": "التطبيق يعمل بنجاح.",
+  "appOfflineLoading": "انتظر ...",
 
-  "EnableOnline": "تحميل قائمة المنتجات",
-  "EnableOnlineMassage": "تشغيل التطبيق بدون إنترنت.",
+  "enableOnline": "تحميل قائمة المنتجات",
+  "enableOnlineMessage": "تشغيل التطبيق بدون إنترنت.",
 
   "clearLogs": "حذف السجلات",
-  "clearLogsMassage": "مسح سجلات المنتجات في التطبيق.",
+  "clearLogsMessage": "مسح سجلات المنتجات في التطبيق.",
 
-  "HowToUse": "الأسئلة الشائعة",
-  "HowToUseMassage": "تعرف على طريقة استخدام التطبيق.",
+  "howToUse": "الأسئلة الشائعة",
+  "howToUseMessage": "تعرف على طريقة استخدام التطبيق.",
 
-  "ReportProduct": "الإبلاغ عن منتج",
-  "ReportProductMassage": "ساعدنا في تحسين التطبيق.",
+  "reportProduct": "الإبلاغ عن منتج",
+  "reportProductMessage": "ساعدنا في تحسين التطبيق.",
 
-  "Test": "تجريبي",
+  "test": "تجريبي",
 
-  "SheetTitleProductInfo": "تفاصيل المنتج",
-  "Developer": "المطور",
-  "MostafaMahmoud": "Mostafa Mahmoud",
+  "sheetTitleProductInfo": "تفاصيل المنتج",
+  "developer": "المطور",
+  "mostafaMahmoud": "Mostafa Mahmoud",
 
-  "ReadMe": "ReadMe",
-  "ReadMeMassage": "رابط إلى مستودع التطبيق على جيت هاب.",
+  "readMe": "ReadMe",
+  "readMeMessage": "رابط إلى مستودع التطبيق على جيت هاب.",
 
-  "LetastUpdate": "آخر التحديثات",
-  "LetestUpdateMassage": "اطلع على التحديثات وسجل التغييرات.",
+  "latestUpdate": "آخر التحديثات",
+  "latestUpdateMessage": "اطلع على التحديثات وسجل التغييرات.",
 
-  "GithubTiket": "تذكرة على جيت هاب",
-  "GithubTiketMassage": "الإبلاغ عن خطأ أو اقتراح ميزة جديدة.",
+  "githubTicket": "تذكرة على جيت هاب",
+  "githubTicketMessage": "الإبلاغ عن خطأ أو اقتراح ميزة جديدة.",
 
-  "TelegramChannel": "قناة تلغرام",
-  "TelegramChannelMassage": "رابط إلى قناة تلغرام.",
+  "telegramChannel": "قناة تلغرام",
+  "telegramChannelMessage": "رابط إلى قناة تلغرام.",
 
-  "About": "معلومات عن التطبيق",
-  "AboutTadamon": "حول تطبيق تضامن.",
+  "about": "معلومات عن التطبيق",
+  "aboutTadamon": "حول تطبيق تضامن.",
 
-  "ContactDev": "رسالة من المطور",
-  "DevMassage": "لا توجد رسالة حالياً.",
-  "DevThx": "شكراً لاستخدام تطبيق تضامن.",
-  "DevDonate": "ادعم المطور.",
-  "ContactDevMassage": "تابعني على مواقع التواصل الاجتماعي.",
+  "contactDev": "رسالة من المطور",
+  "devMessage": "لا توجد رسالة حالياً.",
+  "devThanks": "شكراً لاستخدام تطبيق تضامن.",
+  "devDonate": "ادعم المطور.",
+  "contactDevMessage": "تابعني على مواقع التواصل الاجتماعي.",
   "close": "إغلاق"
-
-  
 }

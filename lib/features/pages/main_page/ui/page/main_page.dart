@@ -97,11 +97,11 @@ class _MainPageState extends State<MainPage>
   String _getAppBarTitle(AppPage page) {
     switch (_pageCubit.state.currentPage.index) {
       case 0:
-        return S.of(context).Home;
+        return S.of(context).home;
       case 1:
-        return S.of(context).Search;
+        return S.of(context).search;
       case 2:
-        return S.of(context).Logs;
+        return S.of(context).logs;
       default:
         return 'Unknown Page';
     }
@@ -122,6 +122,7 @@ class _MainPageState extends State<MainPage>
   /// pages of the application. The [GoogleNavBar] is a navigation bar
   /// that allows the user to navigate between the different pages.
   ///
+  ///
   /// The [GoogleNavBar] is configured with the current page index of the
   /// [PageCubit] state, and the [onItemTapped] callback is set to the
   /// [_onItemTapped] method which is used to navigate between the pages.
@@ -135,6 +136,7 @@ class _MainPageState extends State<MainPage>
       child: BlocBuilder<PageCubit, MainPageState>(
         builder: (context, state) {
           return Scaffold(
+            resizeToAvoidBottomInset: false,
             key: const ValueKey<String>('main_page_scaffold'),
             backgroundColor: const Color(0xffF26A5A),
             appBar: SenseiAppBar(
@@ -151,7 +153,6 @@ class _MainPageState extends State<MainPage>
               ),
               child: Stack(
                 children: [
-                  // AnimatedTriangles(),
                   MainPageContainer(
                     pageController: _pageController,
                     onPageChanged: _onPageChanged,

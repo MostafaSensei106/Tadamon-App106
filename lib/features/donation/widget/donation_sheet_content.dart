@@ -32,7 +32,7 @@ class DonationSheetContent extends StatelessWidget {
   static void showDonationBottomSheet(BuildContext context) {
     ModelBottomSheet.show(
       context,
-      S.of(context).Donate,
+      S.of(context).donate,
       child: const DonationSheetContent(),
     );
   }

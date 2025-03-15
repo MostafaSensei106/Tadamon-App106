@@ -24,7 +24,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
     if (!context.mounted) return;
     ModelBottomSheet.show(
       context,
-      S.of(context).SheetTitleProductInfo,
+      S.of(context).sheetTitleProductInfo,
       child: ProductListView(
         product: product,
       ),

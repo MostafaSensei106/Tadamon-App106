@@ -123,13 +123,13 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
                 color: Theme.of(context).colorScheme.onSurface,
               ),
               title: Text(
-                S.of(context).AppName,
+                S.of(context).appName,
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               subtitle: Text(
-                S.of(context).AppDescription,
+                S.of(context).appDescription,
               ),
             ),
           ),

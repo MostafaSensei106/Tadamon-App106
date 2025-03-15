@@ -4,11 +4,11 @@ import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
 
-class ObjectboxRepositories {
+class ObjectboxRepository {
   Future<void> syncAllProductsToLocalDB() async {
     try {
       final List<ProductModel> products =
-          await FireStoreRepositorie().downloadAllProductsFromFirebase();
+          await FireStoreRepository().downloadAllProductsFromFirebase();
       ObjectBoxService.instance.tadamonProductsBox.putMany(products);
     } catch (e) {
       AppToast.showErrorToast('حدث خطأ أثناء تحميل المنتجات من قاعدة البيانات');
@@ -89,10 +89,15 @@ class ObjectboxRepositories {
         .toList();
   }
 
-  List<ScannedLogsProductModel> saveLogsTOPDF()  {
+  List<ScannedLogsProductModel> saveLogsTOPDF() {
     var box = ObjectBoxService.instance.tadamonLogsBox.getAll();
     return box
         .map((product) => ScannedLogsProductModel.fromMap(product.toMap()))
         .toList();
+  }
+
+  Stream<int> getTadamonLogsProductsCount() async* {
+    var box = ObjectBoxService.instance.tadamonLogsBox.getAll();
+    yield box.length;
   }
 }

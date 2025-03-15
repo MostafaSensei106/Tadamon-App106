@@ -10,7 +10,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SearchBloc(FireStoreRepositorie()),
+      create: (context) => SearchBloc(FireStoreRepository()),
       child: const SearchPageView(),
     );
   }

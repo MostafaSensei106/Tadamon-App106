@@ -4,7 +4,7 @@ import 'package:tadamon/features/pages/log_page/logic/bloc/logs_state.dart';
 import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
 
 class LogsBloc extends Bloc<LogsEvent, LogsState> {
-  final ObjectboxRepositories repository;
+  final ObjectboxRepository repository;
 
   LogsBloc(this.repository) : super(LogsInitial()) {
     on<GetAllLogs>(_onGetAllLogs); 

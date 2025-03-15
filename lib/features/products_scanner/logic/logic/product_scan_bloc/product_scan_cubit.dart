@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:tadamon/core/controller/network_controller/network_controller.dart';
 import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
-import 'package:tadamon/features/counter_manager/logic/counter_manager.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
@@ -32,7 +31,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
     );
     ScannedLogsProductModel scannedProductToLogs =
         ScannedLogsProductModel.fromProduct(product);
-    ObjectboxRepositories().saveProductToTadamonLogs(scannedProductToLogs);
+    ObjectboxRepository().saveProductToTadamonLogs(scannedProductToLogs);
   }
 
   Future<void> scanBarcodeCamera(BuildContext context) async {
@@ -57,12 +56,12 @@ class ProductScanCubit extends Cubit<ProductScanState> {
 
       if (isConnected) {
         product =
-            await FireStoreRepositorie().getProductBySerialNumber(scanResult);
-        CounterManager.incrementScannedProducts();
+            await FireStoreRepository().getProductBySerialNumber(scanResult);
+      //  CounterManager.incrementScannedProducts();
       } else {
-        product = await ObjectboxRepositories()
+        product = await ObjectboxRepository()
             .getTadamonProductBySerialNumber(scanResult);
-        CounterManager.incrementScannedProducts();
+      //  CounterManager.incrementScannedProducts();
       }
       if (context.mounted) {
         _showProductInfo(
@@ -89,12 +88,12 @@ class ProductScanCubit extends Cubit<ProductScanState> {
 
       if (isConnected) {
         product =
-            await FireStoreRepositorie().getProductBySerialNumber(scanResult);
-        CounterManager.incrementScannedProducts();
+            await FireStoreRepository().getProductBySerialNumber(scanResult);
+       // CounterManager.incrementScannedProducts();
       } else {
-        product = await ObjectboxRepositories()
+        product = await ObjectboxRepository()
             .getTadamonProductBySerialNumber(scanResult);
-        CounterManager.incrementScannedProducts();
+       // CounterManager.incrementScannedProducts();
       }
       if (context.mounted) {
         _showProductInfo(context, product);

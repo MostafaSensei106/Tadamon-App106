@@ -9,7 +9,7 @@ class LocalDBCubit extends Cubit<LocalDBState> {
   Future<void> fetchDataFromFireStore() async {
     emit(HiveDataFetchingFromFireStore());
     try {
-      await ObjectboxRepositories().syncAllProductsToLocalDB();
+      await ObjectboxRepository().syncAllProductsToLocalDB();
       emit(HiveDataFetchingFromFireStoreSuccess());
     } catch (e) {
       emit(HiveDataFetchingFromFireStoreFailure());
@@ -19,7 +19,7 @@ class LocalDBCubit extends Cubit<LocalDBState> {
   Future<void> updateDataBaseFromFireStore() async {
     emit(HiveDataFetchingFromFireStore());
     try {
-      await ObjectboxRepositories().syncAllProductsToLocalDB();
+      await ObjectboxRepository().syncAllProductsToLocalDB();
       emit(HiveDataFetchingFromFireStoreSuccess());
     } catch (e) {
       emit(HiveDataFetchingFromFireStoreFailure());
@@ -29,7 +29,7 @@ class LocalDBCubit extends Cubit<LocalDBState> {
   Future<void> deleteAllLocalProducts() async {
     emit(HiveDataBaseDeleting());
     try {
-      await ObjectboxRepositories().deleteAllTadamonProductsFromLocalDB();
+      await ObjectboxRepository().deleteAllTadamonProductsFromLocalDB();
             emit(HiveDataDeleteSuccess());
     } catch (e) {
       emit(HiveDataDeleteFailure());
@@ -37,7 +37,7 @@ class LocalDBCubit extends Cubit<LocalDBState> {
   }
 
   Future<bool> hiveHasData() async {
-     bool hasData = await ObjectboxRepositories().tadamonProductsBoxHasData();
+     bool hasData = await ObjectboxRepository().tadamonProductsBoxHasData();
     if (hasData) {
     emit(HiveDataBaseHasData());
     return true;

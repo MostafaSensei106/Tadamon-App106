@@ -41,14 +41,15 @@ class TadamonApp extends StatelessWidget {
                 locale: const Locale('ar', 'EG'),
                 supportedLocales: const [
                   Locale('ar', 'EG'),
-                ], 
+                ],
                 localizationsDelegates: const [
                   S.delegate,
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,
                 ],
-                localeResolutionCallback:(locale, supportedLocales) => const Locale('ar', 'EG'),
+                localeResolutionCallback: (locale, supportedLocales) =>
+                    const Locale('ar', 'EG'),
               ),
             );
           },

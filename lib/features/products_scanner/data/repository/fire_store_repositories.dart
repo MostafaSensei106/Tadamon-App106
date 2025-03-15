@@ -3,7 +3,7 @@ import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
-class FireStoreRepositorie {
+class FireStoreRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static const String _tadamonProductsCollection = 'TadamonProducts';
   static const String _productReportCollection = 'TadamonUserReport';
@@ -117,4 +117,12 @@ class FireStoreRepositorie {
         _firestore.collection(_productReportCollection).doc(productName);
     await documentReference.set(productReport);
   }
+
+  Stream<int> getProductsCount() {
+    return _firestore
+        .collection(_tadamonProductsCollection)
+        .snapshots()
+        .map((snapshots) => snapshots.docs.length);
+  }
+
 }

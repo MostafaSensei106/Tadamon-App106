@@ -17,7 +17,7 @@ class ReportService {
       Map<String, dynamic> productReport) async {
     if (await NetworkController().checkConnection()) {
       try {
-        await FireStoreRepositorie().sendReportToBackEnd(productReport);
+        await FireStoreRepository().sendReportToBackEnd(productReport);
         AppToast.showSuccessToast('لقد تلقينا بلاغك');
       } catch (e) {
         AppToast.showErrorToast('حث خطاء');
@@ -49,7 +49,7 @@ class ReportService {
     final localReports = await _getLocalReports();
       for (final report in localReports) {
         try{
-        await FireStoreRepositorie().sendReportToBackEnd(report);
+        await FireStoreRepository().sendReportToBackEnd(report);
         await _clearLocalReports(report);
         AppToast.showToast('تم إرسال بلاغ معلق');
         }catch(e){

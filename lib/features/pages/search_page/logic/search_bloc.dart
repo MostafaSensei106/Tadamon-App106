@@ -4,7 +4,7 @@ import 'package:tadamon/features/pages/search_page/logic/search_state.dart';
 import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  final FireStoreRepositorie repository;
+  final FireStoreRepository repository;
 
   SearchBloc(this.repository) : super(SearchInitial()) {
     on<FetchSearchResult>(_onFeatchSearchResult);

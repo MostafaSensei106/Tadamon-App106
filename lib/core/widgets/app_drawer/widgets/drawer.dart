@@ -332,7 +332,7 @@ class SenseiDrawer extends StatelessWidget {
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.of(context).pop();
-        ObjectboxRepositories().clearTadamonLogsFromLocalDB();
+        ObjectboxRepository().clearTadamonLogsFromLocalDB();
       },
     );
   }
@@ -349,7 +349,7 @@ class SenseiDrawer extends StatelessWidget {
         HapticFeedback.vibrate();
         Navigator.of(context).pop();
         PdfExportServices()
-            .saveDocument(ObjectboxRepositories().saveLogsTOPDF());
+            .saveDocument(ObjectboxRepository().saveLogsTOPDF());
         // ObjectboxRepositories().exportTadamonLogsFromLocalDB();
       },
     );

@@ -76,7 +76,7 @@ class ScannerManager {
       final ImagePicker imagePicker = ImagePicker();
       final XFile? image = await imagePicker.pickImage(
         source: ImageSource.gallery,
-        imageQuality: 50,
+        imageQuality: 45,
       );
       return image;
     } catch (e) {

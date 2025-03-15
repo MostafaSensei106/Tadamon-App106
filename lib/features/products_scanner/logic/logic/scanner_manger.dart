@@ -18,10 +18,16 @@ class ScannerManager {
   }
 
 
-  Future<String?> scanBarcode(BuildContext context) async {
+  Future<String> scanBarcode(BuildContext context) async {
     try {
       final String? barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
         context,
+       barcodeAppBar: BarcodeAppBar(
+         appBarTitle: S.of(context).scanBarcode,
+         centerTitle: true,
+         enableBackButton: true,
+         backButtonIcon:const Icon(Icons.keyboard_double_arrow_right_rounded),
+       ),
         isShowFlashIcon: true,
         delayMillis: 0,
         cameraFace: CameraFace.back,
@@ -33,13 +39,16 @@ class ScannerManager {
       );
       if (barcodeScanRes == null || barcodeScanRes == '-1'){
         AppToast.showErrorToast('لم يتم قراءة اي باركود');
+        return '-1';
       }
       return barcodeScanRes;
     } catch (e) {
       AppToast.showErrorToast('Error occurred while scanning the barcode: ${e.toString()}');
-      return null;
+      return '-999';
     }
   }
+
+  
   Future<String?> imageAnalysisScan(BuildContext context) async {
     try {
       final XFile? image = await _pickImage();

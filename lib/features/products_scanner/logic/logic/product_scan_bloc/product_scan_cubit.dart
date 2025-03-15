@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tadamon/core/controller/network_controller/network_controller.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/features/counter_manager/logic/counter_manager.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
@@ -29,7 +30,8 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         product: product,
       ),
     );
-    ScannedLogsProductModel scannedProductToLogs = ScannedLogsProductModel.fromProduct(product);
+    ScannedLogsProductModel scannedProductToLogs =
+        ScannedLogsProductModel.fromProduct(product);
     ObjectboxRepositories().saveProductToTadamonLogs(scannedProductToLogs);
   }
 
@@ -39,7 +41,15 @@ class ProductScanCubit extends Cubit<ProductScanState> {
     ProductModel product;
 
     try {
-      dynamic scanResult = await ScannerManager().scanBarcode(context);
+      String scanResult = await ScannerManager().scanBarcode(context);
+
+      if (scanResult == '-1') {
+        return;
+      }
+
+      if (scanResult == '-999') {
+        return;
+      }
 
       bool isConnected = await NetworkController().checkConnection();
 
@@ -50,7 +60,8 @@ class ProductScanCubit extends Cubit<ProductScanState> {
             await FireStoreRepositorie().getProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       } else {
-        product = await ObjectboxRepositories().getTadamonProductBySerialNumber(scanResult);
+        product = await ObjectboxRepositories()
+            .getTadamonProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       }
       if (context.mounted) {
@@ -61,31 +72,33 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         emit(ProductScanSuccess());
       }
     } catch (e) {
-      debugPrint("Error in scanBarcodeCamera: $e");
+      AppToast.showErrorToast("Error in scanBarcodeCamera: $e");
     }
   }
 
   Future<void> imageAnalysisScan(BuildContext context) async {
     HapticFeedback.vibrate();
-    bool isConnected = await NetworkController().checkConnection();
     ProductModel product;
     try {
       if (!context.mounted) return;
       String? scanResult = await ScannerManager().imageAnalysisScan(context);
       if (!context.mounted || scanResult == null) return;
+      bool isConnected = await NetworkController().checkConnection();
+
       if (isConnected) {
         product =
             await FireStoreRepositorie().getProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       } else {
-        product = await ObjectboxRepositories().getTadamonProductBySerialNumber(scanResult);
+        product = await ObjectboxRepositories()
+            .getTadamonProductBySerialNumber(scanResult);
         CounterManager.incrementScannedProducts();
       }
       if (!context.mounted) return;
       _showProductInfo(context, product);
       emit(ProductScanSuccess());
     } catch (e) {
-      debugPrint("Error in imageAnalysisScan: $e");
+      AppToast.showErrorToast("Error in imageAnalysisScan: $e");
     }
   }
 }

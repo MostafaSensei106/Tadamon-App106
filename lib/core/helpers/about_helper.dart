@@ -44,7 +44,7 @@ void appAbout(BuildContext context) {
           color: Theme.of(context).colorScheme.surfaceContainer,
         ),
         child: Text(
-          'تم تطوير هذا ',
+          'تم تطوير هذا التطبيق من اجل دعم القضية الفسطينيةو مقاطعة الشركات الداعمة لالاحتلا الصهيوني',
           textAlign: TextAlign.justify,
           style: TextStyle(
             fontSize: 16.sp,
@@ -60,13 +60,12 @@ void appAbout(BuildContext context) {
         ),
         TextButtonComponent(
           icon: Icons.difference_outlined,
-        
           onTap: () {
             showLicensePage(
               context: context,
               applicationName: 'تطبيق تضامن',
               applicationLegalese:
-                  'تم تطوير هذا التطبيق من اجل دعم القضية الفلسطينية',
+                  'Copyright  2024 - ${DateTime.now().year} Mostafa Mahmoud. Licensed under GPL-3.0.',
               applicationIcon: Container(
                 padding: EdgeInsets.all(SenseiConst.padding.w),
                 decoration: BoxDecoration(

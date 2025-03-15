@@ -9,6 +9,7 @@ plugins {
 }
 
 android {
+    
     namespace = "com.mhsensei.tadamon"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
@@ -39,22 +40,8 @@ android {
         }
     }
 
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            def appName = "Tadamon" 
-            def buildType = variant.buildType.name 
-            def versionName = variant.versionName 
-            def date = new Date().format('yyyyMMdd_HHmm') 
-            def abi = output.getFilter(com.android.build.OutputFile.ABI) 
-
-            def fileName = abi != null ? 
-                "${appName}_${buildType}_v${versionName}_${date}_${abi}.apk" : 
-                "${appName}_${buildType}_v${versionName}_${date}.apk"
-
-            output.outputFileName = fileName
-        }
-    }
 }
+
 
 flutter {
     source = "../.."

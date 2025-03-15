@@ -65,7 +65,7 @@ class HomeAppTools extends StatelessWidget {
                 }),
             HomeToolsComponent(
                 icon: Icons.map_outlined,
-                title: S.of(context).palestineMap,
+                title: S.of(context).palatineMap,
                 onTapped: () {
                   HapticFeedback.vibrate();
                   Navigator.pushNamed(context, Routes.palatineMap);

@@ -33,13 +33,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get editText => 'تعديل النص';
 
   @override
-  String get palestineMap => 'خريطة فلسطين';
+  String get palatineMap => 'خريطة فلسطين';
 
   @override
   String get donate => 'تبرع لغزة';
 
   @override
-  String get scannedProducts => 'المنتجات التي تمت مراجعتها';
+  String get scanedProducts => 'المنتجات التي تمت مراجعتها';
 
   @override
   String get supportedProducts => 'المنتجات التي تم دعمها';
@@ -63,40 +63,40 @@ class AppLocalizationsAr extends AppLocalizations {
   String get switchToLightTheme => 'التبديل إلى الوضع الفاتح';
 
   @override
-  String get appOffline => 'تضامن دون إنترنت';
+  String get appOffLine => 'تضامن دون إنترنت';
 
   @override
-  String get appOfflineMessageDontRunning => 'التطبيق غير متصل.';
+  String get appOffLineMassageDontRunning => 'التطبيق غير متصل.';
 
   @override
-  String get appOnlineMessageRunning => 'التطبيق يعمل بنجاح.';
+  String get appOnLineMassageRunning => 'التطبيق يعمل بنجاح.';
 
   @override
-  String get appOfflineLoading => 'انتظر ...';
+  String get appOflineLoading => 'انتظر ...';
 
   @override
   String get enableOnline => 'تحميل قائمة المنتجات';
 
   @override
-  String get enableOnlineMessage => 'تشغيل التطبيق بدون إنترنت.';
+  String get enableOnlineMassage => 'تشغيل التطبيق بدون إنترنت.';
 
   @override
   String get clearLogs => 'حذف السجلات';
 
   @override
-  String get clearLogsMessage => 'مسح سجلات المنتجات في التطبيق.';
+  String get clearLogsMassage => 'مسح سجلات المنتجات في التطبيق.';
 
   @override
   String get howToUse => 'الأسئلة الشائعة';
 
   @override
-  String get howToUseMessage => 'تعرف على طريقة استخدام التطبيق.';
+  String get howToUseMassage => 'تعرف على طريقة استخدام التطبيق.';
 
   @override
   String get reportProduct => 'الإبلاغ عن منتج';
 
   @override
-  String get reportProductMessage => 'ساعدنا في تحسين التطبيق.';
+  String get reportProductMassage => 'ساعدنا في تحسين التطبيق.';
 
   @override
   String get test => 'تجريبي';
@@ -114,25 +114,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get readMe => 'ReadMe';
 
   @override
-  String get readMeMessage => 'رابط إلى مستودع التطبيق على جيت هاب.';
+  String get readMeMassage => 'رابط إلى مستودع التطبيق على جيت هاب.';
 
   @override
-  String get latestUpdate => 'آخر التحديثات';
+  String get letastUpdate => 'آخر التحديثات';
 
   @override
-  String get latestUpdateMessage => 'اطلع على التحديثات وسجل التغييرات.';
+  String get letestUpdateMassage => 'اطلع على التحديثات وسجل التغييرات.';
 
   @override
-  String get githubTicket => 'تذكرة على جيت هاب';
+  String get githubTiket => 'تذكرة على جيت هاب';
 
   @override
-  String get githubTicketMessage => 'الإبلاغ عن خطأ أو اقتراح ميزة جديدة.';
+  String get githubTiketMassage => 'الإبلاغ عن خطأ أو اقتراح ميزة جديدة.';
 
   @override
   String get telegramChannel => 'قناة تلغرام';
 
   @override
-  String get telegramChannelMessage => 'رابط إلى قناة تلغرام.';
+  String get telegramChannelMassage => 'رابط إلى قناة تلغرام.';
 
   @override
   String get about => 'معلومات عن التطبيق';
@@ -144,16 +144,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contactDev => 'رسالة من المطور';
 
   @override
-  String get devMessage => 'لا توجد رسالة حالياً.';
+  String get devMassage => 'لا توجد رسالة حالياً.';
 
   @override
-  String get devThanks => 'شكراً لاستخدام تطبيق تضامن.';
+  String get devThx => 'شكراً لاستخدام تطبيق تضامن.';
 
   @override
   String get devDonate => 'ادعم المطور.';
 
   @override
-  String get contactDevMessage => 'تابعني على مواقع التواصل الاجتماعي.';
+  String get contactDevMassage => 'تابعني على مواقع التواصل الاجتماعي.';
 
   @override
   String get close => 'إغلاق';

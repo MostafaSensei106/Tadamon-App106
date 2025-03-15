@@ -55,7 +55,7 @@ class S {
     return Intl.message(
       'تضامن',
       name: 'appName',
-      desc: '',
+      desc: 'اسم التطبيق',
       args: [],
     );
   }
@@ -65,7 +65,7 @@ class S {
     return Intl.message(
       'دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.',
       name: 'appDescription',
-      desc: '',
+      desc: 'وصف التطبيق',
       args: [],
     );
   }
@@ -75,7 +75,7 @@ class S {
     return Intl.message(
       'الرئيسية',
       name: 'home',
-      desc: '',
+      desc: 'العنوان الرئيسي في التطبيق',
       args: [],
     );
   }
@@ -85,7 +85,7 @@ class S {
     return Intl.message(
       'بحث',
       name: 'search',
-      desc: '',
+      desc: 'زر البحث',
       args: [],
     );
   }
@@ -95,7 +95,7 @@ class S {
     return Intl.message(
       'السجلات',
       name: 'logs',
-      desc: '',
+      desc: 'صفحة السجلات',
       args: [],
     );
   }
@@ -105,7 +105,7 @@ class S {
     return Intl.message(
       'فحص الباركود',
       name: 'scanBarcode',
-      desc: '',
+      desc: 'زر فحص الباركود',
       args: [],
     );
   }
@@ -115,7 +115,7 @@ class S {
     return Intl.message(
       'تحليل الصور',
       name: 'imageAnalysis',
-      desc: '',
+      desc: 'تحليل الصور',
       args: [],
     );
   }
@@ -125,17 +125,17 @@ class S {
     return Intl.message(
       'تعديل النص',
       name: 'editText',
-      desc: '',
+      desc: 'تعديل النصوص',
       args: [],
     );
   }
 
   /// `خريطة فلسطين`
-  String get palestineMap {
+  String get palatineMap {
     return Intl.message(
       'خريطة فلسطين',
-      name: 'palestineMap',
-      desc: '',
+      name: 'palatineMap',
+      desc: 'خريطة فلسطين',
       args: [],
     );
   }
@@ -145,17 +145,17 @@ class S {
     return Intl.message(
       'تبرع لغزة',
       name: 'donate',
-      desc: '',
+      desc: 'زر التبرع لغزة',
       args: [],
     );
   }
 
   /// `المنتجات التي تمت مراجعتها`
-  String get scannedProducts {
+  String get scanedProducts {
     return Intl.message(
       'المنتجات التي تمت مراجعتها',
-      name: 'scannedProducts',
-      desc: '',
+      name: 'scanedProducts',
+      desc: 'عدد المنتجات التي تمت مراجعتها',
       args: [],
     );
   }
@@ -165,7 +165,7 @@ class S {
     return Intl.message(
       'المنتجات التي تم دعمها',
       name: 'supportedProducts',
-      desc: '',
+      desc: 'عدد المنتجات التي تم دعمها',
       args: [],
     );
   }
@@ -175,7 +175,7 @@ class S {
     return Intl.message(
       'لون واجهة التطبيق',
       name: 'systemTheme',
-      desc: '',
+      desc: 'إعدادات لون الواجهة',
       args: [],
     );
   }
@@ -185,7 +185,7 @@ class S {
     return Intl.message(
       'مطابقة لون النظام',
       name: 'followSystemTheme',
-      desc: '',
+      desc: 'مطابقة لون التطبيق مع النظام',
       args: [],
     );
   }
@@ -195,7 +195,7 @@ class S {
     return Intl.message(
       'الوضع الداكن',
       name: 'darkTheme',
-      desc: '',
+      desc: 'الوضع الداكن',
       args: [],
     );
   }
@@ -205,7 +205,7 @@ class S {
     return Intl.message(
       'الوضع الفاتح',
       name: 'lightTheme',
-      desc: '',
+      desc: 'الوضع الفاتح',
       args: [],
     );
   }
@@ -215,7 +215,7 @@ class S {
     return Intl.message(
       'التبديل إلى الوضع الداكن',
       name: 'switchToDarkTheme',
-      desc: '',
+      desc: 'التبديل إلى الوضع الداكن',
       args: [],
     );
   }
@@ -225,47 +225,47 @@ class S {
     return Intl.message(
       'التبديل إلى الوضع الفاتح',
       name: 'switchToLightTheme',
-      desc: '',
+      desc: 'التبديل إلى الوضع الفاتح',
       args: [],
     );
   }
 
   /// `تضامن دون إنترنت`
-  String get appOffline {
+  String get appOffLine {
     return Intl.message(
       'تضامن دون إنترنت',
-      name: 'appOffline',
-      desc: '',
+      name: 'appOffLine',
+      desc: 'حالة التطبيق عند عدم الاتصال بالإنترنت',
       args: [],
     );
   }
 
   /// `التطبيق غير متصل.`
-  String get appOfflineMessageDontRunning {
+  String get appOffLineMassageDontRunning {
     return Intl.message(
       'التطبيق غير متصل.',
-      name: 'appOfflineMessageDontRunning',
-      desc: '',
+      name: 'appOffLineMassageDontRunning',
+      desc: 'رسالة عدم الاتصال بالإنترنت',
       args: [],
     );
   }
 
   /// `التطبيق يعمل بنجاح.`
-  String get appOnlineMessageRunning {
+  String get appOnLineMassageRunning {
     return Intl.message(
       'التطبيق يعمل بنجاح.',
-      name: 'appOnlineMessageRunning',
-      desc: '',
+      name: 'appOnLineMassageRunning',
+      desc: 'رسالة نجاح تشغيل التطبيق',
       args: [],
     );
   }
 
   /// `انتظر ...`
-  String get appOfflineLoading {
+  String get appOflineLoading {
     return Intl.message(
       'انتظر ...',
-      name: 'appOfflineLoading',
-      desc: '',
+      name: 'appOflineLoading',
+      desc: 'تحميل بيانات التطبيق دون اتصال',
       args: [],
     );
   }
@@ -275,17 +275,17 @@ class S {
     return Intl.message(
       'تحميل قائمة المنتجات',
       name: 'enableOnline',
-      desc: '',
+      desc: 'تحميل قائمة المنتجات',
       args: [],
     );
   }
 
   /// `تشغيل التطبيق بدون إنترنت.`
-  String get enableOnlineMessage {
+  String get enableOnlineMassage {
     return Intl.message(
       'تشغيل التطبيق بدون إنترنت.',
-      name: 'enableOnlineMessage',
-      desc: '',
+      name: 'enableOnlineMassage',
+      desc: 'رسالة عند تشغيل التطبيق بدون إنترنت',
       args: [],
     );
   }
@@ -295,17 +295,17 @@ class S {
     return Intl.message(
       'حذف السجلات',
       name: 'clearLogs',
-      desc: '',
+      desc: 'حذف السجلات',
       args: [],
     );
   }
 
   /// `مسح سجلات المنتجات في التطبيق.`
-  String get clearLogsMessage {
+  String get clearLogsMassage {
     return Intl.message(
       'مسح سجلات المنتجات في التطبيق.',
-      name: 'clearLogsMessage',
-      desc: '',
+      name: 'clearLogsMassage',
+      desc: 'مسح سجلات المنتجات في التطبيق',
       args: [],
     );
   }
@@ -315,17 +315,17 @@ class S {
     return Intl.message(
       'الأسئلة الشائعة',
       name: 'howToUse',
-      desc: '',
+      desc: 'الأسئلة الشائعة',
       args: [],
     );
   }
 
   /// `تعرف على طريقة استخدام التطبيق.`
-  String get howToUseMessage {
+  String get howToUseMassage {
     return Intl.message(
       'تعرف على طريقة استخدام التطبيق.',
-      name: 'howToUseMessage',
-      desc: '',
+      name: 'howToUseMassage',
+      desc: 'طريقة استخدام التطبيق',
       args: [],
     );
   }
@@ -335,17 +335,17 @@ class S {
     return Intl.message(
       'الإبلاغ عن منتج',
       name: 'reportProduct',
-      desc: '',
+      desc: 'الإبلاغ عن منتج',
       args: [],
     );
   }
 
   /// `ساعدنا في تحسين التطبيق.`
-  String get reportProductMessage {
+  String get reportProductMassage {
     return Intl.message(
       'ساعدنا في تحسين التطبيق.',
-      name: 'reportProductMessage',
-      desc: '',
+      name: 'reportProductMassage',
+      desc: 'مساعدة في تحسين التطبيق',
       args: [],
     );
   }
@@ -355,7 +355,7 @@ class S {
     return Intl.message(
       'تجريبي',
       name: 'test',
-      desc: '',
+      desc: 'اختبار',
       args: [],
     );
   }
@@ -365,7 +365,7 @@ class S {
     return Intl.message(
       'تفاصيل المنتج',
       name: 'sheetTitleProductInfo',
-      desc: '',
+      desc: 'عنوان تفاصيل المنتج',
       args: [],
     );
   }
@@ -375,7 +375,7 @@ class S {
     return Intl.message(
       'المطور',
       name: 'developer',
-      desc: '',
+      desc: 'اسم المطور',
       args: [],
     );
   }
@@ -385,7 +385,7 @@ class S {
     return Intl.message(
       'Mostafa Mahmoud',
       name: 'mostafaMahmoud',
-      desc: '',
+      desc: 'اسم المطور بالكامل',
       args: [],
     );
   }
@@ -395,57 +395,57 @@ class S {
     return Intl.message(
       'ReadMe',
       name: 'readMe',
-      desc: '',
+      desc: 'زر قراءة مستند المشروع',
       args: [],
     );
   }
 
   /// `رابط إلى مستودع التطبيق على جيت هاب.`
-  String get readMeMessage {
+  String get readMeMassage {
     return Intl.message(
       'رابط إلى مستودع التطبيق على جيت هاب.',
-      name: 'readMeMessage',
-      desc: '',
+      name: 'readMeMassage',
+      desc: 'رابط إلى مستودع التطبيق على جيت هاب',
       args: [],
     );
   }
 
   /// `آخر التحديثات`
-  String get latestUpdate {
+  String get letastUpdate {
     return Intl.message(
       'آخر التحديثات',
-      name: 'latestUpdate',
-      desc: '',
+      name: 'letastUpdate',
+      desc: 'آخر التحديثات',
       args: [],
     );
   }
 
   /// `اطلع على التحديثات وسجل التغييرات.`
-  String get latestUpdateMessage {
+  String get letestUpdateMassage {
     return Intl.message(
       'اطلع على التحديثات وسجل التغييرات.',
-      name: 'latestUpdateMessage',
-      desc: '',
+      name: 'letestUpdateMassage',
+      desc: 'تفاصيل آخر تحديث',
       args: [],
     );
   }
 
   /// `تذكرة على جيت هاب`
-  String get githubTicket {
+  String get githubTiket {
     return Intl.message(
       'تذكرة على جيت هاب',
-      name: 'githubTicket',
-      desc: '',
+      name: 'githubTiket',
+      desc: 'إنشاء تذكرة على جيت هاب',
       args: [],
     );
   }
 
   /// `الإبلاغ عن خطأ أو اقتراح ميزة جديدة.`
-  String get githubTicketMessage {
+  String get githubTiketMassage {
     return Intl.message(
       'الإبلاغ عن خطأ أو اقتراح ميزة جديدة.',
-      name: 'githubTicketMessage',
-      desc: '',
+      name: 'githubTiketMassage',
+      desc: 'الإبلاغ عن خطأ أو اقتراح ميزة جديدة',
       args: [],
     );
   }
@@ -455,17 +455,17 @@ class S {
     return Intl.message(
       'قناة تلغرام',
       name: 'telegramChannel',
-      desc: '',
+      desc: 'قناة تلغرام',
       args: [],
     );
   }
 
   /// `رابط إلى قناة تلغرام.`
-  String get telegramChannelMessage {
+  String get telegramChannelMassage {
     return Intl.message(
       'رابط إلى قناة تلغرام.',
-      name: 'telegramChannelMessage',
-      desc: '',
+      name: 'telegramChannelMassage',
+      desc: 'رابط إلى قناة تلغرام',
       args: [],
     );
   }
@@ -475,7 +475,7 @@ class S {
     return Intl.message(
       'معلومات عن التطبيق',
       name: 'about',
-      desc: '',
+      desc: 'صفحة معلومات عن التطبيق',
       args: [],
     );
   }
@@ -485,7 +485,7 @@ class S {
     return Intl.message(
       'حول تطبيق تضامن.',
       name: 'aboutTadamon',
-      desc: '',
+      desc: 'حول تطبيق تضامن',
       args: [],
     );
   }
@@ -495,27 +495,27 @@ class S {
     return Intl.message(
       'رسالة من المطور',
       name: 'contactDev',
-      desc: '',
+      desc: 'زر التواصل مع المطور',
       args: [],
     );
   }
 
   /// `لا توجد رسالة حالياً.`
-  String get devMessage {
+  String get devMassage {
     return Intl.message(
       'لا توجد رسالة حالياً.',
-      name: 'devMessage',
-      desc: '',
+      name: 'devMassage',
+      desc: 'رسالة المطور',
       args: [],
     );
   }
 
   /// `شكراً لاستخدام تطبيق تضامن.`
-  String get devThanks {
+  String get devThx {
     return Intl.message(
       'شكراً لاستخدام تطبيق تضامن.',
-      name: 'devThanks',
-      desc: '',
+      name: 'devThx',
+      desc: 'شكر من المطور',
       args: [],
     );
   }
@@ -525,17 +525,17 @@ class S {
     return Intl.message(
       'ادعم المطور.',
       name: 'devDonate',
-      desc: '',
+      desc: 'التبرع للمطور',
       args: [],
     );
   }
 
   /// `تابعني على مواقع التواصل الاجتماعي.`
-  String get contactDevMessage {
+  String get contactDevMassage {
     return Intl.message(
       'تابعني على مواقع التواصل الاجتماعي.',
-      name: 'contactDevMessage',
-      desc: '',
+      name: 'contactDevMassage',
+      desc: 'طرق التواصل مع المطور',
       args: [],
     );
   }
@@ -545,7 +545,7 @@ class S {
     return Intl.message(
       'إغلاق',
       name: 'close',
-      desc: '',
+      desc: 'زر الإغلاق',
       args: [],
     );
   }

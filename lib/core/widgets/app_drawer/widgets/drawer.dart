@@ -152,22 +152,22 @@ class SenseiDrawer extends StatelessWidget {
         builder: (context, state) {
           Widget trailingWidget =
               const Icon(Icons.query_builder_rounded, color: Colors.red);
-          String subtitleText = S.of(context).appOffline;
+          String subtitleText = S.of(context).appOffLine;
           bool groupTop = false;
           if (state is HiveDataBaseHasData) {
             trailingWidget =
                 const Icon(Icons.check_box_outlined, color: Colors.green);
-            subtitleText = S.of(context).appOnlineMessageRunning;
+            subtitleText = S.of(context).appOnLineMassageRunning;
             groupTop = true;
           } else if (state is HiveDataBaseEmpty) {
             trailingWidget =
                 const Icon(Icons.error_outline_rounded, color: Colors.red);
-            subtitleText = S.of(context).appOfflineMessageDontRunning;
+            subtitleText = S.of(context).appOnLineMassageRunning;
             groupTop = false;
           } else {
             trailingWidget =
                 const Icon(Icons.query_builder_rounded, color: Colors.yellow);
-            subtitleText = S.of(context).appOfflineLoading;
+            subtitleText = S.of(context).appOflineLoading;
             groupTop = false;
           }
           return DrawerComponent(
@@ -177,7 +177,7 @@ class SenseiDrawer extends StatelessWidget {
             leadingIcon: state is HiveDataBaseHasData
                 ? Icons.cloud_done_outlined
                 : Icons.cloud_off_rounded,
-            title: S.of(context).appOffline,
+            title: S.of(context).appOffLine,
             subtitle: subtitleText,
             trailingWidget: trailingWidget,
           );
@@ -360,7 +360,7 @@ Widget _buildHowToUse(BuildContext context) {
       useGroupTop: true,
       leadingIcon: Icons.question_answer_outlined,
       title: S.of(context).howToUse,
-      subtitle: S.of(context).howToUseMessage,
+      subtitle: S.of(context).howToUseMassage,
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.pop(context);
@@ -375,7 +375,7 @@ Widget _buildReportProduct(BuildContext context) {
     useGroupBottom: true,
     leadingIcon: Icons.production_quantity_limits_outlined,
     title: S.of(context).reportProduct,
-    subtitle: S.of(context).reportProductMessage,
+    subtitle: S.of(context).reportProductMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       Navigator.pop(context);
@@ -392,7 +392,7 @@ Widget _buildReadMe(BuildContext context) {
     useGroupTop: true,
     leadingIcon: Icons.description_outlined,
     title: S.of(context).readMe,
-    subtitle: S.of(context).readMeMessage,
+    subtitle: S.of(context).readMeMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devReadMeLink);
@@ -406,8 +406,8 @@ Widget _buildLetestUpdate(BuildContext context) {
     useDivider: true,
     useGroupMiddle: true,
     leadingIcon: Icons.update_outlined,
-    title: S.of(context).latestUpdate,
-    subtitle: S.of(context).latestUpdateMessage,
+    title: S.of(context).letastUpdate,
+    subtitle: S.of(context).letestUpdateMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devReleaseAppLink);
@@ -421,8 +421,8 @@ Widget _buildGithubToken(BuildContext context) {
     useDivider: true,
     useGroupMiddle: true,
     leadingIcon: Icons.live_help_outlined,
-    title: S.of(context).githubTicket,
-    subtitle: S.of(context).githubTicketMessage,
+    title: S.of(context).githubTiket,
+    subtitle: S.of(context).githubTiketMassage,
     onTapped: () {
       HapticFeedback.vibrate();
       UrlRunServices.launchURL(SenseiConst.devGitHubTokenLink);
@@ -437,7 +437,7 @@ Widget _buildTelegramChannel(BuildContext context) {
       useGroupBottom: true,
       leadingIcon: Icons.telegram_rounded,
       title: S.of(context).telegramChannel,
-      subtitle: S.of(context).telegramChannelMessage,
+      subtitle: S.of(context).telegramChannelMassage,
       onTapped: () {
         HapticFeedback.vibrate();
         UrlRunServices.launchURL(SenseiConst.devTelegramLink);

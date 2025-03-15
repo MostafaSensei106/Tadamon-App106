@@ -34,21 +34,24 @@ class SenseiDrawer extends StatelessWidget {
       return const Icon(Icons.close);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 0.90.sw,
       child: Drawer(
         shape: ContinuousRectangleBorder(
-          borderRadius:
-              BorderRadius.circular(SenseiConst.outBorderRadius.r + 7),
-        ),
+            borderRadius: BorderRadius.all(
+                Radius.circular(SenseiConst.outBorderRadius.r))),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             SizedBox(height: 0.25.sh, child: const DrawerHeaderWidget()),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
+              padding: EdgeInsets.only(
+                  left: SenseiConst.padding.w,
+                  right: SenseiConst.padding.w,
+                  bottom: SenseiConst.padding.h),
               child: AnimatedSize(
                 duration: const Duration(milliseconds: 300),
                 child: Column(

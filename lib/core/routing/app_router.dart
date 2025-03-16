@@ -17,11 +17,11 @@ class AppRouter {
   Route<dynamic> generateRoute(RouteSettings settings) {
     Widget page;
     switch (settings.name) {
+      case Routes.onBoarding:
+        page = const OnboardingPage();
+        break;
       case Routes.mainPage:
         page = const MainPage();
-        break;
-      case Routes.onBoarding:
-      page = const OnboardingPage();
         break;
       case Routes.palatineMap:
         page = const PalestineMapPage();

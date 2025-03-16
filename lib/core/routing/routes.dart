@@ -6,8 +6,9 @@
 /// * [userHelp] is the route of the user help page.
 /// * [noRoutes] is the route of the "no routes" page.
 class Routes {
-  static const String mainPage = '/';
-  static const String onBoarding = '/onBoarding';
+  static const String onBoarding = '/';
+  static const String mainPage = '/mainPage';
+
   static const String palatineMap = '/palestineMap';
   static const String userHelp = '/userHelp';
   static const String noRoutes = '/noRoutes';

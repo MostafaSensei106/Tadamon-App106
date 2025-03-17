@@ -21,5 +21,6 @@ void main() async {
 
   runApp(TadamonApp(
     AppRouter(),
-  ));
+  ),
+  );
 }

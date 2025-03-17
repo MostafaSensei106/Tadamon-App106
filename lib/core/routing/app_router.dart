@@ -46,7 +46,7 @@ class AppRouter {
 
   PageRouteBuilder _createPageRoute(Widget page) {
     return PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 150),
+      transitionDuration: const Duration(milliseconds: 200),
       pageBuilder: (_, animation, __) => FadeTransition(
         opacity: animation,
         child: SlideTransition(

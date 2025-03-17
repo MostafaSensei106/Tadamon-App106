@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/helpers/extensions/date_format_extension.dart';
+import 'package:tadamon/core/extensions/date_format_extension.dart';
 import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 

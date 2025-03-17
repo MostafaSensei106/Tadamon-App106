@@ -4,7 +4,7 @@ import 'package:open_file/open_file.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/helpers/extensions/date_format_extension.dart';
+import 'package:tadamon/core/extensions/date_format_extension.dart';
 import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 

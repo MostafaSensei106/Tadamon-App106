@@ -1,15 +1,18 @@
-/// Class [Routes] contains all app routes as constants.
-///
-/// * [mainPage] is the root route of the app.
-/// * [onBoarding] is the route of the onboarding page.
-/// * [palatineMap] is the route of the Palestine map page.
-/// * [userHelp] is the route of the user help page.
-/// * [noRoutes] is the route of the "no routes" page.
+
+/// The class contains all the routes used in the app.
 class Routes {
+  /// The on-boarding route.
   static const String onBoarding = '/';
+
+  /// The main page route.
   static const String mainPage = '/mainPage';
 
+  /// The route to the palatine map page.
   static const String palatineMap = '/palestineMap';
+
+  /// The route to the user help page.
   static const String userHelp = '/userHelp';
+
+  /// The route to the no routes page.
   static const String noRoutes = '/noRoutes';
 }

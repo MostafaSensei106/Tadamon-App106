@@ -3,14 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_cubit.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_cubit/theme_state.dart';
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart';
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart';
 import 'package:tadamon/core/helpers/about_helper.dart';
 import 'package:tadamon/core/helpers/dev_helper.dart';
-import 'package:tadamon/core/config/theme/colors/logic/theme_helper/theme_toggle_helper.dart';
+import 'package:tadamon/core/config/theme/colors/logic/helper/theme_toggle_helper.dart';
 
 import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/core/services/logs_export/pdf_export_services.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
@@ -18,6 +17,8 @@ import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.da
 import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
 import 'package:tadamon/core/widgets/app_drawer/widgets/drawer_header.dart';
+import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_cubit.dart';
+import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_state.dart';
 import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
 import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
@@ -338,20 +339,32 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   Widget _buildExportLogs(BuildContext context) {
-    return DrawerComponent(
-      useMargin: false,
-      useDivider: false,
-      useGroupBottom: true,
-      leadingIcon: Icons.picture_as_pdf_rounded,
-      title: 'تصدير السجلات',
-      subtitle: 'تصطير السجلات علي شكل PDF',
-      onTapped: () {
-        HapticFeedback.vibrate();
-        Navigator.of(context).pop();
-        PdfExportServices()
-            .saveDocument(ObjectboxRepository().saveLogsTOPDF());
-        // ObjectboxRepositories().exportTadamonLogsFromLocalDB();
-      },
+    return BlocProvider(
+      create: (_) => PdfExportCubit(),
+      child: BlocConsumer<PdfExportCubit, PdfExportState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          if (state is PdfExportLoading) {
+            return const DilogWatingComponent(
+              title: 'جاري تصدير السجلات',
+              message: 'الرجاء الانتظار',
+            );
+          }
+          return DrawerComponent(
+            useMargin: false,
+            useDivider: false,
+            useGroupBottom: true,
+            leadingIcon: Icons.picture_as_pdf_rounded,
+            title: 'تصدير السجلات',
+            subtitle: 'تصطير السجلات علي شكل PDF',
+            onTapped: () {
+              HapticFeedback.vibrate();
+              Navigator.of(context).pop();
+              context.read<PdfExportCubit>().exportPdf();
+            },
+          );
+        },
+      ),
     );
   }
 }

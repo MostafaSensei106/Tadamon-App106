@@ -7,13 +7,16 @@ import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.d
 import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart';
 
 class AppRouter {
-  /// Returns a route for the given [RouteSettings].
+  /// Returns a route based on [settings.name].
   ///
-  /// The returned route is a [MaterialPageRoute] that knows how to build the
-  /// page for the given route. The page is determined by the [RouteSettings.name]
-  /// property. If the name is not recognized, a [NoRoutes] page is returned.
+  /// The supported routes are:
   ///
-  /// The [MaterialPageRoute] is customized to have a slide transition.
+  /// * [Routes.onBoarding]
+  /// * [Routes.mainPage]
+  /// * [Routes.palatineMap]
+  /// * [Routes.userHelp]
+  ///
+  /// If [settings.name] is not recognized, returns a route leading to [NoRoutes].
   Route<dynamic> generateRoute(RouteSettings settings) {
     Widget page;
     switch (settings.name) {
@@ -35,14 +38,13 @@ class AppRouter {
     return _createPageRoute(page);
   }
 
-  /// Creates a [PageRouteBuilder] with a custom slide and fade transition.
-  ///
-  /// The [page] parameter is the widget to display as the page. The transition
-  /// duration is set to 300 milliseconds for both entering and exiting transitions.
-  ///
-  /// The transition consists of a fade effect combined with a slide effect from
-  /// the right side of the screen (offset (1.0, 0.0)) to the center (offset zero).
-  /// The slide transition uses an ease-in-out curve for a smooth animation.
+
+
+/// Creates a [PageRouteBuilder] with custom animations for the given [page].
+///
+/// The transition includes a fade and slide effect, with the slide starting
+/// from the right edge of the screen. The transition duration is set to
+/// 200 milliseconds.
 
   PageRouteBuilder _createPageRoute(Widget page) {
     return PageRouteBuilder(

@@ -12,6 +12,11 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles> with SingleTicker
   late AnimationController _controller;
   final List<Triangle> _triangles = [];
 
+  final Paint _trianglePaint = Paint()..style = PaintingStyle.fill;
+  final Paint _borderPaint = Paint()
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 1.5;
+
   @override
   void initState() {
     super.initState();
@@ -36,6 +41,8 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles> with SingleTicker
             triangles: _triangles,
             animationValue: _controller.value,
             screenSize: MediaQuery.of(context).size,
+            trianglePaint: _trianglePaint, 
+            borderPaint: _borderPaint,
           ),
           size: Size.infinite,
         );
@@ -61,7 +68,7 @@ class Triangle {
       : relativeX = Random().nextDouble(),
         relativeY = Random().nextDouble(),
         size = Random().nextDouble() * 60 + 30,
-        speedFactor = Random().nextDouble() * 0.5 + 0.5, 
+        speedFactor = Random().nextDouble() * 0.5 + 0.5,
         color = Colors.red;
 }
 
@@ -70,19 +77,19 @@ class TrianglePainter extends CustomPainter {
   final double animationValue;
   final Size screenSize;
 
+  final Paint trianglePaint;
+  final Paint borderPaint;
+
   TrianglePainter({
     required this.triangles,
     required this.animationValue,
     required this.screenSize,
+    required this.trianglePaint, 
+    required this.borderPaint,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..style = PaintingStyle.fill;
-    final borderPaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.5;
-
     for (var triangle in triangles) {
       final baseX = triangle.relativeX * screenSize.width;
       final baseY = triangle.relativeY * screenSize.height;
@@ -91,18 +98,17 @@ class TrianglePainter extends CustomPainter {
       final adjustedY = baseY + bounceOffset;
 
       final opacity = (sin(animationValue * 2 * pi) + 1) / 2;
-      paint.color = triangle.color.withAlpha((opacity * 0x80).toInt());
+      trianglePaint.color = triangle.color.withAlpha((opacity * 0x80).toInt());
       borderPaint.color = triangle.color;
 
       final height = triangle.size * sqrt(3) / 2;
-
       final path = Path()
         ..moveTo(adjustedX, adjustedY + height * 2 / 3)
         ..lineTo(adjustedX + triangle.size / 2, adjustedY - height / 3)
         ..lineTo(adjustedX - triangle.size / 2, adjustedY - height / 3)
         ..close();
 
-      canvas.drawPath(path, paint);
+      canvas.drawPath(path, trianglePaint);
       canvas.drawPath(path, borderPaint);
     }
   }

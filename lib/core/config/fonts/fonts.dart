@@ -1,53 +1,97 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum AppLanguage { arabic, english, japanese }
-
 class AppTextStyle {
-  static AppLanguage currentLanguage = AppLanguage.english;
+  static final Map<String, TextStyle> _styleCache = {};
 
-  static String getFontFamily() {
-    switch (currentLanguage) {
-      case AppLanguage.english:
-        return 'EnglishFont';
-      case AppLanguage.arabic:
-        return 'ArabicFont';
-      case AppLanguage.japanese:
-        return 'JapaneseFont';
+  static TextStyle _getTextStyle({
+    required BuildContext context,
+    required String key,
+    required double fontSize,
+    required FontWeight fontWeight,
+    required Color color,
+  }) {
+    if (_styleCache.containsKey(key)) {
+      return _styleCache[key]!;
     }
+    final style = TextStyle(
+      fontSize: fontSize.sp,
+      fontWeight: fontWeight,
+      color: color,
+    );
+    _styleCache[key] = style;
+    return style;
   }
 
-  static TextStyle get headline1 => TextStyle(
-        fontFamily: getFontFamily(),
-        fontSize: 24.sp,
+  static TextStyle headline1(BuildContext context) => _getTextStyle(
+        context: context,
+        fontSize: 34,
         fontWeight: FontWeight.bold,
+        color: Theme.of(context).colorScheme.onPrimary,
+        key: 'headline1',
       );
 
-  static TextStyle get headline2 => TextStyle(
-        fontFamily: getFontFamily(),
-        fontSize: 20.sp,
+  static TextStyle headline2(BuildContext context) => _getTextStyle(
+        context: context,
+        fontSize: 24,
         fontWeight: FontWeight.w600,
+        color: Theme.of(context).colorScheme.onPrimary,
+        key: 'headline2',
       );
 
-  static TextStyle get bodyText1 => TextStyle(
-        fontFamily: getFontFamily(),
-        fontSize: 16.sp,
+  static TextStyle bodyText1(BuildContext context) => _getTextStyle(
+        context: context,
+        fontSize: 16,
         fontWeight: FontWeight.normal,
+        color: Theme.of(context).colorScheme.onPrimary,
+        key: 'bodyText1',
       );
 
-  static TextStyle get bodyText2 => TextStyle(
-        fontFamily: getFontFamily(),
-        fontSize: 14.sp,
+  static TextStyle bodyText2(BuildContext context) => _getTextStyle(
+        context: context,
+        fontSize: 14,
         fontWeight: FontWeight.normal,
+        color: Theme.of(context).colorScheme.onPrimary,
+        key: 'bodyText2',
       );
 
-  static TextStyle get button => TextStyle(
-        fontFamily: getFontFamily(),
-        fontSize: 16.sp,
+  static TextStyle button(BuildContext context) => _getTextStyle(
+        context: context,
+        fontSize: 16,
         fontWeight: FontWeight.w500,
+        color: Theme.of(context).colorScheme.onPrimary,
+        key: 'button',
       );
 
-  static void setLanguage(AppLanguage language) {
-    currentLanguage = language;
-  }
+  static TextStyle hint(BuildContext context) => _getTextStyle(
+        context: context,
+        fontSize: 14,
+        fontWeight: FontWeight.normal,
+        color: Theme.of(context).colorScheme.onPrimary.withAlpha(0x50),
+        key: 'hint',
+      );
+
+  static TextStyle disabled(BuildContext context) => _getTextStyle(
+        context: context,
+        fontSize: 14,
+        fontWeight: FontWeight.normal,
+        color: Theme.of(context).colorScheme.onPrimary.withAlpha(0x20),
+        key: 'disabled',
+      );
+
+  static TextStyle caption(BuildContext context) => _getTextStyle(
+        context: context,
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
+        color: Theme.of(context).colorScheme.onPrimary,
+        key: 'caption',
+      );
+
+  static TextStyle captionLight(BuildContext context) => _getTextStyle(
+        context: context,
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
+        color: Theme.of(context).colorScheme.onPrimary.withAlpha(0x50),
+        key: 'captionLight',
+      );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/core/helpers/extensions/date_format_extension.dart';
+import 'package:tadamon/core/extensions/date_format_extension.dart';
 import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/features/products_scanner/logic/logic/scanner_manger.dart';
 import 'package:tadamon/features/report_products/logic/bloc/report_product_state.dart';

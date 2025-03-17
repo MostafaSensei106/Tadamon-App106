@@ -72,9 +72,7 @@ class ItemsCounterView extends StatelessWidget {
     return StreamBuilder<int>(
       stream: stream,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
+        if (snapshot.hasError) {
           return const Center(child: Icon(Icons.error, color: Colors.red));
         } else if (!snapshot.hasData || snapshot.data == null) {
           return const Center(child: Text("No data"));

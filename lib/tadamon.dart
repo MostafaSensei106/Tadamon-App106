@@ -14,9 +14,7 @@ import 'generated/l10n.dart';
 
 class TadamonApp extends StatelessWidget {
   final AppRouter appRouter = AppRouter();
-
   TadamonApp(AppRouter appRouter, {super.key});
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

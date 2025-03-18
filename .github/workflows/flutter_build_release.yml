@@ -1,0 +1,53 @@
+name: Flutter Build - Tadamon Apk "Beta Testing"
+
+on:
+  push:
+    branches:
+      - Beta
+  pull_request:
+    branches:
+      - Beta
+
+jobs:
+  build:
+    if: contains(github.event.head_commit.message, 'Test Release') || contains(github.event.pull_request.title, 'Test Release')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛒 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.29.2"
+          channel: "stable"
+
+      - name: 🛠️ Check Code Quality
+        run: |
+          flutter analyze
+
+      - name: 🔨 Build Beta APK
+        run: |
+          flutter build apk --release --split-per-abi \
+            --obfuscate --split-debug-info=build/symbols \
+            --tree-shake-icons --dart-define=USE_PROGUARD=true \
+            --target-platform android-arm,android-arm64 
+
+      - name: 📤 Upload Beta APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: beta-apk
+          path: |
+            build/app/outputs/apk/release/
+
+      - name: 🚀 Create GitHub Release (optional)
+        if: success()
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: beta-release
+          name: "Beta Release"
+          body: "New beta release"
+          files: build/app/outputs/apk/release/
+          draft: false
+          prerelease: true

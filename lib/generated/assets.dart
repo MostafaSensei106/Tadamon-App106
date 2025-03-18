@@ -10,7 +10,7 @@ class Assets {
   static const String iconsPlayStore512 = 'assets/icons/play_store_512.png';
   static const String iconsTadamonLogo = 'assets/icons/Tadamon_Logo.svg';
   static const String imagesMHlogo = 'assets/images/MHlogo.png';
-  static const String imagesMhp = 'assets/images/mhp.jpeg';
+  static const String imagesMhp = 'assets/images/mhp.jpg';
   static const String imagesTadamonLogo = 'assets/images/Tadamon_Logo.png';
   static const String imagesWaterMelonCover =
       'assets/images/WaterMelonCover.jpg';

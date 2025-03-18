@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-ThemeData lightTheme = ThemeData(
-  useMaterial3: true,
-  colorScheme: ColorScheme(
+final ThemeData lightTheme = ThemeData(
+  colorScheme: const ColorScheme(
     brightness: Brightness.light,
     primary: Color(0xffaa352c),
     surfaceTint: Color(0xffaa352c),
@@ -50,4 +49,11 @@ ThemeData lightTheme = ThemeData(
     surfaceContainerHigh: Color(0xfffae3e0),
     surfaceContainerHighest: Color(0xfff5ddda),
   ),
+  fontFamily: 'ArabicFont',
+  drawerTheme: const DrawerThemeData(
+    backgroundColor: Color(0xfffff8f7),
+  ),
+  dialogTheme: const DialogThemeData(
+    backgroundColor: Color(0xfffff8f7)
+  )
 );

@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart';
+import 'package:tadamon/generated/l10n.dart';
 
 void appAbout(BuildContext context) {
   Navigator.pop(context);
   showDialog(
     context: context,
     builder: (context) => AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+      ),
       title: Row(children: [
         ClipRRect(
-          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
           clipBehavior: Clip.antiAlias,
           child: Image.asset(
             width: 45.w,
             height: 45.w,
-            SenseiConst.senseiImage,
+            SenseiConst.tadamonAppImage,
           ),
         ),
         SizedBox(
@@ -26,21 +31,20 @@ void appAbout(BuildContext context) {
               'About',
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            Text(
+            const Text(
               'v${SenseiConst.appVersion}',
-              style: Theme.of(context).textTheme.titleSmall,
             ),
           ],
         )
       ]),
       content: Container(
-        padding: EdgeInsets.all(8.0.w),
+        padding: EdgeInsets.all(SenseiConst.padding.w),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14.0.r),
+          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
           color: Theme.of(context).colorScheme.surfaceContainer,
         ),
         child: Text(
-          'S.of(context).AboutApp',
+          'تم تطوير هذا التطبيق من اجل دعم القضية الفسطينيةو مقاطعة الشركات الداعمة لالاحتلا الصهيوني',
           textAlign: TextAlign.justify,
           style: TextStyle(
             fontSize: 16.sp,
@@ -48,22 +52,41 @@ void appAbout(BuildContext context) {
         ),
       ),
       actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text('Close'),
+        TextButtonComponent(
+          icon: Icons.close,
+          onTap: () => Navigator.pop(context),
+          text: S.of(context).close,
+          isClose: true,
         ),
-        TextButton(
-          onPressed: () {
-            showLicensePage(context: context);
+        TextButtonComponent(
+          icon: Icons.difference_outlined,
+          onTap: () {
+            showLicensePage(
+              context: context,
+              applicationName: SenseiConst.appName,
+              applicationLegalese:
+                  'Copyright 2024 - ${DateTime.now().year} Mostafa Mahmoud. Licensed under GPL-3.0.',
+              applicationIcon: Container(
+                padding: EdgeInsets.all(SenseiConst.padding.w),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surfaceContainer,
+                    borderRadius:
+                        BorderRadius.circular(SenseiConst.outBorderRadius.r),
+                    border: Border.all(
+                      color:
+                          Theme.of(context).colorScheme.outline.withAlpha(0x80),
+                    )),
+                child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                    child: Image.asset(
+                        width: 100, height: 100, SenseiConst.tadamonAppImage)),
+              ),
+              applicationVersion: 'v${SenseiConst.appVersion}',
+              useRootNavigator: true,
+            );
           },
-          child: Text(
-            'License',
-            style: TextStyle(
-              fontSize: 16.sp,
-            ),
-          ),
+          text: 'الترخيص',
         ),
       ],
     ),

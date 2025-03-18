@@ -22,48 +22,81 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "About": MessageLookupByLibrary.simpleMessage("معلومات التطبيق"),
-        "AboutTadamon": MessageLookupByLibrary.simpleMessage("حول تضامن"),
-        "AppDescription": MessageLookupByLibrary.simpleMessage(
-            "دعم القضية الفلسطينية واجب إنساني، ومقاطعة الشركات الداعمة للاحتلال صوت للحرية."),
-        "AppName": MessageLookupByLibrary.simpleMessage("تضامن"),
-        "AppOffLine": MessageLookupByLibrary.simpleMessage("تضامن بدون انترنت"),
-        "AppOffLineMassage": MessageLookupByLibrary.simpleMessage(
-            "لا يعمل، قم بتحميل قائمة المنتجات"),
-        "AppOnLineMassage": MessageLookupByLibrary.simpleMessage("يعمل بنجاح"),
-        "ContactDev": MessageLookupByLibrary.simpleMessage("رسالة من المطور"),
-        "ContactDevMassage": MessageLookupByLibrary.simpleMessage(
-            "تابعني علي مواقع التواصل الاجتماعي"),
-        "DarkTheme": MessageLookupByLibrary.simpleMessage("النمط الداكن"),
-        "DevDonate": MessageLookupByLibrary.simpleMessage("دعم المطور"),
-        "DevMassage":
-            MessageLookupByLibrary.simpleMessage("لا يوجد رسالة من المطور"),
-        "DevThx": MessageLookupByLibrary.simpleMessage(
-            "شكر لك على استخدام تطبيق تضامن U_U."),
-        "Developer": MessageLookupByLibrary.simpleMessage("المطور"),
-        "Donate": MessageLookupByLibrary.simpleMessage("تبرع لأجل غزة"),
-        "EnableOnline":
+        "about": MessageLookupByLibrary.simpleMessage("معلومات عن التطبيق"),
+        "aboutTadamon":
+            MessageLookupByLibrary.simpleMessage("حول تطبيق تضامن."),
+        "appDescription": MessageLookupByLibrary.simpleMessage(
+            "دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية."),
+        "appName": MessageLookupByLibrary.simpleMessage("تضامن"),
+        "appOffLine": MessageLookupByLibrary.simpleMessage("تضامن دون إنترنت"),
+        "appOffLineMassageDontRunning":
+            MessageLookupByLibrary.simpleMessage("التطبيق غير متصل."),
+        "appOflineLoading": MessageLookupByLibrary.simpleMessage("انتظر ..."),
+        "appOnLineMassageRunning":
+            MessageLookupByLibrary.simpleMessage("التطبيق يعمل بنجاح."),
+        "clearLogs": MessageLookupByLibrary.simpleMessage("حذف السجلات"),
+        "clearLogsMassage": MessageLookupByLibrary.simpleMessage(
+            "مسح سجلات المنتجات في التطبيق."),
+        "close": MessageLookupByLibrary.simpleMessage("إغلاق"),
+        "contactDev": MessageLookupByLibrary.simpleMessage("رسالة من المطور"),
+        "contactDevMassage": MessageLookupByLibrary.simpleMessage(
+            "تابعني على مواقع التواصل الاجتماعي."),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
+        "devDonate": MessageLookupByLibrary.simpleMessage("ادعم المطور."),
+        "devMassage":
+            MessageLookupByLibrary.simpleMessage("لا توجد رسالة حالياً."),
+        "devThx":
+            MessageLookupByLibrary.simpleMessage("شكراً لاستخدام تطبيق تضامن."),
+        "developer": MessageLookupByLibrary.simpleMessage("المطور"),
+        "donate": MessageLookupByLibrary.simpleMessage("تبرع لغزة"),
+        "editText": MessageLookupByLibrary.simpleMessage("تعديل النص"),
+        "enableOnline":
             MessageLookupByLibrary.simpleMessage("تحميل قائمة المنتجات"),
-        "EnableOnlineMassage": MessageLookupByLibrary.simpleMessage(
-            "تشغيل تطبيق بدون إتصال بالانترنت "),
-        "FollowSystemTheme":
-            MessageLookupByLibrary.simpleMessage("تتبع لون سمة النظام"),
-        "Home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
-        "ImageAnalysis": MessageLookupByLibrary.simpleMessage("تحليل الصورة"),
-        "LightTheme": MessageLookupByLibrary.simpleMessage("النمط الفاتح"),
-        "Logs": MessageLookupByLibrary.simpleMessage("السجل"),
-        "MostafaMahmoud":
+        "enableOnlineMassage":
+            MessageLookupByLibrary.simpleMessage("تشغيل التطبيق بدون إنترنت."),
+        "followSystemTheme":
+            MessageLookupByLibrary.simpleMessage("مطابقة لون النظام"),
+        "githubTiket":
+            MessageLookupByLibrary.simpleMessage("تذكرة على جيت هاب"),
+        "githubTiketMassage": MessageLookupByLibrary.simpleMessage(
+            "الإبلاغ عن خطأ أو اقتراح ميزة جديدة."),
+        "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "howToUse": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
+        "howToUseMassage": MessageLookupByLibrary.simpleMessage(
+            "تعرف على طريقة استخدام التطبيق."),
+        "imageAnalysis": MessageLookupByLibrary.simpleMessage("تحليل الصور"),
+        "letastUpdate": MessageLookupByLibrary.simpleMessage("آخر التحديثات"),
+        "letestUpdateMassage": MessageLookupByLibrary.simpleMessage(
+            "اطلع على التحديثات وسجل التغييرات."),
+        "lightTheme": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
+        "logs": MessageLookupByLibrary.simpleMessage("السجلات"),
+        "mostafaMahmoud":
             MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
-        "PalatineMap": MessageLookupByLibrary.simpleMessage("خريطة فلسطين"),
-        "ScanBarcode": MessageLookupByLibrary.simpleMessage("باركود"),
-        "Search": MessageLookupByLibrary.simpleMessage("بحث"),
-        "SheetTitleProductInfo":
-            MessageLookupByLibrary.simpleMessage("معلومات المنتج"),
-        "SwitchToDarkTheme":
-            MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الداكن"),
-        "SwitchToLightTheme":
-            MessageLookupByLibrary.simpleMessage("تبديل إلى النمط الفاتح"),
-        "SystemTheme": MessageLookupByLibrary.simpleMessage("لون سمة النظام"),
-        "close": MessageLookupByLibrary.simpleMessage("اغلاق")
+        "palatineMap": MessageLookupByLibrary.simpleMessage("خريطة فلسطين"),
+        "readMe": MessageLookupByLibrary.simpleMessage("ReadMe"),
+        "readMeMassage": MessageLookupByLibrary.simpleMessage(
+            "رابط إلى مستودع التطبيق على جيت هاب."),
+        "reportProduct":
+            MessageLookupByLibrary.simpleMessage("الإبلاغ عن منتج"),
+        "reportProductMassage":
+            MessageLookupByLibrary.simpleMessage("ساعدنا في تحسين التطبيق."),
+        "scanBarcode": MessageLookupByLibrary.simpleMessage("فحص الباركود"),
+        "scanedProducts":
+            MessageLookupByLibrary.simpleMessage("المنتجات التي تمت مراجعتها"),
+        "search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "sheetTitleProductInfo":
+            MessageLookupByLibrary.simpleMessage("تفاصيل المنتج"),
+        "supportedProducts":
+            MessageLookupByLibrary.simpleMessage("المنتجات التي تم دعمها"),
+        "switchToDarkTheme":
+            MessageLookupByLibrary.simpleMessage("التبديل إلى الوضع الداكن"),
+        "switchToLightTheme":
+            MessageLookupByLibrary.simpleMessage("التبديل إلى الوضع الفاتح"),
+        "systemTheme":
+            MessageLookupByLibrary.simpleMessage("لون واجهة التطبيق"),
+        "telegramChannel": MessageLookupByLibrary.simpleMessage("قناة تلغرام"),
+        "telegramChannelMassage":
+            MessageLookupByLibrary.simpleMessage("رابط إلى قناة تلغرام."),
+        "test": MessageLookupByLibrary.simpleMessage("تجريبي")
       };
 }

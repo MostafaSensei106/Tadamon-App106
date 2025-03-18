@@ -1,8 +1,11 @@
 name: tadamon
 description: "A new Flutter project."
 
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
+
+licenses:
+  - GPL-3.0
 
 environment:
   sdk: ^3.5.4
@@ -10,46 +13,56 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
 
   cupertino_icons: ^1.0.8
   google_nav_bar: ^5.0.7
-  shared_preferences: ^2.3.3
+  shared_preferences: ^2.5.2
   url_launcher: ^6.3.1
-  feedback: ^3.1.0
   google_mlkit_barcode_scanning: ^0.13.0
   image_picker: ^1.1.2
-  flutter_bloc: ^8.1.6
-  equatable: 2.0.5
+  flutter_bloc: ^9.0.0
+  equatable: ^2.0.5
   flutter_screenutil: ^5.9.3
-  http: ^1.2.2
   font_awesome_flutter: ^10.8.0
-  flutter_localization: ^0.2.2
-  intl: ^0.19.0
   cached_network_image: ^3.4.1
   smooth_page_indicator: ^1.2.0+3
-  simple_barcode_scanner: ^0.2.3
+  simple_barcode_scanner: ^0.3.0
   firebase_core: ^3.8.1
+  cloud_firestore: ^5.6.0
+  connectivity_plus: ^6.1.1
+  flutter_native_splash: ^2.4.4
+  flutter_launcher_icons: ^0.14.3
+  path_provider: ^2.1.5
+  flutter_svg: ^2.0.17
+  lottie: ^3.3.1
+  objectbox: ^4.1.0
+  objectbox_flutter_libs: ^4.1.0 
+  toastification: ^3.0.1
+  pdf: ^3.11.3
+  open_file: ^3.5.10
+  file_picker: ^9.0.2
 
 
-
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  flutter_native_splash: ^2.4.2
-  flutter_launcher_icons: ^0.14.1
-
+  intl_utils: ^2.8.8
+  build_runner: ^2.4.15
+  objectbox_generator: ^4.1.0
 
 flutter:
-
-
+  generate: true
   uses-material-design: true
-
   assets:
     - assets/icons/
     - assets/images/
-
+    - assets/animations/lottie/
 
   fonts:
     - family: ArabicFont
@@ -58,4 +71,5 @@ flutter:
 
 flutter_intl:
   enabled: true
-
+  main_locale: ar
+  default_locale: ar

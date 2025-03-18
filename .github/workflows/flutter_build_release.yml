@@ -1,13 +1,12 @@
-name: Flutter Build APK On Release Commit
+name: Flutter Build - Tadamon Apk "Beta Testing"
 
 on:
   push:
     branches:
-      - dev
+      - Beta
   pull_request:
     branches:
-      - dev
-
+      - Beta
 
 jobs:
   build:
@@ -24,40 +23,31 @@ jobs:
           flutter-version: "3.29.2"
           channel: "stable"
 
-      - name: 🔍 Extract Version & Build Number
-        id: version
-        run: |
-          sudo apt-get install -y yq
-          VERSION_NAME=$(yq eval '.version' pubspec.yaml | cut -d'+' -f1)
-          BUILD_NUMBER=$(yq eval '.version' pubspec.yaml | cut -d'+' -f2)
-          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
-          echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
-
-      - name: 🛠️ Check Code Quality & Tests
+      - name: 🛠️ Check Code Quality
         run: |
           flutter analyze
 
-      - name: 🔨 Build APK
+      - name: 🔨 Build Beta APK
         run: |
           flutter build apk --release --split-per-abi \
             --obfuscate --split-debug-info=build/symbols \
             --tree-shake-icons --dart-define=USE_PROGUARD=true \
-            --target-platform android-arm,android-arm64
+            --target-platform android-arm,android-arm64 
 
-      - name: 📤 Upload APK & Debug Symbols
+      - name: 📤 Upload Beta APK
         uses: actions/upload-artifact@v4
-
         with:
-          name: tadamon-beta-v${{ env.VERSION_NAME }}-b${{ env.BUILD_NUMBER }}.apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: beta-apk
+          path: |
+            build/app/outputs/apk/release/
 
       - name: 🚀 Create GitHub Release (optional)
         if: success()
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ env.VERSION_NAME }}-b${{ env.BUILD_NUMBER }}
-          name: "tadamon Release beta v${{ env.VERSION_NAME }} (Build ${{ env.BUILD_NUMBER }})"
-          body: "New release version ${{ env.VERSION_NAME }} with build number ${{ env.BUILD_NUMBER }}."
-          files: build/app/outputs/flutter-apk/*.apk
+          tag_name: beta-release
+          name: "Beta Release"
+          body: "New beta release"
+          files: build/app/outputs/apk/release/
           draft: false
-          prerelease: false
+          prerelease: true

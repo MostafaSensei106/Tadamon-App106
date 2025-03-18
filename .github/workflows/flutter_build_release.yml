@@ -35,13 +35,12 @@ jobs:
             --target-platform android-arm,android-arm64 \
             --verbose
 
-      - name: 📤 Upload Beta APK & Debug Symbols
+      - name: 📤 Upload Beta APK
         uses: actions/upload-artifact@v4
         with:
           name: beta-apk
           path: |
-            build/app/outputs/flutter-apk/release/*.apk
-            build/symbols/
+            build/app/outputs/apk/release/*.apk
 
       - name: 🚀 Create GitHub Release (optional)
         if: success()
@@ -50,6 +49,6 @@ jobs:
           tag_name: beta-release
           name: "Beta Release"
           body: "New beta release"
-          files: build/app/outputs/flutter-apk/release/*.apk
+          files: build/app/outputs/apk/release/*.apk
           draft: false
           prerelease: true

@@ -46,7 +46,7 @@ jobs:
             --target-platform android-arm,android-arm64
 
       - name: 📤 Upload APK & Debug Symbols
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
 
         with:
           name: tadamon-beta-v${{ env.VERSION_NAME }}-b${{ env.BUILD_NUMBER }}.apk

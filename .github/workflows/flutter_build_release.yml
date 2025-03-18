@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - dev
-      
+
 
 jobs:
   build:
@@ -38,24 +38,6 @@ jobs:
           flutter analyze
           flutter test
 
-      - name: 🔑 Setup Keystore (if available)
-        env:
-          KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: |
-          if [ -n "$KEYSTORE_FILE" ]; then
-            echo "🔑 Keystore detected, setting up..."
-            echo "$KEYSTORE_FILE" | base64 --decode > android/app/release.keystore
-            echo "storePassword=$KEYSTORE_PASSWORD" > android/key.properties
-            echo "keyPassword=$KEY_PASSWORD" >> android/key.properties
-            echo "keyAlias=$KEY_ALIAS" >> android/key.properties
-            echo "storeFile=release.keystore" >> android/key.properties
-          else
-            echo "⚠️ No keystore found, skipping signing."
-          fi
-
       - name: 🔨 Build APK
         run: |
           flutter build apk --release --split-per-abi \
@@ -65,23 +47,18 @@ jobs:
 
       - name: 📤 Upload APK & Debug Symbols
         uses: actions/upload-artifact@v3
-        with:
-          name: app-release-v${{ env.VERSION_NAME }}-b${{ env.BUILD_NUMBER }}.apk
-          path: build/app/outputs/flutter-apk/app-release.apk
 
-      - name: 🛠 Upload Debug Symbols (for better crash analysis)
-        uses: actions/upload-artifact@v3
         with:
-          name: debug-symbols-v${{ env.VERSION_NAME }}-b${{ env.BUILD_NUMBER }}
-          path: build/symbols
+          name: tadamon-beta-v${{ env.VERSION_NAME }}-b${{ env.BUILD_NUMBER }}.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
 
       - name: 🚀 Create GitHub Release (optional)
         if: success()
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ env.VERSION_NAME }}-b${{ env.BUILD_NUMBER }}
-          name: "Release v${{ env.VERSION_NAME }} (Build ${{ env.BUILD_NUMBER }})"
+          name: "tadamon Release beta v${{ env.VERSION_NAME }} (Build ${{ env.BUILD_NUMBER }})"
           body: "New release version ${{ env.VERSION_NAME }} with build number ${{ env.BUILD_NUMBER }}."
-          files: build/app/outputs/flutter-apk/app-release.apk
+          files: build/app/outputs/flutter-apk/*.apk
           draft: false
           prerelease: false

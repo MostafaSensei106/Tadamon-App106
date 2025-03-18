@@ -26,17 +26,17 @@ jobs:
       - name: 🔍 Extract Version & Build Number
         id: version
         run: |
-            sudo apt-get update && sudo apt-get install -y yq
-            VERSION_NAME=$(yq eval '.version | split("+")[0]' pubspec.yaml)
-            BUILD_NUMBER=$(yq eval '.version | split("+")[1]' pubspec.yaml)
-            PACKAGE_NAME=$(yq eval '.name' pubspec.yaml)
-            BUILD_DATE=$(date +%Y%m%d)
-            OUTPUT_FILENAME="${PACKAGE_NAME}-${VERSION_NAME}-${BUILD_NUMBER}-${BUILD_DATE}"
-            echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
-            echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
-            echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
-            echo "OUTPUT_FILENAME=$OUTPUT_FILENAME" >> $GITHUB_ENV
-            echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
+          sudo apt-get update && sudo apt-get install -y yq
+          VERSION_NAME=$(yq eval '.version | split("+")[0]' pubspec.yaml)
+          BUILD_NUMBER=$(yq eval '.version | split("+")[1]' pubspec.yaml)
+          PACKAGE_NAME=$(yq eval '.name' pubspec.yaml)
+          BUILD_DATE=$(date +%Y%m%d)
+          OUTPUT_FILENAME="${PACKAGE_NAME}-${VERSION_NAME}-${BUILD_NUMBER}-${BUILD_DATE}"
+          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+          echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
+          echo "OUTPUT_FILENAME=$OUTPUT_FILENAME" >> $GITHUB_ENV
+          echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
 
       - name: 🛠️ Check Code Quality
         run: |
@@ -48,15 +48,26 @@ jobs:
             --obfuscate --split-debug-info=build/symbols \
             --tree-shake-icons --dart-define=USE_PROGUARD=true \
             --target-platform android-arm,android-arm64 \
-            --output build/app/outputs/flutter-apk/${{ env.OUTPUT_FILENAME }}.apk \
             --verbose
+
+      - name: 📂 Rename APK Files
+        run: |
+          cd build/app/outputs/flutter-apk/release
+          for ABI in arm64-v8a armeabi-v7a; do
+            if [ -f "app-release-$ABI.apk" ]; then
+              mv "app-release-$ABI.apk" "${{ env.OUTPUT_FILENAME }}-$ABI.apk"
+            fi
+          done
+          if [ -f "app-release.apk" ]; then
+            mv "app-release.apk" "${{ env.OUTPUT_FILENAME }}.apk"
+          fi
 
       - name: 📤 Upload Beta APK & Debug Symbols
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.OUTPUT_FILENAME }}
           path: |
-            build/app/outputs/flutter-apk/${{ env.OUTPUT_FILENAME }}.apk
+            build/app/outputs/flutter-apk/release/*.apk
             build/symbols/
 
       - name: 🚀 Create GitHub Release (optional)
@@ -66,6 +77,6 @@ jobs:
           tag_name: ${{ env.OUTPUT_FILENAME }}
           name: "${{ env.PACKAGE_NAME }} Beta Release ${{ env.VERSION_NAME }}+${{ env.BUILD_NUMBER }} (${{ env.BUILD_DATE }})"
           body: "New beta release version ${{ env.VERSION_NAME }}+${{ env.BUILD_NUMBER }} built on ${{ env.BUILD_DATE }}"
-          files: build/app/outputs/flutter-apk/${{ env.OUTPUT_FILENAME }}.apk
+          files: build/app/outputs/flutter-apk/release/*.apk
           draft: false
-          prerelease: true # Mark as prerelease since it's a Beta build
+          prerelease: true

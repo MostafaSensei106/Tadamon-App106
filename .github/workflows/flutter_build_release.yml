@@ -26,17 +26,17 @@ jobs:
       - name: 🔍 Extract Version & Build Number
         id: version
         run: |
-          sudo apt-get update && sudo apt-get install -y yq
-          VERSION_NAME=$(yq eval '.version' pubspec.yaml | cut -d'+' -f1)
-          BUILD_NUMBER=$(yq eval '.version' pubspec.yaml | cut -d'+' -f2)
-          PACKAGE_NAME=$(yq eval '.name' pubspec.yaml)
-          BUILD_DATE=$(date +%Y%m%d)
-          OUTPUT_FILENAME="${PACKAGE_NAME}-${VERSION_NAME}-${BUILD_NUMBER}-${BUILD_DATE}"
-          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
-          echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
-          echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
-          echo "OUTPUT_FILENAME=$OUTPUT_FILENAME" >> $GITHUB_ENV
-          echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
+            sudo apt-get update && sudo apt-get install -y yq
+            VERSION_NAME=$(yq eval '.version | split("+")[0]' pubspec.yaml)
+            BUILD_NUMBER=$(yq eval '.version | split("+")[1]' pubspec.yaml)
+            PACKAGE_NAME=$(yq eval '.name' pubspec.yaml)
+            BUILD_DATE=$(date +%Y%m%d)
+            OUTPUT_FILENAME="${PACKAGE_NAME}-${VERSION_NAME}-${BUILD_NUMBER}-${BUILD_DATE}"
+            echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+            echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
+            echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
+            echo "OUTPUT_FILENAME=$OUTPUT_FILENAME" >> $GITHUB_ENV
+            echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
 
       - name: 🛠️ Check Code Quality
         run: |

@@ -3,11 +3,10 @@ name: Flutter Build APK On Release Commit
 on:
   push:
     branches:
-      - dev
+      - Beta
   pull_request:
     branches:
-      - dev
-
+      - Beta
 
 jobs:
   build:
@@ -27,7 +26,7 @@ jobs:
       - name: 🔍 Extract Version & Build Number
         id: version
         run: |
-          sudo apt-get install -y yq
+          sudo apt-get update && sudo apt-get install -y yq
           VERSION_NAME=$(yq eval '.version' pubspec.yaml | cut -d'+' -f1)
           BUILD_NUMBER=$(yq eval '.version' pubspec.yaml | cut -d'+' -f2)
           echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
@@ -46,10 +45,11 @@ jobs:
 
       - name: 📤 Upload APK & Debug Symbols
         uses: actions/upload-artifact@v4
-
         with:
-          name: tadamon-beta-v${{ env.VERSION_NAME }}-b${{ env.BUILD_NUMBER }}.apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: tadamon-beta-v${{ env.VERSION_NAME }}-b${{ env.BUILD_NUMBER }}
+          path: |
+            build/app/outputs/flutter-apk/*.apk
+            build/symbols/
 
       - name: 🚀 Create GitHub Release (optional)
         if: success()

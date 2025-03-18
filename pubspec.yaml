@@ -66,6 +66,8 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/animations/lottie/
+    - .env
+
 
   fonts:
     - family: ArabicFont

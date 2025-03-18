@@ -63,9 +63,9 @@ void appAbout(BuildContext context) {
           onTap: () {
             showLicensePage(
               context: context,
-              applicationName: 'تطبيق تضامن',
+              applicationName: SenseiConst.appName,
               applicationLegalese:
-                  'Copyright  2024 - ${DateTime.now().year} Mostafa Mahmoud. Licensed under GPL-3.0.',
+                  'Copyright 2024 - ${DateTime.now().year} Mostafa Mahmoud. Licensed under GPL-3.0.',
               applicationIcon: Container(
                 padding: EdgeInsets.all(SenseiConst.padding.w),
                 decoration: BoxDecoration(

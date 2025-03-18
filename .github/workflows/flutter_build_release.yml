@@ -1,4 +1,4 @@
-name: Flutter Build Beta APK On Release Commit
+name: Flutter Build - Tadamon Apk "Beta Testing"
 
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
         with:
           name: beta-apk
           path: |
-            build/app/outputs/apk/release/*.apk
+            build/app/outputs/apk/release/
 
       - name: 🚀 Create GitHub Release (optional)
         if: success()
@@ -49,6 +49,6 @@ jobs:
           tag_name: beta-release
           name: "Beta Release"
           body: "New beta release"
-          files: build/app/outputs/apk/release/*.apk
+          files: build/app/outputs/apk/release/
           draft: false
           prerelease: true

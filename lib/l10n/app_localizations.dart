@@ -105,6 +105,12 @@ abstract class AppLocalizations {
   /// **'دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.'**
   String get appDescription;
 
+  /// No description provided for @errorHandle.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطأ في التطبيق'**
+  String get errorHandle;
+
   /// العنوان الرئيسي في التطبيق
   ///
   /// In ar, this message translates to:

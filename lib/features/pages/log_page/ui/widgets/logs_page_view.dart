@@ -123,7 +123,7 @@ class _LogsPageViewState extends State<LogsPageView> {
                   style: TextStyle(
                     color: _selectedFilter == 'Name'
                         ? Theme.of(context).colorScheme.primary
-                        : null,
+                        : Colors.transparent,
                   ),
                 ),
                 if (_selectedFilter == 'Name') ...[

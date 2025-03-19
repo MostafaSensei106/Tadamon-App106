@@ -1,0 +1,1 @@
+/home/ottafa/Sensei_Projects/Tadamon/build/app/intermediates/cxx/Debug/k6d554d4/obj/x86_64

@@ -18,6 +18,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get errorHandle => 'خطأ في التطبيق';
 
   @override
+  String get noPage => 'لم يتم العثور على الصفحة';
+
+  @override
+  String get noRoutes => 'لم يتم العثور على الصفحة';
+
+  @override
+  String get back => ' الرجوع';
+
+  @override
   String get home => 'الرئيسية';
 
   @override

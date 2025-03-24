@@ -27,6 +27,12 @@ import 'package:tadamon/generated/l10n.dart';
 class SenseiDrawer extends StatelessWidget {
   const SenseiDrawer({super.key});
 
+  /// Creates an [Icon] that is conditionally styled based on the presence of
+  /// [WidgetState.selected] in the given [Set] of [WidgetState]s.
+  ///
+  /// If the set contains [WidgetState.selected], the icon is an [Icons.check]
+  /// with the primary color of the current [Theme].  Otherwise, the icon is an
+  /// [Icons.close].
   WidgetStateProperty<Icon> thumbIcon(BuildContext context) {
     return WidgetStateProperty.resolveWith<Icon>((Set<WidgetState> states) {
       if (states.contains(WidgetState.selected)) {
@@ -37,6 +43,19 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   @override
+  /// Builds the main drawer widget for the application.
+  ///
+  /// This method returns a [SizedBox] containing a [Drawer] widget with a
+  /// specified shape and border radius. The drawer contains a [ListView] that
+  /// includes a fixed-size [DrawerHeaderWidget] and a padded [AnimatedSize]
+  /// widget wrapping a [Column] of various drawer options including theme
+  /// switch, mode switch, offline/online toggles, database actions, usage
+  /// instructions, reporting, logging, and developer information.
+  ///
+  /// The width of the drawer scales with the screen size, utilizing 90% of
+  /// the screen width. The padding and radius values are defined in the
+  /// [SenseiConst] class to ensure consistency with the app's theme.
+
   Widget build(BuildContext context) {
     return SizedBox(
       width: 0.90.sw,
@@ -197,7 +216,7 @@ class SenseiDrawer extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is HiveDataFetchingFromFireStore) {
-            const DilogWatingComponent(
+             const DilogWatingComponent(
                     title: 'جاري استيراد البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);

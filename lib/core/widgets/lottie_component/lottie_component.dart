@@ -9,6 +9,11 @@ class LottieComponent extends StatelessWidget {
       {super.key, required this.lottiePath, required this.text});
 
   @override
+  /// Returns a [Column] widget with a [Lottie.asset] widget and a [Text]
+  /// widget as children. The [Lottie.asset] widget is configured with the
+  /// given [lottiePath], and a width and height of 200 logical pixels. The
+  /// [Text] widget is configured with the given [text], and a font size of
+  /// 16 logical pixels, and a color of the primary color of the theme.
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,

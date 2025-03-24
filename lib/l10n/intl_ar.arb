@@ -13,10 +13,31 @@
 
 
 
-"errorHandle": {
+"@errorHandle": {
     "description": "خطأ في  تطبيق  تضامن"
   },
   "errorHandle": "خطأ في التطبيق",
+
+  "@noPage": {
+    "description": "لم يتم العثور على الصفحة"
+  },
+  "noPage": "لم يتم العثور على الصفحة",
+
+
+  "@noRoutes": {
+    "description": "لم يتم العثور على الصفحة"
+  },
+  "noRoutes": "لم يتم العثور على الصفحة",
+
+  "@back": {
+    "description": "زر الرجوع"
+  },
+  "back": " الرجوع",
+
+
+
+
+
 
 
   "@home": {

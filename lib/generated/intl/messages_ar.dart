@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appOflineLoading": MessageLookupByLibrary.simpleMessage("انتظر ..."),
         "appOnLineMassageRunning":
             MessageLookupByLibrary.simpleMessage("التطبيق يعمل بنجاح."),
+        "back": MessageLookupByLibrary.simpleMessage(" الرجوع"),
         "clearLogs": MessageLookupByLibrary.simpleMessage("حذف السجلات"),
         "clearLogsMassage": MessageLookupByLibrary.simpleMessage(
             "مسح سجلات المنتجات في التطبيق."),
@@ -54,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تحميل قائمة المنتجات"),
         "enableOnlineMassage":
             MessageLookupByLibrary.simpleMessage("تشغيل التطبيق بدون إنترنت."),
+        "errorHandle": MessageLookupByLibrary.simpleMessage("خطأ في التطبيق"),
         "followSystemTheme":
             MessageLookupByLibrary.simpleMessage("مطابقة لون النظام"),
         "githubTiket":
@@ -72,6 +74,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "logs": MessageLookupByLibrary.simpleMessage("السجلات"),
         "mostafaMahmoud":
             MessageLookupByLibrary.simpleMessage("Mostafa Mahmoud"),
+        "noPage":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على الصفحة"),
+        "noRoutes":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على الصفحة"),
         "palatineMap": MessageLookupByLibrary.simpleMessage("خريطة فلسطين"),
         "readMe": MessageLookupByLibrary.simpleMessage("ReadMe"),
         "readMeMassage": MessageLookupByLibrary.simpleMessage(

@@ -25,5 +25,6 @@ await ObjectBoxService.init();
   await FirebaseAppCheck.instance.activate(
     androidProvider: AndroidProvider.playIntegrity,
   );
+  
   runApp(TadamonApp(AppRouter()));
 }

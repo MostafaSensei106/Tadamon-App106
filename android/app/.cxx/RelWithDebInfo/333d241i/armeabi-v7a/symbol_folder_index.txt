@@ -1,1 +1,0 @@
-/home/ottafa/Sensei_Projects/Tadamon/build/app/intermediates/cxx/RelWithDebInfo/333d241i/obj/armeabi-v7a

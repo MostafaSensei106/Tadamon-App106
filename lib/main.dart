@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import 'dart:io';
 
+=======
+>>>>>>> dfa27d125a1ba549826e6f8aacb581e7f45bfac0
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +23,19 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+<<<<<<< HEAD
   FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.instance;  await ObjectBoxService.init();
   if(Platform.isAndroid) {
     await firebaseAppCheck.activate(androidProvider: AndroidProvider.debug);
   }
+=======
+
+  await FirebaseAppCheck.instance.activate(
+    androidProvider: AndroidProvider.playIntegrity,
+  );
+  
+  await ObjectBoxService.init();
+>>>>>>> dfa27d125a1ba549826e6f8aacb581e7f45bfac0
   NetworkController().initNetworkController();
   errorScreen();
   await ReportService.initializePreferences();

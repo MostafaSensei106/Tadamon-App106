@@ -19,6 +19,7 @@ class LottieComponent extends StatelessWidget {
           width: 200.w,
           height: 200.h,
           fit: BoxFit.cover,
+          options: LottieOptions(enableMergePaths: true),
         ),
         SizedBox(height: 10.h),
         Text(

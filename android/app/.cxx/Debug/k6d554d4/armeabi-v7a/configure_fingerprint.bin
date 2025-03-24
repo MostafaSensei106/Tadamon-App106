@@ -2,6 +2,7 @@ C/C++ Structured Logq
 o
 m/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/additional_project_files.txtC
 A
+<<<<<<< HEAD
 ?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	¯çµøÚ2 ‚â½óÚ2n
 l
 j/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/android_gradle_build.json	¯çµøÚ2¢ ‚â½óÚ2s
@@ -26,3 +27,29 @@ j
 h/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/symbol_folder_index.txt	¯çµøÚ2_ ‚â½óÚ2M
 K
 I/opt/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt	¯çµøÚ2¤ ¨øÙßÙ2
+=======
+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	þ±‹ôÚ2 ‚â½óÚ2n
+l
+j/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/android_gradle_build.json	þ±‹ôÚ2¢ ‚â½óÚ2s
+q
+o/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/android_gradle_build_mini.json	þ±‹ôÚ2½ ‚â½óÚ2`
+^
+\/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/build.ninja	þ±‹ôÚ2è· øá½óÚ2d
+b
+`/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/build.ninja.txt	þ±‹ôÚ2i
+g
+e/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/build_file_index.txt	þ±‹ôÚ2I ‚â½óÚ2j
+h
+f/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/compile_commands.json	þ±‹ôÚ2n
+l
+j/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/compile_commands.json.bin	þ±‹ôÚ2	t
+r
+p/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/metadata_generation_command.txt	þ±‹ôÚ2
+“ ‚â½óÚ2g
+e
+c/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/prefab_config.json	þ±‹ôÚ2( ‚â½óÚ2l
+j
+h/home/ottafa/Sensei_Projects/Tadamon/android/app/.cxx/Debug/k6d554d4/armeabi-v7a/symbol_folder_index.txt	þ±‹ôÚ2_ ‚â½óÚ2M
+K
+I/opt/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt	þ±‹ôÚ2¤ ¨øÙßÙ2
+>>>>>>> dfa27d125a1ba549826e6f8aacb581e7f45bfac0

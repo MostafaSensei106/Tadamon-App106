@@ -60,4 +60,5 @@ class DefaultFirebaseOptions {
     databaseURL: 'https://tadamon-32f59-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'tadamon-32f59.appspot.com',
   );
+  
 }

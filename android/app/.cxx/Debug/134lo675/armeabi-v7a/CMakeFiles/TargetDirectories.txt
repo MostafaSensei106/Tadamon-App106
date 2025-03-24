@@ -1,2 +1,0 @@
-M:/Sensei_Projects/tadamon_app/android/app/.cxx/Debug/134lo675/armeabi-v7a/CMakeFiles/edit_cache.dir
-M:/Sensei_Projects/tadamon_app/android/app/.cxx/Debug/134lo675/armeabi-v7a/CMakeFiles/rebuild_cache.dir

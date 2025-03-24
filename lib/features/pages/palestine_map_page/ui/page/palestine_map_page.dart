@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/side_page_app_bar.dart';
 import 'package:tadamon/generated/l10n.dart';
 
@@ -19,12 +18,9 @@ class PalestineMapPage extends StatelessWidget {
             topLeft: Radius.circular(SenseiConst.outBorderRadius.r+7),
             topRight: Radius.circular(SenseiConst.outBorderRadius.r+7)),
         child: InteractiveViewer(
-          child: SvgPicture.asset(
+          child: Image.asset(
             SenseiConst.palestineMap,
             fit: BoxFit.cover,
-            placeholderBuilder: (context) => const Center(
-              child: CircularProgressIndicator(),
-            ),
             errorBuilder: (context, error, stackTrace) {
               return Center(
                 child: Column(

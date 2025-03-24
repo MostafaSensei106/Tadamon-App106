@@ -15,6 +15,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appDescription => 'دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.';
 
   @override
+  String get errorHandle => 'خطأ في التطبيق';
+
+  @override
   String get home => 'الرئيسية';
 
   @override

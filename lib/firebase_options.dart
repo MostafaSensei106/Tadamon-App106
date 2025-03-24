@@ -12,8 +12,8 @@ class DefaultFirebaseOptions {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
-      case TargetPlatform.iOS:
-        return ios;
+      // case TargetPlatform.iOS:
+      //   return ios;
       default:
         throw UnsupportedError('DefaultFirebaseOptions are not supported for this platform.');
     }
@@ -28,13 +28,15 @@ class DefaultFirebaseOptions {
     storageBucket: dotenv.env['STORAGE_BUCKET'] ?? '',
   );
 
-  static FirebaseOptions ios = FirebaseOptions(
-    apiKey: dotenv.env['API_KEY_IOS'] ?? '',
-    appId: dotenv.env['APP_ID_IOS'] ?? '',
-    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? '',
-    projectId: dotenv.env['PROJECT_ID'] ?? '',
-    databaseURL: dotenv.env['DATABASE_URL'] ?? '',
-    storageBucket: dotenv.env['STORAGE_BUCKET'] ?? '',
-    iosBundleId: dotenv.env['IOS_BUNDLE_ID'] ?? '',
-  );
+  // static FirebaseOptions ios = FirebaseOptions(
+  //   apiKey: dotenv.env['API_KEY_IOS'] ?? '',
+  //   appId: dotenv.env['APP_ID_IOS'] ?? '',
+  //   messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? '',
+  //   projectId: dotenv.env['PROJECT_ID'] ?? '',
+  //   databaseURL: dotenv.env['DATABASE_URL'] ?? '',
+  //   storageBucket: dotenv.env['STORAGE_BUCKET'] ?? '',
+  //   iosBundleId: dotenv.env['IOS_BUNDLE_ID'] ?? '',
+  // );
+
+
 }

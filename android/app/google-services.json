@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "251801216073",
+    "firebase_url": "https://tadamon-32f59-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "tadamon-32f59",
+    "storage_bucket": "tadamon-32f59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251801216073:android:9432f68a517c82fea34b98",
+        "android_client_info": {
+          "package_name": "com.mhsensei.tadamon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrk8x5srYxS6ZIjtw8sn-YbocbFZMcXYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

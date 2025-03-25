@@ -26,7 +26,7 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
-      onLongPress: () {
+      onDoubleTap: () {
         HapticFeedback.vibrate();
         setState(() => _isVisible = !_isVisible);
       },
@@ -100,7 +100,7 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
         secondChild: Container(
           width: double.infinity,
           height: 75.h,
-          color: Colors.red,
+          color: Colors.transparent,
         ),
       ),
     );

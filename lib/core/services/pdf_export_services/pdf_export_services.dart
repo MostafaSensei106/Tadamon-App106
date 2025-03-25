@@ -9,6 +9,14 @@ import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
 
 class PdfExportServices {
+  /// Exports the given list of [ScannedLogsProductModel] to a pdf file named
+  /// "Tadamon_Logs.pdf" in the app's document directory, and
+  /// opens it afterwards.
+  ///
+  /// The pdf file will contain a table with the headers as the keys of the
+  /// first element of the list, and the values as the rows of the table.
+  ///
+  /// If the operation fails, a toast error message will be shown.
   Future<void> exportPdf(List<ScannedLogsProductModel> dataList) async {
     try {
       final fileName = 'Tadamon_Logs_${DateTime.now().formatted}';

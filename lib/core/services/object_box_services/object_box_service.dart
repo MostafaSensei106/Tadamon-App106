@@ -10,6 +10,17 @@ class ObjectBoxService {
 
   ObjectBoxService._internal();
 
+  /// Initialize the ObjectBox store and boxes.
+  ///
+  /// This function must be called before using any of the other methods of
+  /// [ObjectBoxService].
+  ///
+  /// The method is asynchronous and returns a [Future] that completes when the
+  /// store and boxes have been initialized.
+  ///
+  /// The function can be called multiple times, but the store and boxes will
+  /// only be initialized once. After the first call, the function will return
+  /// a completed [Future] immediately.
   static Future<void> init() async {
     _instance.store = await openStore();
     _instance.tadamonProductsBox = Box<ProductModel>(_instance.store);

@@ -4,6 +4,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTextStyle {
   static final Map<String, TextStyle> _styleCache = {};
 
+  /// Generates a [TextStyle] object with the given parameters. The [fontSize] is
+  /// automatically converted to a scaled font size using [ScreenUtil].
+  ///
+  /// The generated style is cached in the [_styleCache] map. If the same key is
+  /// used to generate the same style, the cached value is returned instead of
+  /// creating a new one.
+  ///
+  /// The [context] is used to get the screen size for the font size scaling, but
+  /// it is not used as a key in the cache, so it is safe to use the same key in
+  /// multiple places with different [context].
+  ///
+  /// The parameters of the generated style are:
+  /// - [fontSize]: the font size of the text, automatically converted to a
+  ///   scaled font size using [ScreenUtil].
+  /// - [fontWeight]: the font weight of the text.
+  /// - [color]: the color of the text.
+  ///
   static TextStyle _getTextStyle({
     required BuildContext context,
     required String key,

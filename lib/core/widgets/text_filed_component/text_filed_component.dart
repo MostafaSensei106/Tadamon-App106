@@ -15,7 +15,6 @@ class TextFieldComponent extends StatelessWidget {
   final int maxLength;
   final bool readOnly;
 
-  //add on change callback
   final ValueChanged<String> onChange;
 
   const TextFieldComponent(

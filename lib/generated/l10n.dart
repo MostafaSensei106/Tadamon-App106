@@ -70,6 +70,46 @@ class S {
     );
   }
 
+  /// `خطأ في التطبيق`
+  String get errorHandle {
+    return Intl.message(
+      'خطأ في التطبيق',
+      name: 'errorHandle',
+      desc: 'خطأ في  تطبيق  تضامن',
+      args: [],
+    );
+  }
+
+  /// `لم يتم العثور على الصفحة`
+  String get noPage {
+    return Intl.message(
+      'لم يتم العثور على الصفحة',
+      name: 'noPage',
+      desc: 'لم يتم العثور على الصفحة',
+      args: [],
+    );
+  }
+
+  /// `لم يتم العثور على الصفحة`
+  String get noRoutes {
+    return Intl.message(
+      'لم يتم العثور على الصفحة',
+      name: 'noRoutes',
+      desc: 'لم يتم العثور على الصفحة',
+      args: [],
+    );
+  }
+
+  /// ` الرجوع`
+  String get back {
+    return Intl.message(
+      ' الرجوع',
+      name: 'back',
+      desc: 'زر الرجوع',
+      args: [],
+    );
+  }
+
   /// `الرئيسية`
   String get home {
     return Intl.message(

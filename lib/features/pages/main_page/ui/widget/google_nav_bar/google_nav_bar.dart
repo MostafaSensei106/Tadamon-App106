@@ -99,11 +99,12 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
         ),
         secondChild: Container(
           width: double.infinity,
-          height: 30,
-          color: Colors.transparent,
+          height: 75.h,
+          color: Colors.red,
         ),
       ),
     );
   }
 }
+
 

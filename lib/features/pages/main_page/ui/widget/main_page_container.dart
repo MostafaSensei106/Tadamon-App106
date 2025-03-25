@@ -17,7 +17,6 @@ class MainPageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView(
-
       controller: pageController,
       onPageChanged: (index) {
         if (index == 1 || index == 0 || index == 2) {

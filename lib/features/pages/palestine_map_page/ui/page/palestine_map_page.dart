@@ -15,11 +15,11 @@ class PalestineMapPage extends StatelessWidget {
       ),
       body: ClipRRect(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(SenseiConst.outBorderRadius.r+7),
-            topRight: Radius.circular(SenseiConst.outBorderRadius.r+7)),
+            topLeft: Radius.circular(SenseiConst.outBorderRadius.r + 7),
+            topRight: Radius.circular(SenseiConst.outBorderRadius.r + 7)),
         child: InteractiveViewer(
           child: Image.asset(
-            SenseiConst.palestineMap,
+            SenseiConst.palestineMapImage,
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               return Center(

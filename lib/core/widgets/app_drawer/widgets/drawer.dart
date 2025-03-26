@@ -20,7 +20,7 @@ import 'package:tadamon/core/widgets/app_drawer/widgets/drawer_header.dart';
 import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_cubit.dart';
 import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_state.dart';
 import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
-import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
+import 'package:tadamon/features/products_scanner/logic/cubit/hive_cubit/hive_cubit.dart';
 import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
 import 'package:tadamon/generated/l10n.dart';
 

@@ -8,7 +8,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.dart';
-import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
+import 'package:tadamon/features/products_scanner/logic/cubit/hive_cubit/hive_cubit.dart';
 
 class OnboardingPageTwo extends StatefulWidget {
   final IconData firstIcon;

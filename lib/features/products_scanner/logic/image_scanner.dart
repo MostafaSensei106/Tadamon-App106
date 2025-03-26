@@ -16,11 +16,8 @@ class ImageScanner {
         source: ImageSource.gallery,
         imageQuality: 45,
       );
-      if (image == null) {
-        AppToast.showErrorToast('لم يتم اختيار الصورة');
-      }
       return image;
-    } on Exception catch (e) {
+    } catch (e) {
       AppToast.showErrorToast(
         'حدث خطاء اثناء اختيار الصورة: ${e.toString()}',
       );
@@ -42,19 +39,33 @@ class ImageScanner {
   /// Returns the raw value of the first detected barcode, or `null` if no
   /// barcodes are found or an error occurs.
 
-  Future<String?> _getBarcodeFromImage(XFile image) async {
+  Future<String> _getBarcodeFromImage(XFile? image) async {
     try {
+      if (image == null) {
+        AppToast.showErrorToast('لم يتم اختيار الصورة');
+        return '-1';
+      }
+
       final InputImage inputImage = InputImage.fromFilePath(image.path);
       final BarcodeScanner barcodeScanner = BarcodeScanner();
       final List<Barcode> barcodes =
           await barcodeScanner.processImage(inputImage);
-      if (barcodes.isEmpty) {
-        return null;
+      if (barcodes.isEmpty || barcodes.first.rawValue == null) {
+        AppToast.showErrorToast('لا يوجد باركود في الصورة');
+        return '-1';
       }
-      return barcodes.first.rawValue;
+
+      final String barcodeRawValue = barcodes.first.rawValue!;
+      if (!BarcodeValidator.isNumber(barcodeRawValue)) {
+        AppToast.showErrorToast(
+            'الباركود :$barcodeRawValue غير صالح، يجب أن يكون رقمًا فقط');
+        return '-1';
+      }
+
+      return barcodeRawValue;
     } catch (e) {
       AppToast.showErrorToast('حدث خطأ أثناء معالجة الصورة: ${e.toString()}');
-      return null;
+      return '-404';
     }
   }
 
@@ -73,16 +84,11 @@ class ImageScanner {
   ///
   /// Returns the raw value of the first detected barcode, or '-404' if no
   /// barcodes are found or an error occurs.
-   Future<String> scanBarcodeFromImage(BuildContext context) async {
+  Future<String> scanBarcodeFromImage(BuildContext context) async {
     try {
       final XFile? image = await _pickGalleryImage();
-      final String? barcode = await _getBarcodeFromImage(image!);
 
-      if (!BarcodeValidator.isNumber(barcode!)) {
-        AppToast.showErrorToast(
-            'الباركود :$barcode غير صالح، يجب أن يكون رقمًا فقط');
-        return '-404';
-      }
+      final String barcode = await _getBarcodeFromImage(image);
       return barcode;
     } catch (e) {
       AppToast.showErrorToast('حدث خطاء اثناء تحليل الصورة: ${e.toString()}');

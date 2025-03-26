@@ -8,7 +8,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.dart';
-import 'package:tadamon/features/products_scanner/logic/cubit/hive_cubit/hive_cubit.dart';
+import 'package:tadamon/features/products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart';
 
 class OnboardingPageTwo extends StatefulWidget {
   final IconData firstIcon;
@@ -132,7 +132,7 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
             ),
             if (widget.appOnlineRun) ...[
               BlocProvider(
-                create: (context) => LocalDBCubit()..hiveHasData(),
+                create: (context) => LocalDBCubit()..loclaDBHasData(),
                 child: const AppOnline(),
               ),
             ]
@@ -150,51 +150,48 @@ class AppOnline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LocalDBCubit, LocalDBState>(
-      listener: (context, state) {
-        if (state is HiveDataFetchingFromFireStore) {
-          const DilogWatingComponent(
-                  title: 'جاري استيراد البيانات',
-                  message: 'يرجى الانتظار حتى تكتمل المزامنة...')
-              .show(context);
+    return BlocListener<LocalDBCubit, LocalDBState>(listener: (context, state) {
+      if (state is LoclaDBDataFetchingFromFireStore) {
+        const DilogWatingComponent(
+                title: 'جاري استيراد البيانات',
+                message: 'يرجى الانتظار حتى تكتمل المزامنة...')
+            .show(context);
+      }
+      if (state is LoclaDBDataFetchingFromFireStoreSuccess) {
+        AppToast.showSuccessToast('تم تهيئة البيانات بنجاح.');
+        Navigator.pop(context);
+      } else if (state is LoclaDBDataFetchingFromFireStoreFailure) {
+        AppToast.showErrorToast('حدث خطأ في استيراد البيانات.');
+        Navigator.pop(context);
+      }
+    }, child: BlocBuilder<LocalDBCubit, LocalDBState>(
+      builder: (context, state) {
+        if (state is LoclaDBDataBaseEmpty) {
+          return ButtonCompnent(
+            useInBorderRadius: false,
+            useWidth: true,
+            width: 0.5.sw,
+            label: 'تشغيل الاونلاين',
+            icon: Icons.cloud_download_outlined,
+            onPressed: () {
+              HapticFeedback.vibrate();
+              context.read<LocalDBCubit>().fetchDataFromFireStore();
+            },
+          );
         }
-        if (state is HiveDataFetchingFromFireStoreSuccess) {
-          AppToast.showSuccessToast('تم تهيئة البيانات بنجاح.');
-          Navigator.pop(context);
-        } else if (state is HiveDataFetchingFromFireStoreFailure) {
-          AppToast.showErrorToast('حدث خطأ في استيراد البيانات.');
-          Navigator.pop(context);
-        }
-      },
-      child: BlocBuilder<LocalDBCubit, LocalDBState>(
-          builder: (context, state) {
-            if (state is HiveDataBaseEmpty) {
-              return ButtonCompnent(
-                useInBorderRadius: false,
-                useWidth: true,
-                width: 0.5.sw,
-                label: 'تشغيل الاونلاين',
-                icon: Icons.cloud_download_outlined,
-                onPressed: () {
-                  HapticFeedback.vibrate();
-                  context.read<LocalDBCubit>().fetchDataFromFireStore();
-                },
-              );
-            }
-            return ButtonCompnent(
-                useInBorderRadius: false,
-                useWidth: true,
-                width: 0.5.sw,
-                label: 'تم تهيئة البيانات بنجاح',
-                icon: Icons.cloud_done_outlined,
-                isEnabled: false,
-                onPressed: () {
-                  HapticFeedback.vibrate();
-                  context.read<LocalDBCubit>().fetchDataFromFireStore();
-                },
-              );
+        return ButtonCompnent(
+          useInBorderRadius: false,
+          useWidth: true,
+          width: 0.5.sw,
+          label: 'تم تهيئة البيانات بنجاح',
+          icon: Icons.cloud_done_outlined,
+          isEnabled: false,
+          onPressed: () {
+            HapticFeedback.vibrate();
+            context.read<LocalDBCubit>().fetchDataFromFireStore();
           },
-        )
-    );
+        );
+      },
+    ));
   }
 }

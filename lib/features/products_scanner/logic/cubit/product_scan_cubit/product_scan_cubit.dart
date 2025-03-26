@@ -118,7 +118,8 @@ class ProductScanCubit extends Cubit<ProductScanState> {
 
       String barcode = await ImageScanner().scanBarcodeFromImage(context);
 
-      if (barcode == '-404') return;
+      if (barcode == '-404' || barcode == '-1') return;
+      
 
       bool isConnected = await NetworkController().checkConnection();
 

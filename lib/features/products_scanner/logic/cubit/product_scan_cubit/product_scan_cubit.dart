@@ -27,7 +27,6 @@ class ProductScanCubit extends Cubit<ProductScanState> {
     BuildContext context,
     ProductModel product,
   ) {
-    if (!context.mounted) return;
     ModelBottomSheet.show(
       context,
       S.of(context).sheetTitleProductInfo,
@@ -80,14 +79,12 @@ class ProductScanCubit extends Cubit<ProductScanState> {
             .getTadamonProductBySerialNumber(barcode);
       }
       if (context.mounted) {
-        _showProductInfo(
-          context,
-          product,
-        );
+        _showProductInfo(context, product);
         emit(ProductScanSuccess());
       }
     } catch (e) {
       AppToast.showErrorToast("Error in scanBarcodeCamera: $e");
+      emit(ProductScanError(e.toString()));
     }
   }
 
@@ -119,7 +116,6 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       String barcode = await ImageScanner().scanBarcodeFromImage(context);
 
       if (barcode == '-404' || barcode == '-1') return;
-      
 
       bool isConnected = await NetworkController().checkConnection();
 
@@ -135,6 +131,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       }
     } catch (e) {
       AppToast.showErrorToast("Error in imageAnalysisScan: $e");
+      emit(ProductScanError(e.toString()));
     }
   }
 }

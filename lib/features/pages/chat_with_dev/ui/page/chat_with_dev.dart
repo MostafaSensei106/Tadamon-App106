@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/services/url_services/url_services.dart';
 
 class ChatWithDev extends StatelessWidget {
   const ChatWithDev({super.key});
@@ -20,77 +21,88 @@ class ChatWithDev extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar( 
-        leadingWidth:90.w,
+      appBar: AppBar(
+        leadingWidth: 90.w,
         titleSpacing: 0,
         centerTitle: true,
         leading: Row(
-    children: [
-      IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () => Navigator.pop(context),
-      ),
-      const CircleAvatar(
-        backgroundImage: AssetImage(SenseiConst.mostafaSenseiogo),
-      ),
-    ],
-  ),
-        title:  const Text(
+          children: [
+            IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () => Navigator.pop(context),
+            ),
+            const CircleAvatar(
+              backgroundImage: AssetImage(SenseiConst.mostafaSenseiogo),
+            ),
+          ],
+        ),
+        title: const Text(
           'Mostafa Sensei',
           textAlign: TextAlign.center,
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.call),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.video_call_outlined),
+            onPressed: () => UrlRunServices.launchURL('tg://resolve?domain=@Mostafa_Sensei106'),
+            icon: const Icon(Icons.call_outlined),
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              itemCount: messages.length,
-              itemBuilder: (context, index) {
-                return ChatBubble(
-                  text: messages[index]['text'],
-                  isSentByMe: messages[index]['isSentByMe'],
-                  isSupportBubble:
-                      messages[index].containsKey('isSupportBubble'),
-                );
-              },
-            ),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/chat.jpg'),
+            filterQuality: FilterQuality.medium,
+            colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+            fit: BoxFit.cover,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                const Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'أرسل رسالة',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(16.0),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(SenseiConst.outBorderRadius + 7),
+            topRight: Radius.circular(SenseiConst.outBorderRadius + 7),
+          ),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                padding:
+                    EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
+                itemCount: messages.length,
+                itemBuilder: (context, index) {
+                  return ChatBubble(
+                    text: messages[index]['text'],
+                    isSentByMe: messages[index]['isSentByMe'],
+                    isSupportBubble:
+                        messages[index].containsKey('isSupportBubble'),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  const Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'أرسل رسالة',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(16.0),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 8.0),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Icon(Icons.send),
-                ),
-              ],
+                  const SizedBox(width: 8.0),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Icon(Icons.send),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -130,7 +142,7 @@ class ChatBubble extends StatelessWidget {
             decoration: BoxDecoration(
               color: isSentByMe
                   ? Theme.of(context).colorScheme.primary
-                  : Theme.of(context).colorScheme.surfaceVariant,
+                  : Theme.of(context).colorScheme.surfaceContainer,
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: isSupportBubble

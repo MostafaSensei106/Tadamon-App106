@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class ChatWithDev extends StatelessWidget {
@@ -11,33 +12,42 @@ class ChatWithDev extends StatelessWidget {
       {'text': 'أحتاج إلى مساعدة في فلاتر.', 'isSentByMe': true},
       {'text': 'بالطبع! بماذا تحتاج المساعدة؟', 'isSentByMe': false},
       {'text': 'كيف يمكنني إدارة الحالة بكفاءة؟', 'isSentByMe': true},
-      {'text': 'يمكنك استخدام Provider أو Riverpod أو Bloc!', 'isSentByMe': false},
+      {
+        'text': 'يمكنك استخدام Provider أو Riverpod أو Bloc!',
+        'isSentByMe': false
+      },
       {'text': '', 'isSentByMe': false, 'isSupportBubble': true},
-
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        scrolledUnderElevation: 0,
-        centerTitle: false,
+      appBar: AppBar( 
+        leadingWidth:90.w,
+        titleSpacing: 0,
+        centerTitle: true,
         leading: Row(
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.arrow_back_ios),
-            ),
-            const CircleAvatar(
-              backgroundImage: AssetImage(SenseiConst.mostafaSenseiogo),
-            ),
-          ],
-        ),
-        title: const Text(
+    children: [
+      IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () => Navigator.pop(context),
+      ),
+      const CircleAvatar(
+        backgroundImage: AssetImage(SenseiConst.mostafaSenseiogo),
+      ),
+    ],
+  ),
+        title:  const Text(
           'Mostafa Sensei',
+          textAlign: TextAlign.center,
         ),
         actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.call),),
-          IconButton(onPressed: () {} , icon:const Icon(Icons.camera), ),
-
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.call),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.video_call_outlined),
+          ),
         ],
       ),
       body: Column(
@@ -50,7 +60,8 @@ class ChatWithDev extends StatelessWidget {
                 return ChatBubble(
                   text: messages[index]['text'],
                   isSentByMe: messages[index]['isSentByMe'],
-                  isSupportBubble: messages[index].containsKey('isSupportBubble'),
+                  isSupportBubble:
+                      messages[index].containsKey('isSupportBubble'),
                 );
               },
             ),
@@ -102,7 +113,8 @@ class ChatBubble extends StatelessWidget {
     return Align(
       alignment: isSentByMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Row(
-        mainAxisAlignment: isSentByMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment:
+            isSentByMe ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
           if (!isSentByMe)
             const Padding(
@@ -165,4 +177,3 @@ class ChatBubble extends StatelessWidget {
     );
   }
 }
-

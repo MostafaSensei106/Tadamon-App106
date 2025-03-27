@@ -73,9 +73,17 @@ class ItemsCounterView extends StatelessWidget {
       stream: stream,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return const Center(child: Icon(Icons.error, color: Colors.red));
+          return CounterItemsComponent(
+            icon: Icons.error_outline_rounded,
+            title: title,
+            targetValue: 0,
+          );
         } else if (!snapshot.hasData || snapshot.data == null) {
-          return const Center(child: Text("No data"));
+          return CounterItemsComponent(
+            icon: Icons.error_outline_rounded,
+            title: title,
+            targetValue: 0,
+          );
         }
 
         final count = snapshot.data!;

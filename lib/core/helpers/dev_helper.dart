@@ -132,7 +132,7 @@ class ContactSenseiDev extends StatelessWidget {
       borderRadius: BorderRadius.circular(20.0),
       clipBehavior: Clip.antiAlias,
       child: Image.asset(
-        'assets/images/MHlogo.png',
+        SenseiConst.mostafaSenseiogo,
         width: 0.15.sw,
         height: 0.15.sw,
         fit: BoxFit.cover,

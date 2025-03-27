@@ -491,7 +491,11 @@ Widget _buildDeveloper(BuildContext context) {
     title: S.of(context).developer,
     subtitle: S.of(context).mostafaMahmoud,
     trailingWidget: const ContactSenseiDev().buildAvatar(context),
-    onTapped: () => const ContactSenseiDev().showDevDialog(context),
+    onTapped: () => {
+      HapticFeedback.vibrate(),
+      Navigator.pop(context),
+      Navigator.pushNamed(context, Routes.chatWithDev)
+    } ,
   );
 }
 

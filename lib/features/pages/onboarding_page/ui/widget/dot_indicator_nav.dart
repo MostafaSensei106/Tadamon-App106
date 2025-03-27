@@ -116,7 +116,7 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                                 Routes.mainPage,
                                 (route) => false,
                               );
-                              AppToast.showToast('مرحبا بك في تضامن');
+                              AppToast.showSimpleToastInfo('مرحبا بك في تضامن');
                             }),
                           )
                         : _getActionButton(

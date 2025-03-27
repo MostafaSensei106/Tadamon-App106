@@ -7,6 +7,19 @@ import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.d
 import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart';
 
 class AppRouter {
+
+
+    static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
+
+  static ColorScheme get theme {
+    final context = navigatorKey.currentContext;
+    if (context == null) {
+      throw Exception("Navigator context is not available");
+    }
+    return Theme.of(context).colorScheme;
+  }
+
   /// Returns a route based on [settings.name].
   ///
   /// The supported routes are:

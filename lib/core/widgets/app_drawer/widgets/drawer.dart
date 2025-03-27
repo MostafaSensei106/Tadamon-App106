@@ -61,9 +61,11 @@ class SenseiDrawer extends StatelessWidget {
     return SizedBox(
       width: 0.90.sw,
       child: Drawer(
-        shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.all(
-                Radius.circular(SenseiConst.outBorderRadius.r))),
+        shape: const ContinuousRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(SenseiConst.outBorderRadius),
+          ),
+        ),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [

@@ -33,6 +33,7 @@ class TadamonApp extends StatelessWidget {
                 title: ' تَضَامُنٌ',
                 theme: lightTheme,
                 darkTheme: darkTheme,
+                navigatorKey: AppRouter.navigatorKey,
                 themeMode: themeState.themeMode,
                 initialRoute: Routes.onBoarding,
                 onGenerateRoute: appRouter.generateRoute,

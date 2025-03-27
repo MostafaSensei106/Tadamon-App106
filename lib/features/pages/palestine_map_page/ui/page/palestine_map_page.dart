@@ -20,6 +20,8 @@ class PalestineMapPage extends StatelessWidget {
         child: InteractiveViewer(
           child: Image.asset(
             SenseiConst.palestineMapImage,
+            width:1.sh,
+            height: 1.sh,
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               return Center(

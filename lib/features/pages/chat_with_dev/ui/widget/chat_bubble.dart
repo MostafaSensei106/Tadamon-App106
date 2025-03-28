@@ -60,7 +60,7 @@ class ChatBubble extends StatelessWidget {
                 Text(
                   formattedTime,
                   style: TextStyle(
-                    fontSize: 12,
+                   fontSize: 12,
                     color: Theme.of(context).colorScheme.onSurface.withAlpha(0x50),
                   ),
                 ),

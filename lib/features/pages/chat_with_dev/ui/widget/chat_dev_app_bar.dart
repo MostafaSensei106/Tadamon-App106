@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
-class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
+class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const SidePageAppBar({
+  const ChatDevAppBar({
     super.key,
     required this.title,
   });
@@ -28,11 +28,17 @@ class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title),
+      leadingWidth: 102.w,
+      titleSpacing: 0,
       centerTitle: true,
       elevation: 0,
       forceMaterialTransparency: true,
       leading: _buildSidePageAppBarIcon(
           context, Icons.keyboard_double_arrow_right_rounded),
+      actions: [
+        _buildActionBarIcon(context, Icons.call_outlined),
+        _buildActionBarIcon(context, Icons.telegram_outlined),
+      ],
     );
   }
 
@@ -47,20 +53,57 @@ class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// using [Theme.of(context).colorScheme.onSurface].
 
   Widget _buildSidePageAppBarIcon(BuildContext context, IconData icon) {
-    return IconButton.filled(
-      style: IconButton.styleFrom(
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-        ),
-        padding: EdgeInsets.all(4.w),
+    return Padding(
+      padding: const EdgeInsets.all(SenseiConst.padding),
+      child: Row(
+        children: [
+          IconButton.filled(
+            style: IconButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(SenseiConst.outBorderRadius),
+              ),
+              padding: EdgeInsets.all(4.w),
+            ),
+            onPressed: () => leave(context),
+            icon: Icon(
+              icon,
+              size: SenseiConst.iconSize,
+            ),
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+          Stack(
+            children: [
+              const CircleAvatar(
+                backgroundImage: AssetImage(SenseiConst.mostafaSenseiogo),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Container(
+                  width: 10.w,
+                  height: 10.w,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Theme.of(context).colorScheme.surface, width: 1),
+                    shape: BoxShape.circle,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
-      onPressed: () => leave(context),
-      icon: Icon(
-        icon,
-        size: SenseiConst.iconSize,
-      ),
+    );
+  }
+
+  Widget _buildActionBarIcon(BuildContext context, IconData icon) {
+    return IconButton(
+      icon: Icon(icon),
       color: Theme.of(context).colorScheme.onSurface,
+      onPressed: () {},
     );
   }
 }

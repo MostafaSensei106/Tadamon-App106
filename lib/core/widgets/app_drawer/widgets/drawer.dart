@@ -20,7 +20,7 @@ import 'package:tadamon/core/widgets/app_drawer/widgets/drawer_header.dart';
 import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_cubit.dart';
 import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_state.dart';
 import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
-import 'package:tadamon/features/products_scanner/logic/logic/hive_bloc/hive_cubit.dart';
+import 'package:tadamon/features/products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart';
 import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
 import 'package:tadamon/generated/l10n.dart';
 
@@ -43,6 +43,7 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   @override
+
   /// Builds the main drawer widget for the application.
   ///
   /// This method returns a [SizedBox] containing a [Drawer] widget with a
@@ -60,9 +61,11 @@ class SenseiDrawer extends StatelessWidget {
     return SizedBox(
       width: 0.90.sw,
       child: Drawer(
-        shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.all(
-                Radius.circular(SenseiConst.outBorderRadius.r))),
+        shape: const ContinuousRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(SenseiConst.outBorderRadius),
+          ),
+        ),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -170,19 +173,19 @@ class SenseiDrawer extends StatelessWidget {
 
   Widget _buildAppOffline(BuildContext context) {
     return BlocProvider(
-      create: (context) => LocalDBCubit()..hiveHasData(),
+      create: (context) => LocalDBCubit()..loclaDBHasData(),
       child: BlocBuilder<LocalDBCubit, LocalDBState>(
         builder: (context, state) {
           Widget trailingWidget =
               const Icon(Icons.query_builder_rounded, color: Colors.red);
           String subtitleText = S.of(context).appOffLine;
           bool groupTop = false;
-          if (state is HiveDataBaseHasData) {
+          if (state is LoclaDBDataBaseHasData) {
             trailingWidget =
                 const Icon(Icons.check_box_outlined, color: Colors.green);
             subtitleText = S.of(context).appOnLineMassageRunning;
             groupTop = true;
-          } else if (state is HiveDataBaseEmpty) {
+          } else if (state is LoclaDBDataBaseEmpty) {
             trailingWidget =
                 const Icon(Icons.error_outline_rounded, color: Colors.red);
             subtitleText = S.of(context).appOnLineMassageRunning;
@@ -197,7 +200,7 @@ class SenseiDrawer extends StatelessWidget {
             useMargin: true,
             useDivider: groupTop,
             useGroupTop: groupTop,
-            leadingIcon: state is HiveDataBaseHasData
+            leadingIcon: state is LoclaDBDataBaseHasData
                 ? Icons.cloud_done_outlined
                 : Icons.cloud_off_rounded,
             title: S.of(context).appOffLine,
@@ -211,21 +214,21 @@ class SenseiDrawer extends StatelessWidget {
 
   Widget _buildEnableOnline(BuildContext context) {
     return BlocProvider(
-      create: (context) => LocalDBCubit()..hiveHasData(),
+      create: (context) => LocalDBCubit()..loclaDBHasData(),
       child: BlocListener<LocalDBCubit, LocalDBState>(
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
-          if (state is HiveDataFetchingFromFireStore) {
-             const DilogWatingComponent(
+          if (state is LoclaDBDataFetchingFromFireStore) {
+            const DilogWatingComponent(
                     title: 'جاري استيراد البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);
           }
-          if (state is HiveDataFetchingFromFireStoreSuccess) {
+          if (state is LoclaDBDataFetchingFromFireStoreSuccess) {
             AppToast.showSuccessToast('تم تهيئة البيانات بنجاح.');
             Navigator.of(context).pop();
             Navigator.of(context).pop();
-          } else if (state is HiveDataFetchingFromFireStoreFailure) {
+          } else if (state is LoclaDBDataFetchingFromFireStoreFailure) {
             AppToast.showErrorToast('حدث خطأ في استيراد البيانات.');
             Navigator.of(context).pop();
             Navigator.of(context).pop();
@@ -233,7 +236,7 @@ class SenseiDrawer extends StatelessWidget {
         },
         child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
-            if (state is HiveDataBaseEmpty) {
+            if (state is LoclaDBDataBaseEmpty) {
               return ButtonCompnent(
                 useMargin: true,
                 useInBorderRadius: false,
@@ -254,22 +257,22 @@ class SenseiDrawer extends StatelessWidget {
 
   Widget _buildUpdateLocalHiveDataBase(BuildContext context) {
     return BlocProvider(
-      create: (_) => LocalDBCubit()..hiveHasData(),
+      create: (_) => LocalDBCubit()..loclaDBHasData(),
       child: BlocListener<LocalDBCubit, LocalDBState>(
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
-          if (state is HiveDataFetchingFromFireStore) {
+          if (state is LoclaDBDataFetchingFromFireStore) {
             const DilogWatingComponent(
                     title: 'جاري تحديث قاعدة البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);
           }
-          if (state is HiveDataFetchingFromFireStoreSuccess) {
+          if (state is LoclaDBDataFetchingFromFireStoreSuccess) {
             AppToast.showSuccessToast('تم تحديث قاعدة البيانات بنجاح.');
             Navigator.of(context).pop();
             Navigator.of(context).pop();
           }
-          if (state is HiveDataDeleteFailure) {
+          if (state is LoclaDBDataDeleteFailure) {
             AppToast.showErrorToast('حدث خطاء في تحديث قاعدة البيانات.');
             Navigator.of(context).pop();
             Navigator.of(context).pop();
@@ -277,7 +280,7 @@ class SenseiDrawer extends StatelessWidget {
         },
         child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
-            if (state is HiveDataBaseHasData) {
+            if (state is LoclaDBDataBaseHasData) {
               return DrawerComponent(
                 useDivider: true,
                 useGroupMiddle: true,
@@ -299,22 +302,22 @@ class SenseiDrawer extends StatelessWidget {
 
   Widget _buildDeleteLocalHiveData(BuildContext context) {
     return BlocProvider(
-      create: (_) => LocalDBCubit()..hiveHasData(),
+      create: (_) => LocalDBCubit()..loclaDBHasData(),
       child: BlocListener<LocalDBCubit, LocalDBState>(
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
-          if (state is HiveDataBaseDeleting) {
+          if (state is LoclaDBDataBaseDeleting) {
             const DilogWatingComponent(
                     title: 'جاري حذف البيانات',
                     message: 'يرجى الانتظار حتى تكتمل المزامنة...')
                 .show(context);
           }
-          if (state is HiveDataDeleteSuccess) {
+          if (state is LoclaDBDataDeleteSuccess) {
             AppToast.showSuccessToast('تم حذف البيانات بنجاح.');
             Navigator.of(context).pop();
             Navigator.of(context).pop();
           }
-          if (state is HiveDataDeleteFailure) {
+          if (state is LoclaDBDataDeleteFailure) {
             AppToast.showErrorToast('حدث خطأ في حذف البيانات.');
             Navigator.of(context).pop();
             Navigator.of(context).pop();
@@ -322,7 +325,7 @@ class SenseiDrawer extends StatelessWidget {
         },
         child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
-            if (state is HiveDataBaseHasData) {
+            if (state is LoclaDBDataBaseHasData) {
               return DrawerComponent(
                 useGroupBottom: true,
                 leadingIcon: Icons.delete_forever_outlined,
@@ -488,7 +491,11 @@ Widget _buildDeveloper(BuildContext context) {
     title: S.of(context).developer,
     subtitle: S.of(context).mostafaMahmoud,
     trailingWidget: const ContactSenseiDev().buildAvatar(context),
-    onTapped: () => const ContactSenseiDev().showDevDialog(context),
+    onTapped: () => {
+      HapticFeedback.vibrate(),
+      Navigator.pop(context),
+      Navigator.pushNamed(context, Routes.chatWithDev)
+    } ,
   );
 }
 

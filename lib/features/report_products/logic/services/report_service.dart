@@ -8,13 +8,11 @@ import 'package:tadamon/features/products_scanner/data/repository/fire_store_rep
 class ReportService {
   static late SharedPreferences pref;
 
-
   static Future<void> initializePreferences() async {
     pref = await SharedPreferences.getInstance();
   }
 
-   Future<void> sendProductReport(
-      Map<String, dynamic> productReport) async {
+  Future<void> sendProductReport(Map<String, dynamic> productReport) async {
     if (await NetworkController().checkConnection()) {
       try {
         await FireStoreRepository().sendReportToBackEnd(productReport);
@@ -23,11 +21,11 @@ class ReportService {
         AppToast.showErrorToast('حث خطاء');
       }
     } else {
-      AppToast.showToast('لا يوجد انترنت. سيتم إرسال البلاغ تلقائيًا لاحقًا.');
+      AppToast.showSimpleToastInfo(
+          'لا يوجد انترنت. سيتم إرسال البلاغ تلقائيًا لاحقًا.');
       await _saveReportLocally(productReport);
     }
   }
-
 
   Future<void> _saveReportLocally(Map<String, dynamic> productReport) async {
     List<String> localReports = pref.getStringList('localReports') ?? [];
@@ -35,36 +33,29 @@ class ReportService {
     await pref.setStringList('localReports', localReports);
   }
 
-
-
-
-   static Future<List<Map<String, dynamic>>> _getLocalReports() async {
+  static Future<List<Map<String, dynamic>>> _getLocalReports() async {
     List<String> localReports = pref.getStringList('localReports') ?? [];
-    return localReports.map((report) => jsonDecode(report) as Map<String, dynamic>).toList();
+    return localReports
+        .map((report) => jsonDecode(report) as Map<String, dynamic>)
+        .toList();
   }
 
-
-
- static Future <void> resendPendingReports() async {
+  static Future<void> resendPendingReports() async {
     final localReports = await _getLocalReports();
-      for (final report in localReports) {
-        try{
+    for (final report in localReports) {
+      try {
         await FireStoreRepository().sendReportToBackEnd(report);
         await _clearLocalReports(report);
-        AppToast.showToast('تم إرسال بلاغ معلق');
-        }catch(e){
-          AppToast.showErrorToast(e.toString());
-        }
+        AppToast.showSimpleToastInfo('تم إرسال بلاغ معلق');
+      } catch (e) {
+        AppToast.showErrorToast(e.toString());
       }
+    }
   }
 
-
-
-   static Future<void> _clearLocalReports(Map<String, dynamic> report) async {
+  static Future<void> _clearLocalReports(Map<String, dynamic> report) async {
     List<String> localReports = pref.getStringList('localReports') ?? [];
     localReports.remove(jsonEncode(report));
     await pref.setStringList('localReports', localReports);
   }
-
 }
-

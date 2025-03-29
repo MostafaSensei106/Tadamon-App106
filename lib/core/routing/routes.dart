@@ -13,6 +13,8 @@ class Routes {
   /// The route to the user help page.
   static const String userHelp = '/userHelp';
 
+  static const String chatWithDev = '/chatWithDev';
+
   /// The route to the no routes page.
   static const String noRoutes = '/noRoutes';
 }

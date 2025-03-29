@@ -22,6 +22,19 @@ class GoogleNavBar extends StatefulWidget {
 class _GoogleNavBarState extends State<GoogleNavBar> {
   bool _isVisible = true;
 
+  IconData _getIcon(int index) {
+    switch (index) {
+      case 0:
+        return widget.currentIndex == 0 ? Icons.house_rounded : Icons.house_outlined;
+      case 1:
+        return Icons.search;
+      case 2:
+        return widget.currentIndex == 2 ? Icons.update_rounded : Icons.update;
+      default:
+        throw ArgumentError('Invalid index: $index');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -71,21 +84,17 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
                   ),
                   tabs: [
                     GButton(
-                      icon: widget.currentIndex == 0
-                          ? Icons.house_rounded
-                          : Icons.house_outlined,
+                      icon: _getIcon(0),
                       iconSize: SenseiConst.iconSize.sp,
                       text: S.of(context).home,
                     ),
                     GButton(
-                      icon: Icons.search,
+                      icon: _getIcon(1),
                       iconSize: SenseiConst.iconSize,
                       text: S.of(context).search,
                     ),
                     GButton(
-                      icon: widget.currentIndex == 2
-                          ? Icons.update_rounded
-                          : Icons.update,
+                      icon: _getIcon(2),
                       iconSize: SenseiConst.iconSize,
                       text: S.of(context).logs,
                     ),
@@ -106,5 +115,3 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
     );
   }
 }
-
-

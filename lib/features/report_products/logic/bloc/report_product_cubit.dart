@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadamon/core/extensions/date_format_extension.dart';
 import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/features/products_scanner/logic/logic/scanner_manger.dart';
+import 'package:tadamon/features/products_scanner/logic/barcode_scanner.dart';
 import 'package:tadamon/features/report_products/logic/bloc/report_product_state.dart';
 import 'package:tadamon/features/report_products/logic/services/report_service.dart';
 
@@ -34,7 +34,7 @@ class ReportProductCubit extends Cubit<ReportProductState> {
   Future<void> scanBarcode(
       BuildContext context, TextEditingController controller) async {
     try {
-      String scanResult = await ScannerManager().scanBarcode(context);
+      String scanResult = await BarcodeScanner().scanBarcodeByCamera(context);
       if (scanResult == '-1') return;
       if (scanResult == '-404') return;
       controller.text = scanResult;

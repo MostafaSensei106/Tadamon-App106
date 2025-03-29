@@ -7,18 +7,19 @@ import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/features/donation/widget/donation_sheet_content.dart';
 import 'package:tadamon/features/edit_text/widgets/edit_text_sheet_content.dart';
 import 'package:tadamon/core/widgets/home_tool_component/home_tool_component.dart';
-import 'package:tadamon/features/products_scanner/logic/logic/product_scan_bloc/product_scan_cubit.dart';
+import 'package:tadamon/features/products_scanner/logic/cubit/product_scan_cubit/product_scan_cubit.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class HomeAppTools extends StatelessWidget {
   const HomeAppTools({super.key});
 
   @override
-
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: SenseiConst.margin.h),
-      padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h-4.h ,horizontal: SenseiConst.padding.w),
+      padding: EdgeInsets.symmetric(
+          vertical: SenseiConst.padding.h - 4.h,
+          horizontal: SenseiConst.padding.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
         color: Theme.of(context).colorScheme.surfaceContainer,
@@ -38,7 +39,7 @@ class HomeAppTools extends StatelessWidget {
                   title: S.of(context).scanBarcode,
                   onTapped: () => context
                       .read<ProductScanCubit>()
-                      .scanBarcodeCamera(context),
+                      .scanBarcodeByCamera(context),
                 );
               }),
             ),

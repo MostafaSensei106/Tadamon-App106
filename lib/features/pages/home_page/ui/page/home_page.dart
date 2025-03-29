@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/features/pages/home_page/ui/widget/items_counter.dart';
 import 'package:tadamon/features/pages/home_page/ui/widget/home_app_tools.dart';
 import 'package:tadamon/features/pages/home_page/ui/widget/home_tip.dart';
@@ -10,15 +12,21 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(SenseiConst.padding),
+        padding: const EdgeInsets.all(SenseiConst.padding),
         child: Column(
           children: [
-            HomeTip(),
-            ImageNews(),
-            HomeAppTools(),
-            ItemsCounter(),
+            const HomeTip(),
+            const ImageNews(),
+            const HomeAppTools(),
+            const ItemsCounter(),
+            ButtonCompnent(
+                label: 'تواصل معنا',
+                icon: Icons.phone,
+                onPressed: () {
+                  AppToast.showSimpleToastInfo( 'تواصل معنا');
+                }),
           ],
         ),
       ),

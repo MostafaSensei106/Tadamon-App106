@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:tadamon/core/error/no_routes.dart';
 import 'package:tadamon/core/routing/routes.dart';
+import 'package:tadamon/features/pages/chat_with_dev/ui/page/chat_with_dev.dart';
 import 'package:tadamon/features/pages/help_user_page/ui/page/help_user_page.dart';
 import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart';
 import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.dart';
 import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart';
 
 class AppRouter {
+
+
+    static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
+
+  static ColorScheme get theme {
+    final context = navigatorKey.currentContext;
+    if (context == null) {
+      throw Exception("Navigator context is not available");
+    }
+    return Theme.of(context).colorScheme;
+  }
+
   /// Returns a route based on [settings.name].
   ///
   /// The supported routes are:
@@ -15,6 +29,8 @@ class AppRouter {
   /// * [Routes.mainPage]
   /// * [Routes.palatineMap]
   /// * [Routes.userHelp]
+  /// * [Routes.chatWithDev]
+  /// * [Routes.noRoutes]
   ///
   /// If [settings.name] is not recognized, returns a route leading to [NoRoutes].
   Route<dynamic> generateRoute(RouteSettings settings) {
@@ -32,6 +48,8 @@ class AppRouter {
       case Routes.userHelp:
         page = const HelpUserPage();
         break;
+      case Routes.chatWithDev:
+        page = const ChatWithDev();
       default:
         page = const NoRoutes();
     }

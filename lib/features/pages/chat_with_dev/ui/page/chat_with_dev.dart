@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/core/widgets/text_filed_component/text_filed_component.dart';
 import 'package:tadamon/features/pages/chat_with_dev/ui/widget/chat_bubble.dart';
 import 'package:tadamon/features/pages/chat_with_dev/ui/widget/chat_dev_app_bar.dart';
@@ -13,31 +12,26 @@ class ChatWithDev extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> messages = [
-      {'text': 'شكرًا لاستخدامك هذا التطبيق! 🎉', 'isSentByMe': false},
       {
-        'text':
-            'نحن نقدر دعمك لاستمرار المشروع. إذا أحببت التطبيق، يمكنك دعمنا! ❤️',
-        'isSentByMe': false
-      },
-      {
-        'text':
-            'نحن نقدر دعمك لاستمرار المشروع. إذا أحببت التطبيق، يمكنك دعمنا! ❤️',
-        'isSentByMe': false
-      },
-      {
-        'text':
-            'نحن نقدر دعمك لاستمرار المشروع. إذا أحببت التطبيق، يمكنك دعمنا! ❤️',
-        'isSentByMe': false
-      },
-      {
-        'text':
-            'نحن نقدر دعمك لاستمرار المشروع. إذا أحببت التطبيق، يمكنك دعمنا! ❤️',
-        'isSentByMe': false
-      },
-      {
-        'text': 'شارك التطبيق مع أصدقائك! 📲',
+        'text': 'شكرًا لاستخدامك هذا التطبيق! 🎉',
         'isSentByMe': false,
-        'isShareApp': true
+      },
+      {
+        'text': 'إذا عجبك التطبيق، يسعدنا دعمك عشان نقدر نستمر في تطويره! ❤️',
+        'isSentByMe': false,
+      },
+      {
+        'text': 'تقدر تتابعنا وتدعمنا على وسائل التواصل 👇',
+        'isSentByMe': false,
+      },
+      {
+        'text': '📌 تابعنا على Sohila Networks لمزيد من التحديثات والدعم 🙌',
+        'isSentByMe': false,
+      },
+      {
+        'text': 'وشارك التطبيق مع أصدقائك! 📲',
+        'isSentByMe': false,
+        'isShareApp': true,
       },
     ];
 
@@ -85,21 +79,14 @@ class ChatWithDev extends StatelessWidget {
                     child: TextFieldComponent(
                       controller: TextEditingController(),
                       icon: Icons.message_outlined,
+                      useOutBorderRadius: true,
                       hint: '...اكتب رسالة',
-                      onChange: (value) => {},
+                      suffixIcon: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.send_outlined)),
                     ),
                   ),
                   const SizedBox(width: SenseiConst.margin),
-                  ButtonCompnent(
-                    label: 'ارسال',
-                    isEnabled: true,
-                    useInBorderRadius: true,
-                    useWidth: true,
-                    width: 100.w,
-                    useMargin: false,
-                    onPressed: () => {},
-                    icon: Icons.send_rounded,
-                  ),
                 ],
               ),
             ),

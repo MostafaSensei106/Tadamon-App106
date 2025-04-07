@@ -11,10 +11,10 @@ class DrawerComponent extends StatelessWidget {
   final VoidCallback? onTapped;
   final bool selected;
   final bool useMargin;
-  final bool? useSingeGroup;
-  final bool? useGroupTop;
-  final bool? useGroupMiddle;
-  final bool? useGroupBottom;
+  final bool useSingeGroup;
+  final bool useGroupTop;
+  final bool useGroupMiddle;
+  final bool useGroupBottom;
   final bool useDivider;
   final bool useinBorderRadius;
 
@@ -28,10 +28,11 @@ class DrawerComponent extends StatelessWidget {
     this.selected = false,
     this.useMargin = false,
     this.useDivider = false,
-    this.useGroupTop,
-    this.useGroupMiddle,
-    this.useGroupBottom,
-    this.useSingeGroup,  this.useinBorderRadius = false,
+    this.useGroupTop = false,
+    this.useGroupMiddle = false,
+    this.useGroupBottom = false,
+    this.useSingeGroup = true,
+    this.useinBorderRadius = false,
   });
 
   /// Get the border radius based on the given group properties.
@@ -51,26 +52,29 @@ class DrawerComponent extends StatelessWidget {
   ///
   /// Otherwise, return a [BorderRadius] with all corners rounded.
   BorderRadius _getBorderRadius() {
-    double borderRadius = useinBorderRadius ? SenseiConst.inBorderRadius.r : SenseiConst.outBorderRadius.r;
-    if (useGroupTop ?? false) {
+    double borderRadius = useinBorderRadius
+        ? SenseiConst.inBorderRadius.r
+        : SenseiConst.outBorderRadius.r;
+    if (useGroupTop) {
       return BorderRadius.only(
         topLeft: Radius.circular(borderRadius),
         topRight: Radius.circular(borderRadius),
       );
-    } else if (useGroupBottom ?? false) {
+    } else if (useGroupBottom) {
       return BorderRadius.only(
         bottomLeft: Radius.circular(borderRadius),
         bottomRight: Radius.circular(borderRadius),
       );
-    } else if (useSingeGroup ?? false) {
+    } else if (useSingeGroup) {
       return BorderRadius.circular(borderRadius);
-    } else if (useGroupMiddle ?? false) {
+    } else if (useGroupMiddle) {
       return BorderRadius.zero;
     }
     return BorderRadius.circular(borderRadius);
   }
 
   @override
+
   /// Builds a [DrawerComponent].
   ///
   /// This function returns a [Container] widget with a margin and decoration
@@ -105,9 +109,7 @@ class DrawerComponent extends StatelessWidget {
   /// The [ListTile] widget is selected if [selected] is true.
   Widget build(BuildContext context) {
     return Container(
-      margin: useMargin
-          ? const EdgeInsets.only(top: SenseiConst.margin)
-          : null,
+      margin: useMargin ? const EdgeInsets.only(top: SenseiConst.margin) : null,
       decoration: BoxDecoration(
         borderRadius: _getBorderRadius(),
         color: Theme.of(context).colorScheme.surfaceContainer,
@@ -126,16 +128,15 @@ class DrawerComponent extends StatelessWidget {
               child: ListTile(
                 horizontalTitleGap: 13.w,
                 contentPadding: EdgeInsets.symmetric(
-                    horizontal: SenseiConst.padding.w,
-                    vertical: 0
-                ),
+                    horizontal: SenseiConst.padding.w, vertical: 0),
                 leading: Container(
-                       padding: EdgeInsets.all(SenseiConst.padding.w),
-                decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(SenseiConst.inBorderRadius.r),
-                    color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                ),
+                  padding: const EdgeInsets.all(SenseiConst.padding),
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                    color:
+                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                  ),
                   child: Icon(
                     leadingIcon,
                     size: SenseiConst.iconSize.sp,

@@ -37,11 +37,11 @@ class SenseiConst {
   static const String lottieCatErrorAnimation =
       "assets/animations/lottie/cat_error.json";
 
-  static const double padding = 8;
-  static const double iconSize = 27;
-  static const double margin = 8;
+  static const double padding = 8.0;
+  static const double iconSize = 27.0;
+  static const double margin = 8.0;
   static const double outBorderRadius = inBorderRadius + padding;
   static const double indicatorDotSize = 8.0;
   
-  static const double inBorderRadius = 8;
+  static const double inBorderRadius = 8.0;
 }

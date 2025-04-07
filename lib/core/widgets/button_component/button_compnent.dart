@@ -76,7 +76,7 @@ class ButtonCompnent extends StatelessWidget {
               vertical:  SenseiConst.padding.h,
             ),
             shape: RoundedRectangleBorder(
-              borderRadius: useInBorderRadius? BorderRadius.circular(SenseiConst.inBorderRadius.r) : BorderRadius.circular(SenseiConst.outBorderRadius.r),
+              borderRadius: useInBorderRadius? BorderRadius.circular(SenseiConst.inBorderRadius) : BorderRadius.circular(SenseiConst.outBorderRadius),
             ),
             elevation: 2,
             enableFeedback: true,

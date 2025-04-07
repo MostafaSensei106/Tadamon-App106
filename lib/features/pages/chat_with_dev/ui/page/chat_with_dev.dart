@@ -12,28 +12,33 @@ class ChatWithDev extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> messages = [
-      {
-        'text': 'شكرًا لاستخدامك هذا التطبيق! 🎉',
-        'isSentByMe': false,
-      },
-      {
-        'text': 'إذا عجبك التطبيق، يسعدنا دعمك عشان نقدر نستمر في تطويره! ❤️',
-        'isSentByMe': false,
-      },
-      {
-        'text': 'تقدر تتابعنا وتدعمنا على وسائل التواصل 👇',
-        'isSentByMe': false,
-      },
-      {
-        'text': '📌 تابعنا على Sohila Networks لمزيد من التحديثات والدعم 🙌',
-        'isSentByMe': false,
-      },
-      {
-        'text': 'وشارك التطبيق مع أصدقائك! 📲',
-        'isSentByMe': false,
-        'isShareApp': true,
-      },
-    ];
+  {
+    'text': 'شكرًا لاستخدامك هذا التطبيق! 🎉',
+    'isSentByMe': false,
+  },
+  {
+    'text': 'إذا عجبك التطبيق، يسعدنا دعمك عشان نقدر نستمر في تطويره! ❤️',
+    'isSentByMe': false,
+  },
+  {
+    'text': 'للتواصل معنا:',
+    'isSentByMe': true,
+    'isSupportDevButton': false,
+  },
+  {
+    'text': 'تقدر تتابعنا وتدعمنا على وسائل التواصل 👇',
+    'isSentByMe': false,
+  },
+  {
+    'text': '📌 تابعنا على لمزيد من التحديثات والدعم 🙌',
+    'isSentByMe': false,
+  },
+  {
+    'text': 'وشارك التطبيق مع أصدقائك! 📲',
+    'isSentByMe': false,
+    'isShareApp': true,
+  },
+];
 
     final now = DateTime.now();
     return Scaffold(

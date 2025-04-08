@@ -27,7 +27,10 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// the app. The [AppBar] has no elevation and a white background.
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
+      title: Text(
+        title,
+        style: TextStyle(fontSize: 20.sp),
+      ),
       leadingWidth: 102.w,
       titleSpacing: 0,
       centerTitle: true,
@@ -64,7 +67,7 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
                 borderRadius:
                     BorderRadius.circular(SenseiConst.outBorderRadius),
               ),
-              padding: EdgeInsets.all(4.w),
+              padding: const EdgeInsets.all(4),
             ),
             onPressed: () => leave(context),
             icon: Icon(
@@ -76,7 +79,7 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
           Stack(
             children: [
               const CircleAvatar(
-                backgroundImage: AssetImage(SenseiConst.mostafaSenseiogoImage),
+                backgroundImage: AssetImage(SenseiConst.mostafaSenseiogoImage,),
               ),
               Positioned(
                 bottom: 0,

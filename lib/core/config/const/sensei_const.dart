@@ -1,6 +1,10 @@
+import 'package:flutter/widgets.dart';
+
 class SenseiConst {
   static const String appName = " تَضَامُنٌ";
   static const String appVersion = "1.0.0";
+
+  static const String buyMeACoffeeLink = "https://buymeacoffee.com/7yz1lqkegy";
 
   static const String devFaceBookLink =
       "https://www.facebook.com/MostafaSensei106";
@@ -29,6 +33,7 @@ class SenseiConst {
   static const String waterMelonCover = "assets/images/waterMelonCover.webp";
   static const String palestineMapImage = "assets/images/palestineMap.webp";
   static const String tadamonAppImage = "assets/images/tadamonAppLogo.webp";
+  static const String buyMeACoffeeImage = "assets/images/buyMeACoffee.png";
 
   static const String lottieSearchAnimation =
       "assets/animations/lottie/search_placeholder.json";
@@ -37,11 +42,13 @@ class SenseiConst {
   static const String lottieCatErrorAnimation =
       "assets/animations/lottie/cat_error.json";
 
-  static const double padding = 8;
-  static const double iconSize = 27;
-  static const double margin = 8;
+  static const double padding = 8.0;
+  static const double iconSize = 27.0;
+  static const double margin = 8.0;
   static const double outBorderRadius = inBorderRadius + padding;
   static const double indicatorDotSize = 8.0;
-  
-  static const double inBorderRadius = 8;
+
+  static const Color senseiColor = Color(0xfffef2e2);
+
+  static const double inBorderRadius = 8.0;
 }

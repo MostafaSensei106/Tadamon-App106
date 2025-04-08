@@ -65,10 +65,10 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
       children: [
         SizedBox(height: widget.height.h),
         Container(
-          padding: EdgeInsets.all(SenseiConst.padding.w),
+          padding: const EdgeInsets.all(SenseiConst.padding),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surfaceContainer,
-            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
             border: Border.all(
               color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
             ),
@@ -77,9 +77,9 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
             width: 200.w,
             height: 200.h,
             decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(SenseiConst.inBorderRadius.r),
-                color: const Color(0xfffef2e2)),
+              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+              color: SenseiConst.senseiColor,
+            ),
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 350),
               transitionBuilder: (child, animation) =>

@@ -60,7 +60,7 @@ class ModelBottomSheet {
   static Widget _buildBottomSheet(
       BuildContext context, String title, Widget child) {
     return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(14.r)),
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(14)),
       child: ColoredBox(
         color: Theme.of(context).colorScheme.surface,
         child: SingleChildScrollView(

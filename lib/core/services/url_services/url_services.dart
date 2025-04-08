@@ -22,4 +22,26 @@ class UrlRunServices {
     }
   }
 
+  /// A function to send an email.
+  ///
+  /// It takes a [String] for [toEmail], [subject], and [body].
+  ///
+  /// It will try to launch the email with [LaunchMode.externalApplication].
+  ///
+  /// If the launch fails, it will throw an [Exception].
+  static Future<void> sendEmail({
+    required String toEmail,
+    required String subject,
+    required String body,
+  }) async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: toEmail,
+      query: '${Uri.encodeQueryComponent('subject')}$subject&${Uri.encodeQueryComponent('body')}=$body',
+    );
+    if (!await launchUrl(emailLaunchUri)) {
+      throw Exception('Could not launch $emailLaunchUri');
+    }
+  }
+
 }

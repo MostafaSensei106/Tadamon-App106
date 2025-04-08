@@ -4,6 +4,8 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/app_router.dart';
 import 'package:toastification/toastification.dart';
 
+
+
 class AppToast {
 
   /// Shows a toast with the given [message] for a short duration at the bottom
@@ -24,6 +26,7 @@ class AppToast {
       borderSide: BorderSide(
         color: AppRouter.theme.outline.withAlpha(0x80),
       ),
+      // ignore: deprecated_member_use
       closeButtonShowType: CloseButtonShowType.none,
     );
   }

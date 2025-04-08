@@ -5,8 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart';
 import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart';
-import 'package:tadamon/core/helpers/about_helper.dart';
-import 'package:tadamon/core/helpers/dev_helper.dart';
+
 import 'package:tadamon/core/config/theme/colors/logic/helper/theme_toggle_helper.dart';
 
 import 'package:tadamon/core/routing/routes.dart';
@@ -490,7 +489,7 @@ Widget _buildDeveloper(BuildContext context) {
     leadingIcon: Icons.verified_outlined,
     title: S.of(context).developer,
     subtitle: S.of(context).mostafaMahmoud,
-    trailingWidget: const ContactSenseiDev().buildAvatar(context),
+    ///trailingWidget: const ContactSenseiDev().buildAvatar(context),
     onTapped: () => {
       HapticFeedback.vibrate(),
       Navigator.pop(context),
@@ -507,6 +506,6 @@ Widget _buildAbout(BuildContext context) {
     leadingIcon: Icons.info_outline,
     title: S.of(context).about,
     subtitle: S.of(context).about,
-    onTapped: () => appAbout(context),
+   // onTapped: () => appAbout(context),
   );
 }

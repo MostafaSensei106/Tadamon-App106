@@ -15,14 +15,14 @@ class TextFieldComponent extends StatelessWidget {
   final int maxLength;
   final bool readOnly;
 
-  final ValueChanged<String> onChange;
+  final ValueChanged<String>? onChange;
 
   const TextFieldComponent(
       {super.key,
       required this.controller,
       required this.icon,
       required this.hint,
-      required this.onChange,
+      this.onChange,
       this.suffixIcon,
       this.isNumeric = false,
       this.errorText,

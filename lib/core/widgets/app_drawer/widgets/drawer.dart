@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart';
 import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart';
-
 import 'package:tadamon/core/config/theme/colors/logic/helper/theme_toggle_helper.dart';
 
 import 'package:tadamon/core/routing/routes.dart';
@@ -398,6 +397,10 @@ Widget _buildHowToUse(BuildContext context) {
       leadingIcon: Icons.question_answer_outlined,
       title: S.of(context).howToUse,
       subtitle: S.of(context).howToUseMassage,
+      trailingWidget: Icon(
+        Icons.arrow_right_rounded,
+        color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+      ),
       onTapped: () {
         HapticFeedback.vibrate();
         Navigator.pop(context);
@@ -430,8 +433,14 @@ Widget _buildReadMe(BuildContext context) {
     leadingIcon: Icons.description_outlined,
     title: S.of(context).readMe,
     subtitle: S.of(context).readMeMassage,
+    trailingWidget: Icon(
+      Icons.link_rounded,
+      color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+    ),
     onTapped: () {
       HapticFeedback.vibrate();
+              Navigator.pop(context);
+
       UrlRunServices.launchURL(SenseiConst.devReadMeLink);
     },
   );
@@ -445,8 +454,14 @@ Widget _buildLetestUpdate(BuildContext context) {
     leadingIcon: Icons.update_outlined,
     title: S.of(context).letastUpdate,
     subtitle: S.of(context).letestUpdateMassage,
+    trailingWidget: Icon(
+      Icons.link_rounded,
+      color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+    ),
     onTapped: () {
       HapticFeedback.vibrate();
+              Navigator.pop(context);
+
       UrlRunServices.launchURL(SenseiConst.devReleaseAppLink);
     },
   );
@@ -460,8 +475,14 @@ Widget _buildGithubToken(BuildContext context) {
     leadingIcon: Icons.live_help_outlined,
     title: S.of(context).githubTiket,
     subtitle: S.of(context).githubTiketMassage,
+    trailingWidget: Icon(
+      Icons.link_rounded,
+      color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+    ),
     onTapped: () {
       HapticFeedback.vibrate();
+              Navigator.pop(context);
+
       UrlRunServices.launchURL(SenseiConst.devGitHubTokenLink);
     },
   );
@@ -475,8 +496,14 @@ Widget _buildTelegramChannel(BuildContext context) {
       leadingIcon: Icons.telegram_rounded,
       title: S.of(context).telegramChannel,
       subtitle: S.of(context).telegramChannelMassage,
+      trailingWidget: Icon(
+        Icons.link_rounded,
+        color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+      ),
       onTapped: () {
         HapticFeedback.vibrate();
+                Navigator.pop(context);
+
         UrlRunServices.launchURL(SenseiConst.devTelegramLink);
       });
 }
@@ -489,12 +516,15 @@ Widget _buildDeveloper(BuildContext context) {
     leadingIcon: Icons.verified_outlined,
     title: S.of(context).developer,
     subtitle: S.of(context).mostafaMahmoud,
-    ///trailingWidget: const ContactSenseiDev().buildAvatar(context),
+    trailingWidget: Icon(
+      Icons.arrow_right_rounded,
+      color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+    ),
     onTapped: () => {
       HapticFeedback.vibrate(),
       Navigator.pop(context),
       Navigator.pushNamed(context, Routes.chatWithDev)
-    } ,
+    },
   );
 }
 
@@ -504,8 +534,13 @@ Widget _buildAbout(BuildContext context) {
     useDivider: false,
     useGroupBottom: true,
     leadingIcon: Icons.info_outline,
+    trailingWidget: Icon(
+      Icons.arrow_right_rounded,
+      color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+    ),
+
     title: S.of(context).about,
     subtitle: S.of(context).about,
-   // onTapped: () => appAbout(context),
+    // onTapped: () => appAbout(context),
   );
 }

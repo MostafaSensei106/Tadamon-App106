@@ -31,7 +31,7 @@ class DrawerComponent extends StatelessWidget {
     this.useGroupTop = false,
     this.useGroupMiddle = false,
     this.useGroupBottom = false,
-    this.useSingeGroup = true,
+    this.useSingeGroup = false,
     this.useinBorderRadius = false,
   });
 

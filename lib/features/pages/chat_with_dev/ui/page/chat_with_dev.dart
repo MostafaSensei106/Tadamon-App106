@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
@@ -19,6 +20,7 @@ class ChatWithDev extends StatelessWidget {
 
   Future<void> sendMessage() async {
     try {
+      HapticFeedback.vibrate();
       final String message = _controller.text;
       if (message.isNotEmpty) {
         await UrlRunServices.sendEmail(

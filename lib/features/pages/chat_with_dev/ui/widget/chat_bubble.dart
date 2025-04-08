@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
@@ -64,16 +65,24 @@ class ChatBubble extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(SenseiConst.inBorderRadius),
                     onTap: () {
+                      HapticFeedback.vibrate();
                       UrlRunServices.launchURL(SenseiConst.buyMeACoffeeLink);
                     },
                     child: Container(
                       constraints: BoxConstraints(maxWidth: 0.75.sw),
                       padding: const EdgeInsets.all(SenseiConst.padding),
                       decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(SenseiConst.inBorderRadius),
-                          color: SenseiConst.senseiColor,
+                        borderRadius:
+                            BorderRadius.circular(SenseiConst.inBorderRadius),
+                        color: SenseiConst.senseiColor,
+                        boxShadow:  [
+                          BoxShadow(
+                            color: Theme.of(context).colorScheme.shadow.withAlpha(0x30),
+                            offset: const Offset(0, 3),
+                            blurRadius: 2,
                           ),
+                        ],
+                      ),
                       child: Image.asset(
                         SenseiConst.buyMeACoffeeImage,
                         width: 0.75.sw,

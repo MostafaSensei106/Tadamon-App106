@@ -53,7 +53,7 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
           Icons.telegram_outlined,
           () {
             HapticFeedback.vibrate();
-            UrlRunServices.launchURL(SenseiConst.tadamonTelegramLink);
+            UrlRunServices.launchURL(SenseiConst.devTelegramLink);
           },
         ),
       ],

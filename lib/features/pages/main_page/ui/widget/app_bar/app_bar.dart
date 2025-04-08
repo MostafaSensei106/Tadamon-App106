@@ -16,7 +16,7 @@ class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(SenseiConst.waterMelonCover),
+          image: AssetImage(SenseiConst.waterMelonCoverImage),
           fit: BoxFit.cover,
         ),
       ),

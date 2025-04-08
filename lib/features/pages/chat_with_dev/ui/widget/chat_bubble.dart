@@ -32,7 +32,7 @@ class ChatBubble extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(right: SenseiConst.padding),
               child: CircleAvatar(
-                backgroundImage: AssetImage(SenseiConst.mostafaSenseiogo),
+                backgroundImage: AssetImage(SenseiConst.mostafaSenseiogoImage),
                 radius: SenseiConst.outBorderRadius,
               ),
             ),
@@ -75,9 +75,12 @@ class ChatBubble extends StatelessWidget {
                         borderRadius:
                             BorderRadius.circular(SenseiConst.inBorderRadius),
                         color: SenseiConst.senseiColor,
-                        boxShadow:  [
+                        boxShadow: [
                           BoxShadow(
-                            color: Theme.of(context).colorScheme.shadow.withAlpha(0x30),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .shadow
+                                .withAlpha(0x30),
                             offset: const Offset(0, 3),
                             blurRadius: 2,
                           ),

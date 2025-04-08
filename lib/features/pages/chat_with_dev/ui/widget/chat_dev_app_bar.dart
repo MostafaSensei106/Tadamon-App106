@@ -76,7 +76,7 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
           Stack(
             children: [
               const CircleAvatar(
-                backgroundImage: AssetImage(SenseiConst.mostafaSenseiogo),
+                backgroundImage: AssetImage(SenseiConst.mostafaSenseiogoImage),
               ),
               Positioned(
                 bottom: 0,

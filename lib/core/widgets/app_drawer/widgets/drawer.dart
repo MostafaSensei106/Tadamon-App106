@@ -439,7 +439,7 @@ Widget _buildReadMe(BuildContext context) {
     ),
     onTapped: () {
       HapticFeedback.vibrate();
-              Navigator.pop(context);
+      Navigator.pop(context);
 
       UrlRunServices.launchURL(SenseiConst.devReadMeLink);
     },
@@ -460,7 +460,7 @@ Widget _buildLetestUpdate(BuildContext context) {
     ),
     onTapped: () {
       HapticFeedback.vibrate();
-              Navigator.pop(context);
+      Navigator.pop(context);
 
       UrlRunServices.launchURL(SenseiConst.devReleaseAppLink);
     },
@@ -481,7 +481,7 @@ Widget _buildGithubToken(BuildContext context) {
     ),
     onTapped: () {
       HapticFeedback.vibrate();
-              Navigator.pop(context);
+      Navigator.pop(context);
 
       UrlRunServices.launchURL(SenseiConst.devGitHubTokenLink);
     },
@@ -502,9 +502,9 @@ Widget _buildTelegramChannel(BuildContext context) {
       ),
       onTapped: () {
         HapticFeedback.vibrate();
-                Navigator.pop(context);
+        Navigator.pop(context);
 
-        UrlRunServices.launchURL(SenseiConst.devTelegramLink);
+        UrlRunServices.launchURL(SenseiConst.tadamonTelegramLink);
       });
 }
 

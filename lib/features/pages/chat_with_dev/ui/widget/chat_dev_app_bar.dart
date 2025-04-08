@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/services/url_services/url_services.dart';
 
 class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -39,8 +40,22 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: _buildSidePageAppBarIcon(
           context, Icons.keyboard_double_arrow_right_rounded),
       actions: [
-        _buildActionBarIcon(context, Icons.call_outlined),
-        _buildActionBarIcon(context, Icons.telegram_outlined),
+        _buildActionBarIcon(
+          context,
+          Icons.call_outlined,
+          () {
+            HapticFeedback.vibrate();
+            UrlRunServices.makePhoneCall(SenseiConst.devPhoneNumber);
+          },
+        ),
+        _buildActionBarIcon(
+          context,
+          Icons.telegram_outlined,
+          () {
+            HapticFeedback.vibrate();
+            UrlRunServices.launchURL(SenseiConst.tadamonTelegramLink);
+          },
+        ),
       ],
     );
   }
@@ -79,7 +94,9 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
           Stack(
             children: [
               const CircleAvatar(
-                backgroundImage: AssetImage(SenseiConst.mostafaSenseiogoImage,),
+                backgroundImage: AssetImage(
+                  SenseiConst.mostafaSenseiogoImage,
+                ),
               ),
               Positioned(
                 bottom: 0,
@@ -102,11 +119,12 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildActionBarIcon(BuildContext context, IconData icon) {
+  Widget _buildActionBarIcon(
+      BuildContext context, IconData icon, final VoidCallback onPressed) {
     return IconButton(
       icon: Icon(icon),
       color: Theme.of(context).colorScheme.onSurface,
-      onPressed: () {},
+      onPressed: onPressed,
     );
   }
 }

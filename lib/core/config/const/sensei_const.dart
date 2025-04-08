@@ -4,6 +4,8 @@ class SenseiConst {
   static const String appName = " تَضَامُنٌ";
   static const String appVersion = "1.0.0";
 
+  static const String devPhoneNumber = "+201014414536";
+
   static const String buyMeACoffeeLink = "https://buymeacoffee.com/7yz1lqkegy";
 
   static const String devFaceBookLink =
@@ -17,7 +19,8 @@ class SenseiConst {
       "https://github.com/MostafaSensei106/Tadamon/releases/new";
   static const String devGitHubTokenLink =
       "https://github.com/MostafaSensei106/Tadamon/issues";
-  static const String devTelegramLink = "https://t.me/TadamonApp";
+  static const String devTelegramLink = "https://t.me/Mostafa_Sensei106";
+  static const String tadamonTelegramLink = "https://t.me/TadamonApp";
 
   static const String donateByUnrwaLink =
       "https://donate.unrwa.org/int/ar/general?context_form_id=form_a81687151ce354b21b331f928cf8156a8996ab77_6767a2ac5f0560.06919295";

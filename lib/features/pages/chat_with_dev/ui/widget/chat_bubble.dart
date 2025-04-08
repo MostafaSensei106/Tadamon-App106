@@ -60,7 +60,7 @@ class ChatBubble extends StatelessWidget {
                         : Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
-                if (isSentByMe)
+                if (!isSentByMe && isSupportDevButton)
                   InkWell(
                     borderRadius:
                         BorderRadius.circular(SenseiConst.inBorderRadius),

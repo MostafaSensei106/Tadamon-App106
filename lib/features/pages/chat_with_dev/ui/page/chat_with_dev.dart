@@ -21,9 +21,8 @@ class ChatWithDev extends StatelessWidget {
     'isSentByMe': false,
   },
   {
-    'text': 'للتواصل معنا:',
+    'text' : 'للاستفسار، يمكنك التواصل معنا على الواتساب 👇',
     'isSentByMe': true,
-    'isSupportDevButton': false,
   },
   {
     'text': 'تقدر تتابعنا وتدعمنا على وسائل التواصل 👇',
@@ -64,8 +63,6 @@ class ChatWithDev extends StatelessWidget {
                   return ChatBubble(
                     text: messages[index]['text'],
                     isSentByMe: messages[index]['isSentByMe'],
-                    isSupportDevButton:
-                        messages[index]['isSupportDevButton'] ?? false,
                     time: dateTime,
                   );
                 },

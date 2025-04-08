@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 class LottieComponent extends StatelessWidget {
+  
   final String lottiePath;
   final String text;
+
   const LottieComponent(
       {super.key, required this.lottiePath, required this.text});
 

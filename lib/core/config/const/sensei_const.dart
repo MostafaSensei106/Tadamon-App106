@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 class SenseiConst {
   static const String appName = " تَضَامُنٌ";
   static const String appVersion = "1.0.0";
@@ -45,6 +47,8 @@ class SenseiConst {
   static const double margin = 8.0;
   static const double outBorderRadius = inBorderRadius + padding;
   static const double indicatorDotSize = 8.0;
+
+  static const Color senseiColor = Color(0xfffef2e2);
 
   static const double inBorderRadius = 8.0;
 }

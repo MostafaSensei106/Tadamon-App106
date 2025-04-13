@@ -42,7 +42,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     'ابحث عن المنتجات واحصل علي البدائل لمنتجات المقاطعة بكل سهولة.',
               ),
               const OnboardingPageTwo(
-                height: 51.1,
+                height: 75.5,
                 appOnlineRun: true,
                 firstIcon: Icons.cloud_done_outlined,
                 secondIcon: Icons.cloud_off_rounded,

@@ -77,7 +77,7 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
             width: 200.w,
             height: 200.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
               color: SenseiConst.senseiColor,
             ),
             child: AnimatedSwitcher(

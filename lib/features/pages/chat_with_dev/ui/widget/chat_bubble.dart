@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
+import 'package:tadamon/core/widgets/icon_button_component/icon_button_filledTonal_component.dart';
 import 'package:tadamon/features/pages/chat_with_dev/ui/widget/donation_for_dev_slider.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -55,48 +56,74 @@ class ChatBubble extends StatelessWidget {
                   : CrossAxisAlignment.end,
               children: [
                 if (isSupportDevButton) const DonationForDevSlider(),
-                Text(
-                  text,
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    textBaseline: TextBaseline.alphabetic,
-                    color: isSentByMe
-                        ? Theme.of(context).colorScheme.onSecondaryContainer
-                        : Theme.of(context).colorScheme.onSurface,
-                  ),
-                ),
+                Message(text: text, isSentByMe: isSentByMe),
                 if (isShareButton)
-                  IconButton.filledTonal(
-                    onPressed: () {},
-    
-                    icon: const Icon(
-                      Icons.share_outlined,
-                      size: SenseiConst.iconSize,
-                    ),
-                  ),
+                 IconButtonFilledtonalComponent(icon: Icons.ios_share_rounded, onPressed: (){}),
+
                 const SizedBox(height: 4),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    formattedTime,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: isSentByMe
-                          ? Theme.of(context)
-                              .colorScheme
-                              .onSecondaryContainer
-                              .withAlpha(0x50)
-                          : Theme.of(context)
-                              .colorScheme
-                              .onSurface
-                              .withAlpha(0x50),
-                    ),
-                  ),
-                ),
+                DataTime(formattedTime: formattedTime, isSentByMe: isSentByMe),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class Message extends StatelessWidget {
+  const Message({
+    super.key,
+    required this.text,
+    required this.isSentByMe,
+  });
+
+  final String text;
+  final bool isSentByMe;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.start,
+      style: TextStyle(
+        textBaseline: TextBaseline.alphabetic,
+        color: isSentByMe
+            ? Theme.of(context).colorScheme.onSecondaryContainer
+            : Theme.of(context).colorScheme.onSurface,
+      ),
+    );
+  }
+}
+
+class DataTime extends StatelessWidget {
+  const DataTime({
+    super.key,
+    required this.formattedTime,
+    required this.isSentByMe,
+  });
+
+  final String formattedTime;
+  final bool isSentByMe;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Text(
+        formattedTime,
+        style: TextStyle(
+          fontSize: 12,
+          color: isSentByMe
+              ? Theme.of(context)
+                  .colorScheme
+                  .onSecondaryContainer
+                  .withAlpha(0x50)
+              : Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withAlpha(0x50),
+        ),
       ),
     );
   }

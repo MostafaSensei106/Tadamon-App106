@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
+import 'package:tadamon/features/pages/chat_with_dev/ui/widget/donation_for_dev_slider.dart';
 
 class ChatBubble extends StatelessWidget {
   final String text;
@@ -60,39 +61,8 @@ class ChatBubble extends StatelessWidget {
                         : Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
-                if (!isSentByMe && isSupportDevButton)
-                  InkWell(
-                    borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius),
-                    onTap: () {
-                      HapticFeedback.vibrate();
-                      UrlRunServices.launchURL(SenseiConst.buyMeACoffeeLink);
-                    },
-                    child: Container(
-                      constraints: BoxConstraints(maxWidth: 0.75.sw),
-                      padding: const EdgeInsets.all(SenseiConst.padding),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(SenseiConst.inBorderRadius),
-                        color: SenseiConst.senseiColor,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .shadow
-                                .withAlpha(0x30),
-                            offset: const Offset(0, 3),
-                            blurRadius: 2,
-                          ),
-                        ],
-                      ),
-                      child: Image.asset(
-                        SenseiConst.buyMeACoffeeImage,
-                        width: 0.75.sw,
-                        height: 60.h,
-                      ),
-                    ),
-                  ),
+                if (isSupportDevButton)
+                   const DonationForDevSlider(),
                 const SizedBox(height: 4),
                 Text(
                   formattedTime,

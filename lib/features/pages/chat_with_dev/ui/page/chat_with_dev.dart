@@ -47,18 +47,13 @@ class ChatWithDev extends StatelessWidget {
     'isSentByMe': false,
   },
   {
-    'text': 'إن رغبت، يمكنك المساهمة اختياريًا في دعم هذا المشروع ليستمر ويصل لعدد أكبر من الناس.',
-    'isSentByMe': false,
-  },
-  {
-    'text': 'دعمك متاح عبر منصة Buy Me a Coffee من خلال الرابط التالي:',
+    'text': 'إن رغبت، يمكنك المساهمة اختياريًا في دعم هذا المشروع ليستمر ويصل لعدد أكبر من المستخدمين.',
     'isSentByMe': false,
     'isSupportDevButton': true,
   },
   {
     'text': 'ولا تنسَ مشاركة التطبيق مع من حولك، فالتأثير يبدأ بخطوة. 📲',
     'isSentByMe': false,
-    'isShareApp': true,
   },
 ];
 
@@ -81,6 +76,7 @@ class ChatWithDev extends StatelessWidget {
                 return ChatBubble(
                   text: messages[index]['text'],
                   isSentByMe: messages[index]['isSentByMe'],
+                  isSupportDevButton: messages[index]['isSupportDevButton'] ?? false,
                   time: dateTime,
                 );
               },

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/services/share_Services/share_services.dart';
+import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/core/widgets/icon_button_component/icon_button_filledtonal_component.dart';
 import 'package:tadamon/features/pages/chat_with_dev/ui/widget/donation_for_dev_slider.dart';
 
@@ -51,13 +54,42 @@ class ChatBubble extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: isSentByMe
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.start,
               children: [
                 if (isSupportDevButton) const DonationForDevSlider(),
                 Message(text: text, isSentByMe: isSentByMe),
                 if (isShareButton)
-                 IconButtonFilledtonalComponent(icon: Icons.ios_share_rounded, color: Theme.of(context).colorScheme.secondaryFixed, onPressed: (){}),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButtonFilledTonalComponent(
+                          icon: Icons.ios_share_rounded,
+                          useInBorderRadius: true,
+                          color: Theme.of(context).colorScheme.secondaryFixed,
+                          onPressed: () {
+                            HapticFeedback.vibrate();
+                            ShareServices.share(SenseiConst.tadamonGitHubLink);
+                          }),
+                      IconButtonFilledTonalComponent(
+                          icon: Icons.link_rounded,
+                          useInBorderRadius: true,
+                          color: Theme.of(context).colorScheme.secondaryFixed,
+                          onPressed: () {
+                            HapticFeedback.vibrate();
+                            ShareServices.share(SenseiConst.devPortfolioLink);
+                          }),
+                      IconButtonFilledTonalComponent(
+                          icon: Icons.auto_awesome_rounded,
+                          useInBorderRadius: true,
+                          color: Theme.of(context).colorScheme.secondaryFixed,
+                          onPressed: () {
+                            HapticFeedback.vibrate();
+                            UrlRunServices.launchURL(
+                                SenseiConst.devLinkedInLink);
+                          }),
+                    ],
+                  ),
                 const SizedBox(height: 4),
                 DataTime(formattedTime: formattedTime, isSentByMe: isSentByMe),
               ],
@@ -75,7 +107,6 @@ class Message extends StatelessWidget {
     required this.text,
     required this.isSentByMe,
   });
-
   final String text;
   final bool isSentByMe;
 
@@ -117,10 +148,7 @@ class DataTime extends StatelessWidget {
                   .colorScheme
                   .onSecondaryContainer
                   .withAlpha(0x50)
-              : Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withAlpha(0x50),
+              : Theme.of(context).colorScheme.onSurface.withAlpha(0x50),
         ),
       ),
     );

@@ -37,15 +37,11 @@ class ChatWithDev extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> messages = [
   {
-    'text': 'شكرًا لاستخدامك تطبيق "تضامن". وعيك واختيارك يصنعان فرقًا حقيقيًا في دعم القضية الفلسطينية.',
+    'text':'شكرًا لاستخدامك تطبيق "تضامن". وعيك واختيارك يُحدثان فرقًا حقيقيًا في دعم القضية الفلسطينية.',
     'isSentByMe': false,
   },
   {
-    'text': 'المقاطعة أداة سلمية فعّالة، وبتعاوننا تنتشر الكلمة ويعلو صوت الحق.',
-    'isSentByMe': false,
-  },
-  {
-    'text': 'إذا كنت ترغب، يمكنك الضغط على الصورة أعلاه لدعم هذا المشروع اختياريًا، مما يساعد في استمراره والوصول إلى عدد أكبر من المستخدمين.',
+    'text': 'إذا كنت ترغب، يمكنك الضغط على الصورة أعلاه لدعم هذا المشروع اختياريًا.',
     'isSentByMe': false,
     'isSupportDevButton': true,
   },
@@ -54,8 +50,8 @@ class ChatWithDev extends StatelessWidget {
     'isSentByMe': false,
   },
   {
-    'text': 'نعم، أريد مشاركة التطبيق',
-    'isSentByMe': true,
+    'text': 'يمكنك مشاركة التطبيق والاطلاع على ملفي الشخصي من خلال الروابط أدناه',
+    'isSentByMe': false,
     'isShareButton': true
   }
 ];

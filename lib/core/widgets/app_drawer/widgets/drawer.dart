@@ -483,7 +483,7 @@ Widget _buildGithubToken(BuildContext context) {
       HapticFeedback.vibrate();
       Navigator.pop(context);
 
-      UrlRunServices.launchURL(SenseiConst.devGitHubTokenLink);
+      UrlRunServices.launchURL(SenseiConst.devGitHubIssuesLink);
     },
   );
 }

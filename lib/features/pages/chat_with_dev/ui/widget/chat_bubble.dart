@@ -49,6 +49,8 @@ class ChatBubble extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                       if (isSupportDevButton)
+                   const DonationForDevSlider(),
                 Text(
                   text,
                   textAlign: TextAlign.start,
@@ -59,8 +61,6 @@ class ChatBubble extends StatelessWidget {
                         : Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
-                if (isSupportDevButton)
-                   const DonationForDevSlider(),
                 const SizedBox(height: 4),
                 Text(
                   formattedTime,

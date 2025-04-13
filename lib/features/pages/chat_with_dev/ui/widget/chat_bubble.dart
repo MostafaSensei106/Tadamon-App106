@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/features/pages/chat_with_dev/ui/widget/donation_for_dev_slider.dart';
 
 class ChatBubble extends StatelessWidget {
   final String text;
   final bool isSentByMe;
   final bool isSupportDevButton;
+  final bool isShareButton;
   final DateTime time;
 
   const ChatBubble({
@@ -15,6 +17,7 @@ class ChatBubble extends StatelessWidget {
     required this.text,
     required this.isSentByMe,
     this.isSupportDevButton = false,
+    this.isShareButton = false,
     required this.time,
   });
 
@@ -35,6 +38,8 @@ class ChatBubble extends StatelessWidget {
                 radius: SenseiConst.outBorderRadius,
               ),
             ),
+          if(isShareButton)
+              ButtonCompnent(label: text, icon: Icons.share, onPressed: () {}),
           Container(
             constraints: BoxConstraints(maxWidth: 0.75.sw),
             padding: const EdgeInsets.symmetric(
@@ -49,8 +54,7 @@ class ChatBubble extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                       if (isSupportDevButton)
-                   const DonationForDevSlider(),
+                if (isSupportDevButton) const DonationForDevSlider(),
                 Text(
                   text,
                   textAlign: TextAlign.start,

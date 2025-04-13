@@ -31,6 +31,8 @@ class SenseiConst {
   static const String donateByEGYFoodBankLink =
       "https://www.efb.eg/programs/3101/daam-alasr-alflstyny-fy-msr";
 
+  static const String vodafoneCashLink = "https://www.vodafonecash.com.eg/";
+
   static const String mostafaSenseiogoImage =
       "assets/images/mostafaSenseiLogo.webp";
   static const String drawerImage = "assets/images/drawerImage.webp";
@@ -39,6 +41,7 @@ class SenseiConst {
   static const String palestineMapImage = "assets/images/palestineMap.webp";
   static const String tadamonAppImage = "assets/images/tadamonAppLogo.webp";
   static const String buyMeACoffeeImage = "assets/images/buyMeACoffee.webp";
+  static const String vodafoneCashImage = "assets/images/vodafoneCash.jpg";
 
   static const String lottieSearchAnimation =
       "assets/animations/lottie/search_placeholder.json";

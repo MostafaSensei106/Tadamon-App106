@@ -11,9 +11,7 @@ import 'package:tadamon/generated/l10n.dart';
 
 class ChatWithDev extends StatelessWidget {
   ChatWithDev({super.key});
-
   final TextEditingController _controller = TextEditingController();
-
   void dispose() {
     _controller.dispose();
   }
@@ -47,14 +45,21 @@ class ChatWithDev extends StatelessWidget {
     'isSentByMe': false,
   },
   {
-    'text': 'إن رغبت، يمكنك المساهمة اختياريًا في دعم هذا المشروع ليستمر ويصل لعدد أكبر من المستخدمين.',
+    'text': 'إذا كنت ترغب، يمكنك الضغط على الصورة أعلاه لدعم هذا المشروع اختياريًا، مما يساعد في استمراره والوصول إلى عدد أكبر من المستخدمين.',
     'isSentByMe': false,
     'isSupportDevButton': true,
   },
   {
-    'text': 'ولا تنسَ مشاركة التطبيق مع من حولك، فالتأثير يبدأ بخطوة. 📲',
+    'text': 'ولا تنسَ مشاركة التطبيق مع من حولك، فالتأثير يبدأ بخطوة.',
     'isSentByMe': false,
   },
+  {
+    'text':'Yes I want To Share App',
+    'isSentByMe': true,
+    'isShareButton': true
+  }
+
+
 ];
 
     final now = DateTime.now();
@@ -77,6 +82,7 @@ class ChatWithDev extends StatelessWidget {
                   text: messages[index]['text'],
                   isSentByMe: messages[index]['isSentByMe'],
                   isSupportDevButton: messages[index]['isSupportDevButton'] ?? false,
+                  isShareButton: messages[index]['isShareButton'] ?? false,
                   time: dateTime,
                 );
               },

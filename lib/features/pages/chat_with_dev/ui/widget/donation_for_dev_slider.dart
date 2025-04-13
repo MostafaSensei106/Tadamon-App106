@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/services/url_services/url_services.dart';
 
 class DonationForDevSlider extends StatefulWidget {
   const DonationForDevSlider({super.key});
@@ -21,9 +23,10 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
 
   final List<String> _imagesPaths = [
     SenseiConst.buyMeACoffeeImage,
-    SenseiConst.waterMelonCoverImage,
-    SenseiConst.drawerImage,
+    //SenseiConst.vodafoneCashImage,
   ];
+
+  
 
   int _currentPage = 0;
 
@@ -73,54 +76,24 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
   }
 
   Widget _buildImageSlide(String imageAsset) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(SenseiConst.inBorderRadius)),
-      child: Image.asset(
-        imageAsset,
-        fit: BoxFit.cover,
-        errorBuilder: (context, error, stackTrace) => Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerHigh,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.image_not_supported_outlined,
-                color: Theme.of(context).colorScheme.error,
-                size: SenseiConst.iconSize,
-              ),
-              const Text('فشل تحميل الصورة'),
-            ],
-          ),
+    return Image.asset(
+      imageAsset,
+      fit: BoxFit.cover,
+      errorBuilder: (context, error, stackTrace) => Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surfaceContainerHigh,
         ),
-      ),
-    );
-  }
-
-  Widget _buildPageIndicator() {
-    return Padding(
-      padding: EdgeInsets.only(bottom: SenseiConst.padding.h),
-      child: SmoothPageIndicator(
-        controller: _pageController,
-        count: _imagesPaths.length,
-        effect: ExpandingDotsEffect(
-          dotWidth: SenseiConst.indicatorDotSize,
-          dotHeight: SenseiConst.indicatorDotSize,
-          dotColor: Theme.of(context)
-              .colorScheme
-              .onSurface
-              .withAlpha((0.5 * 255).toInt()),
-          activeDotColor: Theme.of(context).colorScheme.primaryContainer,
-          expansionFactor: 2,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.image_not_supported_outlined,
+              color: Theme.of(context).colorScheme.error,
+              size: SenseiConst.iconSize,
+            ),
+            const Text('فشل تحميل الصورة'),
+          ],
         ),
-        onDotClicked: (index) {
-          _pageController.animateToPage(
-            index,
-            duration: _slideTransitionDuration,
-            curve: Curves.easeInOut,
-          );
-        },
       ),
     );
   }
@@ -130,29 +103,27 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
     return GestureDetector(
       onTapDown: (_) => _pauseAutoSlide(),
       onTapUp: (_) => _resumeAutoSlide(),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: SenseiConst.padding),
-            child: AspectRatio(
-              aspectRatio: 30 / 10, 
-              child: PageView.builder(
-                controller: _pageController,
-                pageSnapping: true,
-                scrollDirection: Axis.horizontal,
-                physics: const ScrollPhysics(),
-                itemCount: _imagesPaths.length,
-                itemBuilder: (context, index) =>
-                    _buildImageSlide(_imagesPaths[index]),
-                onPageChanged: (index) {
-                  setState(() => _currentPage = index);
-                },
-              ),
+      onTap: () {HapticFeedback.vibrate(); UrlRunServices.launchURL(SenseiConst.buyMeACoffeeLink);},
+      child: Padding(
+        padding:  EdgeInsets.symmetric(vertical: SenseiConst.padding.h-4),
+        child: AspectRatio(
+          aspectRatio: 35 / 10, 
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+            child: PageView.builder(
+              controller: _pageController,
+              pageSnapping: true,
+              scrollDirection: Axis.horizontal,
+              physics: const ScrollPhysics(),
+              itemCount: _imagesPaths.length,
+              itemBuilder: (context, index) =>
+                  _buildImageSlide(_imagesPaths[index]),
+              onPageChanged: (index) {
+                setState(() => _currentPage = index);
+              },
             ),
           ),
-          _buildPageIndicator(),
-        ],
+        ),
       ),
     );
   }
@@ -163,4 +134,5 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
     _autoSlideTimer?.cancel();
     super.dispose();
   }
+
 }

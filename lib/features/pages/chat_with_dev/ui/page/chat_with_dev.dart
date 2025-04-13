@@ -58,8 +58,6 @@ class ChatWithDev extends StatelessWidget {
     'isSentByMe': true,
     'isShareButton': true
   }
-
-
 ];
 
     final now = DateTime.now();

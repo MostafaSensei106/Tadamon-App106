@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/features/pages/chat_with_dev/ui/widget/donation_for_dev_slider.dart';
 
 class ChatBubble extends StatelessWidget {

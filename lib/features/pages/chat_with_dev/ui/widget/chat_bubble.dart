@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/core/widgets/icon_button_component/icon_button_filledTonal_component.dart';
+import 'package:tadamon/core/widgets/icon_button_component/icon_button_filledtonal_component.dart';
 import 'package:tadamon/features/pages/chat_with_dev/ui/widget/donation_for_dev_slider.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -46,7 +46,7 @@ class ChatBubble extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
             decoration: BoxDecoration(
               color: isSentByMe
-                  ? Theme.of(context).colorScheme.secondaryFixed
+                  ? Theme.of(context).colorScheme.secondaryContainer
                   : Theme.of(context).colorScheme.surfaceContainer,
               borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
             ),
@@ -58,8 +58,7 @@ class ChatBubble extends StatelessWidget {
                 if (isSupportDevButton) const DonationForDevSlider(),
                 Message(text: text, isSentByMe: isSentByMe),
                 if (isShareButton)
-                 IconButtonFilledtonalComponent(icon: Icons.ios_share_rounded, onPressed: (){}),
-
+                 IconButtonFilledtonalComponent(icon: Icons.ios_share_rounded, color: Theme.of(context).colorScheme.secondaryFixed, onPressed: (){}),
                 const SizedBox(height: 4),
                 DataTime(formattedTime: formattedTime, isSentByMe: isSentByMe),
               ],

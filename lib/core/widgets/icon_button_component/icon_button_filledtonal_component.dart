@@ -3,8 +3,14 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/icon_button_component/icon_button_component.dart';
 
 class IconButtonFilledtonalComponent extends IconButtonComponent {
+  final bool useInBorderRadius;
+  final Color color;
   const IconButtonFilledtonalComponent(
-      {super.key, required super.icon, required super.onPressed});
+      {super.key,
+      this.useInBorderRadius = false,
+      required super.icon,
+      required super.onPressed,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +18,12 @@ class IconButtonFilledtonalComponent extends IconButtonComponent {
       icon: Icon(icon),
       onPressed: () => onPressed(),
       style: ButtonStyle(
-        elevation: WidgetStateProperty.all(2),
+        backgroundColor: WidgetStateProperty.all<Color>(color),
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+            borderRadius: useInBorderRadius
+                ? BorderRadius.circular(SenseiConst.inBorderRadius)
+                : BorderRadius.circular(SenseiConst.outBorderRadius),
           ),
         ),
       ),

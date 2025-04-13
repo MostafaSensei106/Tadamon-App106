@@ -25,7 +25,7 @@ class ChatBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final formattedTime = DateFormat('hh:mm a', 'en').format(time);
     return Align(
-      alignment: isSentByMe ? Alignment.topRight : Alignment.topLeft,
+      alignment: isSentByMe ? Alignment.bottomRight : Alignment.bottomLeft,
       child: Row(
         mainAxisAlignment:
             isSentByMe ? MainAxisAlignment.end : MainAxisAlignment.start,
@@ -38,8 +38,6 @@ class ChatBubble extends StatelessWidget {
                 radius: SenseiConst.outBorderRadius,
               ),
             ),
-          if(isShareButton)
-              ButtonCompnent(label: text, icon: Icons.share, onPressed: () {}),
           Container(
             constraints: BoxConstraints(maxWidth: 0.75.sw),
             padding: const EdgeInsets.symmetric(
@@ -47,14 +45,15 @@ class ChatBubble extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
             decoration: BoxDecoration(
               color: isSentByMe
-                  ? Theme.of(context).colorScheme.secondaryContainer
+                  ? Theme.of(context).colorScheme.secondaryFixed
                   : Theme.of(context).colorScheme.surfaceContainer,
               borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment:isSentByMe ? CrossAxisAlignment.start : CrossAxisAlignment.end,
               children: [
                 if (isSupportDevButton) const DonationForDevSlider(),
+                if (isShareButton) ButtonCompnent(label: 'Share', icon: Icons.ios_share_rounded, onPressed: () {}),
                 Text(
                   text,
                   textAlign: TextAlign.start,
@@ -66,19 +65,22 @@ class ChatBubble extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(
-                  formattedTime,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: isSentByMe
-                        ? Theme.of(context)
-                            .colorScheme
-                            .onSecondaryContainer
-                            .withAlpha(0x50)
-                        : Theme.of(context)
-                            .colorScheme
-                            .onSurface
-                            .withAlpha(0x50),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    formattedTime,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: isSentByMe
+                          ? Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer
+                              .withAlpha(0x50)
+                          : Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withAlpha(0x50),
+                    ),
                   ),
                 ),
               ],

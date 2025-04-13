@@ -54,7 +54,7 @@ class ChatWithDev extends StatelessWidget {
     'isSentByMe': false,
   },
   {
-    'text':'Yes I want To Share App',
+    'text': 'نعم، أريد مشاركة التطبيق',
     'isSentByMe': true,
     'isShareButton': true
   }

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,9 +14,9 @@ class DonationForDevSlider extends StatefulWidget {
 }
 
 class _DonationForDevSliderState extends State<DonationForDevSlider> {
+
   static const Duration _autoSlideDuration = Duration(seconds: 3);
   static const Duration _slideTransitionDuration = Duration(milliseconds: 400);
-
   late final PageController _pageController;
   Timer? _autoSlideTimer;
 
@@ -25,8 +24,6 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
     SenseiConst.buyMeACoffeeImage,
     //SenseiConst.vodafoneCashImage,
   ];
-
-  
 
   int _currentPage = 0;
 
@@ -64,7 +61,8 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
           curve: Curves.easeInOut,
         );
       }
-    });
+    }
+    );
   }
 
   void _pauseAutoSlide() {
@@ -127,12 +125,10 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
       ),
     );
   }
-
   @override
   void dispose() {
     _pageController.dispose();
     _autoSlideTimer?.cancel();
     super.dispose();
   }
-
 }

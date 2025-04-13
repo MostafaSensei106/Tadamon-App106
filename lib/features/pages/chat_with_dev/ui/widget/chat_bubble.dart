@@ -50,10 +50,11 @@ class ChatBubble extends StatelessWidget {
               borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
             ),
             child: Column(
-              crossAxisAlignment:isSentByMe ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+              crossAxisAlignment: isSentByMe
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.end,
               children: [
                 if (isSupportDevButton) const DonationForDevSlider(),
-                if (isShareButton) ButtonCompnent(label: 'Share', icon: Icons.ios_share_rounded, onPressed: () {}),
                 Text(
                   text,
                   textAlign: TextAlign.start,
@@ -64,6 +65,15 @@ class ChatBubble extends StatelessWidget {
                         : Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
+                if (isShareButton)
+                  IconButton.filledTonal(
+                    onPressed: () {},
+    
+                    icon: const Icon(
+                      Icons.share_outlined,
+                      size: SenseiConst.iconSize,
+                    ),
+                  ),
                 const SizedBox(height: 4),
                 Align(
                   alignment: Alignment.bottomLeft,

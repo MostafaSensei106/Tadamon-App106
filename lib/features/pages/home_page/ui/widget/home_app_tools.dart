@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/features/donation/widget/donation_sheet_content.dart';
+import 'package:tadamon/features/donation_palestine/widget/donation_sheet_content.dart';
 import 'package:tadamon/features/edit_text/widgets/edit_text_sheet_content.dart';
 import 'package:tadamon/core/widgets/home_tool_component/home_tool_component.dart';
 import 'package:tadamon/features/products_scanner/logic/cubit/product_scan_cubit/product_scan_cubit.dart';

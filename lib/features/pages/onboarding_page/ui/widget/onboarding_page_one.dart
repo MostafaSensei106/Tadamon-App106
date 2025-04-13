@@ -12,15 +12,16 @@ class OnboardingPageOne extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(height: 24.5.h),
           Container(
             padding: const EdgeInsets.all(SenseiConst.padding),
             decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surfaceContainer,
-                borderRadius:
-                    BorderRadius.circular(SenseiConst.outBorderRadius),
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-                )),
+              color: Theme.of(context).colorScheme.surfaceContainer,
+              borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+              border: Border.all(
+                color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
+              ),
+            ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
               child: Image.asset(

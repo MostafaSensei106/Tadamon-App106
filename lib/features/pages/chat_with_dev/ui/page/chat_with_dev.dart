@@ -11,9 +11,7 @@ import 'package:tadamon/generated/l10n.dart';
 
 class ChatWithDev extends StatelessWidget {
   ChatWithDev({super.key});
-
   final TextEditingController _controller = TextEditingController();
-
   void dispose() {
     _controller.dispose();
   }
@@ -38,82 +36,71 @@ class ChatWithDev extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> messages = [
-      {
-        'text': 'شكرًا لاستخدامك هذا التطبيق! 🎉',
-        'isSentByMe': false,
-      },
-      {
-        'text': 'إذا عجبك التطبيق، يسعدنا دعمك عشان نقدر نستمر في تطويره! ❤️',
-        'isSentByMe': false,
-      },
-      {
-        'text': 'للاستفسار، يمكنك التواصل معنا على الواتساب 👇',
-        'isSentByMe': true,
-      },
-      {
-        'text': 'تقدر تتابعنا وتدعمنا على وسائل التواصل 👇',
-        'isSentByMe': false,
-      },
-      {
-        'text': '📌 تابعنا على لمزيد من التحديثات والدعم 🙌',
-        'isSentByMe': false,
-      },
-      {
-        'text': 'وشارك التطبيق مع أصدقائك! 📲',
-        'isSentByMe': false,
-        'isShareApp': true,
-      },
-    ];
+  {
+    'text':'شكرًا لاستخدامك تطبيق "تضامن". وعيك واختيارك يُحدثان فرقًا حقيقيًا في دعم القضية الفلسطينية.',
+    'isSentByMe': false,
+  },
+  {
+    'text': 'إذا كنت ترغب، يمكنك الضغط على الصورة أعلاه لدعم هذا المشروع اختياريًا.',
+    'isSentByMe': false,
+    'isSupportDevButton': true,
+  },
+  {
+    'text': 'ولا تنسَ مشاركة التطبيق مع من حولك، فالتأثير يبدأ بخطوة.',
+    'isSentByMe': false,
+  },
+  {
+    'text': 'يمكنك مشاركة التطبيق والاطلاع على ملفي الشخصي من خلال الروابط أدناه',
+    'isSentByMe': false,
+    'isShareButton': true
+  }
+];
 
     final now = DateTime.now();
     return Scaffold(
       appBar: ChatDevAppBar(title: S.of(context).mostafaMahmoud),
-      body: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(SenseiConst.outBorderRadius + 7),
-          topRight: Radius.circular(SenseiConst.outBorderRadius + 7),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                padding:
-                    EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
-                itemCount: messages.length,
-                itemBuilder: (context, index) {
-                  final dateTime = now.subtract(
-                    Duration(
-                      minutes: (messages.length - 1 - index),
-                    ),
-                  );
-                  return ChatBubble(
-                    text: messages[index]['text'],
-                    isSentByMe: messages[index]['isSentByMe'],
-                    time: dateTime,
-                  );
-                },
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              padding:
+                  EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
+              itemCount: messages.length,
+              itemBuilder: (context, index) {
+                final dateTime = now.subtract(
+                  Duration(
+                    minutes: (messages.length - 1 - index),
+                  ),
+                );
+                return ChatBubble(
+                  text: messages[index]['text'],
+                  isSentByMe: messages[index]['isSentByMe'],
+                  isSupportDevButton: messages[index]['isSupportDevButton'] ?? false,
+                  isShareButton: messages[index]['isShareButton'] ?? false,
+                  time: dateTime,
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: SenseiConst.padding,
+              right: SenseiConst.padding,
+              bottom: 5.0,
+              top: 5.0,
+            ),
+            child: TextFieldComponent(
+              controller: _controller,
+              icon: Icons.message_outlined,
+              useOutBorderRadius: true,
+              hint: '...اكتب رسالة',
+              suffixIcon: IconButton(
+                onPressed: () => sendMessage(),
+                icon: const Icon(Icons.send_outlined),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: SenseiConst.padding,
-                right: SenseiConst.padding,
-                bottom: 5.0,
-                top: 5.0,
-              ),
-              child: TextFieldComponent(
-                controller: _controller,
-                icon: Icons.message_outlined,
-                useOutBorderRadius: true,
-                hint: '...اكتب رسالة',
-                suffixIcon: IconButton(
-                  onPressed: () => sendMessage(),
-                  icon: const Icon(Icons.send_outlined),
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

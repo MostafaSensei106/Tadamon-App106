@@ -188,9 +188,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
               ],
             ),
             Row(
-              spacing: 8,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.min,
               children: [
                 TextButtonComponent(
                   onTap: () =>

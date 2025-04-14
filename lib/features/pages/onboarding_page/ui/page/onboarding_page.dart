@@ -14,6 +14,7 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
+  bool _loading = true;
 
   @override
   void initState() {
@@ -25,6 +26,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool agreed = prefs.getBool('agreed_to_terms') ?? false;
     if (agreed) {
+      setState(() => _loading = false);
       _navigateToHome();
     }
   }
@@ -48,6 +50,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (_loading) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
     return Scaffold(
       body: Stack(
         children: [

@@ -205,7 +205,10 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                   child: ButtonCompnent(
                     label: 'مرحبًا بكم في تضامن',
                     icon: Icons.keyboard_double_arrow_left_rounded,
-                    onPressed: _isChecked ? _agree : null,
+                    onPressed: _isChecked ? () {
+                      HapticFeedback.vibrate();
+                      _agree();
+                    } : null,
                   ),
                 ),
               ],

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/features/pages/onboarding_page/ui/widget/animated_triangles.dart';
 import 'package:tadamon/features/pages/onboarding_page/ui/widget/dot_indicator_nav.dart';
 import 'package:tadamon/features/pages/onboarding_page/ui/widget/onboarding_page_one.dart';
@@ -12,7 +14,37 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    _checkAgreement();
+  }
+
+    Future<void> _checkAgreement() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool agreed = prefs.getBool('agreed_to_terms') ?? false;
+    if (agreed) {
+      _navigateToHome();
+    }
+  }
+
+
+    void _navigateToHome() {
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      Routes.mainPage,
+      (route) => false,
+    );
+  }
+
   final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -8,12 +8,12 @@ import 'package:tadamon/features/pages/onboarding_page/ui/widget/onboarding_page
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
-
   @override
   State<OnboardingPage> createState() => _OnboardingPageState();
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
+  final PageController _pageController = PageController(initialPage: 0);
   bool _loading = true;
 
   @override
@@ -22,18 +22,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
     _checkAgreement();
   }
 
-    Future<void> _checkAgreement() async {
+  Future<void> _checkAgreement() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool agreed = prefs.getBool('agreed_to_terms') ?? false;
     if (agreed) {
       _navigateToHome();
-    }else{
+    } else {
       setState(() => _loading = false);
     }
   }
 
-
-    void _navigateToHome() {
+  void _navigateToHome() {
     Navigator.pushNamedAndRemoveUntil(
       context,
       Routes.mainPage,
@@ -41,13 +40,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     );
   }
 
-  final PageController _pageController = PageController(initialPage: 0);
 
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,5 +88,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }

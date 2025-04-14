@@ -117,6 +117,7 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
         SizedBox(
           width: 1.sw,
           child: ButtonCompnent(
+            useInBorderRadius: true,
               label: 'نسخ', icon: Icons.copy, onPressed: _copyToClipboard),
         ),
       ],

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/bottom_sheet/widget/bottom_model_sheet_content.dart';
 import 'package:tadamon/core/widgets/bottom_sheet/widget/sheet_header.dart';
+import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class ModelBottomSheet {
@@ -78,7 +79,17 @@ class ModelBottomSheet {
                       BottomModelSheetContent(
                         child: child,
                       ),
-                      _buildCloseButton(context),
+                     Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                       children: [
+                         TextButtonComponent(
+                          useInBorderRadius: true,
+                          isClose: true,
+                          text: S.of(context).close, onTap: () => {
+                          HapticFeedback.vibrate(),
+                          Navigator.of(context).pop()}, icon: Icons.close,),
+                       ],
+                     ),
                     ],
                   ),
                 )
@@ -87,33 +98,6 @@ class ModelBottomSheet {
           ),
         ),
       ),
-    );
-  }
-
-  /// Returns a [Row] widget containing a close [TextButton].
-  ///
-  /// The button is styled with a rounded rectangle border and shrinks its
-  /// tap target size. When pressed, the button triggers a haptic feedback
-  /// vibration and closes the current context by popping the navigator stack.
-
-  static Widget _buildCloseButton(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        TextButton(
-          style: ButtonStyle(
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            shape: WidgetStateProperty.all(RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-            )),
-          ),
-          child: Text(S.of(context).close),
-          onPressed: () {
-            HapticFeedback.vibrate();
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
     );
   }
 }

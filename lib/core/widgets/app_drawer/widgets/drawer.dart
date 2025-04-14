@@ -59,6 +59,7 @@ class SenseiDrawer extends StatelessWidget {
     return SizedBox(
       width: 0.90.sw,
       child: Drawer(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(SenseiConst.outBorderRadius),

@@ -36,7 +36,6 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
     'لا يقدم مطورو التطبيق ضمان لاستمرار تشغيل الخدمة بشكل دائم أو خلوها من الأعطال التقنية أو الانقطاعات الطارئة، مما يلغي أي مسؤولية فيما يتعلق باستمرارية الخدمة.',
     'سيقوم المطور بدعم التطبيق عندما يتوفر لديه الوقت لذلك، مع الحرص على تحسين أدائه وجعله يعمل بشكل صحيح.',
 
-
     // ▓ القسم الثالث: الخصوصية والبيانات
     'يحافظ تطبيق "تضامن" على خصوصية المستخدم؛ فلا يقوم التطبيق بجمع معلومات تعريف شخصية (PII) أو بيانات حساسة.',
     'يقتصر استخدام الصلاحيات التي يطلبها التطبيق (مثل الوصول إلى الكاميرا أو الإنترنت) على الوظائف المعلنة مثل قراءة الرموز الشريطية أو تحميل البيانات، وتُستخدم هذه الصلاحيات فقط ضمن نطاق الخدمة المُقدمة.',
@@ -140,7 +139,9 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
         title: 'اتفاقية استخدام التطبيق',
       ),
       body: Padding(
-        padding: const EdgeInsets.all(SenseiConst.padding),
+        padding: EdgeInsets.symmetric(
+          horizontal: SenseiConst.padding.w,
+        ),
         child: Column(
           children: [
             Expanded(
@@ -188,7 +189,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButtonComponent(
                   onTap: () =>
@@ -202,10 +203,12 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                   child: ButtonCompnent(
                     label: 'مرحبًا بكم في تضامن',
                     icon: Icons.keyboard_double_arrow_left_rounded,
-                    onPressed: _isChecked ? () {
-                      HapticFeedback.vibrate();
-                      _agree();
-                    } : null,
+                    onPressed: _isChecked
+                        ? () {
+                            HapticFeedback.vibrate();
+                            _agree();
+                          }
+                        : null,
                   ),
                 ),
               ],

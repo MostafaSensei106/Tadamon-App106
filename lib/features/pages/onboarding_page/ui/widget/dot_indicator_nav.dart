@@ -53,8 +53,8 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
       key: ValueKey(key),
       label: label,
       icon: icon,
-      useWidth: true,
-      width: 0.3.sw,
+      // useWidth: true,
+      // width: 0.3.sw,
       onPressed: onPressed,
     );
   }

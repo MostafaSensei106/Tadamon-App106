@@ -7,12 +7,14 @@ class TextButtonComponent extends StatelessWidget {
   final void Function() onTap;
   final IconData icon;
   final bool isClose;
+  final bool useInBorderRadius;
 
   const TextButtonComponent({
     super.key,
     required this.text,
     required this.onTap,
     required this.icon,
+    this.useInBorderRadius = false,
     this.isClose = false,
   });
 
@@ -40,7 +42,7 @@ class TextButtonComponent extends StatelessWidget {
       style: TextButton.styleFrom(
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+          borderRadius:useInBorderRadius ? BorderRadius.circular(SenseiConst.inBorderRadius) : BorderRadius.circular(SenseiConst.outBorderRadius),
         ),
         side: isClose
             ? BorderSide(

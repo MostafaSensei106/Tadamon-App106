@@ -9,8 +9,6 @@ class ButtonCompnent extends StatelessWidget {
   final bool isEnabled;
   final bool useMargin;
   final bool useInBorderRadius;
-  final bool useWidth;
-  final double width;
 
   const ButtonCompnent({
     super.key,
@@ -19,9 +17,7 @@ class ButtonCompnent extends StatelessWidget {
     required this.onPressed,
     this.isEnabled = true,
     this.useMargin = false,
-    this.useInBorderRadius = true,
-    this.useWidth = false,
-    this.width = 0,
+    this.useInBorderRadius = false,
   });
 
   @override
@@ -55,33 +51,30 @@ class ButtonCompnent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: useMargin ? EdgeInsets.only(top: SenseiConst.margin.h) : null,
-      child: SizedBox(
-        width: useWidth ? width : 1.sw,
-        child: ElevatedButton.icon(
-          onPressed: isEnabled ? onPressed : null,
-          icon: Icon(
-            icon,
-            size: SenseiConst.iconSize.sp,
+      child: ElevatedButton.icon(
+        onPressed: isEnabled ? onPressed : null,
+        icon: Icon(
+          icon,
+          size: SenseiConst.iconSize.sp,
+        ),
+        label: Text(label),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+          foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+          disabledBackgroundColor: Theme.of(context).colorScheme.error,
+          disabledForegroundColor: Theme.of(context).colorScheme.onError,
+          iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
+          disabledIconColor: Theme.of(context).colorScheme.onError,
+          padding: EdgeInsets.symmetric(
+            horizontal:  SenseiConst.padding.w,
+            vertical:  SenseiConst.padding.h,
           ),
-          label: Text(label),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-            foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-            disabledBackgroundColor: Theme.of(context).colorScheme.error,
-            disabledForegroundColor: Theme.of(context).colorScheme.onError,
-            iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
-            disabledIconColor: Theme.of(context).colorScheme.onError,
-            padding: EdgeInsets.symmetric(
-              horizontal:  SenseiConst.padding.w,
-              vertical:  SenseiConst.padding.h,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: useInBorderRadius? BorderRadius.circular(SenseiConst.inBorderRadius) : BorderRadius.circular(SenseiConst.outBorderRadius),
-            ),
-            elevation: 2,
-            enableFeedback: true,
-            enabledMouseCursor: WidgetStateMouseCursor.clickable,
+          shape: RoundedRectangleBorder(
+            borderRadius: useInBorderRadius? BorderRadius.circular(SenseiConst.inBorderRadius) : BorderRadius.circular(SenseiConst.outBorderRadius),
           ),
+          elevation: 2,
+          enableFeedback: true,
+          enabledMouseCursor: WidgetStateMouseCursor.clickable,
         ),
       ),
     );

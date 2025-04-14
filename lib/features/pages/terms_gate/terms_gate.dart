@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart';
+import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart';
+import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/side_page_app_bar.dart';
 
 class TermsGate extends StatefulWidget {
   const TermsGate({super.key});
@@ -104,21 +106,13 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('اتفاقية الاستخدام'),
-        centerTitle: true,
+      appBar: const SidePageAppBar(
+        title: 'اتفاقية استخدام التطبيق',
       ),
       body: Padding(
         padding: const EdgeInsets.all(SenseiConst.padding),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'يرجى قراءة هذه الاتفاقية بعناية قبل استخدام التطبيق:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
                 itemCount: _terms.length,
@@ -128,10 +122,11 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                     child: FadeTransition(
                       opacity: _controllers[index],
                       child: Card(
-                        margin: const EdgeInsets.symmetric(vertical: 6),
-                        elevation: 4,
+                        margin: EdgeInsets.symmetric(
+                            vertical: SenseiConst.margin.h - 4),
+                        elevation: 2,
                         child: Padding(
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(SenseiConst.padding),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -163,16 +158,30 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                 const Text('أوافق على الشروط والأحكام'),
               ],
             ),
-            const SizedBox(height: 10),
-            ButtonCompnent(
-              label: 'Wellcome to Tadamon',
-              icon: Icons.keyboard_double_arrow_left_rounded,
-              onPressed: _isChecked ? _agree : null,
-            ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('لا أوافق - الخروج من التطبيق'),
-            ),
+            SizedBox(height: 8.h),
+            Row(
+              spacing: 8,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextButtonComponent(
+                  onTap: () =>
+                      {HapticFeedback.vibrate(), SystemNavigator.pop()},
+                  text: ' الخروج من التطبيق',
+                  icon: Icons.close,
+                  isClose: true,
+                ),
+                Directionality(textDirection: TextDirection.ltr,
+                  child: ButtonCompnent(
+                    // useWidth: true,
+                    // width: 0.5.sw,
+                    label: 'مرحبًا بكم في تضامن',
+                    icon: Icons.keyboard_double_arrow_left_rounded,
+                    onPressed: _isChecked ? _agree : null,
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),

@@ -169,8 +169,8 @@ class AppOnline extends StatelessWidget {
         if (state is LoclaDBDataBaseEmpty) {
           return ButtonCompnent(
             useInBorderRadius: false,
-            useWidth: true,
-            width: 0.5.sw,
+            // useWidth: true,
+            // width: 0.5.sw,
             label: 'تشغيل الاونلاين',
             icon: Icons.cloud_download_outlined,
             onPressed: () {
@@ -181,8 +181,8 @@ class AppOnline extends StatelessWidget {
         }
         return ButtonCompnent(
           useInBorderRadius: false,
-          useWidth: true,
-          width: 0.5.sw,
+          // useWidth: true,
+          // width: 0.5.sw,
           label: 'تم تهيئة البيانات بنجاح',
           icon: Icons.cloud_done_outlined,
           isEnabled: false,

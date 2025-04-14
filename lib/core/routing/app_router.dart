@@ -6,11 +6,10 @@ import 'package:tadamon/features/pages/help_user_page/ui/page/help_user_page.dar
 import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart';
 import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.dart';
 import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart';
+import 'package:tadamon/features/pages/terms_gate/terms_gate.dart';
 
 class AppRouter {
-
-
-    static final GlobalKey<NavigatorState> navigatorKey =
+  static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
 
   static ColorScheme get theme {
@@ -39,6 +38,9 @@ class AppRouter {
       case Routes.onBoarding:
         page = const OnboardingPage();
         break;
+      case Routes.termsGate:
+        page = const TermsGate();
+        break;
       case Routes.mainPage:
         page = const MainPage();
         break;
@@ -49,20 +51,18 @@ class AppRouter {
         page = const HelpUserPage();
         break;
       case Routes.chatWithDev:
-        page =  ChatWithDev();
+        page = ChatWithDev();
       default:
         page = const NoRoutes();
     }
     return _createPageRoute(page);
   }
 
-
-
-/// Creates a [PageRouteBuilder] with custom animations for the given [page].
-///
-/// The transition includes a fade and slide effect, with the slide starting
-/// from the right edge of the screen. The transition duration is set to
-/// 200 milliseconds.
+  /// Creates a [PageRouteBuilder] with custom animations for the given [page].
+  ///
+  /// The transition includes a fade and slide effect, with the slide starting
+  /// from the right edge of the screen. The transition duration is set to
+  /// 200 milliseconds.
 
   PageRouteBuilder _createPageRoute(Widget page) {
     return PageRouteBuilder(

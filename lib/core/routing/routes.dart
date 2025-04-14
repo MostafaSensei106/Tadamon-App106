@@ -7,6 +7,8 @@ class Routes {
   /// The main page route.
   static const String mainPage = '/mainPage';
 
+  static const String termsGate = '/termsGate';
+
   /// The route to the palatine map page.
   static const String palatineMap = '/palestineMap';
 

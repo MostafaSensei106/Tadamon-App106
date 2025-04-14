@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/app_bar.dart';
 import 'package:tadamon/core/widgets/app_drawer/widgets/drawer.dart';
@@ -146,10 +145,10 @@ class _MainPageState extends State<MainPage>
             body: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surface,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(SenseiConst.outBorderRadius.r + 7),
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(SenseiConst.outBorderRadius + 7),
                     topRight:
-                        Radius.circular(SenseiConst.outBorderRadius.r + 7)),
+                        Radius.circular(SenseiConst.outBorderRadius+ 7)),
               ),
               child: Stack(
                 children: [

@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 
 class DotIndicatorNav extends StatefulWidget {
@@ -50,13 +49,15 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
 
   Widget _getActionButton(
       String key, String label, IconData icon, VoidCallback onPressed) {
-    return ButtonCompnent(
-      key: ValueKey(key),
-      label: label,
-      icon: icon,
-      useWidth: true,
+    return SizedBox(
       width: 0.3.sw,
-      onPressed: onPressed,
+      child: ButtonCompnent(
+        key: ValueKey(key),
+        useInBorderRadius: true,
+        label: label,
+        icon: icon,
+        onPressed: onPressed,
+      ),
     );
   }
 
@@ -113,10 +114,9 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                             () => _handleNavigation(() {
                               Navigator.pushNamedAndRemoveUntil(
                                 context,
-                                Routes.mainPage,
+                                Routes.termsGate,
                                 (route) => false,
                               );
-                              AppToast.showSimpleToastInfo('مرحبا بك في تضامن');
                             }),
                           )
                         : _getActionButton(
@@ -175,7 +175,7 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                               () => _handleNavigation(() {
                                 Navigator.pushNamedAndRemoveUntil(
                                   context,
-                                  Routes.mainPage,
+                                  Routes.termsGate,
                                   (route) => false,
                                 );
                               }),

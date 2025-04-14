@@ -235,15 +235,17 @@ class SenseiDrawer extends StatelessWidget {
         child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
             if (state is LoclaDBDataBaseEmpty) {
-              return ButtonCompnent(
-                useMargin: true,
-                useInBorderRadius: false,
-                label: 'تشغيل الاونلاين',
-                icon: Icons.cloud_download_outlined,
-                onPressed: () {
-                  HapticFeedback.vibrate();
-                  context.read<LocalDBCubit>().fetchDataFromFireStore();
-                },
+              return SizedBox(
+                width: 1.sw,
+                child: ButtonCompnent(
+                  useMargin: true,
+                  label: 'تشغيل الاونلاين',
+                  icon: Icons.cloud_download_outlined,
+                  onPressed: () {
+                    HapticFeedback.vibrate();
+                    context.read<LocalDBCubit>().fetchDataFromFireStore();
+                  },
+                ),
               );
             }
             return const SizedBox.shrink();

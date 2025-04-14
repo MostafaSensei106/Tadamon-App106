@@ -5,8 +5,10 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final bool useBackButton;
   const SidePageAppBar({
     super.key,
+    this.useBackButton = false,
     required this.title,
   });
 
@@ -31,8 +33,8 @@ class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       elevation: 0,
       forceMaterialTransparency: true,
-      leading: _buildSidePageAppBarIcon(
-          context, Icons.keyboard_double_arrow_right_rounded),
+      leading: useBackButton ? _buildSidePageAppBarIcon(
+          context, Icons.keyboard_double_arrow_right_rounded) : null,
     );
   }
 

@@ -98,6 +98,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
                   label: 'ارسال التقرير',
                   icon: Icons.send,
                   onPressed: isValid ? () => {sendReport(context)} : null,
+                  useInBorderRadius: true,
                 ),
               ),
               if (state is ReportProductIsError)

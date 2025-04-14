@@ -23,14 +23,15 @@ class ExpansionTileComponent extends StatefulWidget {
 }
 
 class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(
-          widget.useInBorderRadius ? SenseiConst.inBorderRadius : SenseiConst.outBorderRadius,
+          widget.useInBorderRadius
+              ? SenseiConst.inBorderRadius
+              : SenseiConst.outBorderRadius,
         ),
       ),
       child: ExpansionTile(
@@ -51,16 +52,15 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
         enableFeedback: true,
         showTrailingIcon: true,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            widget.useInBorderRadius ? SenseiConst.inBorderRadius : SenseiConst.outBorderRadius,
-          ),
-          side: BorderSide(
-            color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-          ),
-        ),
+            borderRadius: BorderRadius.circular(
+              widget.useInBorderRadius
+                  ? SenseiConst.inBorderRadius
+                  : SenseiConst.outBorderRadius,
+            ),
+            side: BorderSide(
+                color: Theme.of(context).colorScheme.outline.withAlpha(0x80))),
         children: widget.children,
       ),
     );
   }
 }
-

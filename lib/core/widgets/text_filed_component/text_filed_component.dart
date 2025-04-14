@@ -62,7 +62,7 @@ class TextFieldComponent extends StatelessWidget {
     return TextFormField(
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      cursorRadius: Radius.circular(SenseiConst.inBorderRadius.r),
+      cursorRadius: const Radius.circular(SenseiConst.inBorderRadius),
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
       onFieldSubmitted: (value) => FocusScope.of(context).nextFocus(),
       onTapOutside: (event) => FocusScope.of(context).unfocus(),

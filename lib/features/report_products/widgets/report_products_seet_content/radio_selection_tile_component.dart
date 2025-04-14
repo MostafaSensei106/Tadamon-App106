@@ -18,21 +18,16 @@ class _RadioSelectionTileComponentState
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-      ),
-      child: ExpansionTileComponent(
-        leadingIcon: Icons.handshake_outlined,
-        title: 'الحالة',
-        subtitle: selectedValue,
-        children: [
-          buildRadio('لا أعرف'),
-          buildRadio('مقاطعة'),
-          buildRadio('لا يدعم الكيان الصهيوني'),
-        ],
-      ),
+    return ExpansionTileComponent(
+      leadingIcon: Icons.handshake_outlined,
+      useInBorderRadius: true,
+      title: 'الحالة',
+      subtitle: selectedValue,
+      children: [
+        buildRadio('لا أعرف'),
+        buildRadio('مقاطعة'),
+        buildRadio('لا يدعم الكيان الصهيوني'),
+      ],
     );
   }
 

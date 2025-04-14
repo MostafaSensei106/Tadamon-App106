@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
@@ -58,8 +59,15 @@ class ProductListView extends StatelessWidget {
           useinBorderRadius: true,
           leadingIcon: Icons.handshake_outlined,
           title: "الحالة",
-          subtitle: product.onError == "Product not found" ? "المنتج غير موجود" : product.trusted ? "مؤمن" : "غير مؤمن",
+          subtitle: product.onError == "Product not found"
+              ? "المنتج غير موجود"
+              : product.trusted
+                  ? "مؤمن"
+                  : "غير مؤمن",
         ),
+        if (!product.trusted)
+          ButtonCompnent(
+              label: '', icon: Icons.report_problem_outlined, onPressed: () {})
       ],
     );
   }

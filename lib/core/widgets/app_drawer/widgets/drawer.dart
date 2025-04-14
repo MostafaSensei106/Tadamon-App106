@@ -74,7 +74,7 @@ class SenseiDrawer extends StatelessWidget {
                   right: SenseiConst.padding.w,
                   bottom: SenseiConst.padding.h),
               child: AnimatedSize(
-                duration: const Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 250),
                 child: Column(
                   children: [
                     _buildThemeSwitch(context),

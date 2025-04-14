@@ -188,30 +188,33 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                 const Text('أوافق على الشروط والأحكام'),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButtonComponent(
-                  onTap: () =>
-                      {HapticFeedback.vibrate(), SystemNavigator.pop()},
-                  text: ' الخروج من التطبيق',
-                  icon: Icons.close,
-                  isClose: true,
-                ),
-                Directionality(
-                  textDirection: TextDirection.ltr,
-                  child: ButtonCompnent(
-                    label: 'مرحبًا بكم في تضامن',
-                    icon: Icons.keyboard_double_arrow_left_rounded,
-                    onPressed: _isChecked
-                        ? () {
-                            HapticFeedback.vibrate();
-                            _agree();
-                          }
-                        : null,
+            Padding(
+              padding: const EdgeInsets.only(bottom: SenseiConst.padding),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButtonComponent(
+                    onTap: () =>
+                        {HapticFeedback.vibrate(), SystemNavigator.pop()},
+                    text: ' الخروج من التطبيق',
+                    icon: Icons.close,
+                    isClose: true,
                   ),
-                ),
-              ],
+                  Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: ButtonCompnent(
+                      label: 'مرحبًا بكم في تضامن',
+                      icon: Icons.keyboard_double_arrow_left_rounded,
+                      onPressed: _isChecked
+                          ? () {
+                              HapticFeedback.vibrate();
+                              _agree();
+                            }
+                          : null,
+                    ),
+                  ),
+                ],
+              ),
             )
           ],
         ),

@@ -22,7 +22,7 @@ class _RadioSelectionTileComponentState
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
       ),
       child: ExpansionTileComponent(
         leadingIcon: Icons.handshake_outlined,

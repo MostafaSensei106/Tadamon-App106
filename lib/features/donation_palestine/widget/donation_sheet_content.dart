@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
@@ -38,6 +39,7 @@ class DonationSheetContent extends StatelessWidget {
   }
 
   @override
+
   /// Builds a [Column] widget that displays a list of [DrawerComponent]s each
   /// with a different organization and its corresponding URL to donate.
   ///
@@ -66,8 +68,10 @@ class DonationSheetContent extends StatelessWidget {
           useDivider: true,
           useGroupTop: true,
           useinBorderRadius: true,
-          onTapped: () =>
-              UrlRunServices.launchURL(SenseiConst.donateByUnrwaLink),
+          onTapped: () => {
+            HapticFeedback.vibrate(),
+            UrlRunServices.launchURL(SenseiConst.donateByUnrwaLink)
+          },
         ),
         DrawerComponent(
             leadingIcon: Icons.mode_night_outlined,
@@ -76,7 +80,9 @@ class DonationSheetContent extends StatelessWidget {
             useDivider: true,
             useGroupMiddle: true,
             onTapped: () =>
-                UrlRunServices.launchURL(SenseiConst.donateByPalestinercsLink)),
+                {
+                  HapticFeedback.vibrate(),
+                  UrlRunServices.launchURL(SenseiConst.donateByPalestinercsLink)}),
         DrawerComponent(
           leadingIcon: Icons.maps_home_work_outlined,
           title: 'بيت الزكاة والصدقات المصري',
@@ -94,7 +100,9 @@ class DonationSheetContent extends StatelessWidget {
           useinBorderRadius: true,
           useGroupBottom: true,
           onTapped: () =>
-              UrlRunServices.launchURL(SenseiConst.donateByEGYFoodBankLink),
+            { 
+              HapticFeedback.vibrate(),
+               UrlRunServices.launchURL(SenseiConst.donateByEGYFoodBankLink)},
         )
       ],
     );

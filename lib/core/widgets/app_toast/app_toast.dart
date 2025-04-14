@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/app_router.dart';
 import 'package:toastification/toastification.dart';
 
-
-
 class AppToast {
-
   /// Shows a toast with the given [message] for a short duration at the bottom
   /// of the screen with a black background and white text.
   static void showSimpleToastInfo(String message) {
     toastification.show(
       title: Text(message),
-      autoCloseDuration: const Duration(seconds: 2),
+      autoCloseDuration: const Duration(seconds: 1),
       dragToClose: true,
       pauseOnHover: true,
       style: ToastificationStyle.simple,
@@ -38,21 +34,22 @@ class AppToast {
       title: Text(message),
       type: ToastificationType.info,
       style: ToastificationStyle.flat,
-      animationDuration: const Duration(milliseconds: 350),
       alignment: Alignment.bottomCenter,
       animationBuilder: (context, animation, alignment, child) =>
           FadeTransition(
         opacity: animation,
         child: child,
       ),
+      autoCloseDuration: const Duration(seconds: 1),
       icon: const Icon(
         Icons.info_outline,
         size: SenseiConst.iconSize,
       ),
-      padding: EdgeInsets.all(SenseiConst.padding.w),
-      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
-      showProgressBar: false,
+      padding: const EdgeInsets.all(SenseiConst.padding),
+      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
       dragToClose: true,
+      // ignore: deprecated_member_use
+      closeButtonShowType: CloseButtonShowType.none,
     );
   }
 
@@ -64,8 +61,8 @@ class AppToast {
       title: Text(message),
       type: ToastificationType.success,
       style: ToastificationStyle.flat,
-      animationDuration: const Duration(milliseconds: 350),
       alignment: Alignment.bottomCenter,
+      autoCloseDuration: const Duration(seconds: 1),
       animationBuilder: (context, animation, alignment, child) =>
           FadeTransition(
         opacity: animation,
@@ -75,17 +72,12 @@ class AppToast {
         Icons.info_outline,
         size: SenseiConst.iconSize,
       ),
-      padding: EdgeInsets.all(SenseiConst.padding.w),
-      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+      padding: const EdgeInsets.all(SenseiConst.padding),
+      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
       showProgressBar: false,
-      closeButton: ToastCloseButton(
-        buttonBuilder: (context, onClose) => OutlinedButton.icon(
-          onPressed: onClose,
-          label: const Text('Close'),
-          icon: const Icon(Icons.close),
-        ),
-      ),
       dragToClose: true,
+      // ignore: deprecated_member_use
+      closeButtonShowType: CloseButtonShowType.none,
     );
   }
 }

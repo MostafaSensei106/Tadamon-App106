@@ -84,8 +84,8 @@ class TextFieldComponent extends StatelessWidget {
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(
           borderRadius: useOutBorderRadius
-              ? BorderRadius.circular(SenseiConst.outBorderRadius.r)
-              : BorderRadius.circular(SenseiConst.inBorderRadius.r),
+              ? BorderRadius.circular(SenseiConst.outBorderRadius)
+              : BorderRadius.circular(SenseiConst.inBorderRadius),
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
           ),
@@ -93,8 +93,8 @@ class TextFieldComponent extends StatelessWidget {
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: useOutBorderRadius
-              ? BorderRadius.circular(SenseiConst.outBorderRadius.r)
-              : BorderRadius.circular(SenseiConst.inBorderRadius.r),
+              ? BorderRadius.circular(SenseiConst.outBorderRadius)
+              : BorderRadius.circular(SenseiConst.inBorderRadius),
         ),
       ),
     );

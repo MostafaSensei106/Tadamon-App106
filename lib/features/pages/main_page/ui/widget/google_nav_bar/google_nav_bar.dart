@@ -69,39 +69,37 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
                 horizontal: SenseiConst.padding.w,
                 vertical: SenseiConst.padding.h,
               ),
-              child: Material(
-                color: Colors.transparent,
-                child: GNav(
-                  iconSize: SenseiConst.iconSize,
-                  tabBackgroundColor: theme.colorScheme.primaryContainer,
-                  activeColor: theme.colorScheme.onPrimaryContainer,
-                  color: theme.colorScheme.onSurface,
-                  tabBorderRadius: SenseiConst.inBorderRadius.r,
-                  curve: Curves.easeIn,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: SenseiConst.padding.w + 5,
-                    vertical: SenseiConst.padding.h + 3,
-                  ),
-                  tabs: [
-                    GButton(
-                      icon: _getIcon(0),
-                      iconSize: SenseiConst.iconSize.sp,
-                      text: S.of(context).home,
-                    ),
-                    GButton(
-                      icon: _getIcon(1),
-                      iconSize: SenseiConst.iconSize,
-                      text: S.of(context).search,
-                    ),
-                    GButton(
-                      icon: _getIcon(2),
-                      iconSize: SenseiConst.iconSize,
-                      text: S.of(context).logs,
-                    ),
-                  ],
-                  selectedIndex: widget.currentIndex,
-                  onTabChange: widget.onItemTapped,
+              child: GNav(
+                iconSize: SenseiConst.iconSize,
+                tabBackgroundColor: theme.colorScheme.primaryContainer,
+                activeColor: theme.colorScheme.onPrimaryContainer,
+                color: theme.colorScheme.onSurface,
+                tabBorderRadius: SenseiConst.inBorderRadius,
+                curve: Curves.easeInOut,
+                duration: const Duration(milliseconds: 250),
+                padding: EdgeInsets.symmetric(
+                  horizontal: SenseiConst.padding.w + 5,
+                  vertical: SenseiConst.padding.h + 3,
                 ),
+                tabs: [
+                  GButton(
+                    icon: _getIcon(0),
+                    iconSize: SenseiConst.iconSize.sp,
+                    text: S.of(context).home,
+                  ),
+                  GButton(
+                    icon: _getIcon(1),
+                    iconSize: SenseiConst.iconSize,
+                    text: S.of(context).search,
+                  ),
+                  GButton(
+                    icon: _getIcon(2),
+                    iconSize: SenseiConst.iconSize,
+                    text: S.of(context).logs,
+                  ),
+                ],
+                selectedIndex: widget.currentIndex,
+                onTabChange: widget.onItemTapped,
               ),
             ),
           ),

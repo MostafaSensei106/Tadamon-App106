@@ -42,7 +42,7 @@ class BarcodeScanner {
           backButtonIcon: const Icon(Icons.keyboard_double_arrow_right_rounded),
         ),
         isShowFlashIcon: true,
-        delayMillis: 0,
+        delayMillis: 150,
         cameraFace: CameraFace.back,
         scanFormat: ScanFormat.ONLY_BARCODE,
         scanType: ScanType.barcode,

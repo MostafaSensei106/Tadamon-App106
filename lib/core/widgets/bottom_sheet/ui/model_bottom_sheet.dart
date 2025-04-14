@@ -104,7 +104,7 @@ class ModelBottomSheet {
           style: ButtonStyle(
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             shape: WidgetStateProperty.all(RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
             )),
           ),
           child: Text(S.of(context).close),

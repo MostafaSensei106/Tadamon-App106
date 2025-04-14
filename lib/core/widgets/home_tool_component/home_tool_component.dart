@@ -57,7 +57,7 @@ class HomeToolsComponent extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
           enableFeedback: true,
           onTap: onTapped,
           child: Container(
@@ -66,10 +66,10 @@ class HomeToolsComponent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.all(SenseiConst.padding.w),
+                  padding: const EdgeInsets.all(SenseiConst.padding),
                   decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                        BorderRadius.circular(SenseiConst.inBorderRadius),
                     color: Theme.of(context).colorScheme.primaryContainer,
                   ),
                   child: Icon(

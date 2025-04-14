@@ -6,7 +6,7 @@ import 'package:tadamon/features/pages/help_user_page/ui/page/help_user_page.dar
 import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart';
 import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.dart';
 import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart';
-import 'package:tadamon/features/pages/terms_gate/terms_gate.dart';
+import 'package:tadamon/features/pages/terms_gate_page/terms_gate.dart';
 
 class AppRouter {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -66,7 +66,7 @@ class AppRouter {
 
   PageRouteBuilder _createPageRoute(Widget page) {
     return PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 200),
+      transitionDuration: const Duration(milliseconds: 250),
       pageBuilder: (_, animation, __) => FadeTransition(
         opacity: animation,
         child: SlideTransition(

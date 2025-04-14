@@ -26,8 +26,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool agreed = prefs.getBool('agreed_to_terms') ?? false;
     if (agreed) {
-      setState(() => _loading = false);
       _navigateToHome();
+    }else{
+      setState(() => _loading = false);
     }
   }
 

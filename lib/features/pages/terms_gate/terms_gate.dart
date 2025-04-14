@@ -99,7 +99,6 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
   Future<void> _checkAgreement() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool agreed = prefs.getBool('agreed_to_terms') ?? false;
-
     if (agreed) {
       _navigateToHome();
     } else {

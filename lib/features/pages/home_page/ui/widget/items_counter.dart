@@ -80,7 +80,7 @@ class ItemsCounterView extends StatelessWidget {
           );
         } else if (!snapshot.hasData || snapshot.data == null) {
           return CounterItemsComponent(
-            icon: Icons.error_outline_rounded,
+            icon: Icons.timer_outlined,
             title: title,
             targetValue: 0,
           );

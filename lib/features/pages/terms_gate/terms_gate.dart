@@ -84,7 +84,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
     HapticFeedback.vibrate();
     Navigator.pushNamedAndRemoveUntil(
       context,
-      Routes.termsGate,
+      Routes.mainPage,
       (route) => false,
     );
   }

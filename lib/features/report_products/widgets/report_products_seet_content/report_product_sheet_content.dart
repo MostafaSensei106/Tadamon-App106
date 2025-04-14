@@ -92,10 +92,14 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
               ),
               if (state is ReportProductIsLoading)
                 const CircularProgressIndicator(),
-              ButtonCompnent(
-                label: 'ارسال التقرير',
-                icon: Icons.send,
-                onPressed: isValid ? () => {sendReport(context)} : null,
+              SizedBox(
+                width: 1.sw,
+                child: ButtonCompnent(
+                  label: 'ارسال التقرير',
+                  icon: Icons.send,
+                  onPressed: isValid ? () => {sendReport(context)} : null,
+                  useInBorderRadius: true,
+                ),
               ),
               if (state is ReportProductIsError)
                 Text(

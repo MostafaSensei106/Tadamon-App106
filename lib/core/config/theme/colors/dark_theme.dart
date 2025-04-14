@@ -50,7 +50,5 @@ final ThemeData darkTheme = ThemeData(
     surfaceContainerHighest: Color(0xff403130),
   ),
   fontFamily: 'ArabicFont',
-  drawerTheme: const DrawerThemeData(
-    backgroundColor: Color(0xff1c110f),
-  ),
+
 );

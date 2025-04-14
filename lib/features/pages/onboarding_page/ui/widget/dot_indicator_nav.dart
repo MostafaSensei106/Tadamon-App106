@@ -49,15 +49,12 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
 
   Widget _getActionButton(
       String key, String label, IconData icon, VoidCallback onPressed) {
-    return SizedBox(
-      width: 0.3.sw,
-      child: ButtonCompnent(
-        key: ValueKey(key),
-        useInBorderRadius: true,
-        label: label,
-        icon: icon,
-        onPressed: onPressed,
-      ),
+    return ButtonCompnent(
+      key: ValueKey(key),
+      useInBorderRadius: true,
+      label: label,
+      icon: icon,
+      onPressed: onPressed,
     );
   }
 
@@ -103,7 +100,9 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                           begin: const Offset(0, 1),
                           end: Offset.zero,
                         ).animate(animation),
-                        child: FadeTransition(opacity: animation, child: child),
+                        child: SizedBox(
+                          width:0.3.sw,
+                          child: FadeTransition(opacity: animation, child: child)),
                       );
                     },
                     child: _isFirstPage
@@ -164,7 +163,7 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                             end: Offset.zero,
                           ).animate(animation),
                           child:
-                              FadeTransition(opacity: animation, child: child),
+                              SizedBox(width:0.3.sw,child: FadeTransition(opacity: animation, child: child)),
                         );
                       },
                       child: _isLastPage

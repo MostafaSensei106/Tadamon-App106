@@ -50,10 +50,4 @@ final ThemeData lightTheme = ThemeData(
     surfaceContainerHighest: Color(0xfff5ddda),
   ),
   fontFamily: 'ArabicFont',
-  drawerTheme: const DrawerThemeData(
-    backgroundColor: Color(0xfffff8f7),
-  ),
-  dialogTheme: const DialogThemeData(
-    backgroundColor: Color(0xfffff8f7)
-  )
 );

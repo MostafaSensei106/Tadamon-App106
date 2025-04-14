@@ -71,6 +71,7 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
 
   /// Copies the [_processedText] to the device's clipboard.
   void _copyToClipboard() {
+    HapticFeedback.vibrate();
     Clipboard.setData(ClipboardData(text: _processedText));
   }
 
@@ -102,6 +103,7 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
           suffixIcon: _processedText.isNotEmpty
               ? IconButton(
                   onPressed: () {
+                    HapticFeedback.vibrate();
                     _controller.clear();
                     setState(() {
                       _processedText = '';
@@ -112,8 +114,12 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
               : null,
         ),
         SizedBox(height: SenseiConst.margin.h),
-        ButtonCompnent(
-            label: 'نسخ', icon: Icons.copy, onPressed: _copyToClipboard),
+        SizedBox(
+          width: 1.sw,
+          child: ButtonCompnent(
+            useInBorderRadius: true,
+              label: 'نسخ', icon: Icons.copy, onPressed: _copyToClipboard),
+        ),
       ],
     );
   }

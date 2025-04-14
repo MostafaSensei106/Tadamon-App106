@@ -62,7 +62,7 @@ class TextFieldComponent extends StatelessWidget {
     return TextFormField(
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      cursorRadius: Radius.circular(SenseiConst.inBorderRadius.r),
+      cursorRadius: const Radius.circular(SenseiConst.inBorderRadius),
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
       onFieldSubmitted: (value) => FocusScope.of(context).nextFocus(),
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
@@ -84,8 +84,8 @@ class TextFieldComponent extends StatelessWidget {
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(
           borderRadius: useOutBorderRadius
-              ? BorderRadius.circular(SenseiConst.outBorderRadius.r)
-              : BorderRadius.circular(SenseiConst.inBorderRadius.r),
+              ? BorderRadius.circular(SenseiConst.outBorderRadius)
+              : BorderRadius.circular(SenseiConst.inBorderRadius),
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
           ),
@@ -93,8 +93,8 @@ class TextFieldComponent extends StatelessWidget {
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: useOutBorderRadius
-              ? BorderRadius.circular(SenseiConst.outBorderRadius.r)
-              : BorderRadius.circular(SenseiConst.inBorderRadius.r),
+              ? BorderRadius.circular(SenseiConst.outBorderRadius)
+              : BorderRadius.circular(SenseiConst.inBorderRadius),
         ),
       ),
     );

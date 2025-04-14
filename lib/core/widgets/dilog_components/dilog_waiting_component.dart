@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/dilog_components/dilog_component.dart';
 
 class DilogWatingComponent extends DilogComponent {
@@ -14,6 +15,7 @@ class DilogWatingComponent extends DilogComponent {
     return AlertDialog(
       icon: const Icon(
         Icons.info_outline_rounded,
+        size: SenseiConst.iconSize,
       ),
       title: Text(title),
       content: Column(

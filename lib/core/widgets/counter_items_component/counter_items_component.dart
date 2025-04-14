@@ -114,7 +114,7 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: SenseiConst.margin.h),
-      padding: EdgeInsets.all(SenseiConst.padding.w),
+      padding: const EdgeInsets.all(SenseiConst.padding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
         color: Theme.of(context).colorScheme.surfaceContainer,
@@ -123,7 +123,7 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(SenseiConst.padding.w),
+            padding: const EdgeInsets.all(SenseiConst.padding),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
               color: Theme.of(context).colorScheme.primaryContainer,

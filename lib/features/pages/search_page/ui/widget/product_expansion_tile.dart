@@ -15,25 +15,25 @@ class ProductExpansionTileComponent extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
       ),
       child: ExpansionTile(
         leading: product.trusted
             ? Container(
-                padding: EdgeInsets.all(SenseiConst.padding.w),
+                padding: const EdgeInsets.all(SenseiConst.padding),
                 decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                        BorderRadius.circular(SenseiConst.inBorderRadius),
                     color: Theme.of(context).colorScheme.surfaceContainerHigh),
                 child: const Icon(
                   Icons.check_circle_outline_outlined,
                   size: SenseiConst.iconSize,
                 ))
             : Container(
-                padding: EdgeInsets.all(SenseiConst.padding.w),
+                padding: const EdgeInsets.all(SenseiConst.padding),
                 decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                        BorderRadius.circular(SenseiConst.inBorderRadius),
                     color: Theme.of(context).colorScheme.surfaceContainerHigh),
                 child: const Icon(
                   Icons.block_rounded,
@@ -44,7 +44,7 @@ class ProductExpansionTileComponent extends StatelessWidget {
         enableFeedback: true,
         showTrailingIcon: true,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
             side: BorderSide(
               color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
             )),

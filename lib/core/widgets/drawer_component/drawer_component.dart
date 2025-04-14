@@ -53,8 +53,8 @@ class DrawerComponent extends StatelessWidget {
   /// Otherwise, return a [BorderRadius] with all corners rounded.
   BorderRadius _getBorderRadius() {
     double borderRadius = useinBorderRadius
-        ? SenseiConst.inBorderRadius.r
-        : SenseiConst.outBorderRadius.r;
+        ? SenseiConst.inBorderRadius
+        : SenseiConst.outBorderRadius;
     if (useGroupTop) {
       return BorderRadius.only(
         topLeft: Radius.circular(borderRadius),

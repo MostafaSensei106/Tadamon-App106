@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
@@ -24,21 +23,22 @@ class ExpansionTileComponent extends StatefulWidget {
 }
 
 class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(
-          widget.useInBorderRadius ? SenseiConst.inBorderRadius.r : SenseiConst.outBorderRadius.r,
+          widget.useInBorderRadius
+              ? SenseiConst.inBorderRadius
+              : SenseiConst.outBorderRadius,
         ),
       ),
       child: ExpansionTile(
         leading: Container(
-          padding: EdgeInsets.all(SenseiConst.padding.w),
+          padding: const EdgeInsets.all(SenseiConst.padding),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
             color: Theme.of(context).colorScheme.surfaceContainerHigh,
           ),
           child: Icon(
@@ -52,16 +52,15 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
         enableFeedback: true,
         showTrailingIcon: true,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            widget.useInBorderRadius ? SenseiConst.inBorderRadius.r : SenseiConst.outBorderRadius.r,
-          ),
-          side: BorderSide(
-            color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-          ),
-        ),
+            borderRadius: BorderRadius.circular(
+              widget.useInBorderRadius
+                  ? SenseiConst.inBorderRadius
+                  : SenseiConst.outBorderRadius,
+            ),
+            side: BorderSide(
+                color: Theme.of(context).colorScheme.outline.withAlpha(0x80))),
         children: widget.children,
       ),
     );
   }
 }
-

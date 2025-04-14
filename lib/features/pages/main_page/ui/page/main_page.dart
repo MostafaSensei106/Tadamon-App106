@@ -146,10 +146,10 @@ class _MainPageState extends State<MainPage>
             body: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surface,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(SenseiConst.outBorderRadius.r + 7),
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(SenseiConst.outBorderRadius + 7),
                     topRight:
-                        Radius.circular(SenseiConst.outBorderRadius.r + 7)),
+                        Radius.circular(SenseiConst.outBorderRadius+ 7)),
               ),
               child: Stack(
                 children: [

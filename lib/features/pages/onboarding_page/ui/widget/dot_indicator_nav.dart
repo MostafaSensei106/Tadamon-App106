@@ -49,13 +49,15 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
 
   Widget _getActionButton(
       String key, String label, IconData icon, VoidCallback onPressed) {
-    return ButtonCompnent(
-      key: ValueKey(key),
-      label: label,
-      icon: icon,
-      // useWidth: true,
-      // width: 0.3.sw,
-      onPressed: onPressed,
+    return SizedBox(
+      width: 0.3.sw,
+      child: ButtonCompnent(
+        key: ValueKey(key),
+        useInBorderRadius: true,
+        label: label,
+        icon: icon,
+        onPressed: onPressed,
+      ),
     );
   }
 

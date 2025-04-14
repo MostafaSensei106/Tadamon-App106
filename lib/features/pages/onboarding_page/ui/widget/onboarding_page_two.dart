@@ -180,7 +180,6 @@ class AppOnline extends StatelessWidget {
           );
         }
         return ButtonCompnent(
-          useInBorderRadius: false,
           // useWidth: true,
           // width: 0.5.sw,
           label: 'تم تهيئة البيانات بنجاح',

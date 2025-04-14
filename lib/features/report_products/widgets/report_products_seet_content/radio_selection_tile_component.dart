@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/expansion_tile_component/expansion_tile_component.dart';
 
 class RadioSelectionTileComponent extends StatefulWidget {

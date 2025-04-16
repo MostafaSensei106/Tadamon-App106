@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/fonts/fonts.dart';
 
 class HomeToolsComponent extends StatelessWidget {
   final IconData icon;
@@ -61,7 +62,7 @@ class HomeToolsComponent extends StatelessWidget {
           enableFeedback: true,
           onTap: onTapped,
           child: Container(
-            padding: EdgeInsets.all(3.w),
+            padding: const EdgeInsets.all(3),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -84,6 +85,7 @@ class HomeToolsComponent extends StatelessWidget {
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   overflow: TextOverflow.fade,
+                  style: AppTextStyle.subtitle(context),
                 ),
               ],
             ),

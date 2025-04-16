@@ -73,7 +73,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
       _terms.length,
       (index) => AnimationController(
         vsync: this,
-        duration: Duration(milliseconds: 300 + (index * 100)),
+        duration: Duration(milliseconds: 250 + (index * 100)),
       ),
     );
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/fonts/fonts.dart';
 import 'package:tadamon/core/widgets/divider.dart';
 
 class DrawerComponent extends StatelessWidget {
@@ -133,7 +134,7 @@ class DrawerComponent extends StatelessWidget {
                   padding: const EdgeInsets.all(SenseiConst.padding),
                   decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
+                        BorderRadius.circular(SenseiConst.inBorderRadius),
                     color:
                         Theme.of(context).colorScheme.surfaceContainerHighest,
                   ),
@@ -148,6 +149,7 @@ class DrawerComponent extends StatelessWidget {
                 subtitle: Text(
                   subtitle,
                   overflow: TextOverflow.ellipsis,
+                  style: AppTextStyle.subtitle(context),
                 ),
                 trailing: trailingWidget,
                 selected: selected,

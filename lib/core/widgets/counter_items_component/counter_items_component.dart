@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/fonts/fonts.dart';
 
 class CounterItemsComponent extends StatefulWidget {
   final IconData icon;
@@ -142,7 +143,7 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
           SizedBox(height: 4.h),
           Text(
             _currentValue.toString(),
-            style: TextStyle(fontSize: 18.sp, ),
+            style: AppTextStyle.subtitle(context).copyWith(fontSize: 16.sp),
           ),
         ],
       ),

@@ -404,7 +404,7 @@ Widget _buildHowToUse(BuildContext context) {
       title: S.of(context).howToUse,
       subtitle: S.of(context).howToUseMassage,
       trailingWidget: Icon(
-        Icons.arrow_right_rounded,
+        Icons.arrow_forward_ios_rounded,
         color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
       ),
       onTapped: () {
@@ -446,7 +446,6 @@ Widget _buildReadMe(BuildContext context) {
     onTapped: () {
       HapticFeedback.vibrate();
       Navigator.pop(context);
-
       UrlRunServices.launchURL(SenseiConst.devReadMeLink);
     },
   );
@@ -523,7 +522,7 @@ Widget _buildDeveloper(BuildContext context) {
     title: S.of(context).developer,
     subtitle: S.of(context).mostafaMahmoud,
     trailingWidget: Icon(
-      Icons.arrow_right_rounded,
+        Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
     onTapped: () => {
@@ -541,7 +540,7 @@ Widget _buildAbout(BuildContext context) {
     useGroupBottom: true,
     leadingIcon: Icons.info_outline,
     trailingWidget: Icon(
-      Icons.arrow_right_rounded,
+        Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
 

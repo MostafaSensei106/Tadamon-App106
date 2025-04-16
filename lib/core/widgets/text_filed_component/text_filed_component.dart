@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/fonts/fonts.dart';
 
 class TextFieldComponent extends StatelessWidget {
   final TextEditingController controller;
@@ -66,7 +67,6 @@ class TextFieldComponent extends StatelessWidget {
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
       onFieldSubmitted: (value) => FocusScope.of(context).nextFocus(),
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
-      onTapUpOutside: (event) => FocusScope.of(context).unfocus(),
       onChanged: onChange,
       readOnly: readOnly,
       maxLines: largeField ? 5 : 1,
@@ -80,6 +80,9 @@ class TextFieldComponent extends StatelessWidget {
         hintText: hint,
         errorText: errorText,
         suffixIcon: suffixIcon,
+        hintStyle: AppTextStyle.subtitle(context),
+        errorStyle:AppTextStyle.subtitle(context).copyWith(color: Theme.of(context).colorScheme.error),
+        
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(

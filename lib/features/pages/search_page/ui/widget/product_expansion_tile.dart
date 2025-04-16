@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/fonts/fonts.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
@@ -40,7 +41,7 @@ class ProductExpansionTileComponent extends StatelessWidget {
                   size: SenseiConst.iconSize,
                 )),
         title: Text(product.name),
-        subtitle: Text(product.serialNumber),
+        subtitle: Text(product.serialNumber,style: AppTextStyle.subtitle(context),),
         enableFeedback: true,
         showTrailingIcon: true,
         shape: RoundedRectangleBorder(

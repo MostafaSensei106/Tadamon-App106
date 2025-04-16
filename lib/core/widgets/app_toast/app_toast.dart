@@ -6,50 +6,65 @@ import 'package:toastification/toastification.dart';
 class AppToast {
   /// Shows a toast with the given [message] for a short duration at the bottom
   /// of the screen with a black background and white text.
-  static void showSimpleToastInfo(String message) {
+  static void showSimpleToast(String message) {
     toastification.show(
+      style: ToastificationStyle.simple,
       title: Text(message),
-      autoCloseDuration: const Duration(seconds: 1),
+      alignment: Alignment.bottomCenter,
+      autoCloseDuration: const Duration(seconds: 4),
+      padding: const EdgeInsets.all(SenseiConst.padding),
+      backgroundColor: AppRouter.theme.surface,
+      foregroundColor: AppRouter.theme.onSurface,
+      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+      closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
+      borderSide: const BorderSide(
+          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
       dragToClose: true,
       pauseOnHover: true,
-      style: ToastificationStyle.simple,
-      alignment: Alignment.bottomCenter,
-      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-      padding: const EdgeInsets.all(SenseiConst.padding),
-      backgroundColor: AppRouter.theme.onSurface,
-      primaryColor: AppRouter.theme.primary,
-      foregroundColor: AppRouter.theme.onPrimary,
-      borderSide: BorderSide(
-        color: AppRouter.theme.outline.withAlpha(0x80),
-      ),
-      // ignore: deprecated_member_use
-      closeButtonShowType: CloseButtonShowType.none,
     );
   }
 
   /// Shows a toast with the given [message] for a long duration at the bottom of
   /// the screen with a red background and white text.
-  static void showErrorToast(String message) {
+  static void showErrorToast(String discription) {
     toastification.show(
-      title: Text(message),
-      type: ToastificationType.info,
-      style: ToastificationStyle.flat,
+      type: ToastificationType.error,
+      style: ToastificationStyle.minimal,
+      title: const Text('حدث خطأ'),
+      description: Text(discription),
       alignment: Alignment.bottomCenter,
-      animationBuilder: (context, animation, alignment, child) =>
-          FadeTransition(
-        opacity: animation,
-        child: child,
-      ),
-      autoCloseDuration: const Duration(seconds: 1),
-      icon: const Icon(
-        Icons.info_outline,
-        size: SenseiConst.iconSize,
-      ),
+      autoCloseDuration: const Duration(seconds: 4),
       padding: const EdgeInsets.all(SenseiConst.padding),
-      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+      backgroundColor: AppRouter.theme.surface,
+      foregroundColor: AppRouter.theme.onSurface,
+      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+      closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
+      borderSide: const BorderSide(
+          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
       dragToClose: true,
-      // ignore: deprecated_member_use
-      closeButtonShowType: CloseButtonShowType.none,
+      pauseOnHover: true,
+      showProgressBar: true,
+    );
+  }
+
+  static void showWarningToast(String discription) {
+    toastification.show(
+      type: ToastificationType.warning,
+      style: ToastificationStyle.minimal,
+      title: const Text('حدث خطأ'),
+      description: Text(discription),
+      alignment: Alignment.bottomCenter,
+      autoCloseDuration: const Duration(seconds: 4),
+      padding: const EdgeInsets.all(SenseiConst.padding),
+      backgroundColor: AppRouter.theme.surface,
+      foregroundColor: AppRouter.theme.onSurface,
+      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+      closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
+      borderSide: const BorderSide(
+          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
+      dragToClose: true,
+      pauseOnHover: true,
+      showProgressBar: true
     );
   }
 
@@ -58,26 +73,38 @@ class AppToast {
 
   static void showSuccessToast(String message) {
     toastification.show(
-      title: Text(message),
       type: ToastificationType.success,
-      style: ToastificationStyle.flat,
+      style: ToastificationStyle.minimal,
+      title: Text(message),
       alignment: Alignment.bottomCenter,
-      autoCloseDuration: const Duration(seconds: 1),
-      animationBuilder: (context, animation, alignment, child) =>
-          FadeTransition(
-        opacity: animation,
-        child: child,
-      ),
-      icon: const Icon(
-        Icons.info_outline,
-        size: SenseiConst.iconSize,
-      ),
-      padding: const EdgeInsets.all(SenseiConst.padding),
-      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-      showProgressBar: false,
+      autoCloseDuration: const Duration(seconds: 4),
+      backgroundColor: AppRouter.theme.surface,
+      foregroundColor: AppRouter.theme.onSurface,
+      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+      closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
+      borderSide: const BorderSide(
+          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
       dragToClose: true,
-      // ignore: deprecated_member_use
-      closeButtonShowType: CloseButtonShowType.none,
+      pauseOnHover: true,
+    );
+  }
+
+  static void showInfoToast(String message) {
+    toastification.show(
+      type: ToastificationType.info,
+      style: ToastificationStyle.minimal,
+      title: Text(message),
+      alignment: Alignment.bottomCenter,
+      autoCloseDuration: const Duration(seconds: 4),
+      backgroundColor: AppRouter.theme.surface,
+      foregroundColor: AppRouter.theme.onSurface,
+      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+      closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
+      borderSide: const BorderSide(
+          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
+      dragToClose: true,
+      pauseOnHover: true,
+      showProgressBar: true
     );
   }
 }

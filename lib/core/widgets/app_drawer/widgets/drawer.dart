@@ -256,6 +256,9 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
+
+
+
   Widget _buildUpdateLocalHiveDataBase(BuildContext context) {
     return BlocProvider(
       create: (_) => LocalDBCubit()..loclaDBHasData(),

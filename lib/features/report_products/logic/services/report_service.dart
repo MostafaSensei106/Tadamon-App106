@@ -21,7 +21,7 @@ class ReportService {
         AppToast.showErrorToast('حث خطاء');
       }
     } else {
-      AppToast.showSimpleToastInfo(
+      AppToast.showSimpleToast(
           'لا يوجد انترنت. سيتم إرسال البلاغ تلقائيًا لاحقًا.');
       await _saveReportLocally(productReport);
     }
@@ -46,7 +46,7 @@ class ReportService {
       try {
         await FireStoreRepository().sendReportToBackEnd(report);
         await _clearLocalReports(report);
-        AppToast.showSimpleToastInfo('تم إرسال بلاغ معلق');
+        AppToast.showSimpleToast('تم إرسال بلاغ معلق');
       } catch (e) {
         AppToast.showErrorToast(e.toString());
       }

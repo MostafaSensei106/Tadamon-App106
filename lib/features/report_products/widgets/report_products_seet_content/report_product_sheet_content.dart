@@ -88,7 +88,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
                 },
               ),
               SizedBox(
-                height: SenseiConst.margin.h,
+                height: SenseiConst.margin.h - 4,
               ),
               if (state is ReportProductIsLoading)
                 const CircularProgressIndicator(),
@@ -119,5 +119,4 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
     productNameController.dispose();
     super.dispose();
   }
-  
 }

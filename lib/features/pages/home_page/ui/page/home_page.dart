@@ -10,17 +10,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(SenseiConst.padding),
-        child: Column(
-          children: [
-            HomeTip(),
-            ImageNews(),
-            HomeAppTools(),
-            ItemsCounter(),
-          ],
-        ),
+    return const Padding(
+      padding: EdgeInsets.all(SenseiConst.padding),
+      child: Column(
+        children: [
+          HomeTip(),
+          ImageNews(),
+          HomeAppTools(),
+          ItemsCounter(),
+        ],
       ),
     );
   }

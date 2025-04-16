@@ -6,7 +6,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart';
-import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/side_page_app_bar.dart';
+import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
 
 class TermsGate extends StatefulWidget {
   const TermsGate({super.key});
@@ -73,7 +73,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
       _terms.length,
       (index) => AnimationController(
         vsync: this,
-        duration: Duration(milliseconds: 300 + (index * 100)),
+        duration: Duration(milliseconds: 250 + (index * 100)),
       ),
     );
 

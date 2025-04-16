@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -29,12 +28,15 @@ class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// the app. The [AppBar] has no elevation and a white background.
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 0,
+      foregroundColor:Theme.of(context).colorScheme.onSurface,
       title: Text(title),
       centerTitle: true,
-      elevation: 0,
       forceMaterialTransparency: true,
-      leading: useBackButton ? _buildSidePageAppBarIcon(
-          context, Icons.keyboard_double_arrow_right_rounded) : null,
+      leading: useBackButton
+          ? _buildSidePageAppBarIcon(
+              context, Icons.keyboard_double_arrow_right_rounded)
+          : null,
     );
   }
 
@@ -55,7 +57,7 @@ class SidePageAppBar extends StatelessWidget implements PreferredSizeWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
         ),
-        padding: EdgeInsets.all(4.w),
+        padding: const EdgeInsets.all(4),
       ),
       onPressed: () => leave(context),
       icon: Icon(

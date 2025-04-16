@@ -16,7 +16,7 @@ class AppBarTitle extends StatelessWidget {
   ///
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 550),
       switchInCurve: Curves.easeInOut,
       switchOutCurve: Curves.easeInOut,
       transitionBuilder: (Widget child, Animation<double> animation) {
@@ -34,7 +34,9 @@ class AppBarTitle extends StatelessWidget {
       child: Text(
         title,
         key: ValueKey<String>(title),
-        style: Theme.of(context).textTheme.titleLarge,
+        style: const TextStyle(
+          color: Colors.white,
+        ),
       ),
     );
   }

@@ -38,7 +38,7 @@ class ActionDrawerIcon extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
           onTap: () => openDrawer(context),
           child: _ActionDrawerContainer(
             child: _ActionDrawerIcon(),
@@ -72,7 +72,7 @@ class _ActionDrawerContainer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
         color: Theme.of(context)
             .colorScheme
             .surfaceContainerHigh
@@ -89,7 +89,7 @@ class _ActionDrawerIcon extends StatelessWidget {
     return Icon(
       Icons.more_horiz_rounded,
       size: SenseiConst.iconSize.sp,
-      color: Theme.of(context).colorScheme.onSurface,
+      color: Colors.white,
     );
   }
 }

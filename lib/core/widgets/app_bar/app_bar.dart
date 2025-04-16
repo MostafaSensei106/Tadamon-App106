@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/action_drawer_icons.dart';
-import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/app_bar_title.dart';
+import 'package:tadamon/core/widgets/app_bar/action_drawer_icons.dart';
+import 'package:tadamon/core/widgets/app_bar/app_bar_title.dart';
+
 
 class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -21,8 +22,6 @@ class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       child: AppBar(
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
         automaticallyImplyLeading: false,
         elevation: 0,
         actions: const [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/fonts/fonts.dart';
 
 class ExpansionTileComponent extends StatefulWidget {
   final IconData leadingIcon;
@@ -47,18 +48,18 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
           ),
         ),
         title: Text(widget.title),
-        subtitle: Text(widget.subtitle),
+        subtitle: Text(widget.subtitle,style: AppTextStyle.subtitle(context),),
         backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
         enableFeedback: true,
         showTrailingIcon: true,
-        shape: RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(  
             borderRadius: BorderRadius.circular(
               widget.useInBorderRadius
                   ? SenseiConst.inBorderRadius
                   : SenseiConst.outBorderRadius,
             ),
             side: BorderSide(
-                color: Theme.of(context).colorScheme.outline.withAlpha(0x80))),
+                color: Theme.of(context).colorScheme.outline.withAlpha(0x80),),),
         children: widget.children,
       ),
     );

@@ -13,7 +13,6 @@ class MainPageContainer extends StatelessWidget {
     required this.onPageChanged,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return PageView(

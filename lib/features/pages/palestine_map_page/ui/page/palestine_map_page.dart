@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/side_page_app_bar.dart';
+import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class PalestineMapPage extends StatelessWidget {
@@ -12,6 +12,7 @@ class PalestineMapPage extends StatelessWidget {
     return Scaffold(
       appBar: SidePageAppBar(
         title: S.of(context).palatineMap,
+        useBackButton: true,
       ),
       body: ClipRRect(
         borderRadius: BorderRadius.only(

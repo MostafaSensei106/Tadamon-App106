@@ -5,7 +5,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/expansion_tile_component/expansion_tile_component.dart';
 import 'package:tadamon/features/pages/help_user_page/logic/cubit/help_user_cubit.dart';
 import 'package:tadamon/features/pages/help_user_page/logic/cubit/help_user_state.dart';
-import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
+import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/side_page_app_bar.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class HelpUserPageView extends StatelessWidget {

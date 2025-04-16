@@ -113,7 +113,7 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
                 )
               : null,
         ),
-        SizedBox(height: SenseiConst.margin.h),
+        SizedBox(height: SenseiConst.margin.h-4),
         SizedBox(
           width: 1.sw,
           child: ButtonCompnent(

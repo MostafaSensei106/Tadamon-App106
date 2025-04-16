@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:tadamon/core/config/fonts/fonts.dart';
 
 class LottieComponent extends StatelessWidget {
   
@@ -31,9 +32,7 @@ class LottieComponent extends StatelessWidget {
         SizedBox(height: 10.h),
         Text(
           text,
-          style: TextStyle(
-              fontSize: 16.sp, color: Theme.of(context).colorScheme.primary),
-        ),
+          style: AppTextStyle.subtitle(context).copyWith(fontSize: 16.sp),),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
 
 final ThemeData darkTheme = ThemeData(
   colorScheme: const ColorScheme(
@@ -50,5 +51,11 @@ final ThemeData darkTheme = ThemeData(
     surfaceContainerHighest: Color(0xff403130),
   ),
   fontFamily: 'ArabicFont',
-
+    appBarTheme: const AppBarTheme(
+    elevation: 0,
+    centerTitle: true,
+    foregroundColor: Colors.white,
+    backgroundColor: Colors.transparent,
+    iconTheme: IconThemeData(size: SenseiConst.iconSize,),
+  ),
 );

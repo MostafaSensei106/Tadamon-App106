@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/features/pages/main_page/ui/widget/app_bar/app_bar.dart';
+import 'package:tadamon/core/widgets/app_bar/app_bar.dart';
 import 'package:tadamon/core/widgets/app_drawer/widgets/drawer.dart';
 import 'package:tadamon/features/pages/main_page/ui/widget/google_nav_bar/google_nav_bar.dart';
 import 'package:tadamon/features/pages/main_page/logic/cubit/main_page_cubit.dart';
